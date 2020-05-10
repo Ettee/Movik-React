@@ -1,0 +1,55 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.main-slide-section{
+    // width: 100vw !important;
+    .owl-main-slide{
+        .owl-item{
+            .item{
+                position: relative;
+                a{
+                    img{
+                        width: 100%; 
+                    }
+                }
+                .main-slide-overlay{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to top, #000, transparent 20%);
+                    top:0;
+                    z-index: 2;
+                }
+            }
+        }
+        
+        .owl-nav{
+            display: none;
+        }
+        .owl-dots{
+            position: relative;
+            top: -110px;
+            @include tablet{
+                display: none;
+            }
+            @include mobile{
+                display: none;
+            }
+            button{
+                outline: none;
+                span{
+                    width: 15px;
+                    height: 15px;
+                    background-color: #fff;
+                }
+            }
+        }
+        .owl-dots{
+            button.active{
+                span{
+                    @include GradientBackgroundTheme();
+                }
+            }
+        }
+    
+    }
+}

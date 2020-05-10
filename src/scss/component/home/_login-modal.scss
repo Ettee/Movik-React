@@ -1,0 +1,29 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.login-modal{
+    .modal-header{
+        .modal-title{
+            font-size: 35px;
+            letter-spacing: 1px;
+            font-variant: all-petite-caps;
+        }
+    }
+    .modal-body{
+        label{
+            font-size: 19px;
+        }  
+    }
+    .modal-footer{
+        .btn-close-login{
+            @include buttonMakerWithCustomBg(100%,50px,5px,#fff,$colorForSmallIcon);
+        }
+    }
+        
+    
+    
+}
+//class dùng chung
+.btn-login,.btn-sign-up{
+    @include buttonMaker(100%,50px,5px,#fff);
+    margin: 5px 0;
+}

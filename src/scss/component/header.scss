@@ -1,0 +1,107 @@
+@import "../helper/variable.scss";
+@import "../helper//mixin.scss";
+header{
+    box-shadow:  -1px 14px 31px 3px rgba(0,0,0,0.36);
+    z-index: 999;
+    nav.navbar{
+        height: 75px;
+        justify-content: space-between !important;
+        @include mobile {
+            height: 100px;
+        }
+        //logo
+        .header-brand{
+            a{
+                img{
+                    width: 75px;
+                    @include mobile{
+                        width: 75px;
+                        position: relative;
+                        left: 10px;
+                    }
+                }
+            }
+        }
+
+        // link
+        .header-links{
+            position: relative;
+            left: 65px;
+            @include mobile{
+                display: none;
+            }
+            @include tablet{
+                position: relative;
+                left:-10px
+            }
+            .navbar-nav{
+                li{
+                    a{
+                        color: #000;
+                        transition: all 0.3s;
+                        font-size: 16px;
+                        margin: 0 4px;
+                        &:hover{
+                            @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
+                            
+                            
+                        }
+                        
+                    }
+                }
+            }
+        }
+        //dropdown user-login
+        .header-user{
+            .navbar-nav{
+                @include tablet{
+                    display: block;
+                }
+                li.user-login{
+                    display: flex;
+                    align-items: center;
+                    padding-right: 10px;
+                    @include tablet{
+                        padding:0;
+                        margin-top: 10px;
+                    }
+                   
+                    .user-login-logo{
+                        margin-right: 8px;
+                        
+                        i{
+                            font-size: 25px;
+                            padding-top: 4px;
+                            color: rgba(0,0,0,.5);
+                            transition: all 0.5s;
+                            cursor: pointer;
+                            @include tablet{
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                    .user-login-link{
+                        a{
+                            margin-bottom: 0 !important;
+                            text-decoration: none;
+                            color: rgba(0,0,0,.5);
+                        }
+                    }
+                    &:hover{
+                        .user-login-logo{
+                            i{
+                                @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
+                            }
+                        }
+                        .user-login-link{
+                            a{
+                                @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}

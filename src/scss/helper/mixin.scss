@@ -1,0 +1,60 @@
+@import './variable.scss';
+@mixin GradientTextWith_2_Colors($color_1,$color_2,$percentsForColor1,$percentsForColor2) {
+    background: linear-gradient(90deg,$color_1 $percentsForColor1,$color_2 $percentsForColor2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@mixin GradientBackgroundTheme(){
+  background: linear-gradient(45deg,#9f00fb,#ff0000);
+}
+@mixin buttonMaker($width,$height,$borderRadius,$color){
+  width: $width;
+  height: $height;
+  border-radius: $borderRadius;
+  color: $color;
+  border: none;
+  outline: none;
+  background: linear-gradient(to right,#9f00fb,#ff0000);
+}
+@mixin buttonMakerWithCustomBg($width,$height,$borderRadius,$color,$colorBg){
+  width: $width;
+  height: $height;
+  border-radius: $borderRadius;
+  color: $color;
+  border: none;
+  outline: none;
+  background:$colorBg;
+}
+
+@mixin borderForSectionMarker(){
+  -webkit-box-shadow: 0px 104px 40px -113px rgba(0,0,0,0.68);
+  -moz-box-shadow: 0px 104px 40px -113px rgba(0,0,0,0.68);
+  box-shadow: 0px 104px 40px -113px rgba(0,0,0,0.68);
+}
+@mixin mainText($size){
+  font-size: $size ;
+  letter-spacing: .5px ;
+  font-weight: 400;
+  color: #212529 ;
+}
+
+/*RESPONSIVE DISPLAY*/
+/* Set các giá trị với màn hình tương ứng */
+$mobile-width: 768px; //0-768px
+$tablet-width: 768px; //768px-1024px
+$desktop-width: 1024px;  
+
+@mixin mobile { @media (max-width: #{$mobile-width - 1px}) {     
+  @content;   
+ } 
+}  
+
+@mixin tablet { @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {       
+   @content;   
+ } 
+}  
+
+@mixin desktop {   @media (min-width: #{$desktop-width}) {     
+  @content;  
+ } 
+}
