@@ -1,0 +1,238 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.theater-section{
+    margin: 50px 0;
+    padding: 100px;
+    >.container{
+        border: $border;
+        @include borderForSectionMarker();
+        .logo-column,.theater-column{
+            border-right:$border ;
+        }
+        .logo-column{
+            .pick-logo-theater{
+                img{
+                    width: 50px;
+                    opacity: .5;
+                    transition: all .3s;
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
+                .nav-link.active{
+                    background-color: transparent;
+                    img{
+                        opacity: 1;
+                    }
+                }   
+                .nav-item{
+                    margin-bottom: 36px;
+                    padding: 8px;
+                    a{
+                        padding: 0;
+                    }
+                }
+            
+            }
+        }
+        .theater-column{
+            overflow-y:auto;
+            height: $theaterBlockHeight;
+            .pick-theater{
+                .tab-pane{
+                    padding: 0;
+                }
+                .nav-item{
+                    width: 100%;
+                    padding: 10px 0;
+                    &:hover{
+                        >a{
+                            div:nth-child(1){
+                                img{   
+                                    opacity: 1;
+                                }
+                            }
+                            div:nth-child(2){
+                                h3{
+                                    opacity: 1;
+                                }
+                                p{
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                   >a{
+                    background-color: transparent;
+                    display: flex;
+                    padding: 0;
+                    div:nth-child(1){
+                        img{
+                            width: 70px;
+                            opacity: .5;
+                        }
+                    }
+                    div:nth-child(2){
+                        color: black;
+                        margin:10px;
+                        h3{
+                            font-size: 15px;
+                            opacity: .5;
+                        }
+                        p{
+                            font-size: 14px;
+                            opacity: .5;
+                        }
+                    }
+                   }
+                }
+                .nav-link.active{
+                    div:nth-child(1){
+                        img{   
+                            opacity: 1;
+                        }
+                    }
+                    div:nth-child(2){
+                        h3{
+                            opacity: 1;
+                        }
+                        p{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+        .show-column{
+            overflow-y: auto;
+            height: $theaterBlockHeight;
+            padding: 0;
+            .pick-movie-show{          
+                >div{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+                .first-page:not(.active){
+                    opacity: 0;
+                }
+                .active{
+                    z-index: 999;
+                }
+                .movie-of-picked-theater:last-child{
+                    border-bottom: none;
+                }
+                .movie-of-picked-theater{
+                    margin: 10px auto;
+                    border-bottom:$border ;
+                    .nameFilm{
+                        @include mainText(27px);
+                    }
+                    .showing-time-list{
+                        display: flex;
+                        justify-content: start;
+                        flex-wrap: wrap;
+                        .item-showing-time{
+                            list-style: none;
+                            margin:10px 40px 10px 0px;
+                            button{
+                                position: relative;
+                                border-radius:20px ;
+                                @include GradientBackgroundTheme();
+                                padding: 10px;
+                                border: none;
+                                width: 75px;
+                                a{
+                                    color:white;
+                                    text-decoration: none;
+                                }
+                                
+                                
+                            }
+                            .btn-shadow{
+                                &:before, &:after {
+                                    content:'';
+                                    position: absolute;
+                                    top:-2px;
+                                    left:-2px;
+                                    width:calc(100% + 3px);
+                                    height:calc(100% + 3px);
+                                    background: linear-gradient(45deg, #6f00ff, #ff0000);
+                                    z-index:-1;                
+                                    border-radius:20px ;
+                                    opacity: 0;
+                                }
+                                &:after {
+                                    top: -3px;
+                                    left: -3px;
+                                    width: calc(100% + 6px);
+                                    height: calc(100% + 6px);
+                                    filter: blur(6px);
+                                    opacity: 0;
+                                }
+                                &:hover{
+                                    &:before, &:after{
+                                        opacity: 1;
+                                    }
+                                    &:after{
+                                        opacity: 0.8;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+// RESPONSIVE THEATER BLOCK
+@include tablet {
+    .logo-column{
+        .pick-logo-theater{
+            .nav-link{
+                img{
+                    width: 40px !important;
+                }
+            }
+        }
+    }
+    .theater-column{
+        .theater-info{
+            margin: 0 10px !important;
+            .theater-name{
+                font-size: 14px !important;
+            }
+        }
+    }
+    .movie-of-picked-theater{
+        .nameFilm{
+            font-size: 20px !important;
+        }
+        .showing-time-list{
+            .btn-shadow{
+                width: 53px !important;
+                height: 33px;
+                padding: 0 !important;
+                a{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+@include mobile{
+    .logo-column{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        .pick-logo-theater{
+            .nav{
+                justify-content: space-between ;
+                .nav-item{
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+    
+}

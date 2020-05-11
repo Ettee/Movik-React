@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 export default class Header extends Component {
     render() {
         return (
@@ -7,9 +7,9 @@ export default class Header extends Component {
                 <nav className="navbar navbar-expand-sm bg-white navbar-light">
                     {/* Brand */}
                     <div className="header-brand">
-                        <a className="navbar-brand" href="#">
+                        <NavLink className="navbar-brand" exact to="/">
                             <img src="./img/logo/1a8baaa2-3dca-4125-ad61-1442a3d7c7a9_200x200.png" alt="logo" />
-                        </a>
+                        </NavLink>
                     </div>
                     {/* Links */}
                     <div className="header-links">

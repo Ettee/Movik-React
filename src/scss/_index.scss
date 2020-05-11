@@ -1,9 +1,15 @@
 @import "./helper/variable.scss";
 @import "./helper/mixin.scss";
 @import "./component/header.scss";
+@import "./component/footer.scss";
 @import "./component/home/main-slide";
 @import "./component/home/login-modal";
 @import "./component/home/search-block";
+@import "./component/home/movie-slide";
+@import "./component/home/theater-block";
+@import "./component/home/news";
+@import "./component/home/subscribes";
+@import "./component/signup/signup";
 *{
     box-sizing: border-box;
     margin: 0;

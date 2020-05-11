@@ -1,0 +1,202 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+
+.showing-coming-movie-section{
+  margin: 50px 0;
+  .nav{
+    justify-content: center;
+    .nav-item{
+      .active{
+         @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
+        background-color: transparent;
+        font-size: 25px !important;
+        font-weight: 500;
+      }
+      .nav-link{
+        color:#000000;
+        transition: all .3s;
+        font-size: 21px;
+        &:hover{
+          font-size: 25px;
+        }
+      }
+    }
+  }
+  .tab-content{
+    .tab-pane{
+      @include borderForSectionMarker();
+      .row {
+        width: 90%;
+        margin: 20px auto;
+        .card{
+          border: none;
+          border-radius: unset;
+          &:hover{
+            .card-overlay{
+              cursor: pointer;
+              background: linear-gradient(0deg, rgba(131,58,180,0.5466561624649859) 19%, rgba(253,29,29,0.55) 72%);              
+              .btn-buyticket{
+                opacity: 1;
+                @include GradientBackgroundTheme();
+                transform: translateY(0);
+              }
+              .watchTrailer{
+                i{
+                  opacity: 1;
+                  
+                }
+              }
+            }
+          }
+          .film-content{
+            width: 215px;
+            margin: auto;
+            padding: 15px 0;
+            .lengthFilm{
+              font-size: 14px;
+              color: $textBlur;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+    .tab-pane.container{
+        max-width: 90%;
+    }
+  }
+  .slick-carousel{
+      .slick-list{
+          width: 100%;
+      }
+  }
+  .slick-arrow{
+    position: absolute;
+    top: 45%;
+    width: 50px;
+    height: 100px;
+    z-index: 2;
+    opacity: .7;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .slick-prev{
+    background-image: url(../../../img/icon/back-session.png) !important;
+    left: -65px;
+    &::before{
+      content: none;
+    }
+  } 
+  .slick-next{
+    background-image: url(../../../img/icon/next-session.png) !important;
+    right: -60px;
+    &::before{
+      content: none;
+    }
+  }
+}
+//Class dùng chung
+.nameFilm{
+  height: 35px;
+  max-height: 35px;
+  font-size: 22px;
+  @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,65%);
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+//class dùng chung
+.age-tag{
+  background-color: $colorForSmallIcon;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 22px;
+  width: 37px;
+  margin: 5px 10px;
+  text-align: center;
+}
+.rating-score{
+  font-size: 15px;
+  font-weight: 600;
+}
+.rating-star{
+  font-size: 1px;
+  color:$colorForSmallIcon;
+}
+.card-content {
+  margin: auto;
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: $widthOfPoster !important;
+  height: $heightOfPoster;
+  
+    > .card-overlay {
+      background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 100%);
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      border-radius: 10px;
+      transition: all 0.3s;
+      >div{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a{
+          outline: none;
+          i{
+            opacity: 0;
+            font-size: 54px;
+            color: white;
+            transition: .3s;
+            &:hover{
+              transform:scale(1.25,1.25);
+            }
+          }
+        }
+      }
+      .btn-buyticket{
+        opacity: 0;
+        background-color: transparent;
+        transform: translateY(30px);
+        position: absolute;
+        bottom: 13px;
+        left: 67px;
+        transition: all 0.3s;
+        @include buttonMaker(85px,37px,5px,white);
+      
+      }
+    }
+    .card-tag{
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+      
+      .rating-tag{
+        background: linear-gradient(0deg, rgba(15,33,50,0.5074404761904762) 100%, rgba(47,77,99,0.6418942577030813) 100%);
+        border: 1px solid rgba(28,110,164,0.38);
+        margin: 5px 10px;
+        border-radius: 10px;
+        padding: 5px;
+        text-align: center;
+      }
+    } 
+}
+//responsive
+@include tablet{
+    .card{
+        width: 185px;
+    }
+}

@@ -1,0 +1,102 @@
+@import "../helper/variable.scss";
+@import "../helper//mixin.scss";
+.footer{
+    background-color: #222;
+    padding: 50px ;
+    .container{
+        .about-movik{
+            color: #fff;
+            width: 70%;
+            div:nth-child(1){
+                font-size: 14px; 
+            }
+            .about-content{
+                div{
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        a{
+                            text-decoration: none;
+                            font-size: 12px;
+                            color: #949494;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+        .partners{
+            width: 70%;
+            margin: auto;
+            >div:nth-child(1){
+                color: #fff;
+                font-size: 14px;
+                margin-bottom: 10px;
+                margin-left: 10px;
+            }
+            .partners-logo{
+                display: flex;
+                flex-wrap: wrap;
+                img{
+                    width: 30px;
+                    border-radius: 50%;
+                    margin: 5px 6px;
+                }
+            }
+            
+        }
+        .contact-footer{
+           >div:nth-child(1){
+               color: #fff;
+               font-size: 14px;
+               margin-left: 10px;
+           }
+           .contact-icon{
+               a{
+                img{
+                    width: 30px;
+                    margin: 10px 10px;
+                }
+               }              
+            }
+        }
+        .footer-line{
+            border-top: 1px solid #4a4a4a;
+        }
+        .about-me{
+            .creator{
+                color: #fff;
+                font-size: 14px;
+            }
+            div:nth-child(2){
+                color: #fff;
+                font-size: 14px;
+                span{
+                    a{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    } 
+}
+// RESPONSIVE
+@include mobile{
+    .partners{
+        margin: 0 !important;
+        div:nth-child(1){
+            margin-left: 0 !important;
+        }
+        .partners-logo{
+            img{
+                margin-left: 0 !important;
+                margin-right: 20px !important;
+            }
+        }
+    }
+    .contact-footer{
+        div:nth-child(1){
+            margin-left: 0 !important;
+        }
+    }
+}

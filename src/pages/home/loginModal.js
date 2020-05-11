@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {NavLink} from 'react-router-dom';
 export default class LoginModal extends Component {
     render() {
         return (
@@ -23,7 +23,12 @@ export default class LoginModal extends Component {
                                         <input type="password" className="form-control" placeholder="Nhập mật khẩu" id="matKhau" />
                                     </div>
                                     <button type="submit" className="btn-login">Đăng nhập</button>
-                                    <button className="btn-sign-up">Tạo tài khoản</button>
+
+                                    <NavLink to="/sign-up">
+                                        <button className="btn-sign-up">
+                                            Tạo tài khoản
+                                        </button>    
+                                    </NavLink>
                                 </form>
                             </div>
                             {/* Modal footer */}

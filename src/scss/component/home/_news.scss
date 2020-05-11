@@ -1,0 +1,80 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.news-section{
+    margin: 100px 0;
+   
+    .grid-block{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(2,1fr);
+        grid-gap: 20px;
+        .card-grid-news{
+            height: 100%;
+            border-radius: 5px;
+            padding: 10px;
+            position: relative;
+            &:hover{
+                .news-img{
+                    &::after{
+                        width: 70px; 
+                        opacity: 1; 
+                    }
+                } 
+                     
+            }
+            .news-img{ 
+                &::after{
+                    content: 'Read';
+                    text-align: center;
+                    padding-left: 10px;
+                    font-size:15px ;
+                    color: #ffffff;
+                    height: 23px;
+                    width: 0;
+                    position: absolute;
+                    right: 10px;
+                    background: linear-gradient(90deg, rgba(159,0,251,0.6306897759103641) 0%, rgba(255,0,0,0.835171568627451) 100%);
+                    border-bottom-left-radius: 15px;
+                    border-top-right-radius: 5px;
+                    opacity: 0;
+                   transition:all .5s ease;
+                   
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 5px;
+                }
+            }
+            a{
+                text-decoration: none;
+                .news-title{
+                    color: #000000;
+                    font-size: 24px;
+                    &:hover{
+                        @include GradientTextWith_2_Colors($purple,$red,24%,66%);
+                    }
+                }
+            }
+            .news-descript{
+                color: $textBlur;
+                font-size: 14px;
+            }
+        }
+  
+    }
+}
+// RESPONSIVE
+@include mobile{
+    .grid-block{
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+//class xài chung
+.title-section{
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 35px;
+    @include GradientTextWith_2_Colors($purple,$red,24%,66%);
+}

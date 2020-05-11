@@ -1,0 +1,85 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.subscribe-section{
+    background-image: url(../../../img/backapp.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 70vh;
+    position: relative;
+    
+    .container{
+        width: 40%;
+        .title-section{
+            text-transform: uppercase;
+        }
+        >p{
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            font-weight: 500;
+        }
+        .subs-content{
+            input{
+                font-size: 15px;
+                letter-spacing: 1px;
+                width: 80%;
+                margin: auto;
+                height: 40px;
+            }
+            .subs-btn{
+                display: flex;
+                justify-content: center;
+                button{
+                    width: 15%;
+                    height: 40px;
+                    border-radius: 5px;
+                    border: none;
+                    color: #ffffff;
+                    @include GradientBackgroundTheme();
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+//RESPONSIVE
+@include tablet{
+    .subscribe-section{
+        .container{
+            width: 65%;
+        }
+    }
+    .subs-btn{
+        button{
+            width: 23% !important;
+            height: 35px !important;
+            font-size: 14px;
+        }
+    }
+}
+@include mobile{
+    .subscribe-section{
+        .container{
+            width: 65%;
+            >p{
+                font-size: 20px;
+            }
+        }
+    }
+    .subs-btn{
+        button{
+            width: 23% !important;
+            height: 30px !important;
+            font-size: 13px;
+        }
+    }
+}
+//class dùng chung
+.vertically-center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
