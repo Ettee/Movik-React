@@ -10,6 +10,10 @@
 @import "./component/home/news";
 @import "./component/home/subscribes";
 @import "./component/signup/signup";
+@import "./component/detailmovie/detail-movie-top";
+@import "./component/detailmovie/detail-block";
+@import "./component/detailmovie/theater-block";
+@import "./component/detailmovie/trailer-block";
 *{
     box-sizing: border-box;
     margin: 0;

@@ -23,5 +23,23 @@
             }
         }
     }
+    @include tablet{
+        .sign-up-form{
+            width: 80% !important;
+        }
+    }
+    @include mobile{
+        .sign-up-form{
+            width: 80% !important;
+        }
+    }
     
 }
+.form-err{
+    color: $yellow;
+    border: 1px solid red;
+    padding: 7px;
+    border-radius: 8px;
+    background: rgba(192,192,192,.2);
+}
+

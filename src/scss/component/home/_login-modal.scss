@@ -23,7 +23,7 @@
     
 }
 //class dùng chung
-.btn-login,.btn-sign-up{
+.btn-login{
     @include buttonMaker(100%,50px,5px,#fff);
     margin: 5px 0;
 }

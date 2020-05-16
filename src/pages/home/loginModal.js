@@ -1,6 +1,26 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom';
-export default class LoginModal extends Component {
+import {connect} from "react-redux";
+import * as action from "../../redux/action";
+class LoginModal extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            taiKhoan:"",
+            matKhau:"",
+        };
+    }
+    handleOnChange=(event)=>{
+        let {name,value}=event.target;
+        this.setState({
+            [name]:value
+        });
+        console.log(this.state)
+    }
+    handleLogin=()=>{
+        this.props.login(this.state);
+
+    }
     render() {
         return (
             <div className="login-modal">
@@ -13,22 +33,31 @@ export default class LoginModal extends Component {
                             </div>
                             {/* Modal body */}
                             <div className="modal-body">
-                                <form>
+                                <form onSubmit={this.handleLogin}>
                                     <div className="form-group">
                                         <label htmlFor="taiKhoan">Tên đăng nhập: </label>
-                                        <input type="text" className="form-control" placeholder="Nhập tên đăng nhập" id="taiKhoan" />
+                                        <input 
+                                            type="text" 
+                                            className="form-control" 
+                                            placeholder="Nhập tên đăng nhập" 
+                                            id="taiKhoan" name="taiKhoan" 
+                                            onChange={this.handleOnChange} 
+                                            onBlur={this.handleOnChange}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="matKhau">Mật khẩu:</label>
-                                        <input type="password" className="form-control" placeholder="Nhập mật khẩu" id="matKhau" />
+                                        <input 
+                                            type="password" 
+                                            className="form-control" 
+                                            placeholder="Nhập mật khẩu" 
+                                            id="matKhau" 
+                                            name="matKhau" 
+                                            onChange={this.handleOnChange}
+                                            onBlur={this.handleOnChange}
+                                        />
                                     </div>
                                     <button type="submit" className="btn-login">Đăng nhập</button>
-
-                                    <NavLink to="/sign-up">
-                                        <button className="btn-sign-up">
-                                            Tạo tài khoản
-                                        </button>    
-                                    </NavLink>
                                 </form>
                             </div>
                             {/* Modal footer */}
@@ -42,3 +71,11 @@ export default class LoginModal extends Component {
         )
     }
 }
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        login:(user)=>{
+            dispatch(action.actDangNhap(user));
+        }
+    }
+}
+export default connect(null,mapDispatchToProps)(LoginModal);

@@ -27,9 +27,9 @@ header{
         .header-links{
             position: relative;
             left: 65px;
-            @include mobile{
-                display: none;
-            }
+            // @include mobile{
+            //     display: none;
+            // }
             @include tablet{
                 position: relative;
                 left:-10px
@@ -57,16 +57,12 @@ header{
                 @include tablet{
                     display: block;
                 }
-                li.user-login{
+                li.user-login,.user-signup{
                     display: flex;
                     align-items: center;
                     padding-right: 10px;
-                    @include tablet{
-                        padding:0;
-                        margin-top: 10px;
-                    }
-                   
-                    .user-login-logo{
+
+                    .user-login-logo,.user-signup-logo{
                         margin-right: 8px;
                         
                         i{
@@ -80,7 +76,7 @@ header{
                             }
                         }
                     }
-                    .user-login-link{
+                    .user-login-link,.user-signup-link{
                         a{
                             margin-bottom: 0 !important;
                             text-decoration: none;
@@ -88,12 +84,12 @@ header{
                         }
                     }
                     &:hover{
-                        .user-login-logo{
+                        .user-login-logo,.user-signup-logo{
                             i{
                                 @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
                             }
                         }
-                        .user-login-link{
+                        .user-login-link,.user-signup-link{
                             a{
                                 @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
                             }
@@ -103,5 +99,33 @@ header{
                 
             }
         }
+        .navbar-collapse{
+            flex-grow: unset;
+            z-index: 999;
+            background: rgba(255,255,255,1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    }
+    .checkout{
+        display: none !important;
+    }
+}
+@include tablet{
+    .user-login{
+        margin: 0 !important;
+    }
+    .header-user{
+        padding: 0 !important;
+    }
+}
+@include mobile{
+    .header-user{
+        .navbar-nav{
+            display:unset;
+        }
+    }
+    .header-links{
+        display: none;
     }
 }

@@ -1,0 +1,27 @@
+@import '../../helper/variable.scss';
+@import '../../helper/mixin.scss';
+.movie-trailer-section{
+    background-color: $backgroundColorMovieDetail;
+    height: 100vh;
+    padding: 100px 50px;
+    .container{
+        width: 60%;
+        height: 99%;
+    }
+    .play-trailer{
+        border-radius: 10px;
+        width: 100%;
+        height: 70%;
+    }
+
+}
+@include tablet{
+    .movie-trailer-section .container {
+        width: 100% !important;
+    }
+}
+@include mobile{
+    .movie-trailer-section .container {
+        width: 100% !important;
+    }
+}

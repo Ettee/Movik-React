@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
 import MovieCardInSlide from "../../Component/MovieCardInSlide";
-export default class MovieSlide extends Component {
+import * as action from "../../redux/action";
+import {connect} from "react-redux";
+class MovieSlide extends Component {
+    renderMovieCardInSlide =(isTicketNotAvailable)=>{
+        return this.props.listMovie.map((movie,index)=>{
+            return (
+                <div>
+                    <MovieCardInSlide 
+                        key={index}
+                        movie={movie}
+                        isTicketNotAvailable={isTicketNotAvailable}
+                    />
+                </div>
+                
+            )
+        })
+    }
+    componentDidMount(){
+        this.props.getListMovie();
+    }
     render() {
         const settings = {
             className: "center",
@@ -12,8 +31,8 @@ export default class MovieSlide extends Component {
             rows: 2,
             slidesPerRow:2,
             centerPadding: "0px",
-            autoplay: true,
-            autoplaySpeed: 2000,
+            // autoplay: true,
+            // autoplaySpeed: 2000,
             arrows: true,
             responsive: [
                 {
@@ -71,39 +90,7 @@ export default class MovieSlide extends Component {
                     <div className="tab-pane container active" id="showing">
                         <div className="container">
                             <Slider {...settings} className="row slick-carousel">
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
+                                {this.renderMovieCardInSlide(false)}
                             </Slider>
                         </div>
                     </div>
@@ -111,33 +98,7 @@ export default class MovieSlide extends Component {
                     <div className="tab-pane container fade" id="coming">
                         <div className="container">
                             <Slider {...settings} className="row slick-carousel">
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
-                                <div>
-                                    <MovieCardInSlide/>
-                                </div>
+                            {this.renderMovieCardInSlide(true)}
                             </Slider>
                         </div>
                     </div>
@@ -146,3 +107,17 @@ export default class MovieSlide extends Component {
         );
     }
 }
+const mapStateToProps =state =>{
+    return{
+        listMovie:state.movieReducer.listMovie
+    };
+}
+const mapDispatchToProps =dispatch =>{
+    return {
+        getListMovie:()=>{
+            dispatch(action.actGetListMovieAPI());
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (MovieSlide);

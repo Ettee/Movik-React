@@ -1,0 +1,242 @@
+@import '../../helper/variable.scss';
+@import '../../helper/mixin.scss';
+.bg-cover-section{
+	background-color: black;
+    .bg-cover-fade{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+        position: relative;   
+    }
+    .bg-overlay-fade{
+        position: absolute;
+        bottom: -85px;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(0deg, rgba(10,32,41,1) 13%, rgba(10,32,41,0.11528361344537819) 100%);
+    }
+    .film-content{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        top:30%;
+        .film-posterTop{
+            display: flex;
+            .film-imgTop{
+                margin: 10px;
+                .card-overlay{
+                    &:hover{
+                        i{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            .film-title{
+                display: flex;
+                align-items: center;
+                color: #ffffff;
+                div{
+                    div{
+                        margin: 3px 0;
+                    }
+                    div:nth-child(2){
+                        .age-tag{
+                            margin-left: 0;
+                        }
+                        .film-title-name{
+                            font-size: 35px;
+                        }
+                    }
+                }
+            }
+        }
+        .circle-wrap{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 75%;
+        }
+        .buy-ticket{
+			width: 30%;
+			margin: 0 auto;
+			position: sticky;
+			a:hover{
+				text-decoration: none;
+			}
+			.btn-buynow{
+				position: relative;
+				color: #f2f2f2;
+				display: flex;
+				justify-content: center;
+			}
+			  
+		}
+		.shadow {
+			&:before, &:after {
+			  content:'';
+			  position: absolute;
+			  top:-2px;
+			  left:-2px;
+			  width:calc(100% + 4px);
+			  height:calc(100% + 4px);
+			  border-radius: 5px;
+			  background: linear-gradient(45deg, #fb0094, #00ff00, #ffff00, #ff0000, #fb0094, #00ff00, #ffff00, #ff0000);
+			  background-size: 400%;
+			  z-index:-1;
+			  animation: shadow 20s linear infinite;
+			}
+			&:after {
+			  top:-8px;
+			  left:-8px;
+			  width:calc(100% + 8px);
+			  height:calc(100% + 8px);    
+			  filter:blur(24px);
+			  opacity:0.9;
+			}
+		  }
+
+    }
+}
+@keyframes shadow {
+	0% {
+	  background-position: 0 0;
+	}
+	50.01% {
+	  background-position: 200% 0;
+	}
+	100% {
+	  background-position: 0 0;
+	}
+  }
+//circle rating
+.rect-auto{
+	clip: rect(auto, auto, auto, auto);
+}
+
+.pie {
+	position: absolute;
+	border: $circle-width solid $circlePercentColor;
+	width: 1 - (2 * $circle-width);
+	height: 1 - (2 * $circle-width);
+	clip: rect(0em, 0.5em, 1em, 0em);
+	border-radius: 50%;
+	transform: rotate(0deg);
+}
+
+.pie-fill {
+	transform: rotate(180deg);
+}
+.c100 {
+
+	*, *:before, *:after {
+		box-sizing:content-box;
+	}
+
+	position: relative;
+	font-size: 120px;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	float: left;
+	margin: 0 0.1em 0.1em 0;
+	background-color: $secondary-color;
+
+
+	// bigger size
+	&.big{
+		font-size: 150px;
+	}
+
+	// centered value inside circle
+	> span {
+		position: absolute;
+		width: 100%;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 5em;
+		line-height: 5em;
+		font-size: 0.2em;
+		font-weight: 500;
+		@include GradientTextWith_2_Colors($purple,$red,24%,66%);
+		display: block;
+		text-align: center;
+		
+	}
+
+	// background inside the circle
+	&:after{
+		position: absolute;
+		top: $circle-width;
+		left: $circle-width;
+		display: block;
+		content: " ";
+		border-radius: 50%;
+		background-color: $bg-color;
+		width: 1 - (2 * $circle-width);
+		height: 1 - (2 * $circle-width);
+
+	}
+
+	// the slice (mask)
+	.slice {
+		position: absolute;
+		width: 1em;
+		height: 1em;
+		clip: rect(0em, 1em, 1em, 0.5em);
+	}
+
+	// circle to show the status
+	.bar {
+		@extend .pie;
+	}
+    // loop to create all needed elements automatically
+	@for $j from 51 through 100 {
+
+		&.p#{$j} .slice {
+			@extend .rect-auto;
+		}
+
+		&.p#{$j} .bar:after{
+			@extend .pie-fill;
+		}
+
+		&.p#{$j} .fill{
+			@extend .pie;
+			@extend .pie-fill;
+		}
+
+	}
+	// loop to rotate all 100 circles
+	@for $j from 1 through 100 {
+		&.p#{$j} .bar {
+			transform:  rotate((360/100*$j) + deg);
+		}
+	}
+	
+}
+//RESPONSIVE
+@include mobile{
+	.bg-cover-section .film-content{
+		top: 38%;
+		.film-posterTop {
+			display: block;
+			
+		}
+		.film-posterTop .film-title{
+			justify-content: center;
+    		margin: 15px 0;
+		}
+		.circle-wrap{
+			display: none;
+		}
+		.card-content{
+			margin: auto !important;
+		}
+	}
+	
+}

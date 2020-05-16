@@ -1,55 +1,37 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .main-slide-section{
-    // width: 100vw !important;
-    .owl-main-slide{
-        .owl-item{
-            .item{
-                position: relative;
-                a{
-                    img{
-                        width: 100%; 
-                    }
-                }
-                .main-slide-overlay{
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(to top, #000, transparent 20%);
-                    top:0;
-                    z-index: 2;
-                }
-            }
-        }
-        
-        .owl-nav{
-            display: none;
-        }
+    .owl-carousel{
         .owl-dots{
             position: relative;
-            top: -110px;
-            @include tablet{
-                display: none;
-            }
-            @include mobile{
-                display: none;
-            }
+            top: -80px;
             button{
-                outline: none;
+                outline:none;
                 span{
                     width: 15px;
                     height: 15px;
-                    background-color: #fff;
+                    
                 }
+                
             }
         }
-        .owl-dots{
-            button.active{
-                span{
-                    @include GradientBackgroundTheme();
-                }
+    }
+   
+}
+@include tablet{
+    .owl-dots{
+        top: -60px !important;
+    }
+}
+@include mobile{
+    .owl-dots{
+        top: -35px !important;
+        button{
+            span{
+                width: 10px !important;
+                height: 10px !important;
             }
+            
         }
-    
     }
 }

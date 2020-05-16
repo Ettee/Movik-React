@@ -1,0 +1,60 @@
+@import '../../helper/variable.scss';
+@import '../../helper/mixin.scss';
+.movie-detail{
+    background-color: $backgroundColorMovieDetail;
+    .movie-nav{
+        padding-top: 50px;
+        .nav{
+            justify-content: center;
+            .nav-item{
+                .active{
+                   @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
+                  background-color: transparent;
+                  font-size: 25px !important;
+                  
+                }
+                .nav-link{
+                  color:#ffffff;
+                  transition: all .3s;
+                  font-size: 25px;
+                  
+                }
+              }
+        }
+        .tab-content{
+            color: #ffffff;
+            padding: 30px 0;
+            .info-side{
+                width: 80%;
+                margin: auto;
+            }
+            .movie-info{
+                .key-info{
+                    font-weight: 500;
+                }
+                .info{
+                    margin: 10px 0;
+                }
+            }
+            .movie-descript.info-side{
+                width: 100%;
+                .descript-title{
+                    color: #ffffff;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+                .descript-content{
+                    padding: 10px 0;
+                }
+            }
+        }
+    }
+    
+}
+//RESPONSIVE
+@include mobile{
+    .movie-detail .movie-nav .tab-content .info-side {
+		width: unset !important;
+		
+	}
+}

@@ -41,23 +41,23 @@ export default class Footer extends Component {
                             <div className="partners">
                                 <div>Đối tác</div>
                                 <div className="partners-logo">
-                                    <img src="../img/partners_logo/AGRIBANK.png" alt />
-                                    <img src="../img/partners_logo/bhd.png" alt srcSet />
-                                    <img src="../img/partners_logo/bt.jpg" alt srcSet />
-                                    <img src="../img/partners_logo/cgv.png" alt srcSet />
-                                    <img src="../img/partners_logo/cinestar.png" alt srcSet />
-                                    <img src="../img/partners_logo/cnx.jpg" alt srcSet />
-                                    <img src="../img/partners_logo/dcine.png" alt srcSet />
-                                    <img src="../img/partners_logo/dongdacinema.png" alt srcSet />
-                                    <img src="../img/partners_logo/galaxycine.png" alt srcSet />
-                                    <img src="../img/partners_logo/IVB.png" alt srcSet />
-                                    <img src="../img/partners_logo/laban.png" alt srcSet />
-                                    <img src="../img/partners_logo/megags.png" alt srcSet />
-                                    <img src="../img/partners_logo/payoo.jpg" alt srcSet />
-                                    <img src="../img/partners_logo/STARLIGHT.png" alt srcSet />
-                                    <img src="../img/partners_logo/TOUCH.png" alt srcSet />
-                                    <img src="../img/partners_logo/VCB.png" alt srcSet />
-                                    <img src="../img/partners_logo/VIETTINBANK.png" alt srcSet />
+                                    <img src="../img/partners_logo/AGRIBANK.png" alt="true" />
+                                    <img src="../img/partners_logo/bhd.png" alt="true"  />
+                                    <img src="../img/partners_logo/bt.jpg" alt="true"  />
+                                    <img src="../img/partners_logo/cgv.png" alt="true"  />
+                                    <img src="../img/partners_logo/cinestar.png" alt="true"  />
+                                    <img src="../img/partners_logo/cnx.jpg" alt="true"  />
+                                    <img src="../img/partners_logo/dcine.png" alt="true"  />
+                                    <img src="../img/partners_logo/dongdacinema.png" alt="true"  />
+                                    <img src="../img/partners_logo/galaxycine.png" alt="true"  />
+                                    <img src="../img/partners_logo/IVB.png" alt="true"  />
+                                    <img src="../img/partners_logo/laban.png" alt="true"  />
+                                    <img src="../img/partners_logo/megags.png" alt="true"  />
+                                    <img src="../img/partners_logo/payoo.jpg" alt="true"  />
+                                    <img src="../img/partners_logo/STARLIGHT.png" alt="true"  />
+                                    <img src="../img/partners_logo/TOUCH.png" alt="true"  />
+                                    <img src="../img/partners_logo/VCB.png" alt="true"  />
+                                    <img src="../img/partners_logo/VIETTINBANK.png" alt="true"  />
                                 </div>
                             </div>
                         </div>
@@ -66,10 +66,10 @@ export default class Footer extends Component {
                                 <div>Liên hệ</div>
                                 <div className="contact-icon">
                                     <a href="https://www.facebook.com/ette9773" target="_blank">
-                                        <img src="../img/icon/facebook-logo.png" alt srcSet />
+                                        <img src="../img/icon/facebook-logo.png" alt="true" />
                                     </a>
                                     <a href="https://www.instagram.com/ettee_st/" target="_blank">
-                                        <img src="../img/icon/zalo-logo.png" alt srcSet />
+                                        <img src="../img/icon/zalo-logo.png" alt="true" />
                                     </a>
                                 </div>
                             </div>

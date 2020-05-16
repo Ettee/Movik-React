@@ -2,10 +2,20 @@
 @import "../../helper/mixin.scss";
 .search-movie-section{
     @include tablet{
-        display: none;
+        .search-movie-box{
+            width: 80% !important;   
+        }
+        .btn-buynow{
+            font-size: 10px;
+        }
     }
     @include mobile{
         display: none;
+    }
+    @include desktopLarge{
+        .search-movie-box{
+            width: 80% !important;
+        }
     }
     .search-movie-box{
         width: 55%;
@@ -23,7 +33,7 @@
             position: relative;
             top: 6px;
             .search-item-for-movie-ticket{
-                overflow: hidden;
+                
                 a{
                     .btn{
                         background-color:#494646 ;
@@ -39,45 +49,11 @@
                     }
                     
                 }
-                // .my-picker{
-                    
-                //     button{
-                //         outline: none !important;
-                //     }
-                //     button.bs-placeholder{
-                //         color: #000;
-                        
-                //     }
-                //     button.btn-light{
-                //         &:hover{
-                //             background-color: #fff;
-                //             border-color: #fff;
-                //         }
-                //     }
-                //     .btn-light.dropdown-toggle{
-                //         background-color: #fff;
-                //         border-color: #fff;
-                //     }
-                // }
+                
             }
         }
     }
 }
-// .my-picker{
-//     .opt-cus{
-//         font-size: 15px !important;
-//         letter-spacing: .5px !important;
-//         width: 98% !important;
-//         margin: auto;
-//         border-radius: 4px;
-//         transition: all .3s;
-//         &:hover{
-//             background-color: #60c5ef !important;
-//             color: #fff !important;
-
-//         }
-//     }
-// }
 //class dùng chung
 .btn-buynow{
     width: 100%;

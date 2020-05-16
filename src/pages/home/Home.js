@@ -11,7 +11,7 @@ export default class Home extends Component {
         return (
             <div>
                 <MainSlide/>
-                <LoginModal/>
+                
                 <SearchBlock/>
                 <MovieSlide/>
                 <TheaterBlock/>

@@ -31,6 +31,7 @@
         .card{
           border: none;
           border-radius: unset;
+          margin: 20px 0;
           &:hover{
             .card-overlay{
               cursor: pointer;
@@ -51,11 +52,11 @@
           .film-content{
             width: 215px;
             margin: auto;
-            padding: 15px 0;
+            padding-top: 15px ;
             .lengthFilm{
               font-size: 14px;
               color: $textBlur;
-              margin-bottom: 15px;
+              // margin-bottom: 15px;
             }
           }
         }
@@ -81,31 +82,42 @@
     background-position: center;
     background-size: contain;
   }
-
-  .slick-prev{
-    background-image: url(../../../img/icon/back-session.png) !important;
-    left: -65px;
-    &::before{
-      content: none;
-    }
-  } 
-  .slick-next{
-    background-image: url(../../../img/icon/next-session.png) !important;
-    right: -60px;
-    &::before{
-      content: none;
-    }
+  .slick-next:before,.slick-prev:before {
+    font-size: 45px;
+    color: gray;
+    position: relative;
   }
+  .slick-next{
+    right: -60px;
+  }
+  .slick-prev{
+    left: -60px;
+  }
+
+  // .slick-prev{
+  //   background-image: url(../../../img/icon/back-session.png) !important;
+  //   left: -65px;
+  //   &::before{
+  //     content: none;
+  //   }
+  // } 
+  // .slick-next{
+  //   background-image: url(../../../img/icon/next-session.png) !important;
+  //   right: -60px;
+  //   &::before{
+  //     content: none;
+  //   }
+  // }
 }
 //Class dùng chung
 .nameFilm{
-  height: 35px;
-  max-height: 35px;
+  height: auto;
   font-size: 22px;
   @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,65%);
   line-height: 25px;
   font-weight: 500;
   letter-spacing: -1px;
+  
 }
 //class dùng chung
 .age-tag{
@@ -174,6 +186,9 @@
         @include buttonMaker(85px,37px,5px,white);
       
       }
+      .btn-buyticket.disable{
+        display: none;
+      }
     }
     .card-tag{
       color: white;
@@ -191,6 +206,10 @@
         border-radius: 10px;
         padding: 5px;
         text-align: center;
+        width: 86px;
+      }
+      .rating-tag.disable{
+        display: none;
       }
     } 
 }

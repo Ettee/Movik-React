@@ -1,44 +1,103 @@
-import React, { Component } from 'react'
-
+import React, { Component ,Fragment} from 'react'
+import {NavLink} from "react-router-dom";
 export default class MovieCardInSlide extends Component {
+    
+    renderRatingStar=(diem)=>{
+        if(diem>=9){
+            return(
+                <Fragment>
+                    <i className="fas fa-star fa-xs" />
+                    <i className="fas fa-star fa-xs" />
+                    <i className="fas fa-star fa-xs" />
+                    <i className="fas fa-star fa-xs" />
+                    <i className="fas fa-star fa-xs" />
+                </Fragment>
+            )
+        }else{
+            if(diem<9 && diem>=7){
+                return(
+                    <Fragment>
+                        <i className="fas fa-star fa-xs" />
+                        <i className="fas fa-star fa-xs" />
+                        <i className="fas fa-star fa-xs" />
+                        <i className="fas fa-star fa-xs" />
+                    </Fragment>
+                )
+            }else{
+                if(diem<7 && diem >=5){
+                    return(
+                        <Fragment>
+                            <i className="fas fa-star fa-xs" />
+                            <i className="fas fa-star fa-xs" />
+                            <i className="fas fa-star fa-xs" />
+                        </Fragment>
+                    )
+                }else{
+                    if(diem<5 && diem >3){
+                        return(
+                            <Fragment>
+                                <i className="fas fa-star fa-xs" />
+                                <i className="fas fa-star fa-xs" />   
+                            </Fragment>
+                        )
+                    }else{
+                        return(
+                            <Fragment>
+                                <i className="fas fa-star fa-xs" />
+                            </Fragment>
+                        )
+                    }
+                }
+            }
+        }
+    }
     render() {
+        let classNameButton="btn-buyticket";
+        let classNameRating ="rating-tag";
+        if(this.props.isTicketNotAvailable){
+            classNameButton='btn-buyticket disable';
+            classNameRating='rating-tag disable'
+        }
+        const {movie}=this.props;
+        let phimImgUrl="url("+movie?.hinhAnh+")";
         return (
-            <div className="card">
+            <Fragment key={this.props.key}>
+                <div className="card" >
                 <div
                     className="card-content"
                     style={{
-                        backgroundImage:
-                            "url(../img/film_poster/joker-c18-15819301592912_215x318.jpg)"
+                        backgroundImage: phimImgUrl     
                     }}
                 >
                     {/* OVERLAY */}
                     <div className="card-overlay">
                         <div>
-                            <a className="watchTrailer" href="https://www.youtube.com/watch?v=7n_eJiQ_GUc" data-lity>
+                            <a className="watchTrailer" href={movie?.trailer} data-lity>
                                 <i className="far fa-play-circle" />
                             </a>
                         </div>
-                        <button className="btn-buyticket">Mua vé</button>
+                        <NavLink to={`/detail-movie/${movie.maPhim}`}>
+                            <button className={classNameButton} >Mua vé</button>
+                        </NavLink>
+                        
                     </div>
                     {/* END OVERLAY */}
                     <div className="card-tag">
                         <span className="age-tag">C18</span>
-                        <span className="rating-tag">
-                            <div className="rating-score">6.4</div>
+                        <span className={classNameRating}>
+                        <div className="rating-score">{movie.danhGia}.0</div>
                             <div className="rating-star ">
-                                <i className="fas fa-star fa-xs" />
-                                <i className="fas fa-star fa-xs" />
-                                <i className="fas fa-star fa-xs" />
-                                <i className="fas fa-star fa-xs" />
+                                {this.renderRatingStar(movie.danhGia)}
                             </div>
                         </span>
                     </div>
                 </div>
                 <div className="film-content">
-                    <div className="nameFilm">Joker (C18)</div>
+                    <div className="nameFilm">{movie?.tenPhim}</div>
                     <div className="lengthFilm">118 mins</div>
                 </div>
             </div>
+            </Fragment>
         )
     }
 }

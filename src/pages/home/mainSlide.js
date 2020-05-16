@@ -5,16 +5,15 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 export default class MainSlide extends Component {
     render() {
         return (
-            <div>
-                <div class='container-fluid' >
-                    <OwlCarousel items={3}
+            <div className="main-slide-section">
+                <div>
+                    <OwlCarousel items={1}
                         className="owl-theme"
                         autoplay
                         loop
-                        nav
                         dots
                         loop
-                        margin={8} >
+                         >
                         <div className="item">
                             <img  src={'./img/slide/huong-giang-be-de-15822194729053.jpg'} />
                         </div>

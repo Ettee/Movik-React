@@ -1,8 +1,66 @@
 import React, { Component } from 'react'
 import TheaterInfo from "../../Component/TheaterInfo";
 import TheaterLogo from "../../Component/TheaterLogo";
-export default class TheaterBlock extends Component {
+import MovieInTheaterBlock from "../../Component/MovieInTheaterBlock";
+import * as action from "../../redux/action";
+import { NavLink } from "react-router-dom"
+import { connect } from "react-redux";
+
+class TheaterBlock extends Component {
+    
+    
+    getMaHeThongRap = (maHeThongRap) => {
+        console.log(maHeThongRap)
+        return maHeThongRap
+        //da lay đc mã
+    }
+    componentDidMount() {
+        this.props.getTheaterSystem();
+
+    }
+    renderTheaterLogo = () => {
+        return this.props.listOfTheaterSystem.map((item, index) => {
+            return (
+                <TheaterLogo key={index} logo={item.logo} getMaHeThongRap={this.getMaHeThongRap} maHeThongRap={item.maHeThongRap} LayDanhSachLichChieuTheoMaHeThongRap={this.props.LayDanhSachLichChieuTheoMaHeThongRap} />
+            )
+        })
+    }
+
+    renderTheaterInfo = () => {
+        return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
+           return item.lstCumRap.map(item => {
+               
+                return (
+                    <TheaterInfo tenCumRap={item.tenCumRap} diaChi={item.diaChi} danhSachPhim={item.danhSachPhim[0]}  getDanhSachXuatChieu={this.getDanhSachXuatChieu}  />
+                )
+                
+            })
+        })
+    }
+    
+    getDanhSachXuatChieu=(arr)=>{
+        console.log(arr)
+    }
+    text=()=>{
+        this.props.danhSachLichChieuTheoMaHeThongRap.map((item)=>{
+            item.lstCumRap.map(item=>{
+                console.log(item)
+                console.log('item.danhsachphim',item.danhSachPhim)
+                //in ra tên phim theo rạp ở đây
+                item.danhSachPhim.map(item=>{
+                    console.log("itemitem.danhSachPhim[0].lstLichChieuTheoPhim",item.lstLichChieuTheoPhim)
+                })
+                // item.danhSachPhim[0].lstLichChieuTheoPhim.map(item=>{
+                //     console.log(item)
+                // })
+            })
+        })
+    }
+
+
     render() {
+        this.text()
+        
         return (
             <section className="theater-section" id="theater-block-home">
                 <div className="container">
@@ -10,10 +68,7 @@ export default class TheaterBlock extends Component {
                         <div className="col-md-1 logo-column">
                             <div className="pick-logo-theater">
                                 <ul className="nav nav-pills">
-                                   <TheaterLogo/>
-                                   <TheaterLogo/>
-                                   <TheaterLogo/>
-                                   <TheaterLogo/>
+                                    {this.renderTheaterLogo()}
                                 </ul>
                             </div>
                         </div>
@@ -22,11 +77,7 @@ export default class TheaterBlock extends Component {
                                 <div className="tab-content">
                                     <div className="tab-pane container active" id="cgv-theater">
                                         <ul className="nav nav-pills">
-                                            <TheaterInfo/>
-                                            <TheaterInfo/>
-                                            <TheaterInfo/>
-                                            <TheaterInfo/>
-                                            <TheaterInfo/>
+                                            {this.renderTheaterInfo()}
                                         </ul>
                                     </div>
                                 </div>
@@ -35,323 +86,11 @@ export default class TheaterBlock extends Component {
                         <div className="col-md-8 show-column">
                             <div className="pick-movie-show">
                                 <div className="tab-pane container first-page active" id="cgv-1">
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Joker (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Wild (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Sonic (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Joker (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-2">
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Jốc Kơ (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-3">
-                                    <div className="movie-of-picked-theater">
-                                        <div className="nameFilm">Sonic-kun (C18)</div>
-                                        <ul className="showing-time-list">
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                            <li className="item-showing-time">
-                                                <button className="btn-shadow">
-                                                    <a href="#">16:10</a>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-4">
-                                    show for movie 4
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-5">
-                                    show for movie 5
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-6">
-                                    show for movie 6
-                                </div>
-                                <div className="tab-pane container fade" id="cgv-7">
-                                    show for movie 7
-                                </div>
+                                    
+                                <MovieInTheaterBlock />
+                                    
+                                    
+                                </div>                             
                             </div>
                         </div>
                     </div>
@@ -361,3 +100,21 @@ export default class TheaterBlock extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        listOfTheaterSystem: state.movieReducer.listOfTheaterSystem,
+        danhSachLichChieuTheoMaHeThongRap: state.movieReducer.danhSachLichChieuTheoMaHeThongRap
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        getTheaterSystem: () => {
+            dispatch(action.actLayThongTinHeThongRap())
+        },
+        LayDanhSachLichChieuTheoMaHeThongRap: (maHeThongRap) => {
+            dispatch(action.actLayLichChieuHeThongRap(maHeThongRap))
+        }
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TheaterBlock);

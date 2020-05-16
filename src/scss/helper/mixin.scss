@@ -42,7 +42,8 @@
 /* Set các giá trị với màn hình tương ứng */
 $mobile-width: 768px; //0-768px
 $tablet-width: 768px; //768px-1024px
-$desktop-width: 1024px;  
+$desktop-width: 1024px; //1024-1300px
+$desktop-large:1300px ;//1300->
 
 @mixin mobile { @media (max-width: #{$mobile-width - 1px}) {     
   @content;   
@@ -54,7 +55,12 @@ $desktop-width: 1024px;
  } 
 }  
 
-@mixin desktop {   @media (min-width: #{$desktop-width}) {     
+@mixin desktop {   @media (min-width: #{$desktop-width}) and (max-width: #{$desktop-large})  {     
   @content;  
  } 
 }
+@mixin desktopLarge{ @media (max-width:#{$desktop-large}){
+  @content;
+  }
+}
+

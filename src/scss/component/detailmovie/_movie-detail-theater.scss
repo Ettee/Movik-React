@@ -1,0 +1,23 @@
+@import '../../helper/variable.scss';
+@import '../../helper/mixin.scss';
+.movie-detail-theater{
+    .theater-section{
+        background-color: $backgroundColorMovieDetail;
+        margin: 0;
+        .theater-info{
+            color: #fff !important;
+        }
+        .movie-of-picked-theater{
+            .nameFilm{
+                color: #fff !important;
+                background: unset;
+                -webkit-text-fill-color: unset;
+            }
+        }
+    }
+}
+@include mobile{
+    .theater-section{
+        display: none;
+    }
+}
