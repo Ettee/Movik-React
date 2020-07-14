@@ -3,7 +3,7 @@ import * as action from "../../redux/action";
 import  {connect} from "react-redux";
 import Select from 'react-select';
 import { NavLink } from 'react-router-dom';
-
+import swal from 'sweetalert';
 class SearchBlock extends Component {
     constructor(props){
         super(props)
@@ -136,13 +136,33 @@ class SearchBlock extends Component {
         let dateInput=this.state.checkDateInput;
         let timeInput=this.state.checkTimeInput;
         if(filmInput && theaterInput && dateInput && timeInput){
-            return (
-                <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
-                     <button className="btn  btn-buynow text-uppercase active " >                 
-                        Mua vé ngay   
-                    </button>
-                </NavLink> 
-            )
+            if(localStorage.getItem("userKhachHang")){
+                return (
+                    <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
+                         <button className="btn  btn-buynow text-uppercase active " >                 
+                            Mua vé ngay   
+                        </button>
+                    </NavLink> 
+                )
+            }else{
+                swal({
+                    title:"Bạn cần phải đăng nhập trước khi đặt vé",
+                    icon:"info"
+                }).then((ok)=>{
+                    if(ok){
+                        window.location.reload()
+                    }
+                    
+                })
+                return (
+                    <NavLink to={'/'}>
+                         <button className="btn  btn-buynow text-uppercase active " >                 
+                            Mua vé ngay   
+                        </button>
+                    </NavLink> 
+                )
+            }
+           
         }else{
             return (
                 <button className="btn  btn-buynow text-uppercase" >

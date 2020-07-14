@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-
+import swal from 'sweetalert';
 export default class ButtonXuatChieu extends Component {
+
     renderButton=()=>{
 
         let{xuatChieu,date}=this.props;
@@ -21,16 +22,28 @@ export default class ButtonXuatChieu extends Component {
                 listTime.push(obj)
             }
         })
-        return listTime.map(item=>{
-            return (
-                <NavLink to={`/pick-seat/${item.maLichChieu}`}>
-                    <button className="btn-shadow m-1" >
-                        <a>{item.time}</a>
-                    </button>
-                </NavLink>
-                
-           )
-        })
+        if(localStorage.getItem("userKhachHang")){
+            return listTime.map(item=>{
+                return (
+                    <NavLink to={`/pick-seat/${item.maLichChieu}`}>
+                        <button className="btn-shadow m-1">
+                            <a>{item.time}</a>
+                        </button>
+                    </NavLink>    
+                )
+            })
+        }else{
+            return listTime.map(item=>{
+                return (
+                    <NavLink to={`/sign-up`}>
+                        <button className="btn-shadow m-1">
+                            <a>{item.time}</a>
+                        </button>
+                    </NavLink>    
+                )
+            })
+        }
+       
     }
 
     render() {

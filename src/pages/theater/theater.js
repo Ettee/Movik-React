@@ -2,7 +2,7 @@ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 import { isEmptyObject } from 'jquery';
-import Seat from "../../Component/Seat"
+import Seat from "../../Component/Seat";
 class Theater extends Component {
     constructor(props){
         super(props)

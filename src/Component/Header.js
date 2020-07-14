@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {NavLink} from 'react-router-dom';
-import logo from '../img/movikLogo.png'
+import logo from '../img/movikLogo.png';
+import swal from 'sweetalert';
 export default class Header extends Component {
     checkLogin=()=>{
         if(localStorage.getItem('userKhachHang')){
@@ -47,8 +48,27 @@ export default class Header extends Component {
     }
     logout=()=>{
         if(localStorage.getItem('userKhachHang')){
-            localStorage.removeItem('userKhachHang')
-            window.location.reload()
+            swal({
+                title: "Đăng xuất ",
+                text: "Bạn có chắc chắn muốn thoát tài khoản hiện tại ?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((yes) => {
+                if (yes) {
+                    localStorage.removeItem('userKhachHang')
+                    swal("Đăng xuất thành công.", {
+                    icon: "success",
+                    }).then((ok)=>{
+                        if(ok){
+                            window.location.reload()
+                        }
+                    });
+                } 
+              });
+            
+            
         }
     }
     render() {

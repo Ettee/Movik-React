@@ -5,7 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomeTemplate from "./template/HomeTemplate";
-import {routesHome} from "./routes"
+import {routesHome} from "./routes";
+import { Redirect } from "react-router-dom";
 function App() {
   const showMenuHome = routes => {
     if (routes && routes.length > 0) {
@@ -18,6 +19,7 @@ function App() {
             Component={item.component}
           />
         );
+        
       });
     }
   };

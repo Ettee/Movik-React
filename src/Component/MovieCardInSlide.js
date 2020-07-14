@@ -6,44 +6,48 @@ export default class MovieCardInSlide extends Component {
         if(diem>=9){
             return(
                 <Fragment>
-                    <i className="fas fa-star fa-xs" />
-                    <i className="fas fa-star fa-xs" />
-                    <i className="fas fa-star fa-xs" />
-                    <i className="fas fa-star fa-xs" />
-                    <i className="fas fa-star fa-xs" />
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
                 </Fragment>
             )
         }else{
             if(diem<9 && diem>=7){
                 return(
                     <Fragment>
-                        <i className="fas fa-star fa-xs" />
-                        <i className="fas fa-star fa-xs" />
-                        <i className="fas fa-star fa-xs" />
-                        <i className="fas fa-star fa-xs" />
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
                     </Fragment>
                 )
             }else{
                 if(diem<7 && diem >=5){
                     return(
                         <Fragment>
-                            <i className="fas fa-star fa-xs" />
-                            <i className="fas fa-star fa-xs" />
-                            <i className="fas fa-star fa-xs" />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                    
                         </Fragment>
                     )
                 }else{
                     if(diem<5 && diem >3){
                         return(
                             <Fragment>
-                                <i className="fas fa-star fa-xs" />
-                                <i className="fas fa-star fa-xs" />   
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                   
                             </Fragment>
                         )
                     }else{
                         return(
                             <Fragment>
-                                <i className="fas fa-star fa-xs" />
+                                <i class="fas fa-star"></i>
                             </Fragment>
                         )
                     }

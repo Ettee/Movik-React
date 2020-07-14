@@ -1,6 +1,6 @@
 import * as ActionType from "./../constants/ActionType";
 import Axios from 'axios';
-
+import swal from 'sweetalert';
 
 export const actGetListMovieAPI =()=>{
     return dispatch=>{
@@ -116,13 +116,23 @@ export const actDangKi=user =>{
             data:user
         })
         .then(rs=>{
-            alert("Đăng kí thành công")
-            console.log("Trạng thái đăng nhập :",rs.data)
-
+            swal({
+                title: "Đăng kí thành công",
+                icon: "success",
+                button: "OK",
+              }).then((ok)=>{
+                if(ok){
+                    window.location.reload()
+                }
+              });
         })
         .catch(err=>{
-            alert(err.response.data);
-            console.log(err.response.data);
+            swal({
+                title: "Đăng kí thất bại",
+                text:err.response.data,
+                icon: "error",
+                button: "OK",
+            });
         })
     }
 }
@@ -134,20 +144,36 @@ export const actDangNhap =(user )=>{
             data:user
         })
         .then(rs=>{
-            if(rs.data.maLoaiNguoiDung == "KhachHang"){
+            if(rs.data.maLoaiNguoiDung === "KhachHang"){
                 localStorage.setItem("userKhachHang",JSON.stringify(rs.data))
+                swal({
+                    title: "Đăng nhập thành công",
+                    icon: "success",
+                    button: "OK",
+                  }).then((ok)=>{
+                    if(ok){
+                        window.location.reload()
+                    }
+                  });
+               
+            }else{
+                if(rs.data.maLoaiNguoiDung==="QuanTri"){
+                    swal({
+                        title: "Đăng nhập thất bại",
+                        text:"Không phải tài khoản khách hàng",
+                        icon: "warning",
+                        button: "OK",
+                    });
+                }
             }
-            console.log("đăng nhập thành công: ",rs.data)
-            alert("Đăng nhập thành công")
-            
-            
-            // dispatch({
-            //     type:ActionType.DANG_NHAP,
-            //     data:rs.data
-            // })
         })
         .catch(err=>{
-            console.log(err)
+            swal({
+                title: "Đăng nhập thất bại",
+                text:err.response.data,
+                icon: "error",
+                button: "OK",
+            });
         });
     }
 }

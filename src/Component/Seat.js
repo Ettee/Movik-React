@@ -17,7 +17,6 @@ export default class Seat extends Component {
         }else{
             seatIndex.splice(seatIndex.indexOf(index),1)
         }
-       
 
         this.setState({
             seatActive:!currentState,

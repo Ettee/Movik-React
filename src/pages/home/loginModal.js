@@ -15,11 +15,10 @@ class LoginModal extends Component {
         this.setState({
             [name]:value
         });
-        console.log(this.state)
     }
-    handleLogin=()=>{
+    handleLogin=(e)=>{
         this.props.login(this.state);
-
+        e.preventDefault();
     }
     render() {
         return (

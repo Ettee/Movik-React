@@ -78,7 +78,6 @@ class Signup extends Component {
                 soDTValid
             },
             ()=>{
-                console.log("handleError: ",this.state)
                 this.validationForm()
             }
             
@@ -88,9 +87,6 @@ class Signup extends Component {
         let{name,value}=e.target;
         this.setState({
             values:{...this.state.values,[name]:value}
-        },
-        ()=>{
-            console.log("handleOnChange: ",this.state)
         })
         
     }
@@ -104,9 +100,8 @@ class Signup extends Component {
     }
     handleSubmit=(event)=>{
         if(this.state.formValid){
-            this.props.SignUpUser(this.state.values);
-            alert("Đăng kí thành công")
-            
+            this.props.SignUpUser(this.state.values); 
+            event.preventDefault();
         }else{
             event.preventDefault();
             alert("Xin hãy hoàn thành form đăng kí")
