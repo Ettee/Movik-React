@@ -1,0 +1,33 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss"; 
+.movie-picked{
+    background-color: #2B2D3D;
+    .movie-name-title{
+        color: rgba(255,255,255,0.38);
+        .age-tag{
+            font-size: 16px;
+            padding: 3px;
+            color: #fff;
+        }
+        h1{
+            padding: 5px;
+        }
+    }
+    .timer{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        >div:nth-child(1){
+            font-size: 20px;
+            color: $gray;
+        }
+        >div:nth-child(2){
+            color: $colorForSmallIcon;
+            font-size: 30px;
+        }
+    }
+    
+}

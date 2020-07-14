@@ -2,6 +2,7 @@ import "./pages/home/Home"
 import Home from "./pages/home/Home";
 import Signup from "./pages/signup/signup";
 import DetailMovie from "./pages/detailmovie/DetailMovie";
+import Theater from "./pages/theater/theater"
 const routesHome=[
     {
         path:"/",
@@ -22,6 +23,12 @@ const routesHome=[
         path:"/detail-movie/:id",
         exact:false,
         component:DetailMovie
+    },
+    {
+        path:"/pick-seat/:maLichChieu",
+        exact:false,
+        component:Theater
+
     }
 ];
 export { routesHome };

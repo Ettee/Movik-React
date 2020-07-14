@@ -1,8 +1,8 @@
 import * as ActionType from "./../constants/ActionType";
-
+//state của movieReducer
 let initialState ={
     listMovie:[],
-    detailMovie:{},//cách khai báo "tên :{}" là cách khai báo 1 object
+    detailMovie:{},//obj chứa data mà api trả về
     infoShow:{},
     danhSachLichChieuTheoMaHeThongRap:[],
     listOfTheaterSystem:[],

@@ -1,15 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from '../img/movikLogo.png'
 export default class Header extends Component {
     checkLogin=()=>{
         if(localStorage.getItem('userKhachHang')){
-            return "user-signup nav-item checkout"
+           
+            return (
+                <Fragment></Fragment>
+            )
         }else{
-            return "user-signup nav-item"
+            return (
+                <Fragment>
+                    <div className="user-signup-logo">
+                        <i className="fas fa-user-plus"></i>
+                    </div>
+                    <div className="user-signup-link">
+                        <NavLink to="/sign-up">Đăng kí</NavLink>
+                    </div>
+                </Fragment>
+            )
         } 
     }
-    logOut =()=>{
+    LoginStatus =()=>{
         if(localStorage.getItem('userKhachHang')){
             let userInLocalStore =localStorage.getItem('userKhachHang')
             let userName =JSON.parse(userInLocalStore).taiKhoan
@@ -17,11 +29,31 @@ export default class Header extends Component {
         }else{
             return "Đăng nhập"
         }
-
+    }
+    showAccMenuOnHover=()=>{
+        if(localStorage.getItem('userKhachHang')){
+            return(
+                <div className="menu-login text-center">
+                    <button onClick={this.logout}>
+                        Đăng xuất
+                    </button>
+                </div>
+            )
+        }else{
+            return(
+                <Fragment></Fragment>
+            )
+        }
+    }
+    logout=()=>{
+        if(localStorage.getItem('userKhachHang')){
+            localStorage.removeItem('userKhachHang')
+            window.location.reload()
+        }
     }
     render() {
         this.checkLogin()
-        this.logOut()
+        this.LoginStatus()
         return (
             <header>
                 <nav className="navbar navbar-expand-sm bg-white navbar-light">
@@ -65,18 +97,16 @@ export default class Header extends Component {
                                     <i className="fas fa-user-circle" data-toggle="modal" data-target="#LoginModal" />
                                 </div>
                                 <div className="user-login-link">
-                                    <a href="#" data-toggle="modal" data-target="#LoginModal">{this.logOut()}</a>
+                                    <a href="#" data-toggle="modal" data-target="#LoginModal">{this.LoginStatus()}</a>
                                 </div>
+                                {this.showAccMenuOnHover()}
                             </li>
-                            <li className={this.checkLogin()}>
-                                <div className="user-signup-logo">
-                                    <i className="fas fa-user-plus"></i>
-                                </div>
-                                <div className="user-signup-link">
-                                    <NavLink to="/sign-up">Đăng kí</NavLink>
-                                </div>
+                            <li className="user-signup nav-item">
+                                {this.checkLogin()}
                             </li>
+
                         </ul>
+                        
                     </div>
                 </nav>
             </header>

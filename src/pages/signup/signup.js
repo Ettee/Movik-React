@@ -13,7 +13,7 @@ class Signup extends Component {
                 matKhau: "",
                 email: "",
                 soDT: "",
-                maNhom: "GP08",
+                maNhom: "GP09",
                 maLoaiNguoiDung: "KhachHang",
             },
             errors: {

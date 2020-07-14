@@ -1,0 +1,94 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+
+.seat-section{
+    background-color: $backgroundColorSeatPick;
+    padding-bottom: 50px ;
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .seat-picker{
+        .theater-name-picked{
+            color: rgba(255,255,255,0.38);
+        }
+        .theater-screen{
+            img{
+                width: 100%;
+            }
+        }
+        .seat-block{
+            .seat-row{
+                justify-content: center;
+            }
+        }
+    }
+    .seat-item.inactive{
+        background-color: $red;
+        color: #fff !important;
+        cursor: default !important; 
+        pointer-events: none;
+        &:after{
+            background-color: red;
+        }
+    } 
+    .seat-item.active{
+        @include GradientBackgroundTheme();
+        color: #fff;
+        &:after{
+            @include GradientBackgroundTheme();                           
+        }
+    }
+    .seat-item{
+        border: 1px solid $gray;
+        border-radius: 5px;
+        width: 70%;
+        margin: 20px auto 0 auto;
+        cursor: pointer;
+        color: $gray;
+        transition: all .3s;
+        &:after{
+            content: '';
+            height: 5px;
+            width: 45%;
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            position: absolute;
+            bottom: -8px;
+            left: 26px;
+        }
+        &:hover{
+            @include GradientBackgroundTheme();
+            color: #fff;
+            &:after{
+                @include GradientBackgroundTheme();                           
+            }
+        }
+        
+    }
+    .seat-note{
+        position: relative;
+        top: 22px;
+        left: -17px;
+        color: $gray;
+    }
+    .seat-picker-note{
+        margin-top:150px;
+        .row{
+            justify-content: center;
+        }
+        .seat-item{
+            height: 25px;
+        }
+
+    }
+}
+//responsive
+@include mobile{
+    .seat-item{
+        &:after{
+            display: none;
+        }
+    }
+}

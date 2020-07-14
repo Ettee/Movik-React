@@ -31,8 +31,8 @@ class MovieSlide extends Component {
             rows: 2,
             slidesPerRow:2,
             centerPadding: "0px",
-            // autoplay: true,
-            // autoplaySpeed: 2000,
+            autoplay: true,
+            autoplaySpeed: 2000,
             arrows: true,
             responsive: [
                 {

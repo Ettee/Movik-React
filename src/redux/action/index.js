@@ -6,7 +6,7 @@ export const actGetListMovieAPI =()=>{
     return dispatch=>{
         Axios({
             method:"GET",
-            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP08"
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09"
             
         })
         .then(rs=>{
@@ -17,6 +17,8 @@ export const actGetListMovieAPI =()=>{
         })
     }
 }
+
+//hàm dùng để gọi api
 export const actGetDetailMovieAPI =movieID =>{
     return dispatch=> {
         Axios({
@@ -24,6 +26,7 @@ export const actGetDetailMovieAPI =movieID =>{
             url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movieID}`
         })
         .then(rs=>{
+            // nếu gọi api và đc trả về data thì dispatch dữ liệu vào trong state của movieReducer
             dispatch({
                 type:ActionType.GET_DETAIL_MOVIE_BY_ID,
                 data:rs.data
@@ -34,6 +37,7 @@ export const actGetDetailMovieAPI =movieID =>{
         })
     }
 }
+
 export const actGetInfoShowByMovieID =movieID=>{
     return dispatch=>{
         Axios({
@@ -72,7 +76,7 @@ export const actLayLichChieuHeThongRap=(maHeThongRap)=>{
     return dispatch=>{
         Axios({
             method:"GET",
-            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP08`
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP09`
         })
         .then(rs=>{
             dispatch({

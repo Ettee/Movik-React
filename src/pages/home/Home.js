@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import MainSlide from "./mainSlide";
-import LoginModal from "./loginModal";
 import SearchBlock from "./searchBlock";
 import MovieSlide from "./movieSlide";
 import TheaterBlock from "./theaterBlock";

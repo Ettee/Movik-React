@@ -61,7 +61,7 @@ export default class MovieCardInSlide extends Component {
         const {movie}=this.props;
         let phimImgUrl="url("+movie?.hinhAnh+")";
         return (
-            <Fragment key={this.props.key}>
+            <Fragment >
                 <div className="card" >
                 <div
                     className="card-content"

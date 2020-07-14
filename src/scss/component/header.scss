@@ -110,6 +110,37 @@ header{
     .checkout{
         display: none !important;
     }
+    .user-login{
+        &:hover{
+            .menu-login{
+                
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+    .menu-login{
+        
+        opacity: 0;
+        padding: 15px 20px;
+        position: absolute;
+        top: 48px;
+        right: 50px;
+        transform: translateY(-10px);
+        background: #fff;
+        box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.75);
+        border-radius: 10px;
+        transition: all .3s;
+        button{
+            border:none;
+            outline:none;
+            background-color: #fff;
+            color: rgba(0,0,0,0.5);
+        }
+        button:hover{
+            color: $colorForSmallIcon;
+        }
+    }
 }
 @include tablet{
     .user-login{

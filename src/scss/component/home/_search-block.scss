@@ -32,12 +32,9 @@
         .row{
             position: relative;
             top: 6px;
-            .search-item-for-movie-ticket{
-                
-                a{
-                    .btn{
-                        background-color:#494646 ;
-                    }
+            .search-item-for-movie-ticket{  
+                .btn{
+                    background-color:#494646 ;
                 }
                 .select-option{
                     border: none;
@@ -47,15 +44,15 @@
                         height: 50px;
                         font-size: 18px;
                     }
-                    
-                }
-                
+                }   
             }
         }
     }
 }
 //class dùng chung
 .btn-buynow{
+    cursor: default !important;
+    pointer-events: none;
     width: 100%;
     background-color: #494646;
     color: #fff !important;
@@ -64,7 +61,8 @@
     letter-spacing: .5px;
     border-radius: 5px !important;
 }
-
 .btn-buynow.active{
+    cursor: pointer !important;
+    pointer-events: unset;
     @include GradientBackgroundTheme();
 }

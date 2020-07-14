@@ -4,20 +4,32 @@ export default class TheaterInfo extends Component {
     constructor(props){
         super(props)
         this.danhSachPhim=[]
+        
+        
     }
     taoDanhSachPhim=(danhSachPhim)=>{
-        danhSachPhim.lstLichChieuTheoPhim.map(item=>{
-            this.danhSachPhim.push(item.maLichChieu)
-        })
+        let {maCumRap}=this.props;
+        if(danhSachPhim.maCumRap===maCumRap){
+            danhSachPhim.danhSachPhim.map(item=>{
+                this.danhSachPhim.push(item)
+            })
+        }
+    }
+    componentDidMount(){
+        let {danhSachPhim}=this.props
+        this.taoDanhSachPhim(danhSachPhim)
+    }
+    danhSachPhimTheoRapDaChon=()=>{
+        //console.log(this.danhSachPhim)
+        this.props.getDanhSachPhimTheoRapDaChon(this.danhSachPhim)
+        
     }
     render() {
-        let{tenCumRap,diaChi,danhSachPhim}=this.props;
-        this.taoDanhSachPhim(danhSachPhim)
-        console.log(this.danhSachPhim)
-        this.props.getDanhSachXuatChieu(this.danhSachPhim)
+        let{tenCumRap,diaChi}=this.props;
+       
         return (
             <li className="nav-item">
-                <a className="nav-link " data-toggle="pill" href="#cgv-1" >
+                <a className="nav-link " data-toggle="pill" href="#cgv-1" onClick={this.danhSachPhimTheoRapDaChon} >
                     <div>
                         <img
                             src="../img/cgv-aeon-binh-tan-15380175062534.jpg"

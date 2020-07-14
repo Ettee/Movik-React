@@ -7,21 +7,28 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux";
 
 class TheaterBlock extends Component {
-    
-    
-    getMaHeThongRap = (maHeThongRap) => {
-        console.log(maHeThongRap)
-        return maHeThongRap
-        //da lay đc mã
+    constructor(props){
+        super(props)
+        this.state={
+            danhSachPhimTheoRap:[]
+        }
     }
     componentDidMount() {
         this.props.getTheaterSystem();
 
     }
+    
     renderTheaterLogo = () => {
         return this.props.listOfTheaterSystem.map((item, index) => {
+          
             return (
-                <TheaterLogo key={index} logo={item.logo} getMaHeThongRap={this.getMaHeThongRap} maHeThongRap={item.maHeThongRap} LayDanhSachLichChieuTheoMaHeThongRap={this.props.LayDanhSachLichChieuTheoMaHeThongRap} />
+                <TheaterLogo 
+                    key={index} 
+                    logo={item.logo} 
+                    biDanh={item.biDanh}
+                    maHeThongRap={item.maHeThongRap} 
+                    LayDanhSachLichChieuTheoMaHeThongRap={this.props.LayDanhSachLichChieuTheoMaHeThongRap} 
+                />
             )
         })
     }
@@ -29,38 +36,61 @@ class TheaterBlock extends Component {
     renderTheaterInfo = () => {
         return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
            return item.lstCumRap.map(item => {
-               
+               //console.log("item",item)
                 return (
-                    <TheaterInfo tenCumRap={item.tenCumRap} diaChi={item.diaChi} danhSachPhim={item.danhSachPhim[0]}  getDanhSachXuatChieu={this.getDanhSachXuatChieu}  />
+                    <TheaterInfo 
+                        tenCumRap={item.tenCumRap} 
+                        maCumRap={item.maCumRap}
+                        diaChi={item.diaChi} 
+                        danhSachPhim={item}  
+                        getDanhSachPhimTheoRapDaChon={this.DanhSachPhimTheoRapDaChon}  
+                    />
                 )
                 
             })
         })
     }
     
-    getDanhSachXuatChieu=(arr)=>{
-        console.log(arr)
-    }
-    text=()=>{
-        this.props.danhSachLichChieuTheoMaHeThongRap.map((item)=>{
-            item.lstCumRap.map(item=>{
-                console.log(item)
-                console.log('item.danhsachphim',item.danhSachPhim)
-                //in ra tên phim theo rạp ở đây
-                item.danhSachPhim.map(item=>{
-                    console.log("itemitem.danhSachPhim[0].lstLichChieuTheoPhim",item.lstLichChieuTheoPhim)
-                })
-                // item.danhSachPhim[0].lstLichChieuTheoPhim.map(item=>{
-                //     console.log(item)
-                // })
+    DanhSachPhimTheoRapDaChon=(arr)=>{
+        let danhSachPhimTheoRap=[];
+        let objDanhSachPhim={
+            maPhim:"",
+            hinhAnh:"",
+            tenPhim:"",
+            xuatChieu:[]
+        }
+        if(typeof arr !== "undefined"){
+            arr.map(item=>{
+                objDanhSachPhim={...objDanhSachPhim}
+                objDanhSachPhim.tenPhim=item.tenPhim
+                objDanhSachPhim.maPhim=item.maPhim
+                objDanhSachPhim.hinhAnh=item.hinhAnh
+                objDanhSachPhim.xuatChieu=item.lstLichChieuTheoPhim
+                danhSachPhimTheoRap.push(objDanhSachPhim)
             })
+        }
+        this.setState({
+            danhSachPhimTheoRap
         })
+        
     }
-
+    renderPhimTheoRapDaChon=()=>{
+        let danhSachPhim=this.state.danhSachPhimTheoRap
+        if(danhSachPhim.length >0){
+            return danhSachPhim.map(item=>{
+                 return (
+                     <MovieInTheaterBlock
+                        maPhim={item.maPhim}
+                        hinhAnh={item.hinhAnh}
+                        tenPhim={item.tenPhim}
+                        lstXuatChieu={item.xuatChieu}
+                    />
+                 )
+            })
+        }
+    }
 
     render() {
-        this.text()
-        
         return (
             <section className="theater-section" id="theater-block-home">
                 <div className="container">
@@ -85,11 +115,8 @@ class TheaterBlock extends Component {
                         </div>
                         <div className="col-md-8 show-column">
                             <div className="pick-movie-show">
-                                <div className="tab-pane container first-page active" id="cgv-1">
-                                    
-                                <MovieInTheaterBlock />
-                                    
-                                    
+                                <div className="tab-pane container first-page active" id="cgv-1">      
+                                    {this.renderPhimTheoRapDaChon()}
                                 </div>                             
                             </div>
                         </div>
@@ -103,7 +130,8 @@ class TheaterBlock extends Component {
 const mapStateToProps = (state) => {
     return {
         listOfTheaterSystem: state.movieReducer.listOfTheaterSystem,
-        danhSachLichChieuTheoMaHeThongRap: state.movieReducer.danhSachLichChieuTheoMaHeThongRap
+        danhSachLichChieuTheoMaHeThongRap: state.movieReducer.danhSachLichChieuTheoMaHeThongRap,
+        danhSachPhimTheoMaLichChieu:state.movieReducer.chiTietPhongChieu
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -114,6 +142,7 @@ const mapDispatchToProps = dispatch => {
         LayDanhSachLichChieuTheoMaHeThongRap: (maHeThongRap) => {
             dispatch(action.actLayLichChieuHeThongRap(maHeThongRap))
         }
+       
 
     }
 }

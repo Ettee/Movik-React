@@ -14,6 +14,9 @@
 @import "./component/detailmovie/detail-block";
 @import "./component/detailmovie/theater-block";
 @import "./component/detailmovie/trailer-block";
+@import "./component/theater/movie-picked";
+@import "./component/theater/seat-section";
+@import "./component/theater/selection-detail";
 *{
     box-sizing: border-box;
     margin: 0;

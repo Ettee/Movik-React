@@ -24,14 +24,13 @@ export default class DetailMovieTop extends Component {
     render() {
         const {movie}=this.props;
         let RatingCircleClassName =this.renderRatingCircle(movie.danhGia);
-        console.log(movie)
         return (
             <section className="bg-cover-section">
                 <div
                     className="bg-cover-fade"
                     style={{
                         backgroundImage:
-                            "url(../img/film_bgcover/bloodshot-c18-15840272355055.png)"
+                            "url(../img/film_bgcover/images.jpg)"
                     }}
                 ></div>
                 <div className="bg-overlay-fade" />
