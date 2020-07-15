@@ -17,7 +17,6 @@ export const actGetListMovieAPI =()=>{
         })
     }
 }
-
 //hàm dùng để gọi api
 export const actGetDetailMovieAPI =movieID =>{
     return dispatch=> {
@@ -37,7 +36,6 @@ export const actGetDetailMovieAPI =movieID =>{
         })
     }
 }
-
 export const actGetInfoShowByMovieID =movieID=>{
     return dispatch=>{
         Axios({
@@ -144,7 +142,7 @@ export const actDangNhap =(user )=>{
             data:user
         })
         .then(rs=>{
-            if(rs.data.maLoaiNguoiDung === "KhachHang"){
+            if(rs.data.maLoaiNguoiDung === "KhachHang" || rs.data.maLoaiNguoiDung === "QuanTri" ){
                 localStorage.setItem("userKhachHang",JSON.stringify(rs.data))
                 swal({
                     title: "Đăng nhập thành công",
@@ -156,16 +154,6 @@ export const actDangNhap =(user )=>{
                         window.location.reload()
                     }
                   });
-               
-            }else{
-                if(rs.data.maLoaiNguoiDung==="QuanTri"){
-                    swal({
-                        title: "Đăng nhập thất bại",
-                        text:"Không phải tài khoản khách hàng",
-                        icon: "warning",
-                        button: "OK",
-                    });
-                }
             }
         })
         .catch(err=>{
@@ -178,7 +166,23 @@ export const actDangNhap =(user )=>{
         });
     }
 }
-
+export const actGetNews=()=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:"http://newsapi.org/v2/everything?domains=wsj.com&apiKey=af33fca3a18f40008777568dfab33544"
+    
+        }).then((rs)=>{
+            dispatch({
+                type:ActionType.GET_NEWS,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
 
 export const actGetListMovie =listMovie =>{
     return{

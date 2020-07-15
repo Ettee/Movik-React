@@ -26,27 +26,11 @@
                      
             }
             .news-img{ 
-                &::after{
-                    content: 'Read';
-                    text-align: center;
-                    padding-left: 10px;
-                    font-size:15px ;
-                    color: #ffffff;
-                    height: 23px;
-                    width: 0;
-                    position: absolute;
-                    right: 10px;
-                    background: linear-gradient(90deg, rgba(159,0,251,0.6306897759103641) 0%, rgba(255,0,0,0.835171568627451) 100%);
-                    border-bottom-left-radius: 15px;
-                    border-top-right-radius: 5px;
-                    opacity: 0;
-                   transition:all .5s ease;
-                   
-                }
-                img{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 5px;
+                width: 100%;
+                .img{
+                    height: 200px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
                 }
             }
             a{

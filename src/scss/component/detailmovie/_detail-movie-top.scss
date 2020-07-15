@@ -42,7 +42,13 @@
             .film-title{
                 display: flex;
                 align-items: center;
-                color: #ffffff;
+				color: #ffffff;
+				.ngayKhoiChieu{
+					color: $yellow;
+					span{
+						color: white;
+					}
+				}
                 div{
                     div{
                         margin: 3px 0;

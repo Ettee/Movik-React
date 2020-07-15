@@ -1,9 +1,9 @@
 import {combineReducers} from "redux";
 import movieReducer from "./movieReducer";
-import theaterReducer from "./theaterReducer";
+import newsReducer from "./newsReducer"
 const rootReducer =combineReducers({
     //there will be many reducer in here
-    movieReducer,
-    theaterReducer
+    movieReducer,newsReducer
+    
 });
 export default rootReducer;

@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 class TheaterBlock extends Component {
     constructor(props){
         super(props)
-        console.log('1')
         this.state={
             danhSachPhimTheoRap:[],
             thongTinXuatChieuTheoPhim:[],
@@ -28,10 +27,7 @@ class TheaterBlock extends Component {
             this.setState({
                 phim:true
             })
-            console.log(this.state.phim)
         }
-        
-        
     }
     renderTheaterLogo = () => {
         let {chiTietXuatChieuTheoPhim}=this.props;
@@ -68,11 +64,10 @@ class TheaterBlock extends Component {
     }
     renderTheaterBlock=()=>{
         let {chiTietXuatChieuTheoPhim}=this.props;
-        if(Object.entries(chiTietXuatChieuTheoPhim).length > 0){
+        if(Object.entries(chiTietXuatChieuTheoPhim).length > 0 && window.location.pathname.indexOf("/detail-movie")==!-1){
             console.log(chiTietXuatChieuTheoPhim)
             console.log(chiTietXuatChieuTheoPhim.heThongRapChieu.length)
             if(chiTietXuatChieuTheoPhim.heThongRapChieu.length !== 0  ){
-                console.log("đúng")
                 return (
                     <Fragment>
                         <div className="row">
@@ -105,12 +100,11 @@ class TheaterBlock extends Component {
                     </Fragment>
                 )   
             }else{
-                console.log("sai")
-                return(
-                    <div className="noShowTime">
-                        <p>Phim hiện chưa có xuất chiếu</p>
-                    </div>
-                )
+                    return(
+                        <div className="noShowTime">
+                            <p>Phim hiện chưa có xuất chiếu</p>
+                        </div>
+                    )
             }
         }else{
             return (

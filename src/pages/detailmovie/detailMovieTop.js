@@ -61,12 +61,12 @@ export default class DetailMovieTop extends Component {
                                     </div>
                                     <div className="film-title">
                                         <div>
-                                            <div>
-                                                <span>{new Date(movie?.ngayKhoiChieu).toLocaleDateString()}</span>
+                                            <div className="ngayKhoiChieu">
+                                                Khởi chiều:<span> {new Date(movie?.ngayKhoiChieu).toLocaleDateString()}</span>
                                             </div>
                                             <div>
                                                 <span className="age-tag">C18</span>
-                                                <span className="film-title-name">{movie?.tenPhim}</span>
+                                                <span className="film-title-name text-uppercase">{movie?.tenPhim}</span>
                                             </div>
                                             <div>
                                                 <span className="film-title-moreInfo">

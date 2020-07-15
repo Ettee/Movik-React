@@ -1,118 +1,77 @@
 import React, { Component } from 'react'
-
-export default class News extends Component {
+import { connect } from "react-redux";
+import * as action from "../../redux/action";
+class News extends Component {
+  constructor(props){
+    super(props)
+    this.props.getNews();
+    this.state={
+      articlesArr:[]
+    }
+  }
+  getNews=()=>{
+    let {news}=this.props
+    let article={}
+    let articlesArr=[]
+    if(Object.entries(news).length > 0){
+      if( typeof news.articles !=="undefined"){
+        news.articles.slice(0,6).map(item=>{
+          article=item
+          articlesArr.push(article)
+        })
+      }
+    }
+    return articlesArr
+  }
+  renderNews=()=>{
+    let news= this.getNews()
+    let url=''
+    console.log(news)
+    return news.map(item=>{
+      url="url(" + item.urlToImage+ ")"
+      return(
+        <div className="grid-item">
+          <div className="card-grid-news">
+            <a href={item.url} target="_blank">
+              <div className="news-img">
+                <div className="img" style={{backgroundImage: url}}></div>
+              </div>
+      <h2 className="news-title">{item.title}</h2>
+            </a>
+            <p className="news-descript">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      )
+    })
+    
+  }
     render() {
         return (
               <section className="news-section" id="news-block">
                 <h1 className="title-section">Tin mới</h1>
                 <div className="container grid-block">
                   {/* react component block */}
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
+                  {this.renderNews()}
                   {/* end react component block */}
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid-item">
-                    <div className="card-grid-news">
-                      <a href="#">
-                        <div className="news-img">
-                          <img
-                            src="../img/news/22-thuat-ngu-bo-tui-cho-fan-dien-anh-15864989443765.jpg"
-                            alt="news1"
-                          />
-                        </div>
-                        <h2 className="news-title">22 thuật ngữ 'bỏ túi' cho fan điện ảnh</h2>
-                      </a>
-                      <p className="news-descript">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                        consectetur?
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </section>    
         )
     }
 }
-
+const mapStateToProps = state => {
+  return {
+    news: state.newsReducer.articles
+    
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+      getNews: () => {
+          dispatch(action.actGetNews());
+      },
+      
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps) (News)
