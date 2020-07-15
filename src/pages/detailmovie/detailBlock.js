@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 export default class DetailBlock extends Component {
     render() {
         let{movie}=this.props;
-        console.log(movie)
         return (
             <section className="movie-detail">
                 <div className="movie-nav">

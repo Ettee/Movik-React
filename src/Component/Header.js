@@ -26,9 +26,13 @@ export default class Header extends Component {
         if(localStorage.getItem('userKhachHang')){
             let userInLocalStore =localStorage.getItem('userKhachHang')
             let userName =JSON.parse(userInLocalStore).taiKhoan
-            return "Xin Chào, " + userName
+            return (
+            <a>Xin Chào, {userName}</a>
+            )
         }else{
-            return "Đăng nhập"
+            return (
+                <a data-toggle="modal" data-target="#LoginModal">Đăng Nhập</a>
+            )
         }
     }
     showAccMenuOnHover=()=>{
@@ -76,7 +80,7 @@ export default class Header extends Component {
         this.LoginStatus()
         return (
             <header>
-                <nav className="navbar navbar-expand-sm bg-white navbar-light">
+                <nav className="navbar navbar-expand-sm bg-darktheme navbar-light">
                     {/* Brand */}
                     <div className="header-brand">
                         <NavLink className="navbar-brand" exact to="/">
@@ -117,10 +121,11 @@ export default class Header extends Component {
                                     <i className="fas fa-user-circle" data-toggle="modal" data-target="#LoginModal" />
                                 </div>
                                 <div className="user-login-link">
-                                    <a href="#" data-toggle="modal" data-target="#LoginModal">{this.LoginStatus()}</a>
+                                    {this.LoginStatus()}
                                 </div>
                                 {this.showAccMenuOnHover()}
                             </li>
+                            {/* User Sign up */}
                             <li className="user-signup nav-item">
                                 {this.checkLogin()}
                             </li>

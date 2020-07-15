@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,lazy,Suspense } from 'react';
 import DetailMovieTop from './detailMovieTop';
 import DetailBlock from './detailBlock';
 import TheaterBlock from '../home/theaterBlock';
@@ -6,14 +6,18 @@ import TrailerBlock from './trailerBlock';
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 class DetailMovie extends Component {
+    
     componentDidMount(){
         let id = this.props.match.params.id;
         //truyền tham số vào props để đưa lên api
         this.props.getDetail(id);
+       
+        window.scrollTo(0, 0) 
+
     }
     render() {
         //lấy data từ trong props ra để hiện thị lên web
-        const {movie}=this.props;  
+        const {movie}=this.props; 
         return (
             <div>
                 <DetailMovieTop movie={movie}/>

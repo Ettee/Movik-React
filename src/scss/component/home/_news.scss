@@ -1,13 +1,16 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .news-section{
-    margin: 100px 0;
-   
+    padding: 100px 0;
+    background-color: $darkBackground;
     .grid-block{
         display: grid;
         grid-template-columns: repeat(3,1fr);
         grid-template-rows: repeat(2,1fr);
         grid-gap: 20px;
+        background-color: $darkContent;
+        padding: 10px;
+        border-radius:10px ;
         .card-grid-news{
             height: 100%;
             border-radius: 5px;
@@ -49,7 +52,7 @@
             a{
                 text-decoration: none;
                 .news-title{
-                    color: #000000;
+                    color: $darkThemeText;
                     font-size: 24px;
                     &:hover{
                         @include GradientTextWith_2_Colors($purple,$red,24%,66%);

@@ -28,7 +28,9 @@ class Theater extends Component {
         }
         return danhSachGhe
     }
-    
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
     render() {
         let thongTinPhim=this.layChiTietPhongChieu()
         let danhSachPhim=this.layDanhSachGhe()

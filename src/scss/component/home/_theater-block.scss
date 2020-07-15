@@ -1,13 +1,22 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .theater-section{
-    margin: 50px 0;
-    padding: 100px;
+    padding: 70px 0;
+    background-color: $darkBackground;
     >.container{
-        border: $border;
-        @include borderForSectionMarker();
+        border: $darkLite;
+        background-color: $darkContent;
+        border-radius: 20px;
+        .noShowTime{
+            height: 550px;
+            color: $darkThemeText;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+        }
         .logo-column,.theater-column{
-            border-right:$border ;
+            border-right:$darkLite ;
         }
         .logo-column{
             .pick-logo-theater{
@@ -38,13 +47,25 @@
         .theater-column{
             overflow-y:auto;
             height: $theaterBlockHeight;
+            .theater-info{
+                .theater-name{
+                    color: $yellow;
+                }
+                .theater-location{
+                    color:$darkThemeText;
+                    margin: 0;
+                }
+            }
             .pick-theater{
                 .tab-pane{
                     padding: 0;
                 }
                 .nav-item{
                     width: 100%;
-                    padding: 10px 0;
+                    padding: 5px 5px;
+                    margin: 5px 0;
+                    background-color:$darkLite ;
+                    border-radius:10px ;
                     &:hover{
                         >a{
                             div:nth-child(1){
@@ -84,6 +105,13 @@
                             opacity: .5;
                         }
                     }
+                   }
+                   .nav-link{
+                       div:nth-child(1){
+                           img{
+                               border-radius:5px ;
+                           }
+                       }
                    }
                 }
                 .nav-link.active{
@@ -143,13 +171,16 @@
                 }
                 .movie-of-picked-theater{
                     margin: 10px auto;
-                    border-bottom:$border ;
+                    background-color: $darkLite;
+                    border-radius: 5px;
+                    padding: 10px 0;
                     .film-desc{
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
                         .filmImg{
                             img{
+                                border-radius: 5px;
                                 width: 80px;
                             }
                         }
@@ -230,7 +261,9 @@
     .theater-column{
         .theater-info{
             margin: 0 10px !important;
+
             .theater-name{
+                color: $yellow;
                 font-size: 14px !important;
             }
         }
@@ -253,7 +286,7 @@
 }
 @include mobile{
     .logo-column{
-        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        border-bottom: 1px solid $darkLite;
         .pick-logo-theater{
             .nav{
                 justify-content: space-between ;

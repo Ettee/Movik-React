@@ -29,7 +29,8 @@
         .film-posterTop{
             display: flex;
             .film-imgTop{
-                margin: 10px;
+				margin: 10px;
+				background-size: contain;
                 .card-overlay{
                     &:hover{
                         i{

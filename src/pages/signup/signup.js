@@ -29,6 +29,7 @@ class Signup extends Component {
             matKhauValid: false,
             emailValid: false,
             soDTValid: false
+            
 
         }
     }
@@ -108,6 +109,9 @@ class Signup extends Component {
         }
         
         
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
     render() {
         return (

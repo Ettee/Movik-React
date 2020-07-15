@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import swal from 'sweetalert';
-export default class ButtonXuatChieu extends Component {
-
+import {withRouter} from "react-router-dom"
+class ButtonXuatChieu extends Component {
+    
+    handleWhenNotLogin=()=>{
+        swal({
+            title:"Bạn cần phải đăng nhập trước khi đặt vé",
+            icon:"warning",
+            buttons:"Chuyển đến trang đăng kí"
+        }).then((ok)=>{
+            if(ok){
+                this.props.history.push("/sign-up")
+            }
+        })
+       
+    }
     renderButton=()=>{
 
         let{xuatChieu,date}=this.props;
@@ -33,17 +46,15 @@ export default class ButtonXuatChieu extends Component {
                 )
             })
         }else{
+
             return listTime.map(item=>{
                 return (
-                    <NavLink to={`/sign-up`}>
-                        <button className="btn-shadow m-1">
-                            <a>{item.time}</a>
-                        </button>
-                    </NavLink>    
+                    <button className="btn-shadow m-1" onClick={this.handleWhenNotLogin}>
+                        <a>{item.time}</a>
+                    </button>  
                 )
-            })
+            }) 
         }
-       
     }
 
     render() {
@@ -56,3 +67,4 @@ export default class ButtonXuatChieu extends Component {
         )
     }
 }
+export default withRouter(ButtonXuatChieu)

@@ -119,7 +119,7 @@ export const actDangKi=user =>{
             swal({
                 title: "Đăng kí thành công",
                 icon: "success",
-                button: "OK",
+                buttons: "OK"
               }).then((ok)=>{
                 if(ok){
                     window.location.reload()
@@ -131,7 +131,7 @@ export const actDangKi=user =>{
                 title: "Đăng kí thất bại",
                 text:err.response.data,
                 icon: "error",
-                button: "OK",
+                button: "OK"
             });
         })
     }
@@ -149,7 +149,8 @@ export const actDangNhap =(user )=>{
                 swal({
                     title: "Đăng nhập thành công",
                     icon: "success",
-                    button: "OK",
+                    buttons: "OK"
+                    
                   }).then((ok)=>{
                     if(ok){
                         window.location.reload()

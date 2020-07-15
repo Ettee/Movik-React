@@ -1,6 +1,7 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .main-slide-section{
+    background-color: $darkBackground;
     .owl-carousel{
         .owl-dots{
             position: relative;

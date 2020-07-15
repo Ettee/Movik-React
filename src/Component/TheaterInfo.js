@@ -4,15 +4,23 @@ export default class TheaterInfo extends Component {
     constructor(props){
         super(props)
         this.danhSachPhim=[]
-        
-        
     }
     taoDanhSachPhim=(danhSachPhim)=>{
         let {maCumRap}=this.props;
         if(danhSachPhim.maCumRap===maCumRap){
-            danhSachPhim.danhSachPhim.map(item=>{
-                this.danhSachPhim.push(item)
-            })
+            if(this.props.movieID){
+                console.log(this.props.movieID)
+                danhSachPhim.danhSachPhim.map(item=>{
+                    if(item.maPhim===this.props.movieID){
+                        this.danhSachPhim.push(item)
+                    }
+                })
+            }else{
+                danhSachPhim.danhSachPhim.map(item=>{
+                    this.danhSachPhim.push(item)
+                })
+            }
+            
         }
     }
     componentDidMount(){

@@ -1,6 +1,7 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .search-movie-section{
+    background-color:$darkBackground ;
     @include tablet{
         .search-movie-box{
             width: 80% !important;   
@@ -17,22 +18,22 @@
             width: 80% !important;
         }
     }
+    
     .search-movie-box{
         width: 65%;
         margin: auto;
         justify-content: space-between;
-        border: 1px solid #fff;
-        background: #fff;
+        background: $darkContent ;
         border-radius: 9px;
         padding: 15px 10px;
-        box-shadow: 0px 0px 37px 0px rgba(0, 0, 0, 0.75);
         position: relative;
         bottom: 68px;
-        z-index: 3;
+        z-index: 1;
         .row{
             position: relative;
             top: 6px;
-            .search-item-for-movie-ticket{  
+            .search-item-for-movie-ticket{
+                
                 .btn{
                     background-color:#494646 ;
                 }
@@ -49,6 +50,17 @@
         }
     }
 }
+@keyframes shadow {
+    0% {
+      background-position: 0 0;
+    }
+    50.01% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
 //class dùng chung
 .btn-buynow{
     cursor: default !important;

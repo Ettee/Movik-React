@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import HomeTemplate from "./template/HomeTemplate";
 import {routesHome} from "./routes";
-import { Redirect } from "react-router-dom";
 function App() {
   const showMenuHome = routes => {
     if (routes && routes.length > 0) {
       return routes.map((item, index) => {
         return (
-          <HomeTemplate
-            key={index}
-            exact={item.exact}
-            path={item.path}
-            Component={item.component}
-          />
+            <HomeTemplate
+              key={index}
+              exact={item.exact}
+              path={item.path}
+              Component={item.component}
+            />
         );
-        
       });
     }
   };
@@ -28,7 +25,7 @@ function App() {
       <div>
         <Switch>
           {showMenuHome(routesHome)}
-         
+          
         </Switch>
       </div>
     </BrowserRouter>

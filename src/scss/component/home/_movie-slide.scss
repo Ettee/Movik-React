@@ -2,7 +2,8 @@
 @import "../../helper/mixin.scss";
 
 .showing-coming-movie-section{
-  margin: 50px 0;
+  padding:50px 0;
+  background-color: $darkBackground;
   .nav{
     justify-content: center;
     .nav-item{
@@ -13,7 +14,7 @@
         font-weight: 500;
       }
       .nav-link{
-        color:#000000;
+        color:$yellow;
         transition: all .3s;
         font-size: 21px;
         &:hover{
@@ -24,7 +25,11 @@
   }
   .tab-content{
     .tab-pane{
-      @include borderForSectionMarker();
+      .container{
+        background-color: $darkContent;
+        border-radius: 20px;
+
+      }
       .row {
         width: 90%;
         margin: 20px auto;
@@ -32,6 +37,7 @@
           border: none;
           border-radius: unset;
           margin: 20px 0;
+          background-color: $darkContent;
           &:hover{
             .card-overlay{
               cursor: pointer;
@@ -81,6 +87,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
   }
   .slick-next:before,.slick-prev:before {
     font-size: 45px;
@@ -93,7 +100,7 @@
   .slick-prev{
     left: -60px;
   }
-
+  
   // .slick-prev{
   //   background-image: url(../../../img/icon/back-session.png) !important;
   //   left: -65px;
@@ -144,7 +151,7 @@
   border-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: contain;
   width: $widthOfPoster !important;
   height: $heightOfPoster;
   
