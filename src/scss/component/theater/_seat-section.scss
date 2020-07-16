@@ -39,6 +39,9 @@
             @include GradientBackgroundTheme();                           
         }
     }
+    .seat-item.vip{
+        border: 2px $yellow solid;
+    }
     .seat-item{
         border: 1px solid $gray;
         border-radius: 5px;
@@ -74,7 +77,7 @@
         color: $gray;
     }
     .seat-picker-note{
-        margin-top:150px;
+        margin-top:120px;
         .row{
             justify-content: center;
         }

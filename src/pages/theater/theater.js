@@ -3,15 +3,98 @@ import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 import { isEmptyObject } from 'jquery';
 import Seat from "../../Component/Seat";
+import SelectionDetail from '../../Component/SelectionDetail'
+import swal from 'sweetalert';
+import {withRouter} from "react-router-dom"
 class Theater extends Component {
     constructor(props){
         super(props)
         let maLichChieu=this.props.match.params.maLichChieu;
-        this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu)
+        this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu);
+        this.state={
+            lstGheDaChon:[],
+            time:0,
+            seconds:300
+        };
+        this.timer=0;
+        this.startTimer = this.startTimer.bind(this);
+        this.countDown = this.countDown.bind(this);
         
     }
-   
+    secondsToTime(secs){
+        let hours = Math.floor(secs / (60 * 60));
     
+        let divisor_for_minutes = secs % (60 * 60);
+        let minutes = Math.floor(divisor_for_minutes / 60);
+    
+        let divisor_for_seconds = divisor_for_minutes % 60;
+        let seconds = Math.ceil(divisor_for_seconds);
+    
+        let obj = {
+          "h": hours,
+          "m": minutes,
+          "s": seconds
+        };
+        return obj;
+    }
+    startTimer() {
+        if (this.timer == 0 && this.state.seconds > 0) {
+          this.timer = setInterval(this.countDown, 1000);
+        }
+    }
+    countDown() {
+        // Remove one second, set state so a re-render happens.
+        let seconds = this.state.seconds - 1;
+        this.setState({
+          time: this.secondsToTime(seconds),
+          seconds: seconds,
+        });
+        
+        // Check if we're at zero.
+        if (seconds == 0) { 
+          clearInterval(this.timer);
+          swal({
+            title:"Hết thời gian đặt vé",
+            icon:"info",
+            text:"Bạn sẽ được đưa về trang chủ để đặt lại vé",
+            closeOnEsc: false,
+            closeOnClickOutside: false,
+            timer: 3000,
+            buttons:false
+          })
+          setTimeout(()=>{
+            this.props.history.push("/")
+          },3000)
+
+        }
+    }
+    layDanhSachGheDaChon=(objBooking)=>{
+        let checkIfMaGheInState=true
+        let arr=[];
+        arr=[...this.state.lstGheDaChon]
+        if(arr.length>0){
+            checkIfMaGheInState=arr.some(item=>item.maGhe===objBooking.maGhe)
+            if(!checkIfMaGheInState){
+                arr.push(objBooking)
+            }else{
+                let i =0
+                arr.map((item,index)=>{
+                    if(item.maGhe===objBooking.maGhe){
+                        i=index
+                    }
+                })
+                arr.splice(i,1)
+            }
+        }else{
+            //push maGhe mới
+            arr.push(objBooking)
+        }
+        
+        this.setState({
+            lstGheDaChon:arr
+        })
+        
+    }
     layChiTietPhongChieu=()=>{
         let thongTinPhim={}
         let {chiTietPhongChieu}=this.props
@@ -30,6 +113,9 @@ class Theater extends Component {
     }
     componentDidMount(){
         window.scrollTo(0, 0)
+        this.startTimer()
+        let timeLeftVar = this.secondsToTime(this.state.seconds);
+        this.setState({ time: timeLeftVar });
     }
     render() {
         let thongTinPhim=this.layChiTietPhongChieu()
@@ -44,13 +130,15 @@ class Theater extends Component {
                                         <h1 className="text-uppercase">
                                             {thongTinPhim.tenPhim} <span className="age-tag">(C18)</span>
                                         </h1>
-                                        <p className="text-uppercase">{thongTinPhim.ngayChieu},{thongTinPhim.gioChieu}</p>
+                                        <p className="text-uppercase" >{thongTinPhim.ngayChieu}, {thongTinPhim.gioChieu}</p>
                                     </div>
                                 </div>
                                 <div className="col-md-4">
                                     <div className="timer">
                                         <div className="text-uppercase">Thời gian giữ ghế</div>
-                                        <div id="timer" />
+                                        <div id="timer">
+                                            0{this.state.time.m}:{this.state.time.s}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -68,126 +156,48 @@ class Theater extends Component {
                                     </div>
                                     <div className="seat-block">
                                         <div className="container">
-                                           <Seat danhSachPhim={danhSachPhim} />
+                                           <Seat danhSachPhim={danhSachPhim} layDanhSachGheDaChon={this.layDanhSachGheDaChon} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="seat-picker-note">
                                     <div className="container">
                                         <div className="row">
+
                                             <div className="col-sm-1">
-                                                <div className="seat-item " />
+                                                <div className="seat-item vip" />
                                             </div>
-                                            <div className="seat-note">:Ghế chưa chọn</div>
+                                            <div className="seat-note">:Ghế vip</div>
+
+                                            <div className="col-sm-1">
+                                                <div className="seat-item "/>
+                                            </div>
+                                            <div className="seat-note">:Ghế thường</div>
+
                                             <div className="col-sm-1">
                                                 <div className="seat-item inactive" />
                                             </div>
-                                            <div className="seat-note">:Ghế đã chọn</div>
+                                            <div className="seat-note">:Ghế đã đặt</div>
+
                                             <div className="col-sm-1">
                                                 <div className="seat-item active" />
                                             </div>
                                             <div className="seat-note">:Ghế đang chọn</div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-3">
-                                <div className="selection-detail">
-                                    <div className="price-block">
-                                        <div className="total-price text-center">0 đ</div>
-                                    </div>
-                                    <div className="movie-picked-detail">
-                                        <div className="ticket-for-movie">
-                                            <span className="age-tag">C18</span>
-                                            <span className="ticket-movie-name text-uppercase">
-                                                {thongTinPhim.tenPhim}
-                                            </span>
-                                        </div>
-                                        <div className="ticket-theater">{thongTinPhim.tenCumRap}<br/> <span>({thongTinPhim.diaChi})</span> </div>
-
-                                        <div className="ticket-time">
-                                            <span className="ticket-time-detail">{thongTinPhim.ngayChieu}</span>
-                                            <span className="movie-show-date"> {thongTinPhim.gioChieu}</span>
-                                            <span className="movie-theater-number"> {thongTinPhim.tenRap}</span>
-                                        </div>
-                                    </div>
-                                    <div className="seat-selected-detail">
-                                        <div className="row">
-                                            <div className="col-sm-8">
-                                                <div>
-                                                    Ghế <span className="seat-selected-item">G1</span>
-                                                </div>
-                                            </div>
-                                            <div className="col-sm-4">
-                                                <div className="seat-price">60.000 đ</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="combo-block-detail">
-                                        <div className="row">
-                                            <div className="col-sm-8">
-                                                <span className="popcorn">
-                                                    <a href="#" data-toggle="modal" data-target="#popcornModal">
-                                                        <img src="../img/icon/popcorn-icon-8.png"  />
-                                                    </a>
-                                                    <span className="popcorn-name">Combo 1</span>
-                                                </span>
-                                            </div>
-                                            <div className="col-sm-4">
-                                                <span className="combo-price">120.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button className="checkout text-uppercase text-center">
-                                        Đặt vé
-                                    </button>
-                                </div>
+                                <SelectionDetail 
+                                    thongTinPhim={thongTinPhim}
+                                    danhSachGhe={this.state.lstGheDaChon}
+                                />
                             </div>
                         </div>
                     </section>
-                    {/* Popcorn combo Modal */}
-                    <div className="popcorn-combo-modal">
-                        <div className="modal fade" id="popcornModal">
-                            <div className="modal-dialog modal-lg modal-bg-color">
-                                <div className="modal-content">
-                                    {/* Modal Header */}
-                                    <div className="modal-header">
-                                        <h4 className="modal-title">Popcorn Combo</h4>
-                                    </div>
-                                    {/* Modal body */}
-                                    <div className="modal-body">
-                                        <div className="combo-block">
-                                            <div className="combo-item">
-                                                <div className="row">
-                                                    <div className="col-sm-8">
-                                                        <div className="combo-img">
-                                                            <img
-                                                                src="../img/seatNscreen/volka-smirnoff-nga1522165193.png"
-                                                                
-                                                            />
-                                                        </div>
-                                                        <div className="combo-name">Combo 1</div>
-                                                    </div>
-                                                    <div className="col-sm-4">
-                                                        <div className="combo-price">2200$</div>
-                                                        <div className="combo-quantity">
-                                                            <div className="comboPlus combo-quantity-action ">
-                                                                <i className="fas fa-plus" />
-                                                            </div>
-                                                            <div className="combo-quantity-number">1</div>
-                                                            <div className="comboMinus combo-quantity-action">
-                                                                <i className="fas fa-minus" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
+                    
             </Fragment>
         )
     }
@@ -204,4 +214,4 @@ const mapDispatchToProps=dispatch=>{
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Theater);
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(Theater));

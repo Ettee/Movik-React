@@ -4,8 +4,8 @@
     -webkit-box-shadow: -11px 0px 30px -7px rgba(0,0,0,0.52);
     -moz-box-shadow: -11px 0px 30px -7px rgba(0,0,0,0.52);
     box-shadow: -11px 0px 30px -7px rgba(0,0,0,0.52);
-    padding:0 20px ;
-    height: 100vh;
+    padding:20px 20px ;
+    
     .price-block{
         width: 100%;
         padding: 40px;
@@ -19,6 +19,12 @@
         padding: 40px 0;
         border-bottom:1px dashed $gray ;
         color: $gray;
+        .ticket-theater{
+            color: $red;
+            span{
+                color: $gray;
+            }
+        }
         >div{
             margin: 5px 0;
         }
@@ -39,14 +45,65 @@
         span{
             color: $yellow;
         }
+        .movie-show-date{
+            color: $colorForSmallIcon;
+        }
+    }
+    .customer-info{
+        border-bottom:1px dashed $gray ;
+        padding: 20px 0;
+        p{
+            color: $colorForSmallIcon;
+            font-size: 20px;
+        }
+        .info-item,.info-data{
+            font-weight: 400;
+            color: $gray;
+            margin: 5px 0;
+        }
+        .info-data{ 
+            color: $colorForSmallIcon;
+        }
     }
     .seat-selected-detail{
         padding: 40px 0;
-        border-bottom:1px dashed $gray ;
+        
         color: $gray;
-        .seat-selected-item{
-            color:$yellow;
+        .seat{
+            display: flex;
+            .seat-selected-item{
+                color: #ffc107;
+                display: flex;
+                max-width: 100%;
+                flex-wrap: wrap;
+                div{
+                    margin: 0 3px;
+                    &:nth-child(1){
+                        margin-left: 5px;
+                    }
+                    &:after{
+                        content: ',';
+                        
+                    }
+                    &:nth-last-child(1){
+                        &:after{
+                            content: '';
+                            
+                        }
+                    }
+                    
+
+                }
+            }
         }
+        .seat-price{
+            
+            .tongTienVe.invisible{
+                opacity: 0;
+            }
+        }
+        
+        
     }
     .combo-block-detail{
         padding: 20px 0;

@@ -54,7 +54,7 @@ export default class Header extends Component {
         if(localStorage.getItem('userKhachHang')){
             swal({
                 title: "Đăng xuất ",
-                text: "Bạn có chắc chắn muốn thoát tài khoản hiện tại ?",
+                text: "Bạn sẽ không thể tiếp tục đặt vé",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -70,7 +70,8 @@ export default class Header extends Component {
                         }
                     });
                 } 
-              });
+              })
+              
             
             
         }

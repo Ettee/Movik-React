@@ -13,8 +13,6 @@ export default class MovieCardInSlide extends Component {
                         <i className="fas fa-star" />
                         <i className="fas fa-star" />
                     </div>
-
-
                 </Fragment>
             )
         } else {
