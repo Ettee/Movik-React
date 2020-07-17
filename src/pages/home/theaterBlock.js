@@ -21,7 +21,7 @@ class TheaterBlock extends Component {
     }
     getDanhSachChieuTheoPhim=()=>{
         let movieID;
-        if(window.location.pathname.indexOf("/detail-movie")==!-1){
+        if(window.location.pathname.indexOf("/detail-movie") !==-1){
             movieID =window.location.pathname.replace( /^\D+/g, '');
             this.props.LayThongTinLichChieuTheoPhim(movieID);
             this.setState({
@@ -64,9 +64,7 @@ class TheaterBlock extends Component {
     }
     renderTheaterBlock=()=>{
         let {chiTietXuatChieuTheoPhim}=this.props;
-        if(Object.entries(chiTietXuatChieuTheoPhim).length > 0 && window.location.pathname.indexOf("/detail-movie")==!-1){
-            console.log(chiTietXuatChieuTheoPhim)
-            console.log(chiTietXuatChieuTheoPhim.heThongRapChieu.length)
+        if(Object.entries(chiTietXuatChieuTheoPhim).length > 0 && window.location.pathname.indexOf("/detail-movie") !==-1){
             if(chiTietXuatChieuTheoPhim.heThongRapChieu.length !== 0  ){
                 return (
                     <Fragment>

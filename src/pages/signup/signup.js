@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import LoginModal from "../home/loginModal";
 import {connect} from "react-redux";
-import { createBrowserHistory }   from 'history';
 import * as action from "../../redux/action";
 class Signup extends Component {
     constructor(props) {
@@ -67,6 +65,8 @@ class Signup extends Component {
                 break;
             case "soDT":
                 soDTValid =message !== ""?false:true;
+                break;
+            default:
                 break;    
         }
         this.setState(

@@ -158,7 +158,7 @@ class Theater extends Component {
                                         {thongTinPhim.tenCumRap}
                                     </div>
                                     <div className="theater-screen">
-                                        <img src="../img/seatNscreen/screen.png" />
+                                        <img src="../img/seatNscreen/screen.png" alt="screen" />
                                     </div>
                                     <div className="seat-block">
                                         <div className="container">

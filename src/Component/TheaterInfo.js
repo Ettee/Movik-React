@@ -9,7 +9,6 @@ export default class TheaterInfo extends Component {
         let {maCumRap}=this.props;
         if(danhSachPhim.maCumRap===maCumRap){
             if(this.props.movieID){
-                console.log(this.props.movieID)
                 danhSachPhim.danhSachPhim.map(item=>{
                     if(item.maPhim===this.props.movieID){
                         this.danhSachPhim.push(item)

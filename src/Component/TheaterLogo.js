@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import { event } from 'jquery'
 
 export default class TheaterLogo extends Component {
-    constructor(props){
-        super(props)
-    }
     render() {
         let {logo,maHeThongRap,biDanh,key}=this.props;
         return (

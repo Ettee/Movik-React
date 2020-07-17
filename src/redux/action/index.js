@@ -195,8 +195,12 @@ export const actDatVe=(obj,token)=>{
         }).then(rs=>{
             swal({
                 title:"Đặt vé thành công",
+                text:"Bạn sẽ được đưa về trang chủ",
                 icon:"success",
-                timer:3000
+                timer:3000,
+                buttons:false,
+                closeOnClickOutside: false,
+                closeOnEsc: false,
             })
         })
         .catch(err=>{

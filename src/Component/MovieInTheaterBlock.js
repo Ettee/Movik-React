@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import ButtonXuatChieu from './ButtonXuatChieu'
 export default class MovieInTheaterBlock extends Component {
-    constructor(props){
-        super(props)
-       
-    }
-
     renderNgayChieu=()=>{
         let date=[];
         let uniqueDate;
@@ -40,7 +35,7 @@ export default class MovieInTheaterBlock extends Component {
             <div className="movie-of-picked-theater">
                 <div className="film-desc">
                     <div className="filmImg mx-2">
-                        <img src={hinhAnh} />
+                        <img src={hinhAnh} alt="film-img" />
                     </div>
                     <div className="nameFilm">{tenPhim}</div>
                 </div>

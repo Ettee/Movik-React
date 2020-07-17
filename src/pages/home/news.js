@@ -26,7 +26,6 @@ class News extends Component {
   renderNews=()=>{
     let news= this.getNews()
     let url=''
-    console.log(news)
     return news.map(item=>{
       url="url(" + item.urlToImage+ ")"
       return(

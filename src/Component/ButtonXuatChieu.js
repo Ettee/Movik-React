@@ -25,6 +25,10 @@ class ButtonXuatChieu extends Component {
             time:"",
             maLichChieu:""
         }
+        const style={
+            color:"#fff",
+            fontSize:"15px"
+        }
         //console.log(xuatChieu)
         xuatChieu.map(item=>{
             obj={...obj}
@@ -40,7 +44,7 @@ class ButtonXuatChieu extends Component {
                 return (
                     <NavLink to={`/pick-seat/${item.maLichChieu}`}>
                         <button className="btn-shadow m-1">
-                            <a>{item.time}</a>
+                            <div className="btn-showTime" style={style}>{item.time}</div>
                         </button>
                     </NavLink>    
                 )
@@ -50,7 +54,7 @@ class ButtonXuatChieu extends Component {
             return listTime.map(item=>{
                 return (
                     <button className="btn-shadow m-1" onClick={this.handleWhenNotLogin}>
-                        <a>{item.time}</a>
+                        <div className="btn-showTime" style={style}>{item.time}</div>
                     </button>  
                 )
             }) 
