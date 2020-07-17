@@ -6,7 +6,8 @@ let initialState ={
     infoShow:{},
     danhSachLichChieuTheoMaHeThongRap:[],
     listOfTheaterSystem:[],
-    chiTietPhongChieu:{}
+    chiTietPhongChieu:{},
+    datVe:''
 };
 const movieReducer =(state = initialState,action) =>{
     switch(action.type){
@@ -28,6 +29,9 @@ const movieReducer =(state = initialState,action) =>{
         case ActionType.LAY_CHI_TIET_PHONG_VE_BANG_MA_LICH_CHIEU:
             state.chiTietPhongChieu=action.data
             return {...state}
+        case ActionType.DAT_VE:
+            state.datVe = action.data
+            return { ...state }
         default: 
             return {...state};
     }

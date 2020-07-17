@@ -183,6 +183,27 @@ export const actGetNews=()=>{
         })
     }
 }
+export const actDatVe=(obj,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe",
+            data:obj,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }).then(rs=>{
+            swal({
+                title:"Đặt vé thành công",
+                icon:"success",
+                timer:3000
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
 
 export const actGetListMovie =listMovie =>{
     return{

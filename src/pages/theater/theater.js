@@ -14,12 +14,18 @@ class Theater extends Component {
         this.state={
             lstGheDaChon:[],
             time:0,
-            seconds:300
+            seconds:300,
+            reload:false
         };
         this.timer=0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
         
+    }
+    reloadPage=(val)=>{
+        this.setState({
+            reload:val
+        })
     }
     secondsToTime(secs){
         let hours = Math.floor(secs / (60 * 60));
@@ -38,7 +44,7 @@ class Theater extends Component {
         return obj;
     }
     startTimer() {
-        if (this.timer == 0 && this.state.seconds > 0) {
+        if (this.timer === 0 && this.state.seconds > 0) {
           this.timer = setInterval(this.countDown, 1000);
         }
     }
@@ -51,7 +57,7 @@ class Theater extends Component {
         });
         
         // Check if we're at zero.
-        if (seconds == 0) { 
+        if (seconds === 0) { 
           clearInterval(this.timer);
           swal({
             title:"Hết thời gian đặt vé",
@@ -192,6 +198,8 @@ class Theater extends Component {
                                 <SelectionDetail 
                                     thongTinPhim={thongTinPhim}
                                     danhSachGhe={this.state.lstGheDaChon}
+                                    maLichChieu={this.props.match.params.maLichChieu}
+                                    
                                 />
                             </div>
                         </div>

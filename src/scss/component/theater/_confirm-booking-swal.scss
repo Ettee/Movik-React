@@ -1,0 +1,55 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss"; 
+.confirm-booking{
+    .booking-detail{
+        .ticket-info-confirm{
+            border-bottom:1px dashed #000 ;
+            margin: 5px 0;
+            padding-bottom: 10px;
+            
+        }
+        .user-info-confirm{
+            padding: 10px 0;
+        }
+        .title-info-confirm{
+            text-align: left;
+            color: $colorForSmallIcon;
+            font-weight: 500;
+        }
+        .info-confirm{
+            text-align: left;
+            color: $darkLite;
+            font-weight: 500;
+        }
+        .info-confirm.seat{
+            display: flex;
+            div{
+                margin: 0 2px;
+                &:after{
+                    content: ",";
+                    
+                }
+                &:nth-last-child(1){
+                    &:after{
+                        content: "";
+                    }
+                }
+            }
+        }
+        
+    }
+    .ticket-price-confirm{
+        border-top: 1px dashed #000 ;
+        .title-tongTien{
+            text-align: left;
+            color: $colorForSmallIcon;
+            font-size: 20px;
+        }
+        .tongTien{
+            text-align: left;
+            color: $darkLite;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}

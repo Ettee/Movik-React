@@ -50,7 +50,7 @@
         }
     }
     .customer-info{
-        border-bottom:1px dashed $gray ;
+        
         padding: 20px 0;
         p{
             color: $colorForSmallIcon;
@@ -67,7 +67,7 @@
     }
     .seat-selected-detail{
         padding: 40px 0;
-        
+        border-bottom:1px dashed $gray ;
         color: $gray;
         .seat{
             display: flex;
