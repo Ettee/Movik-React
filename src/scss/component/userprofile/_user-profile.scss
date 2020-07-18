@@ -1,0 +1,12 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss"; 
+.user-info-page{
+    padding: 10px 0;
+    background-image: url(../../../img/Quantum-Gradient.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .container-fluid{
+        padding-left: 0;
+    }
+}

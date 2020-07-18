@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from '../img/movikLogo.png';
 import swal from 'sweetalert';
-export default class Header extends Component {
+import { withRouter } from "react-router";
+class Header extends Component {
     checkLogin=()=>{
         if(localStorage.getItem('userKhachHang')){
            
@@ -37,8 +38,14 @@ export default class Header extends Component {
     }
     showAccMenuOnHover=()=>{
         if(localStorage.getItem('userKhachHang')){
+            let taiKhoan=JSON.parse(localStorage.getItem('userKhachHang'))
             return(
-                <div className="menu-login text-center">
+                <div className="menu-login text-center menu-hover-user">
+                    <button className="user-profile">
+                        <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
+                            Profile
+                        </NavLink>
+                    </button>
                     <button onClick={this.logout}>
                         Đăng xuất
                     </button>
@@ -66,7 +73,7 @@ export default class Header extends Component {
                     icon: "success",
                     }).then((ok)=>{
                         if(ok){
-                            window.location.reload()
+                            this.props.history.push("/")
                         }
                     });
                 } 
@@ -140,3 +147,4 @@ export default class Header extends Component {
         )
     }
 }
+export default withRouter(Header)

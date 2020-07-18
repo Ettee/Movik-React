@@ -1,0 +1,21 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss"; 
+.user-booking-info{
+    .booking-detail{
+        .title{
+            th{
+                color: #fff;
+                letter-spacing: 1px;
+            }
+        }
+        .value{
+            td{
+                letter-spacing: 1px;
+                i{
+                    color: $green;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

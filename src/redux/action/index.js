@@ -208,7 +208,23 @@ export const actDatVe=(obj,token)=>{
         })
     }
 }
-
+export const actGetUserProfile=(taiKhoan)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+            data:taiKhoan
+        }).then((rs)=>{
+            dispatch({
+                type:ActionType.USER_PROFILE,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
 export const actGetListMovie =listMovie =>{
     return{
         type:ActionType.GET_LIST_MOVIE,

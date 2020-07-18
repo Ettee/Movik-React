@@ -8,3 +8,4 @@ export const LAY_CHI_TIET_PHONG_VE_BANG_MA_LICH_CHIEU="LAY_CHI_TIET_PHONG_VE_BAN
 export const DANG_NHAP ="DANG_NHAP";
 export const GET_NEWS="GET_NEWS";
 export const DAT_VE="DAT_VE";
+export const USER_PROFILE="USER_PROFILE"

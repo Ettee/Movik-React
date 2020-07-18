@@ -117,16 +117,23 @@ header{
         display: none !important;
     }
     .user-login{
+        .menu-login{
+            pointer-events: none;
+            button{
+                display: block;
+                margin: 5px auto;
+            }
+        }
         &:hover{
             .menu-login{
-                
+                pointer-events: visible;
                 opacity: 1;
                 transform: translateY(0);
             }
+            
         }
     }
     .menu-login{
-        
         opacity: 0;
         padding: 15px 20px;
         position: absolute;
@@ -142,6 +149,15 @@ header{
             outline:none;
             background-color: #fff;
             color: rgba(0,0,0,0.5);
+        }
+        .user-profile{
+            a{
+                text-decoration: none;
+                color: rgba(0,0,0,0.5); ;
+                &:hover{
+                    color: $colorForSmallIcon;
+                }
+            }
         }
         button:hover{
             color: $colorForSmallIcon;
