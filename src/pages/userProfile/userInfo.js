@@ -27,7 +27,7 @@ export default class UserInfo extends Component {
                     </div>
                     <div className="info-item">
                         <div className=" info-key">
-                            <i class="far fa-envelope"></i> 
+                            <i className="far fa-envelope"></i> 
                         </div>
                         <div className=" info-value">
                             : {user.email}

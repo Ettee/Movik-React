@@ -83,6 +83,12 @@ class Header extends Component {
             
         }
     }
+    handleOnClickLinks=()=>{
+        if(window.location.pathname!=='/'){
+            this.props.history.push('/')
+        }
+        
+    }
     render() {
         this.checkLogin()
         this.LoginStatus()
@@ -107,16 +113,28 @@ class Header extends Component {
                     <div className="header-links ">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="#showing-coming-movie">Lịch chiếu</a>
+                                <a className="nav-link" 
+                                    href="#showing-coming-movie"
+                                    onClick={this.handleOnClickLinks}
+                                >Lịch chiếu</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#theater-block-home">Cụm rạp</a>
+                                <a className="nav-link" 
+                                    href="#theater-block-home"
+                                    onClick={this.handleOnClickLinks}
+                                >Cụm rạp</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#news-block">Tin tức</a>
+                                <a className="nav-link" 
+                                    href="#news-block"
+                                    onClick={this.handleOnClickLinks}
+                                >Tin tức</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#subs-block">Đăng kí</a>
+                                <a className="nav-link" 
+                                    href="#subs-block"
+                                    onClick={this.handleOnClickLinks}
+                                >Đăng kí</a>
                             </li>
                         </ul>
                     </div>

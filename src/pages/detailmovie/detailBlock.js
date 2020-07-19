@@ -12,11 +12,11 @@ export default class DetailBlock extends Component {
                                 Thông tin
                             </a>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link" data-toggle="pill" href="#movieReviewUser">
                                 Đánh giá
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                     {/* Tab panes */}
                     <div className="tab-content">
@@ -68,9 +68,9 @@ export default class DetailBlock extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="tab-pane container fade" id="movieReviewUser">
+                        {/* <div className="tab-pane container fade" id="movieReviewUser">
                             aa
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
