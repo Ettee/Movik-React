@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Switch } from "react-router-dom";
 import HomeTemplate from "./template/HomeTemplate";
-import {routesHome} from "./routes";
+import AdminTemplate from "./template/AdminTemplate";
+import {routesHome,routesAdmin} from "./routes";
 function App() {
   const showMenuHome = routes => {
     if (routes && routes.length > 0) {
@@ -20,12 +21,26 @@ function App() {
       });
     }
   };
+  const showMenuAdmin=routes=>{
+    if(routes && routes.length >0){
+      return routes.map((item,index)=>{
+        return (
+          <AdminTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        )
+      })
+    }
+  }
   return (
     <BrowserRouter>
       <div>
         <Switch>
           {showMenuHome(routesHome)}
-          
+          {showMenuAdmin(routesAdmin)}
         </Switch>
       </div>
     </BrowserRouter>
