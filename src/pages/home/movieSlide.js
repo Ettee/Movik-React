@@ -61,7 +61,7 @@ class MovieSlide extends Component {
                   settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    centerPadding: "60px",
+                    
                     rows:1,
                     arrows: false
                   }

@@ -8,5 +8,8 @@
     background-size: cover;
     .container-fluid{
         padding-left: 0;
-    }
+        .profile-content{
+            width: 100%;
+        }
+    } 
 }

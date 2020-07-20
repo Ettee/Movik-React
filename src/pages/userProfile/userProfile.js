@@ -20,11 +20,14 @@ export default class UserProfile extends Component {
         return (
             <div className="user-info-page">
                 <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-2">
-                            <UserInfo user={this.state.user}/>
+                    <div className=" row profile-content"> 
+                        <div className=" user-info-section col-xl-2">
+                            
+                            <div className="user-info-bar">
+                                <UserInfo user={this.state.user}/> 
+                            </div>  
                         </div>
-                        <div className="col-md-10">
+                        <div className=" col-xl-10 user-booking-info-section">
                             <UserBookingInfo taiKhoan={this.props.match.params.taiKhoan}/>
                         </div>
                     </div>
