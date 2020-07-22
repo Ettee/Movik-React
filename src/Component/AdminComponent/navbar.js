@@ -13,7 +13,7 @@ export default class Navbar extends Component {
         //     //chuyển tới trang đăng nhập cho admin bằng history.push() 
         //     //import withHistory
         // }
-        let admin=JSON.parse(localStorage.getItem("userKhachHang"))
+        let admin=JSON.parse(localStorage.getItem("userAdmin"))
         this.setState({
             admin
         })
@@ -37,7 +37,7 @@ export default class Navbar extends Component {
                                 
                                 to={"/admin"}
                                 >
-                                <i class="fas fa-users-cog text-light fa-lg mr-3" ></i>
+                                <i className="fas fa-users-cog text-light fa-lg mr-3" ></i>
                                 Quản lý người dùng
                             </NavLink>
                            
@@ -47,7 +47,7 @@ export default class Navbar extends Component {
                                 
                                 to={"/admin/movieManagement"}
                                 >                               
-                                <i class="fas fa-film text-light fa-lg mr-3"></i>
+                                <i className="fas fa-film text-light fa-lg mr-3"></i>
                                 Quản lý phim
                             </NavLink>
                         </li>
@@ -56,7 +56,7 @@ export default class Navbar extends Component {
                                 
                                 to={"/admin/theaterManagement"}
                                 >
-                                <i class="fas fa-clipboard-list text-light fa-lg mr-3"></i>
+                                <i className="fas fa-clipboard-list text-light fa-lg mr-3"></i>
                             Quản lý rạp
                             </NavLink>
                         </li>
@@ -65,7 +65,7 @@ export default class Navbar extends Component {
                                 
                                 to={"/admin/bookingManagement"}
                                 >
-                                <i class="fas fa-ticket-alt text-light fa-lg mr-3"></i>
+                                <i className="fas fa-ticket-alt text-light fa-lg mr-3"></i>
                                 Quản lý phòng chiếu & đặt vé
                             </NavLink>
                         </li>

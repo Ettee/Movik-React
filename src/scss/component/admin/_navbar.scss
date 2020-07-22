@@ -2,14 +2,14 @@
 @import "../../helper/mixin.scss";
 .navbar-admin{
   .navbar-brand{
-    color: $colorForSmallIcon;
+    color: $gray;
     font-size: 30px;
     text-shadow: 2px 5px 6px #000;
   }
     .sidebar {
         height: 100vh;
         // background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9)), url(images/img1.jpeg);
-        background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .6)), url(../../../img/Diamond-Sunset.svg);
+        background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .7)), url(../../../img/img1.jpeg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

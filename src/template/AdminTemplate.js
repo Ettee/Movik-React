@@ -10,10 +10,10 @@ const AdminLayout = props => {
       <Fragment>
           <div className="container-fluid" style={style} >
             <div className="row">
-                <div className="col-xl-2 col-lg-3 col-md-4">
+                <div className="col-xl-2 col-lg-3 col-md-4 no-paddingXRight">
                     <Navbar/>
                 </div>
-                <div className="col-xl-10 col-lg-9 col-md-8">
+                <div className="col-xl-10 col-lg-9 col-md-8 bg-dark ">
                     {props.children}
                 </div>
             </div>

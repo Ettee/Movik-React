@@ -1,0 +1,48 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.top-navbar{
+  .search-input {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #999;
+    transition: all .4s;
+    color: $gray;
+  }
+  
+  .search-input:focus {
+    color: $gray;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #dc3545;
+  }
+  
+  .search-button {
+    border-radius: 50%;
+    padding: 10px 16px;
+    transition: all .4s;
+  }
+  
+  .search-button:hover {
+    background-color: #eee;
+    transform: translateY(-1px);
+  }
+  
+  .icon-parent {
+    position: relative;
+  }
+  
+  .icon-bullet::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    height: 12px;
+    width: 12px;
+    background-color: #f44336;
+    border-radius: 50%;
+  }
+  .navbar-nav{
+    flex-direction: row;
+  }
+}

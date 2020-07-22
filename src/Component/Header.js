@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import { withRouter } from "react-router";
 class Header extends Component {
     checkLogin=()=>{
-        if(localStorage.getItem('userKhachHang')){
+        if(localStorage.getItem('userKhachHang')||localStorage.getItem('userAdmin')){
            
             return (
                 <Fragment></Fragment>
@@ -31,9 +31,17 @@ class Header extends Component {
             <a>Xin Chào, {userName}</a>
             )
         }else{
-            return (
-                <a data-toggle="modal" data-target="#LoginModal">Đăng Nhập</a>
-            )
+            if(localStorage.getItem('userAdmin')){
+                let userInLocalStore =localStorage.getItem('userAdmin')
+                let userName =JSON.parse(userInLocalStore).taiKhoan
+                return (
+                <a>Xin Chào, {userName}</a>
+                )
+            }else{
+                return (
+                    <a data-toggle="modal" data-target="#LoginModal">Đăng Nhập</a>
+                )
+            } 
         }
     }
     showAccMenuOnHover=()=>{
@@ -52,13 +60,30 @@ class Header extends Component {
                 </div>
             )
         }else{
-            return(
-                <Fragment></Fragment>
-            )
+            if(localStorage.getItem('userAdmin')){
+                let taiKhoan=JSON.parse(localStorage.getItem('userAdmin'))
+                return(
+                    <div className="menu-login text-center menu-hover-user">
+                        <button className="user-profile">
+                            <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
+                                Profile
+                            </NavLink>
+                        </button>
+                        <button onClick={this.logout}>
+                            Đăng xuất
+                        </button>
+                    </div>
+                )
+            }else{
+                return(
+                    <Fragment></Fragment>
+                )
+            }
+            
         }
     }
     logout=()=>{
-        if(localStorage.getItem('userKhachHang')){
+        if(localStorage.getItem('userKhachHang')||localStorage.getItem('userAdmin')){
             swal({
                 title: "Đăng xuất ",
                 text: "Bạn sẽ không thể tiếp tục đặt vé",
@@ -69,6 +94,7 @@ class Header extends Component {
               .then((yes) => {
                 if (yes) {
                     localStorage.removeItem('userKhachHang')
+                    localStorage.removeItem('userAdmin')
                     swal("Đăng xuất thành công.", {
                     icon: "success",
                     }).then((ok)=>{

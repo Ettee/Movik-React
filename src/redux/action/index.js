@@ -134,7 +134,7 @@ export const actDangKi=user =>{
         })
     }
 }
-export const actDangNhap =(user )=>{
+export const actDangNhap =(user)=>{
     return dispatch=>{
         Axios({
             method:"POST",
@@ -142,7 +142,7 @@ export const actDangNhap =(user )=>{
             data:user
         })
         .then(rs=>{
-            if(rs.data.maLoaiNguoiDung === "KhachHang" || rs.data.maLoaiNguoiDung === "QuanTri" ){
+            if(rs.data.maLoaiNguoiDung === "KhachHang" ){
                 localStorage.setItem("userKhachHang",JSON.stringify(rs.data))
                 swal({
                     title: "Đăng nhập thành công",
@@ -154,6 +154,21 @@ export const actDangNhap =(user )=>{
                         window.location.reload()
                     }
                   });
+            }else{
+                if(rs.data.maLoaiNguoiDung === "QuanTri"){
+                    localStorage.setItem("userAdmin",JSON.stringify(rs.data))
+                    swal({
+                        title: "Đăng nhập thành công",
+                        text:"ADMIN MODE",
+                        icon: "success",
+                        buttons: "OK"
+                        
+                      }).then((ok)=>{
+                        if(ok){
+                            window.location.reload()
+                        }
+                      });
+                }
             }
         })
         .catch(err=>{
@@ -222,6 +237,67 @@ export const actGetUserProfile=(taiKhoan)=>{
         })
         .catch(err=>{
             console.log(err)
+        })
+    }
+}
+export const actLayDanhSachUserPhanTrang=(soTrang)=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP09&soTrang=${soTrang}&soPhanTuTrenTrang=10`
+        }).then((rs)=>{
+            dispatch({
+                type:ActionType.DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+export const actLayDanhSachTatCaNguoiDung=()=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:'http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP09'
+        }).then((rs)=>{
+            dispatch({
+                type:ActionType.DANH_SACH_TAT_CA_NGUOI_DUNG,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+export const actUpdateUser=(obj,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"PUT",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+            data:obj,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }).then(rs=>{
+            swal({
+                text:"Cập nhật thông tin người dùng thành công",
+                icon:"success",
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        }).catch((err)=>{
+            console.log(err)
+            swal({
+                text:"Đã xảy ra lỗi khi cập nhật thông tin",
+                icon:"error",
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
         })
     }
 }

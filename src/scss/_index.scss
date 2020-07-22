@@ -22,6 +22,8 @@
 @import "./component/userprofile/user-profile";
 @import "./component/userprofile/user-booking-info";
 @import "./component/admin/navbar";
+@import "./component/admin/search-for-user";
+@import "./component/admin/user-management";
 *{
     box-sizing: border-box;
     margin: 0;
@@ -57,5 +59,15 @@
     .swal-button {
         @include GradientBackgroundTheme();
         color:#fff;
+    }
+    .no-paddingX{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .no-paddingXRight{
+        padding-right: 0 !important;
+    }
+    .no-paddingXLeft{
+        padding-left: 0 !important;
     }
 }
