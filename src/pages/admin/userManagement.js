@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import * as action from "../../redux/action";
 import swal from 'sweetalert';
 import { withRouter } from "react-router";
+import SignUpModal from "../../Component/AdminComponent/signUpModal";
 class UserManagement extends Component {
     constructor(props){
         super(props)
@@ -78,6 +79,32 @@ class UserManagement extends Component {
         })
 
     }
+    handleDeleteUser=(taiKhoan)=>{
+        let userAD=JSON.parse(localStorage.getItem("userAdmin"))
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this account!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                    console.log(taiKhoan)
+                    this.props.xoaNguoiDung(taiKhoan,userAD.accessToken)
+                    setTimeout(()=>{
+                        this.props.layDanhSachUser(this.state.soTrang);
+                        this.setState({
+                            indexToExecuteAction:100
+                        })
+                    },1600)
+               
+              
+            } else {
+              swal("Account is safe!");
+            }
+          });
+        
+    }
     renderUser=()=>{   
         console.log()
         if(Object.keys(this.props.danhSachUser).length !== 0){ 
@@ -146,13 +173,13 @@ class UserManagement extends Component {
                                             onClick={() => { this.handleEdit(index,item.taiKhoan,item.hoTen,item.matKhau,item.email,item.soDt,item.maLoaiNguoiDung)}}></i>
                                     </span>
                                     <span className=" w-75 mx-1 py-2 action-user">
-                                        <i className="fas fa-user-slash action-user-delete" data-toggle="tooltip" title="Delete user"></i>
+                                        <i className="fas fa-user-slash action-user-delete" data-toggle="tooltip" title="Delete user" 
+                                            onClick={()=>{this.handleDeleteUser(item.taiKhoan)}}></i>
                                     </span>
                                 </td>
                             </tr>
                         )
-                    }
-                    
+                    }   
                 })
             }else{
                 //trường hợp có keyword
@@ -220,7 +247,7 @@ class UserManagement extends Component {
                                         <i className="fas fa-user-edit action-user-edit" data-toggle="tooltip" title="Edit user" onClick={() => { this.handleEdit(index) }}></i>
                                     </span>
                                     <span className=" w-75 mx-1 py-2 action-user">
-                                        <i className="fas fa-user-slash action-user-delete" data-toggle="tooltip" title="Delete user"></i>
+                                        <i className="fas fa-user-slash action-user-delete" data-toggle="tooltip" title="Delete user" onClick={()=>{this.handleDeleteUser(item.taiKhoan)}}></i>
                                     </span>
                                 </td>
                             </tr>
@@ -306,7 +333,7 @@ class UserManagement extends Component {
                         </ul>
                     </nav>
                 </div>
-                
+                <SignUpModal/>
 
             </Fragment>
         )
@@ -328,6 +355,9 @@ const mapDispatchToProps = dispatch => {
         },
         layDanhSachTatCaUser:()=>{
             dispatch(action.actLayDanhSachTatCaNguoiDung())
+        },
+        xoaNguoiDung:(taiKhoan,token)=>{
+            dispatch(action.actDeleteUser(taiKhoan,token))
         }
     }
 }

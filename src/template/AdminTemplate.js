@@ -2,7 +2,9 @@ import React,{Fragment} from 'react';
 import { Route } from "react-router-dom";
 import Navbar from "../Component/AdminComponent/navbar"; 
 const style={
-    paddingLeft:"0"
+    paddingLeft:"0",
+    backgroundColor:"#343a40"
+
 }
 
 const AdminLayout = props => {

@@ -1,0 +1,14 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.movieManagement{
+    .poster-row{
+        img{
+            width: 100px;
+        }
+    }
+    .more-info{
+        font-size: 25px;
+        color: $green;
+        cursor: pointer;
+    }
+}

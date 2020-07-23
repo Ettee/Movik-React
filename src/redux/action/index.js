@@ -17,7 +17,6 @@ export const actGetListMovieAPI =()=>{
         })
     }
 }
-//hàm dùng để gọi api
 export const actGetDetailMovieAPI =movieID =>{
     return dispatch=> {
         Axios({
@@ -161,13 +160,13 @@ export const actDangNhap =(user)=>{
                         title: "Đăng nhập thành công",
                         text:"ADMIN MODE",
                         icon: "success",
-                        buttons: "OK"
+                        buttons: "OK",
                         
-                      }).then((ok)=>{
+                    }).then((ok)=>{
                         if(ok){
                             window.location.reload()
                         }
-                      });
+                    });
                 }
             }
         })
@@ -272,6 +271,37 @@ export const actLayDanhSachTatCaNguoiDung=()=>{
         })
     }
 }
+export const actDeleteUser=(taiKhoan,token)=>{
+    console.log(taiKhoan)
+    return dispatch=>{
+        Axios({
+            method:"DELETE",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }).then((rs)=>{
+            swal({
+                title:"Xóa người dùng thành công",
+                icon:"success",text:"Good job",
+                buttons:false,
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+            swal({
+                text:err.response.data,
+                icon:"error",
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+    }
+}
 export const actUpdateUser=(obj,token)=>{
     return dispatch=>{
         Axios({
@@ -306,4 +336,21 @@ export const actGetListMovie =listMovie =>{
         type:ActionType.GET_LIST_MOVIE,
         data:listMovie
     };
+}
+export const actLayDanhSachPhimPhanTrang=(soTrang)=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=${soTrang}&soPhanTuTrenTrang=4`
+        })
+        .then((rs)=>{
+            dispatch({
+                type:ActionType.DANH_SACH_PHIM_PHAN_TRANG,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
 }

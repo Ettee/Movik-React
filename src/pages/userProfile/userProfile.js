@@ -10,7 +10,14 @@ export default class UserProfile extends Component {
         }
     }
     componentDidMount(){
-        let user=JSON.parse(localStorage.getItem("userKhachHang"))
+        let user
+        if(localStorage.getItem("userKhachHang")){
+            user=JSON.parse(localStorage.getItem("userKhachHang"))
+        }else{
+            if(localStorage.getItem("userAdmin")){
+                user=JSON.parse(localStorage.getItem("userAdmin"))
+            }
+        }
         this.setState({
             user
         })

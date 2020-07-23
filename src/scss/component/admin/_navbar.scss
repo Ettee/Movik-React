@@ -46,8 +46,10 @@
       .icon-parent {
         position: relative;
       }
+      .nav-item.log-out-admin{
+        cursor: pointer;
+      }
       
-    
       
       @media (max-width: 768px) {
         .sidebar {
@@ -59,4 +61,11 @@
           position: static;
         }
       }
+}
+.logOutAdmin{
+  background-color: $darkLite;
+  .swal-text{
+    color: #fff;
+    text-align: center;
+  }
 }

@@ -69,6 +69,11 @@ class Header extends Component {
                                 Profile
                             </NavLink>
                         </button>
+                        <button className="user-admin">
+                            <NavLink to={"/admin"}>
+                                Movik Manager
+                            </NavLink>
+                        </button>
                         <button onClick={this.logout}>
                             Đăng xuất
                         </button>
@@ -132,7 +137,7 @@ class Header extends Component {
                         type="button"
                         data-toggle="collapse"
                         data-target="#collapsibleNavbar"
-                    >
+                        >
                         <span className="navbar-toggler-icon" />
                     </button>
                     {/* Links */}

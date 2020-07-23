@@ -38,7 +38,7 @@ export default class SearchBarForUser extends Component {
                         </form>
                     </div>    
                     <div className="col-md-4 text-right" >
-                        <i className="fas fa-user-plus" style={style}></i>
+                        <i className="fas fa-user-plus" style={style} data-toggle="modal" data-target="#signUpAdmin"></i>
                     </div>
                 </div>
             </div>

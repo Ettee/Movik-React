@@ -7,7 +7,8 @@ let initialState ={
     danhSachLichChieuTheoMaHeThongRap:[],
     listOfTheaterSystem:[],
     chiTietPhongChieu:{},
-    datVe:''
+    datVe:'',
+    danhSachPhimPhanTrang:{}
 };
 const movieReducer =(state = initialState,action) =>{
     switch(action.type){
@@ -31,6 +32,9 @@ const movieReducer =(state = initialState,action) =>{
             return {...state}
         case ActionType.DAT_VE:
             state.datVe = action.data
+            return { ...state }
+        case ActionType.DANH_SACH_PHIM_PHAN_TRANG:
+            state.danhSachPhimPhanTrang = action.data
             return { ...state }
         default: 
             return {...state};

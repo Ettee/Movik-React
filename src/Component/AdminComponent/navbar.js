@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom';
-export default class Navbar extends Component {
+import {withRouter} from "react-router-dom"
+import swal from 'sweetalert';
+class Navbar extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -18,10 +20,26 @@ export default class Navbar extends Component {
             admin
         })
     }
+    logOut=()=>{
+        swal({
+            title:"Bạn đang chuẩn bị thoát khỏi quyền quản trị",
+            icon:"warning",
+            text:"Bạn sẽ được đưa về trang chủ Movik và không thể tiếp tục quản trị ở Movik Manager.",
+            buttons: true,
+            dangerMode: true,
+
+        }).then(ok=>{
+            if(ok){
+                localStorage.removeItem("userAdmin")
+                this.props.history.push("/")
+            }
+        })
+    }
     render() {
+        
         return (
             <div className="navbar-admin">
-                <div className=" sidebar">
+                <div className="sidebar" >
                     <div
                         className="navbar-brand d-block mx-auto text-center py-3 mb-4 bottom-border"
                     >
@@ -69,6 +87,12 @@ export default class Navbar extends Component {
                                 Quản lý phòng chiếu & đặt vé
                             </NavLink>
                         </li>
+                        <li className=" nav-item log-out-admin">
+                            <a className="nav-link text-white p-3 mb-2 sidebar-link" onClick={this.logOut}>
+                                <i className="fas fa-sign-out-alt text-light fa-lg mr-3"></i>
+                                Đăng xuất
+                            </a>                  
+                        </li>
                     </ul>
                 </div>
 
@@ -76,3 +100,4 @@ export default class Navbar extends Component {
         )
     }
 }
+export default withRouter(Navbar)

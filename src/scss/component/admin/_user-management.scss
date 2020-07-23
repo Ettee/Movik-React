@@ -48,3 +48,10 @@
     }
     
 }
+.pagination-right{
+    display: flex;
+    justify-content: flex-end;
+    .page-item{
+        cursor: pointer;
+    }
+}

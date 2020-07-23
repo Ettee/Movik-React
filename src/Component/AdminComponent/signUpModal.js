@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+import swal from 'sweetalert';
 import {connect} from "react-redux";
 import * as action from "../../redux/action";
-import swal from 'sweetalert';
-class Signup extends Component {
+class SignUpModal extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -13,21 +13,23 @@ class Signup extends Component {
                 email: "",
                 soDT: "",
                 maNhom: "GP09",
-                maLoaiNguoiDung: "KhachHang",
+                maLoaiNguoiDung: "",
             },
             errors: {
                 hoTen: "",
                 taiKhoan: "",
                 matKhau: "",
                 email: "",
-                soDT: ""
+                soDT: "",
+                maLoaiNguoiDung:""
             },
             formValid: false,
             hoTenValid: false,
             taiKhoanValid: false,
             matKhauValid: false,
             emailValid: false,
-            soDTValid: false
+            soDTValid: false,
+            maLoaiNguoiDungValid:false
             
 
         }
@@ -35,7 +37,7 @@ class Signup extends Component {
     handleErrors=(e)=>{
         let{name,value}=e.target;
         let message=value===""?name+" không được rỗng":"";
-        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid}=this.state;
+        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid,maLoaiNguoiDungValid}=this.state;
         switch(name){
             case "hoTen":
                 hoTenValid = message !==""? false:true;
@@ -67,6 +69,9 @@ class Signup extends Component {
             case "soDT":
                 soDTValid =message !== ""?false:true;
                 break;
+            case "maLoaiNguoiDung":
+                maLoaiNguoiDungValid=message !==""?false:true;
+                break;
             default:
                 break;    
         }
@@ -77,7 +82,8 @@ class Signup extends Component {
                 taiKhoanValid,
                 matKhauValid,
                 emailValid,
-                soDTValid
+                soDTValid,
+                maLoaiNguoiDungValid
             },
             ()=>{
                 this.validationForm()
@@ -87,16 +93,17 @@ class Signup extends Component {
     }
     handleOnChange=(e)=>{
         let{name,value}=e.target;
+
         this.setState({
             values:{...this.state.values,[name]:value}
         })
         
     }
     validationForm=()=>{
-        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid}=this.state;
+        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid,maLoaiNguoiDungValid}=this.state;
         this.setState(
             {
-                formValid: hoTenValid && taiKhoanValid && matKhauValid && emailValid && soDTValid
+                formValid: hoTenValid && taiKhoanValid && matKhauValid && emailValid && soDTValid,maLoaiNguoiDungValid
             }
         );
     }
@@ -114,21 +121,19 @@ class Signup extends Component {
         
         
     }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
     render() {
         return (
-            <Fragment>
-                <section className="sign-up-section">
-                    <div
-                        className="cover-bg"
-                        style={{ backgroundImage: "url(../img/backapp.jpg)", height: "100vh" }}
-                    >
-                        <div className="container">
-                            <div className="vertical-box">
-                                <div className="sign-up-form">
-                                    <form onSubmit={this.handleSubmit}>
+            <div className="signUpAdmin ">
+                <div className="modal" id="signUpAdmin">
+                    <div className="modal-dialog">
+                        <div className="modal-content bg-dark">
+                            {/* Modal Header */}
+                            <div className="modal-header">
+                                <h4 className="modal-title">Thêm người dùng</h4>
+                            </div>
+                            {/* Modal body */}
+                            <div className="modal-body">
+                            <form onSubmit={this.handleSubmit}>
                                         <div className="form-group">
                                             <label htmlFor="hoTen">Họ và tên</label>
                                             <input
@@ -209,21 +214,35 @@ class Signup extends Component {
                                                     <div className="form-err my-2">{this.state.errors.soDT}</div>
                                                 ) : ("")}
                                         </div>
-                                            <div className="form-group">
-                                                <button type="submit" className="btn-login">
-                                                    Đăng kí tài khoản
-                                                </button>
-                                            </div>
+                                        <div className="form-group">
+                                                <label htmlFor="maLoaiNguoiDung">Loại người dùng</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="QuanTri,KhachHang..."
+                                                    id="maLoaiNguoiDung"
+                                                    name="maLoaiNguoiDung"
+                                                    onChange={this.handleOnChange}
+                                                    onBlur={this.handleErrors}
+                                                    onKeyUp={this.handleErrors}
+                                                />
+                                                
+                                                {this.state.errors.maLoaiNguoiDung !== "" ? (
+                                                    <div className="form-err my-2">{this.state.errors.maLoaiNguoiDung}</div>
+                                                ) : ("")}
+                                        </div>
+                                        <div className="form-group">
+                                             <button type="submit" className="btn-login-admin">
+                                                Thêm người dùng
+                                            </button>
+                                        </div>
                                             
                                     </form>
-                                    
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
-                </section>
-            </Fragment>
-            
+                </div>
+            </div>
         )
     }
 }
@@ -234,4 +253,4 @@ const mapDispatchToProps =dispatch=>{
         }
     }
 }
-export default connect(null,mapDispatchToProps) (Signup);
+export default connect(null,mapDispatchToProps) (SignUpModal);

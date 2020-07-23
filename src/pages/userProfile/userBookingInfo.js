@@ -116,7 +116,7 @@ class UserBookingInfo extends Component {
     render() {
         return (
             <div className="user-booking-info">
-                <table className="table booking-detail">
+                <table className="table booking-detail table-hover">
                     <thead className="title">
                         <tr>
                             <th>Mã vé</th>
