@@ -48,14 +48,14 @@ class Header extends Component {
         if(localStorage.getItem('userKhachHang')){
             let taiKhoan=JSON.parse(localStorage.getItem('userKhachHang'))
             return(
-                <div className="menu-login text-center menu-hover-user">
+                <div className="menu-login  menu-hover-user">
                     <button className="user-profile">
                         <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
-                            Profile
+                        <i className="fas fa-address-card"></i> Profile
                         </NavLink>
                     </button>
                     <button onClick={this.logout}>
-                        Đăng xuất
+                    <i className="fas fa-sign-out-alt"></i> Đăng xuất
                     </button>
                 </div>
             )
@@ -63,19 +63,19 @@ class Header extends Component {
             if(localStorage.getItem('userAdmin')){
                 let taiKhoan=JSON.parse(localStorage.getItem('userAdmin'))
                 return(
-                    <div className="menu-login text-center menu-hover-user">
+                    <div className="menu-login  menu-hover-user">
                         <button className="user-profile">
                             <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
-                                Profile
+                            <i className="fas fa-address-card"></i> Profile
                             </NavLink>
                         </button>
                         <button className="user-admin">
                             <NavLink to={"/admin"}>
-                                Movik Manager
+                            <i className="fas fa-cogs"></i> Movik Manager
                             </NavLink>
                         </button>
                         <button onClick={this.logout}>
-                            Đăng xuất
+                        <i className="fas fa-sign-out-alt"></i> Đăng xuất
                         </button>
                     </div>
                 )
@@ -94,14 +94,17 @@ class Header extends Component {
                 text: "Bạn sẽ không thể tiếp tục đặt vé",
                 icon: "warning",
                 buttons: true,
+                
                 dangerMode: true,
               })
               .then((yes) => {
                 if (yes) {
                     localStorage.removeItem('userKhachHang')
                     localStorage.removeItem('userAdmin')
-                    swal("Đăng xuất thành công.", {
+                    swal({
+                    title:"Đăng xuất thành công",
                     icon: "success",
+                    
                     }).then((ok)=>{
                         if(ok){
                             this.props.history.push("/")

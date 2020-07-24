@@ -2,7 +2,7 @@ import React, { Component,lazy,Suspense } from 'react';
 import DetailMovieTop from './detailMovieTop';
 import DetailBlock from './detailBlock';
 import TheaterBlock from '../home/theaterBlock';
-import TrailerBlock from './trailerBlock';
+
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 class DetailMovie extends Component {
@@ -25,7 +25,7 @@ class DetailMovie extends Component {
                 <div className="movie-detail-theater">
                     <TheaterBlock movie={movie}/>
                 </div>
-                <TrailerBlock movie={movie}/>
+                
             </div>
         )
     }

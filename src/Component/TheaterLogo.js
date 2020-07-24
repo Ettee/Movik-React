@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 export default class TheaterLogo extends Component {
     render() {
-        let {logo,maHeThongRap,biDanh,key}=this.props;
+        let {logo,maHeThongRap,biDanh}=this.props;
         return (
-            <li className="nav-item " key={key}>
+            <li className="nav-item " >
                 <a
                     className="nav-link"
                     data-toggle="pill"

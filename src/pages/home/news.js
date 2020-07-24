@@ -26,10 +26,10 @@ class News extends Component {
   renderNews=()=>{
     let news= this.getNews()
     let url=''
-    return news.map(item=>{
+    return news.map((item,index)=>{
       url="url(" + item.urlToImage+ ")"
       return(
-        <div className="grid-item">
+        <div className="grid-item" key={index}>
           <div className="card-grid-news">
             <a href={item.url} target="_blank">
               <div className="news-img">

@@ -1,0 +1,70 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.modal-detail-movie{
+    .modal-content{
+        background-color: $darkLite;
+    }
+    .movie-poster{
+        img{
+            border-radius: 5px;
+        }
+        input{
+            border-radius: 5px;
+            border: 1px solid $gray;
+            padding: 3px 5px;
+            background-color: $darkLite;
+            color: $gray;
+            
+        }
+    }
+    .disabled{
+        background-color: transparent ;
+        border: none !important;
+        pointer-events: none;
+    }
+    .movie-info-admin{
+        label{
+            color: $colorForSmallIcon;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        textarea{
+            display: block;
+            width: 100%;
+            padding: 2px;
+            background-color: $darkLite;
+            color: $gray;
+            border: 1px solid $gray;
+        }
+        input{
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid $gray;
+            padding: 3px 5px;
+            background-color: $darkLite;
+            color: $gray; 
+        }   
+    }
+    .modal-footer{
+        .edit-movie{
+            color: $yellow;  
+            cursor: pointer;   
+            font-size: 25px;     
+        }
+        .delete-movie{
+            color: $red;
+            cursor: pointer;
+            font-size: 25px;   
+        }
+        .check-edit{
+            color:$green;
+            cursor: pointer;
+            font-size: 25px;   
+        }
+        .cancel-edit{
+            color:$red;
+            cursor: pointer;
+            font-size: 25px;  
+        }
+    }
+}

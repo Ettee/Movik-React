@@ -7,11 +7,11 @@ export default class MovieCardInSlide extends Component {
             return (
                 <Fragment>
                     <div>
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
+                        <i className="fa fa-star" />
+                        <i className="fa fa-star" />
+                        <i className="fa fa-star" />
+                        <i className="fa fa-star" />
+                        <i className="fa fa-star" />
                     </div>
                 </Fragment>
             )
@@ -20,10 +20,10 @@ export default class MovieCardInSlide extends Component {
                 return (
                     <Fragment>
                         <div>
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star" />
+                            <i className="fa fa-star" />
+                            <i className="fa fa-star" />
+                            <i className="fa fa-star" />
+                            <i className="fa fa-star" />
                         </div>
 
 
@@ -34,9 +34,9 @@ export default class MovieCardInSlide extends Component {
                     return (
                         <Fragment>
                             <div>
-                                <i className="fas fa-star" />
-                                <i className="fas fa-star" />
-                                <i className="fas fa-star" />
+                                <i className="fa fa-star" />
+                                <i className="fa fa-star" />
+                                <i className="fa fa-star" />
                             </div>
 
 
@@ -47,8 +47,8 @@ export default class MovieCardInSlide extends Component {
                         return (
                             <Fragment>
                                 <div>
-                                    <i className="fas fa-star" />
-                                    <i className="fas fa-star" />
+                                    <i className="fa fa-star" />
+                                    <i className="fa fa-star" />
                                 </div>
 
                             </Fragment>
@@ -56,7 +56,7 @@ export default class MovieCardInSlide extends Component {
                     } else {
                         return (
                             <Fragment>
-                                <i className="fas fa-star" />
+                                <i className="fa fa-star" />
 
                             </Fragment>
                         )

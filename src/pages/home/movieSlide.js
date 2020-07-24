@@ -7,7 +7,7 @@ class MovieSlide extends Component {
     renderMovieCardInSlide =(isTicketNotAvailable)=>{
         return this.props.listMovie.map((movie,index)=>{
             return (
-                <div>
+                <div key={index}>
                     <MovieCardInSlide 
                         key={index}
                         movie={movie}

@@ -1,7 +1,26 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .movieManagement{
+    .movieManagementTop{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        margin: auto;
+        .add-film{
+           
+            i{
+                border: 2px solid $yellow;
+                padding:7px;
+                border-radius: 50%;
+                font-size: 30px;
+                color: $yellow;
+                cursor: pointer;
+            }
+        }
+    }   
     .poster-row{
+        height: 180px;
         img{
             width: 100px;
         }

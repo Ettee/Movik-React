@@ -30,7 +30,7 @@ export default class DetailMovieTop extends Component {
                     className="bg-cover-fade"
                     style={{
                         backgroundImage:
-                            "url(../img/film_bgcover/images.jpg)"
+                            `url(${movie?.hinhAnh})`
                     }}
                 ></div>
                 <div className="bg-overlay-fade" />

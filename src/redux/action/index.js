@@ -146,7 +146,8 @@ export const actDangNhap =(user)=>{
                 swal({
                     title: "Đăng nhập thành công",
                     icon: "success",
-                    buttons: "OK"
+                    buttons: "OK",
+                    
                     
                   }).then((ok)=>{
                     if(ok){
@@ -162,6 +163,7 @@ export const actDangNhap =(user)=>{
                         icon: "success",
                         buttons: "OK",
                         
+                        
                     }).then((ok)=>{
                         if(ok){
                             window.location.reload()
@@ -176,6 +178,7 @@ export const actDangNhap =(user)=>{
                 text:err.response.data,
                 icon: "error",
                 button: "OK",
+                className:"dark-sweat-modal"
             });
         });
     }
@@ -316,6 +319,7 @@ export const actUpdateUser=(obj,token)=>{
                 text:"Cập nhật thông tin người dùng thành công",
                 icon:"success",
                 timer:1500,
+                className:"dark-sweat-modal",
                 closeOnEsc:false,
                 buttons:false
             })
@@ -325,6 +329,7 @@ export const actUpdateUser=(obj,token)=>{
                 text:"Đã xảy ra lỗi khi cập nhật thông tin",
                 icon:"error",
                 timer:1500,
+                className:"dark-sweat-modal",
                 closeOnEsc:false,
                 buttons:false
             })
@@ -351,6 +356,74 @@ export const actLayDanhSachPhimPhanTrang=(soTrang)=>{
         })
         .catch(err=>{
             console.log(err)
+        })
+    }
+}
+export const actUpdateMovie=(obj,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim",
+            data:obj,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then((rs)=>{
+            swal({
+                icon:"success",
+                text:"Cập nhật phim thành công",
+                timer:1500,
+                className:"dark-sweat-modal",
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch((err)=>{
+            console.log(err.response.data)
+            swal({
+                title:"Đã xảy ra lỗi khi cập nhật"  ,
+                icon:"error",
+                text:err.response.data,
+                timer:1500,
+                className:"dark-sweat-modal",
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+    }
+}
+export const actDeleteMovie=(maPhim,token)=>{
+    console.log(maPhim)
+    return dispatch=>{
+        Axios({
+            method:"DELETE",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then((rs)=>{
+            swal({
+                icon:"success",
+                text:"Xóa phim phim thành công",
+                timer:1500,
+                className:"dark-sweat-modal",
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+            swal({
+                title:"😲"   ,
+                icon:"error",
+                className:"dark-sweat-modal",
+                text:err.response.data,
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
         })
     }
 }

@@ -16,15 +16,15 @@ class UserBookingInfo extends Component {
         let soLuongGhe=0
         if(Object.keys(this.props.bookingDetail).length !== 0){
             if(this.props.bookingDetail.thongTinDatVe.length!==0){
-                return this.props.bookingDetail.thongTinDatVe.map(item=>{
+                return this.props.bookingDetail.thongTinDatVe.map((item,index)=>{
                     soLuongGhe=item.danhSachGhe.length
                     return(
-                        <tr>
+                        <tr key={index}>
                             <td>{item.maVe}</td>
                             <td className="text-center">{item.tenPhim}</td>
                             <td className="text-center">{soLuongGhe}</td>
                             <td className="text-center">{new Date(item.ngayDat).toLocaleDateString()}</td>
-                            <td className="text-center">{new Date(item.ngayDat).toLocaleTimeString()}<span className="detail-more"><i class="far fa-plus-square" onClick={()=>{this.handleDetailMore(item)}}></i></span></td> 
+                            <td className="text-center">{new Date(item.ngayDat).toLocaleTimeString()}<span className="detail-more"><i className="far fa-plus-square" onClick={()=>{this.handleDetailMore(item)}}></i></span></td> 
                         </tr>
                      )
                 })

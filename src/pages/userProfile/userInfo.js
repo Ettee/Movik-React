@@ -8,7 +8,7 @@ export default class UserInfo extends Component {
             <div className="user-info">
                 <div className="user-info-avatar">
                     <div className="avarta">
-                        <i class="fas fa-user-circle"></i>
+                        <i className="fas fa-user-circle"></i>
                     </div>
                     
                 </div>
@@ -19,7 +19,7 @@ export default class UserInfo extends Component {
                     </div>
                     <div className="info-item">
                         <div className=" info-key">
-                            <i class="fas fa-signature"></i>
+                            <i className="fas fa-signature"></i>
                         </div>
                         <div className=" info-value">
                             : {user.hoTen}
@@ -35,7 +35,7 @@ export default class UserInfo extends Component {
                     </div>
                     <div className="info-item">
                         <div className=" info-key">
-                            <i class="fas fa-phone"></i> 
+                            <i className="fas fa-phone"></i> 
                         </div>
                         <div className=" info-value">
                             : {user.soDT}
