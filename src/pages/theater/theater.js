@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react'
+ import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 import { isEmptyObject } from 'jquery';
@@ -131,7 +131,7 @@ class Theater extends Component {
                     <section className="movie-picked">
                         <div className="container">
                             <div className="row">
-                                <div className="col-md-8">
+                                <div className="col-md-8 ">
                                     <div className="movie-name-title">
                                         <h1 className="text-uppercase">
                                             {thongTinPhim.tenPhim} <span className="age-tag">(C18)</span>
