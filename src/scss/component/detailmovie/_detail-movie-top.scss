@@ -30,7 +30,7 @@
             display: flex;
             .film-imgTop{
 				margin: 10px;
-				background-size: contain;
+				background-size: cover;
                 .card-overlay{
                     &:hover{
                         i{
