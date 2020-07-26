@@ -146,10 +146,8 @@ export const actDangNhap =(user)=>{
                 swal({
                     title: "Đăng nhập thành công",
                     icon: "success",
-                    buttons: "OK",
-                    
-                    
-                  }).then((ok)=>{
+                    buttons: "OK",                    
+                }).then((ok)=>{
                     if(ok){
                         window.location.reload()
                     }
@@ -162,8 +160,6 @@ export const actDangNhap =(user)=>{
                         text:"ADMIN MODE",
                         icon: "success",
                         buttons: "OK",
-                        
-                        
                     }).then((ok)=>{
                         if(ok){
                             window.location.reload()
@@ -178,7 +174,7 @@ export const actDangNhap =(user)=>{
                 text:err.response.data,
                 icon: "error",
                 button: "OK",
-                className:"dark-sweat-modal"
+                
             });
         });
     }
@@ -319,7 +315,7 @@ export const actUpdateUser=(obj,token)=>{
                 text:"Cập nhật thông tin người dùng thành công",
                 icon:"success",
                 timer:1500,
-                className:"dark-sweat-modal",
+               
                 closeOnEsc:false,
                 buttons:false
             })
@@ -329,7 +325,7 @@ export const actUpdateUser=(obj,token)=>{
                 text:"Đã xảy ra lỗi khi cập nhật thông tin",
                 icon:"error",
                 timer:1500,
-                className:"dark-sweat-modal",
+                
                 closeOnEsc:false,
                 buttons:false
             })
@@ -374,7 +370,7 @@ export const actUpdateMovie=(obj,token)=>{
                 icon:"success",
                 text:"Cập nhật phim thành công",
                 timer:1500,
-                className:"dark-sweat-modal",
+               
                 closeOnEsc:false,
                 buttons:false
             })
@@ -386,7 +382,7 @@ export const actUpdateMovie=(obj,token)=>{
                 icon:"error",
                 text:err.response.data,
                 timer:1500,
-                className:"dark-sweat-modal",
+                
                 closeOnEsc:false,
                 buttons:false
             })
@@ -408,7 +404,7 @@ export const actDeleteMovie=(maPhim,token)=>{
                 icon:"success",
                 text:"Xóa phim phim thành công",
                 timer:1500,
-                className:"dark-sweat-modal",
+                
                 closeOnEsc:false,
                 buttons:false
             })
@@ -418,7 +414,39 @@ export const actDeleteMovie=(maPhim,token)=>{
             swal({
                 title:"😲"   ,
                 icon:"error",
-                className:"dark-sweat-modal",
+                
+                text:err.response.data,
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+    }
+}
+export const actAddMovie=(frd,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
+            data:frd,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then((rs)=>{
+            swal({
+                icon:"success",
+                text:"Thêm phim thành công",
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch((err)=>{
+            console.log(err.response.data)
+            swal({
+                title:"Đã xảy ra lỗi khi thêm phim"  ,
+                icon:"error",
                 text:err.response.data,
                 timer:1500,
                 closeOnEsc:false,

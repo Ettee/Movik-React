@@ -74,7 +74,7 @@ class movieManagement extends Component {
                 <div className="movieManagementTop">
                     <h3 className="text-muted text-center my-3">Quản lý phim</h3>
                     <div className="add-film">
-                        <i class="fas fa-film" data-toggle="modal" data-target="#addMovieModal" ></i>
+                        <i className="fas fa-film" data-toggle="modal" data-target="#addMovieModal" ></i>
                     </div>
                 </div>
                 <table className="table table-dark table-hover text-center">
@@ -111,7 +111,7 @@ class movieManagement extends Component {
                         </ul>
                 </nav>
                 <ModalDetailMovie dataMovie={this.state.detailMovie} reLoad={this.reRender}/>
-                <AddFilmModal/>
+                <AddFilmModal reLoad={this.reRender}/>
             </div>
         )
     }

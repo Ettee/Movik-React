@@ -4,6 +4,11 @@ import * as action from "../../redux/action";
 import swal from 'sweetalert';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+import MomentLocaleUtils, {
+    formatDate,
+    parseDate
+} from "react-day-picker/moment";
+import "moment/locale/it";
 class ModalDetailMovie extends Component {
     constructor(props) {
         super(props)
@@ -54,7 +59,6 @@ class ModalDetailMovie extends Component {
         swal({
             title:"Xác nhận cập nhật ",
             icon:"info",
-            className:"dark-sweat-modal",
             buttons:["Quay lại","Xác nhận"],
             dangerMode:true
         }).then((ok)=>{
@@ -90,7 +94,6 @@ class ModalDetailMovie extends Component {
         swal({
             title:"Bạn đang chuẩn bị xóa 1 bộ phim",
             icon:"warning",
-            className:"dark-sweat-modal",
             text:"Bộ phim sẽ không thể phục hồi sau khi xóa",
             buttons:["Hủy","Xóa"],
             dangerMode:true
@@ -133,7 +136,13 @@ class ModalDetailMovie extends Component {
                                 <label className="mx-1">Ngày khởi chiếu:</label>
                                 <DayPickerInput
                                     value={this.state.ngayKhoiChieu === "" ? dataMovie.ngayKhoiChieu: this.state.ngayKhoiChieu}
-                                    format="dd/MM/YYYY"
+                                    format="DD/MM/YYYY"
+                                    formatDate={formatDate}
+                                    parseDate={parseDate}
+                                    dayPickerProps={{
+                                    locale: "it",
+                                    localeUtils: MomentLocaleUtils
+                                    }}
                                     disabled={false}
                                     onDayChange={this.handleOnDateChange}
                                     />
@@ -145,7 +154,7 @@ class ModalDetailMovie extends Component {
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Mô tả:</label>
-                            <textarea class="moTa" name="moTa" onChange={this.handleOnChange} value={this.state.moTa === "" ? dataMovie.moTa : this.state.moTa} rows="3"></textarea>
+                            <textarea className="moTa" name="moTa" onChange={this.handleOnChange} value={this.state.moTa === "" ? dataMovie.moTa : this.state.moTa} rows="3"></textarea>
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Trailer:</label>
@@ -153,12 +162,12 @@ class ModalDetailMovie extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <i class="fas fa-check check-edit mx-3"
+                        <i className="fas fa-check check-edit mx-3"
                             onClick={() => {
                                 this.confirmEditMovie()
                             }
                             }></i>
-                        <i class="far fa-times-circle cancel-edit mx-2" onClick={this.cancelEdit} ></i>
+                        <i className="far fa-times-circle cancel-edit mx-2" onClick={this.cancelEdit} ></i>
                     </div>
                 </div>
             )
@@ -191,7 +200,13 @@ class ModalDetailMovie extends Component {
                                 <DayPickerInput
                                     className="disabled"
                                     value={dataMovie.ngayKhoiChieu}
-                                    format="dd/MM/YYYY"
+                                    format="DD/MM/YYYY"
+                                    formatDate={formatDate}
+                                    parseDate={parseDate}
+                                    dayPickerProps={{
+                                    locale: "it",
+                                    localeUtils: MomentLocaleUtils
+                                    }}
                                     inputProps={{ disabled: true },{className:"disabled"}}
                                     
                                     onDayChange={this.handleOnDateChange}
@@ -204,7 +219,7 @@ class ModalDetailMovie extends Component {
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Mô tả:</label>
-                            <textarea class="moTa disabled " disabled value={dataMovie.moTa } rows="3"></textarea>
+                            <textarea className="moTa disabled " disabled value={dataMovie.moTa } rows="3"></textarea>
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Trailer:</label>
@@ -212,12 +227,12 @@ class ModalDetailMovie extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <i class="far fa-edit edit-movie mx-3"
+                        <i className="far fa-edit edit-movie mx-3"
                             onClick={() => {
                                 this.handleOnClickEdit(dataMovie.biDanh, dataMovie.danhGia, dataMovie.hinhAnh, dataMovie.maPhim, dataMovie.moTa, dataMovie.ngayKhoiChieu, dataMovie.tenPhim, dataMovie.trailer)
                             }
                             }></i>
-                        <i class="far fa-trash-alt delete-movie mx-2" onClick={()=>{this.handleDeleteMovie(dataMovie.maPhim)}}></i>
+                        <i className="far fa-trash-alt delete-movie mx-2" onClick={()=>{this.handleDeleteMovie(dataMovie.maPhim)}}></i>
                     </div>
                 </div>
             )

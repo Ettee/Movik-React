@@ -27,6 +27,7 @@
 @import "./component/admin/sign-up-modal";
 @import "./component/admin/movie-management";
 @import "./component/admin/modal-detail-movie";
+@import "./component/admin/add-film-modal";
 *{
     box-sizing: border-box;
     margin: 0;
@@ -59,10 +60,17 @@
     .swal-title {
        color: $colorForSmallIcon;
     }
+    .swal-modal{
+        background-color: $darkLite;
+    }
     .swal-button {
         @include GradientBackgroundTheme();
         color:#fff;
     }
+    .swal-text{
+        color: #fff;
+        text-align: center;
+      }
     .no-paddingX{
         padding-left: 0 !important;
         padding-right: 0 !important;

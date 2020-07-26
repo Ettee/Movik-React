@@ -1,0 +1,57 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.addMovieModal{
+    .modal-content{
+        background-color: $darkLite;
+    }
+    .modal-header{
+        color:white;
+        button{
+            color: white;
+        }
+    }
+    .modal-body{
+        .upload-Img{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: $gray;
+            padding: 10px ;
+            .upload-box{
+                padding: 5px ;
+                background-color: rgba($color:(#fff), $alpha: .2);
+                border-radius:5px ;
+            }
+        }
+        .upload-film-info{
+            .row{
+                margin: 10px 0;
+            }
+            label{
+                color: $colorForSmallIcon;
+
+            }
+            input ,textarea{
+                background-color: rgba($color: #fff, $alpha: .4);
+                border: none;
+                border-radius: 5px;
+                color: $gray;
+                padding: 3px;
+                
+            }
+            ::placeholder{
+                color: $gray;
+            }
+        }
+    }
+    .modal-footer{
+        .add-movie{
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: $colorForSmallIcon;
+        }
+    }
+}
