@@ -58,6 +58,8 @@
     .detail-value{
         text-align: left;
         color: $gray;
+        flex-wrap: wrap;
+        display: flex;
     }
     .tenGheModal{
         margin: 0 3px;

@@ -69,6 +69,23 @@ export const actLayThongTinHeThongRap=()=>{
         })
     }
 }
+export const actLayThongTinCumRapTheoHeThongRap=(maHeThongRap)=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+        })
+        .then(rs=>{
+            dispatch({
+                type:ActionType.LAY_THONG_TIN_CUM_RAP_THEO_HE_THONG_RAP,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err.response.data)
+        })
+    }
+}
 export const actLayLichChieuHeThongRap=(maHeThongRap)=>{
     return dispatch=>{
         Axios({
@@ -355,12 +372,12 @@ export const actLayDanhSachPhimPhanTrang=(soTrang)=>{
         })
     }
 }
-export const actUpdateMovie=(obj,token)=>{
+export const actUpdateMovie=(frd,token)=>{
     return dispatch=>{
         Axios({
             method:"POST",
-            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim",
-            data:obj,
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload",
+            data:frd,
             headers:{
                 Authorization:`Bearer ${token}`
             }
@@ -376,13 +393,12 @@ export const actUpdateMovie=(obj,token)=>{
             })
         })
         .catch((err)=>{
-            console.log(err.response.data)
+            console.log(err.response)
             swal({
-                title:"Đã xảy ra lỗi khi cập nhật"  ,
+                //title:"Đã xảy ra lỗi khi cập nhật"  ,
                 icon:"error",
-                text:err.response.data,
-                timer:1500,
-                
+                text:"Đã xảy ra lỗi khi cập nhật",
+                timer:1500,          
                 closeOnEsc:false,
                 buttons:false
             })
@@ -410,9 +426,9 @@ export const actDeleteMovie=(maPhim,token)=>{
             })
         })
         .catch((err)=>{
-            console.log(err)
+            console.log(err.response.data)
             swal({
-                title:"😲"   ,
+                title:"Đã có lỗi khi xóa phim"   ,
                 icon:"error",
                 
                 text:err.response.data,

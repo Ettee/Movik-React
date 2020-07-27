@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
-
-export default class bookingManagement extends Component {
+import {connect} from "react-redux";
+import * as action from "../../redux/action";
+class bookingManagement extends Component {
+    
     render() {
+        
         return (
             <div>
-                bookingManagement
+               bookingManagement
             </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+       
+       
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+       
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(bookingManagement)

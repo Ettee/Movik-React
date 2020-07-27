@@ -15,7 +15,7 @@ class ModalDetailMovie extends Component {
         this.state = {
             biDanh: "",
             danhGia: 11,
-            hinhAnh: "",
+            hinhAnh: null,
             maNhom: "GP09",
             maPhim: "",
             moTa: "",
@@ -23,6 +23,7 @@ class ModalDetailMovie extends Component {
             tenPhim: "",
             trailer: "",
             isEdit: false,
+            imgUrl:''
            
         }
     }
@@ -55,7 +56,10 @@ class ModalDetailMovie extends Component {
             danhGia: this.state.danhGia
         }
         let userAD=JSON.parse(localStorage.getItem("userAdmin"))
-        
+        let formdata= new FormData()
+        for (const key in obj) {
+            formdata.append(key, obj[key]);
+        }
         swal({
             title:"Xác nhận cập nhật ",
             icon:"info",
@@ -64,7 +68,8 @@ class ModalDetailMovie extends Component {
         }).then((ok)=>{
             if(ok){
                 console.log(obj)
-                this.props.updatePhim(obj,userAD.accessToken)
+
+                this.props.updatePhim(formdata,userAD.accessToken)
                 setTimeout(()=>{
                     this.props.reLoad(true)
                 },1600)
@@ -73,7 +78,9 @@ class ModalDetailMovie extends Component {
     }
     cancelEdit=()=>{
         this.setState({
-            isEdit: false
+            isEdit: false,
+            hinhAnh:null
+            
         })
     }
     handleOnDateChange=(date)=>{
@@ -106,6 +113,20 @@ class ModalDetailMovie extends Component {
             }
         })
     }
+    imgUpLoadHandler=(e)=>{
+        let file= e.target.files[0];
+        let reader = new FileReader();
+        let imgUrl=reader.readAsDataURL(file);
+        
+        reader.onloadend = () => {
+            this.setState({
+                imgUrl: reader.result,
+                hinhAnh:file,
+                biDanh:file.name,
+            });
+          }
+        
+    }
     renderModalContent = () => {
         let { dataMovie } = this.props
         if (this.state.isEdit) {
@@ -116,9 +137,9 @@ class ModalDetailMovie extends Component {
                     </div>
                     <div className="modal-body">
                         <div className="movie-poster d-flex align-items-center flex-column">
-                            <img src={this.state.hinhAnh === ""  ? dataMovie.hinhAnh : this.state.hinhAnh} alt={this.state.biDanh === "" ? dataMovie.biDanh : this.state.biDanh} style={{ width: "100px" }} />
+                            <img src={typeof this.state.hinhAnh === 'string'  ? dataMovie.hinhAnh : this.state.imgUrl} alt={this.state.biDanh === "" ? dataMovie.biDanh : this.state.biDanh} style={{ width: "100px" }} />
                             <div className="my-2 w-100">
-                                <input className="w-100 " name="hinhAnh" type="text" onChange={this.handleOnChange} value={this.state.hinhAnh === "" ? dataMovie.hinhAnh : this.state.hinhAnh} />
+                                <input className="w-100 " type="file" onChange={this.imgUpLoadHandler}/>
                             </div>
                         </div>
                         <div className="row movie-info-admin">
@@ -239,7 +260,6 @@ class ModalDetailMovie extends Component {
         }
     }
     render() {
-        
         return (
             <div className="modal modal-detail-movie"  data-backdrop="static" data-keyboard="false" id="detailMovieModal">
                 <div className="modal-dialog">
@@ -253,8 +273,8 @@ class ModalDetailMovie extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updatePhim:(obj,token)=>{
-            dispatch(action.actUpdateMovie(obj,token))
+        updatePhim:(frd,token)=>{
+            dispatch(action.actUpdateMovie(frd,token))
         },
         deletePhim:(maPhim,token)=>{
             dispatch(action.actDeleteMovie(maPhim,token))

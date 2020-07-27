@@ -1,0 +1,45 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.heThongRap{
+    .heThongRap-item{
+        padding: 0;
+        background-color: $darkThemeText;
+        cursor: pointer;
+        transition: ease-in 0.3s;
+        
+        .heThongRapInfo{
+            .maHeThongRap{
+                color: $yellow;
+                letter-spacing: 1px;
+                font-size: 13px;
+            }
+            .tenHeThongRap{
+                font-weight: 500;
+            }
+        }
+    }
+    .heThongRap-item-hover{
+        &:hover{
+            transform: scale(1.05) ;
+            background-color: rgba($color:rgb(102, 102, 102), $alpha: .7);
+            .maHeThongRap{
+                color: $gray !important;
+
+            }
+            .tenHeThongRap{
+                color: $colorForSmallIcon;
+            }
+        }
+    }
+    .heThongRap-selected{
+        transform: scale(1.05) ;
+            background-color: $yellow;
+        .maHeThongRap{
+            color: $darkThemeText !important;
+
+        }
+        .tenHeThongRap{
+            color: $colorForSmallIcon;
+        }
+    }
+}

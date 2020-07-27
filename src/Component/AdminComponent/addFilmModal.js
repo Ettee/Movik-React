@@ -20,13 +20,14 @@ class AddFilmModal extends Component {
             maNhom: "GP09",
             ngayKhoiChieu: "",
             danhGia: 0,
-            imgUrl:""
+            imgUrl:"",
+            
         }
     }
     imgUpLoadHandler=(e)=>{
         let file= e.target.files[0];
         let reader = new FileReader();
-        let imgUrl = reader.readAsDataURL(file);
+        let imgUrl=reader.readAsDataURL(file);
         
         reader.onloadend = () => {
             this.setState({
@@ -47,7 +48,8 @@ class AddFilmModal extends Component {
     }
     handleOnDateChange=(date)=>{ 
         this.setState({
-            ngayKhoiChieu:new Date(date).toLocaleDateString('en-GB')
+            ngayKhoiChieu:new Date(date).toLocaleDateString('en-GB'),
+            
         })
     }
     handleAddMovie=()=>{
@@ -55,7 +57,7 @@ class AddFilmModal extends Component {
         if(selectedImg ==='' || tenPhim==='' || trailer ==='' || moTa==='' || ngayKhoiChieu==='' || danhGia===''){
             swal({
                 title:"Hoàn thành form trước khi thêm phim ",
-                icon:"info",
+                icon:"info"
             })
         }else{
             let formdata=new FormData();
@@ -64,6 +66,7 @@ class AddFilmModal extends Component {
                 formdata.append(key, newFilm[key]);
             }
             let userAD=JSON.parse(localStorage.getItem("userAdmin"))
+            console.log(this.state)
             swal({
                 text:"Hãy kiểm tra kĩ thông tin trước khi thêm phim",
                 icon:"warning",
@@ -72,11 +75,13 @@ class AddFilmModal extends Component {
             })
             .then(ok=>{
                 if(ok){
-                    console.log(this.state)
+                    
                     this.props.addMovie(formdata,userAD.accessToken)
                     setTimeout(()=>{
                         this.props.reLoad(true)
+                        
                     },1600)
+
                 }
             })
         }
@@ -103,7 +108,7 @@ class AddFilmModal extends Component {
                         {/* Modal body */}
                         <div className="modal-body">
                             <div className="upload-Img">
-                                <img src={this.state.imgUrl} alt="movie-img" style={styleForImgUpload}/>
+                                <img src={this.state.imgUrl===""?`../../img/No_picture.png`:this.state.imgUrl} alt="movie-img" style={styleForImgUpload}/>
                                 <div className="upload-box">
                                     <input type="file" onChange={this.imgUpLoadHandler}/>
                                 </div>
@@ -115,12 +120,12 @@ class AddFilmModal extends Component {
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Mô tả</label>
-                                    <textarea rows="3" className="col-md-8" onChange={this.handleInfoOnChange}  name="moTa" placeholder="Mô tả..." />
+                                    <textarea rows="5" className="col-md-8" onChange={this.handleInfoOnChange}  name="moTa" placeholder="Mô tả..." />
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Ngày khởi chiếu:</label>
                                     <DayPickerInput
-                                    value={today}
+                                    placeholder="Chọn ngày khởi chiếu"
                                     format="DD/MM/YYYY"
                                     formatDate={formatDate}
                                     parseDate={parseDate}
@@ -134,7 +139,7 @@ class AddFilmModal extends Component {
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Đánh giá: </label>
-                                    <input className="col-md-8" type="number" onChange={this.handleInfoOnChange} max="10" name="danhGia" placeholder="10" />
+                                    <input className="col-md-8" type="number" onChange={this.handleInfoOnChange} max="10" name="danhGia" placeholder="Đánh giá..." />
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Trailer: </label>
