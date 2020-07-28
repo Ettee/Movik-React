@@ -394,7 +394,10 @@ export const actUpdateMovie=(frd,token)=>{
             })
         })
         .catch((err)=>{
-            console.log(err)
+            console.log(err.response)
+            for (var pair of frd.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
             swal({
                 //title:"Đã xảy ra lỗi khi cập nhật"  ,
                 icon:"error",

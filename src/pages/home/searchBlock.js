@@ -19,7 +19,11 @@ class SearchBlock extends Component {
             checkTimeInput: false,
             indexOfXuatChieu: 0,
             maLichChieu: 0,
-            refresh: 1
+            refresh: 1,
+            isPhimLoading:true,
+            isRapLoading:true,
+            isNgayChieuLoading:true,
+            isXuatChieuLoading:true
 
         }
     }
@@ -38,7 +42,8 @@ class SearchBlock extends Component {
         //console.log(selectedOption)
         this.props.getInfoShow(selectedOption.value)
         this.setState({
-            checkFilmInput: true
+            checkFilmInput: true,
+            isPhimLoading:false
         })
     }
     //set tên rạp chiếu tương ứng vs phim đã chọn
@@ -60,7 +65,8 @@ class SearchBlock extends Component {
         this.setState({
             tenCumRap: selectedOption.label,
             maHeThongRap: selectedOption.value,
-            checkTheaterInput: true
+            checkTheaterInput: true,
+            isRapLoading:false
         })
 
     }
@@ -109,7 +115,9 @@ class SearchBlock extends Component {
         this.setState({
             xuatChieu: time,
             checkDateInput: true,
-            indexOfXuatChieu: pickedDate.value
+            indexOfXuatChieu: pickedDate.value,
+            isNgayChieuLoading:false
+
         })
     }
     getMaLichChieu = () => {
@@ -128,7 +136,8 @@ class SearchBlock extends Component {
     }
     checkTimeInput = () => {
         this.setState({
-            checkTimeInput: true
+            checkTimeInput: true,
+            isXuatChieuLoading:false
         })
         this.getMaLichChieu()
     }
@@ -218,6 +227,7 @@ class SearchBlock extends Component {
                                     theme={this.customTheme}
                                     placeholder="Phim"
                                     isSearchable
+                                    isLoading={this.state.isPhimLoading}
                                     autoFocus
                                 />
                             </div>
@@ -230,6 +240,7 @@ class SearchBlock extends Component {
                                     options={this.getOptionTheaterName(this.props.infoShow.heThongRapChieu)}
                                     onChange={this.getPickedTheaterName}
                                     noOptionsMessage={() => 'Chưa chọn phim'}
+                                    isLoading={this.state.isRapLoading}
                                 />
                             </div>
                         </div>
@@ -241,6 +252,7 @@ class SearchBlock extends Component {
                                     onChange={this.getTime}
                                     theme={this.customTheme}
                                     noOptionsMessage={() => 'Chưa chọn rạp'}
+                                    isLoading={this.state.isNgayChieuLoading}
                                 />
                             </div>
                         </div>
@@ -252,6 +264,7 @@ class SearchBlock extends Component {
                                     theme={this.customTheme}
                                     onChange={this.checkTimeInput}
                                     noOptionsMessage={() => 'Chưa chọn ngày chiếu'}
+                                    isLoading={this.state.isXuatChieuLoading}
                                 />
                             </div>
                         </div>
