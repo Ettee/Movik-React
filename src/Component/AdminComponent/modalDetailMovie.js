@@ -67,8 +67,10 @@ class ModalDetailMovie extends Component {
             dangerMode:true
         }).then((ok)=>{
             if(ok){
-                console.log(obj)
-
+                //console.log(formdata.values)
+                // for (var pair of formdata.entries()) {
+                //     console.log(pair[0]+ ', ' + pair[1]); 
+                // }
                 this.props.updatePhim(formdata,userAD.accessToken)
                 setTimeout(()=>{
                     this.props.reLoad(true)
@@ -161,7 +163,7 @@ class ModalDetailMovie extends Component {
                                     formatDate={formatDate}
                                     parseDate={parseDate}
                                     dayPickerProps={{
-                                    locale: "it",
+                                    locale: "en",
                                     localeUtils: MomentLocaleUtils
                                     }}
                                     disabled={false}

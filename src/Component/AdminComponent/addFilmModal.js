@@ -75,7 +75,7 @@ class AddFilmModal extends Component {
             })
             .then(ok=>{
                 if(ok){
-                    
+                    console.log(formdata)
                     this.props.addMovie(formdata,userAD.accessToken)
                     setTimeout(()=>{
                         this.props.reLoad(true)
@@ -130,7 +130,7 @@ class AddFilmModal extends Component {
                                     formatDate={formatDate}
                                     parseDate={parseDate}
                                     dayPickerProps={{
-                                    locale: "it",
+                                    locale: "en",
                                     localeUtils: MomentLocaleUtils
                                     }}
                                     disabled={false}

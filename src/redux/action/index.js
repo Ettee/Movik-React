@@ -373,6 +373,7 @@ export const actLayDanhSachPhimPhanTrang=(soTrang)=>{
     }
 }
 export const actUpdateMovie=(frd,token)=>{
+    
     return dispatch=>{
         Axios({
             method:"POST",
@@ -385,7 +386,7 @@ export const actUpdateMovie=(frd,token)=>{
         .then((rs)=>{
             swal({
                 icon:"success",
-                text:"Cập nhật phim thành công",
+                text:"Cập nhật phim thành công yeyeye",
                 timer:1500,
                
                 closeOnEsc:false,
@@ -393,7 +394,7 @@ export const actUpdateMovie=(frd,token)=>{
             })
         })
         .catch((err)=>{
-            console.log(err.response)
+            console.log(err)
             swal({
                 //title:"Đã xảy ra lỗi khi cập nhật"  ,
                 icon:"error",
