@@ -10,14 +10,13 @@ class DetailMovie extends Component {
     componentDidMount(){
         let id = this.props.match.params.id;
         //truyền tham số vào props để đưa lên api
-        this.props.getDetail(id);
-       
-        window.scrollTo(0, 0) 
-
+        this.props.getDetail(id);     
+        window.scrollTo(0, 0)  
     }
     render() {
         //lấy data từ trong props ra để hiện thị lên web
         const {movie}=this.props; 
+        document.title=movie.tenPhim
         return (
             <div>
                 <DetailMovieTop movie={movie}/>

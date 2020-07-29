@@ -15,6 +15,7 @@ class Navbar extends Component {
         //     //chuyển tới trang đăng nhập cho admin bằng history.push() 
         //     //import withHistory
         // }
+        document.title="Movik Manager"
         let admin=JSON.parse(localStorage.getItem("userAdmin"))
         this.setState({
             admin
@@ -31,6 +32,19 @@ class Navbar extends Component {
         }).then(ok=>{
             if(ok){
                 localStorage.removeItem("userAdmin")
+                this.props.history.push("/")
+            }
+        })
+    }
+    moveToMovik=()=>{
+        swal({
+            title:"Chuyển về Movik",
+            icon:"warning",
+            buttons: true,
+            dangerMode: true,
+
+        }).then(ok=>{
+            if(ok){
                 this.props.history.push("/")
             }
         })
@@ -86,6 +100,12 @@ class Navbar extends Component {
                                 <i className="fas fa-ticket-alt text-light fa-lg mr-3"></i>
                                 Quản lý phòng chiếu & đặt vé
                             </NavLink>
+                        </li>
+                        <li className="nav-item" style={{cursor:"pointer"}}>
+                            <a className="nav-link text-white p-3 mb-2 sidebar-link" onClick={this.moveToMovik}>
+                                <i class="fab fa-phoenix-squadron text-light fa-lg mr-3"></i>
+                                Trở về Movik
+                            </a>
                         </li>
                         <li className=" nav-item log-out-admin">
                             <a className="nav-link text-white p-3 mb-2 sidebar-link" onClick={this.logOut}>

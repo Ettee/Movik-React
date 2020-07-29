@@ -28,9 +28,8 @@ class Signup extends Component {
             matKhauValid: false,
             emailValid: false,
             soDTValid: false
-            
-
         }
+        document.title="Movik | Đăng kí "
     }
     handleErrors=(e)=>{
         let{name,value}=e.target;

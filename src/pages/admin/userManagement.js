@@ -22,6 +22,7 @@ class UserManagement extends Component {
             keyword:""
             
         }
+        
     }
     handleEdit=(index,taiKhoan,hoTen,matKhau,email,soDt,maLoaiNguoiDung)=>{
         

@@ -48,7 +48,7 @@ class AddFilmModal extends Component {
     }
     handleOnDateChange=(date)=>{ 
         this.setState({
-            ngayKhoiChieu:new Date(date).toLocaleDateString('en-GB'),
+            ngayKhoiChieu:new Date(date).toLocaleDateString('en-GB')
             
         })
     }

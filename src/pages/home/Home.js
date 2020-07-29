@@ -7,7 +7,10 @@ import News from "./news";
 import Subcribes from "./subcribes";
 
 export default class Home extends Component {
-    
+    constructor(props){
+        super(props)
+        document.title="Movik"
+    }
     render() {
         return (
             <Fragment >

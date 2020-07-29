@@ -104,7 +104,7 @@ class Header extends Component {
                     swal({
                     title:"Đăng xuất thành công",
                     icon: "success",
-                    
+                    button:"OK"
                     }).then((ok)=>{
                         if(ok){
                             this.props.history.push("/")

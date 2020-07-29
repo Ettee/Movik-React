@@ -20,7 +20,7 @@ class Theater extends Component {
         this.timer=0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
-        
+        document.title="Movik | Đặt vé"
     }
     reloadPage=(val)=>{
         this.setState({
