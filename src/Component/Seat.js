@@ -34,7 +34,7 @@ export default class Seat extends Component {
     renderGhe=()=>{
         let {danhSachPhim}=this.props
         
-        return danhSachPhim.slice(0, 60).map((item,index)=>{
+        return danhSachPhim.slice(0, 70).map((item,index)=>{
             if(item.daDat){
                 return(
                     <div className="col-lg-1 col-md-2 col-sm-4 col-6">

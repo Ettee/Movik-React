@@ -19,7 +19,7 @@ class bookingManagement extends Component {
             hinhAnh: "",
             ngayKhoiChieu: "",
             tenRap:"",
-            maRap:"",
+            maRap:0,
             danhSachRap:[],
             giaVe:0
         }
@@ -96,7 +96,6 @@ class bookingManagement extends Component {
     }
     //react-select onchange
     handleTenPhimOnChange = (phim) => {
-        console.log(phim.value)
         this.setState({
             maPhim: phim.value.maPhim,
             tenPhim: phim.label,
@@ -124,7 +123,31 @@ class bookingManagement extends Component {
         })
     }
     handleOnClickAddShowTime=()=>{
-        console.log(this.state.maPhim,this.state.ngayKhoiChieu,this.state.maRap,this.state.giaVe)
+        let obj={
+            maPhim:this.state.maPhim,
+            ngayChieuGioChieu:this.state.ngayKhoiChieu,
+            maRap:this.state.maRap,
+            giaVe:this.state.giaVe
+        }
+        let userAD=JSON.parse(localStorage.getItem('userAdmin'))
+        if(this.state.maPhim===0 || this.state.ngayKhoiChieu==="" ||this.state.maRap === 0 || this.state.giaVe===0){
+            swal({
+                text:"Hoàn thành form trước khi thêm lịch chiếu",
+                icon:"info"
+    
+            })
+        }else{
+            console.log(this.state.maPhim,this.state.ngayKhoiChieu,this.state.maRap,this.state.giaVe)
+            swal({
+                title:`Xác nhận tạo lịch chiếu cho phim ${this.state.tenPhim}`,
+                icon:"warning",
+                buttons:["Quay lại","Thêm lịch chiếu"]
+            }).then(ok=>{
+                if(ok){
+                    this.props.themLichChieu(obj,userAD.accessToken)
+                }
+            })
+        }
     }
     renderShowTimeInfo=()=>{
         if(this.state.hinhAnh===""){
@@ -166,8 +189,8 @@ class bookingManagement extends Component {
         const optionsDanhSachCumRap =this.getDanhSachCumRapTheoHeThongForSelect()
         const optionsDanhSachRapTheoCumRap=this.getDanhSachRapTheoCumRapForSelect()
         const optionsGiaVe = [
-            { value: '75000', label: '75.000đ' },
-            { value: '90000', label: '90.000đ' }
+            { value: 75000, label: '75.000đ' },
+            { value: 90000, label: '90.000đ' }
         ]
         return (
             <div className="bookingManagement">
@@ -262,6 +285,9 @@ const mapDispatchToProps = dispatch => {
         },
         layDanhSachRapTheoHeThongRap:(maRap)=>{
             dispatch(action.actLayThongTinCumRapTheoHeThongRap(maRap))
+        },
+        themLichChieu:(obj,token)=>{
+            dispatch(action.actTaoLichChieu(obj,token))
         }
     }
 }

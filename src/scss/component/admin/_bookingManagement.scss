@@ -16,6 +16,17 @@
             color: $gray;
             font-weight: 500;
         }
+        .infoShowTime{
+            .chonNgayGioChieu{
+                .DayPickerInput{
+                    input{
+                        padding: 5px;
+                        border-radius: 5px;
+                        border: none;
+                    }
+                }
+            }
+        }
         .showTimePreview{
             .info-preview{
                 color: $gray;

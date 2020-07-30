@@ -103,7 +103,7 @@ class Navbar extends Component {
                         </li>
                         <li className="nav-item" style={{cursor:"pointer"}}>
                             <a className="nav-link text-white p-3 mb-2 sidebar-link" onClick={this.moveToMovik}>
-                                <i class="fab fa-phoenix-squadron text-light fa-lg mr-3"></i>
+                                <i className="fab fa-phoenix-squadron text-light fa-lg mr-3"></i>
                                 Trở về Movik
                             </a>
                         </li>

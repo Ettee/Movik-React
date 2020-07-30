@@ -23,7 +23,8 @@ class ModalDetailMovie extends Component {
             tenPhim: "",
             trailer: "",
             isEdit: false,
-            imgUrl:''
+            imgUrl:'',
+            isEditImg:false
            
         }
     }
@@ -71,9 +72,16 @@ class ModalDetailMovie extends Component {
                 // for (var pair of formdata.entries()) {
                 //     console.log(pair[0]+ ', ' + pair[1]); 
                 // }
-                this.props.updatePhim(formdata,userAD.accessToken)
+                if(this.state.isEditImg){
+                    this.props.updatePhimCoHinh(formdata,userAD.accessToken)
+                }else{
+                    this.props.updatePhimKhongHinh(obj,userAD.accessToken)
+                }
                 setTimeout(()=>{
                     this.props.reLoad(true)
+                    this.setState({
+                        isEditImg:false
+                    })
                 },1600)
             }
         })
@@ -125,6 +133,7 @@ class ModalDetailMovie extends Component {
                 imgUrl: reader.result,
                 hinhAnh:file,
                 biDanh:file.name,
+                isEditImg:true
             });
           }
         
@@ -189,7 +198,7 @@ class ModalDetailMovie extends Component {
                             onClick={() => {
                                 this.confirmEditMovie()
                             }
-                            }></i>
+                            } data-dismiss="modal"></i>
                         <i className="far fa-times-circle cancel-edit mx-2" onClick={this.cancelEdit} ></i>
                     </div>
                 </div>
@@ -255,7 +264,7 @@ class ModalDetailMovie extends Component {
                                 this.handleOnClickEdit(dataMovie.biDanh, dataMovie.danhGia, dataMovie.hinhAnh, dataMovie.maPhim, dataMovie.moTa, dataMovie.ngayKhoiChieu, dataMovie.tenPhim, dataMovie.trailer)
                             }
                             }></i>
-                        <i className="far fa-trash-alt delete-movie mx-2" onClick={()=>{this.handleDeleteMovie(dataMovie.maPhim)}}></i>
+                        <i className="far fa-trash-alt delete-movie mx-2" onClick={()=>{this.handleDeleteMovie(dataMovie.maPhim)}} data-dismiss="modal"></i>
                     </div>
                 </div>
             )
@@ -275,8 +284,11 @@ class ModalDetailMovie extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updatePhim:(frd,token)=>{
-            dispatch(action.actUpdateMovie(frd,token))
+        updatePhimCoHinh:(frd,token)=>{
+            dispatch(action.actUpdateMovieCoHinh(frd,token))
+        },
+        updatePhimKhongHinh:(obj,token)=>{
+            dispatch(action.actUpdateMovieKhongHinh(obj,token))
         },
         deletePhim:(maPhim,token)=>{
             dispatch(action.actDeleteMovie(maPhim,token))

@@ -372,8 +372,7 @@ export const actLayDanhSachPhimPhanTrang=(soTrang)=>{
         })
     }
 }
-export const actUpdateMovie=(frd,token)=>{
-    
+export const actUpdateMovieCoHinh=(frd,token)=>{ 
     return dispatch=>{
         Axios({
             method:"POST",
@@ -386,7 +385,7 @@ export const actUpdateMovie=(frd,token)=>{
         .then((rs)=>{
             swal({
                 icon:"success",
-                text:"Cập nhật phim thành công yeyeye",
+                text:"Cập nhật phim thành công",
                 timer:1500,
                
                 closeOnEsc:false,
@@ -398,6 +397,39 @@ export const actUpdateMovie=(frd,token)=>{
             for (var pair of frd.entries()) {
                 console.log(pair[0]+ ', ' + pair[1]); 
             }
+            swal({
+                //title:"Đã xảy ra lỗi khi cập nhật"  ,
+                icon:"error",
+                text:"Đã xảy ra lỗi khi cập nhật",
+                timer:1500,          
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+    }
+}
+export const actUpdateMovieKhongHinh=(obj,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim",
+            data:obj,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then((rs)=>{
+            swal({
+                icon:"success",
+                text:"Cập nhật phim thành công ",
+                timer:1500,
+               
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch((err)=>{
+            console.log(err.response)
             swal({
                 //title:"Đã xảy ra lỗi khi cập nhật"  ,
                 icon:"error",
@@ -466,6 +498,38 @@ export const actAddMovie=(frd,token)=>{
             console.log(err.response.data)
             swal({
                 title:"Đã xảy ra lỗi khi thêm phim"  ,
+                icon:"error",
+                text:err.response.data,
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+    }
+}
+export const actTaoLichChieu=(obj,token)=>{
+    return dispatch=>{
+        Axios({
+            method:"POST",
+            url:"http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu",
+            data:obj,
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then(rs=>{
+            swal({
+                icon:"success",
+                text:"Thêm lịch chiếu thành công",
+                timer:1500,
+                closeOnEsc:false,
+                buttons:false
+            })
+        })
+        .catch((err)=>{
+            console.log(err.response.data)
+            swal({
+                title:"Đã xảy ra lỗi khi thêm lịch chiếu"  ,
                 icon:"error",
                 text:err.response.data,
                 timer:1500,

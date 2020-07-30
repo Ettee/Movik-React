@@ -62,17 +62,17 @@
     .swal-title {
        color: $colorForSmallIcon;
     }
-    .swal-modal{
-        background-color: $darkLite;
-    }
+    // .swal-modal{
+    //     background-color: $darkLite;
+    // }
     .swal-button {
         @include GradientBackgroundTheme();
         color:#fff;
     }
     .swal-text{
-        color: #fff;
+        color: $darkLite;
         text-align: center;
-      }
+     }
     .no-paddingX{
         padding-left: 0 !important;
         padding-right: 0 !important;
