@@ -24,6 +24,7 @@ class bookingManagement extends Component {
             giaVe:0
         }
     }
+    //test
     handleOnDateChange = (date) => {
         this.setState({
             ngayKhoiChieu: new Date(date).toLocaleDateString('en-GB')
