@@ -3,6 +3,8 @@ import {NavLink} from 'react-router-dom';
 import logo from '../img/movikLogo.png';
 import swal from 'sweetalert';
 import { withRouter } from "react-router";
+import {connect} from 'react-redux';
+import * as action from "../redux/action";
 class Header extends Component {
     checkLogin=()=>{
         if(localStorage.getItem('userKhachHang')||localStorage.getItem('userAdmin')){
@@ -107,6 +109,7 @@ class Header extends Component {
                     button:"OK"
                     }).then((ok)=>{
                         if(ok){
+                            this.props.dangXuat()
                             this.props.history.push("/")
                         }
                     });
@@ -199,4 +202,11 @@ class Header extends Component {
         )
     }
 }
-export default withRouter(Header)
+const mapDispatchToProps = (dispatch) => {
+    return {
+      dangXuat: () => {
+        dispatch(action.actDangXuatAdmin());
+      },
+    };
+};
+export default withRouter(connect(null,mapDispatchToProps) (Header))

@@ -3,9 +3,13 @@ import {connect} from "react-redux";
 import * as action from "../../redux/action";
 import ModalDetailMovie from "../../Component/AdminComponent/modalDetailMovie";
 import AddFilmModal from "../../Component/AdminComponent/addFilmModal";
+import { withRouter } from "react-router";
 class movieManagement extends Component {
     constructor(props){
         super(props)
+        if(!localStorage.getItem('userAdmin')){
+            this.props.history.push('/login-admin')
+        }
         this.state={
             soTrang:1,
             detailMovie:{}
@@ -128,4 +132,4 @@ const mapDispatchToProps = dispatch => {
        }
     }
 }
-export default connect (mapStateToProps,mapDispatchToProps)(movieManagement)
+export default withRouter(connect (mapStateToProps,mapDispatchToProps)(movieManagement))

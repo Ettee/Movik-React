@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
 import * as action from "../../redux/action";
+import { withRouter } from "react-router";
 class theaterManagement extends Component {
     constructor(props){
         super(props)
+        if(!localStorage.getItem('userAdmin')){
+            this.props.history.push('/login-admin')
+        }
         this.state={
             heThongRapClicked:'BHDStar'
         }
@@ -122,4 +126,4 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(theaterManagement)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(theaterManagement))

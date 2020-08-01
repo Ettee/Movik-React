@@ -150,6 +150,14 @@ export const actDangKi=user =>{
         })
     }
 }
+export const actDangXuatAdmin=()=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.DANG_XUAT_ADMIN,
+            data:false
+        })
+    }
+}
 export const actDangNhap =(user)=>{
     return dispatch=>{
         Axios({
@@ -172,6 +180,10 @@ export const actDangNhap =(user)=>{
             }else{
                 if(rs.data.maLoaiNguoiDung === "QuanTri"){
                     localStorage.setItem("userAdmin",JSON.stringify(rs.data))
+                    dispatch({
+                        type:ActionType.DANG_NHAP_ADMIN,
+                        data:true
+                    })
                     swal({
                         title: "Đăng nhập thành công",
                         text:"ADMIN MODE",

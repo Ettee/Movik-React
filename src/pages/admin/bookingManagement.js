@@ -12,9 +12,13 @@ import { TimePicker } from 'antd';
 import 'antd/dist/antd.css';
 import moment from 'moment';
 import swal from 'sweetalert';
+import { withRouter } from "react-router";
 class bookingManagement extends Component {
     constructor(props) {
         super(props)
+        if(!localStorage.getItem('userAdmin')){
+            this.props.history.push('/login-admin')
+        }
         this.state = {
             maPhim: 0,
             tenPhim: "",
@@ -308,4 +312,4 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(bookingManagement)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(bookingManagement))

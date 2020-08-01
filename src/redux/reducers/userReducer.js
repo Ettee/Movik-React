@@ -2,7 +2,8 @@ import * as ActionType from "./../constants/ActionType";
 let initialState ={
    thongTinDatVe:[],
    danhSachNguoiDungPhanTrang:{},
-   danhSachTatCaNguoiDung:[]
+   danhSachTatCaNguoiDung:[],
+   isAdmin:false
 };
 const userReducer=(state=initialState,action)=>{
     switch(action.type){
@@ -15,6 +16,12 @@ const userReducer=(state=initialState,action)=>{
         case ActionType.DANH_SACH_TAT_CA_NGUOI_DUNG:
             state.danhSachTatCaNguoiDung=action.data;
             return {...state}
+        case ActionType.DANG_NHAP_ADMIN:
+            state.isAdmin=action.data;
+            return {...state}
+        case ActionType.DANG_XUAT_ADMIN:
+            state.isAdmin=action.data;
+            return {...state} 
         default:
             return{...state}
     }

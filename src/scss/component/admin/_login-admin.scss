@@ -1,0 +1,49 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.login-admin{
+    .login-wrapper{
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        .loginForm{
+            width: 30vw;
+            background-color: rgba($color: #000000, $alpha: 0.7);
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+            padding: 30px;
+            .title{
+                color:$colorForSmallIcon;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+            form{
+                .row{
+                    flex-grow: 1;
+                    width: 70%;
+                    .label{
+                        color: $gray;
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                    input{
+                        font-size: 15px;
+                    }
+                }
+            }
+            .btn-box{
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+}
+@media (max-width:750px){
+    .loginForm{
+        width: 50vw !important;
+    }
+}
+@media (max-width:450px){
+    .loginForm{
+        width: 80vw !important;
+    }
+}
