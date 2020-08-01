@@ -66,10 +66,13 @@ export default class Footer extends Component {
                                 <div>Liên hệ</div>
                                 <div className="contact-icon">
                                     <a href="https://www.facebook.com/ette9773" target="_blank">
-                                        <img src="../img/icon/facebook-logo.png" alt="true" />
+                                        <i className="fab fa-facebook"></i>
                                     </a>
                                     <a href="https://www.instagram.com/ettee_st/" target="_blank">
-                                        <img src="../img/icon/zalo-logo.png" alt="true" />
+                                        <i className="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://github.com/Ettee" target="_blank">
+                                        <i className="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
@@ -78,7 +81,7 @@ export default class Footer extends Component {
                     <hr className="footer-line" />
                     <div className="about-me">
                         <div className="creator">
-                            Made by Tran Thanh Son <br />
+                            Made with ❤️ by Tran Thanh Son <br />
                             Cybersoft FE35
                         </div>
                         <div>
