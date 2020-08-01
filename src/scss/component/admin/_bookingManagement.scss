@@ -17,17 +17,26 @@
             font-weight: 500;
         }
         .infoShowTime{
+            flex-grow: 1;
             .chonNgayGioChieu{
+                
                 .DayPickerInput{
                     input{
                         padding: 5px;
                         border-radius: 5px;
                         border: none;
+                        height: 38px;
+                        width: 140px;
                     }
                 }
             }
+            .chonGioChieu{
+                
+            }
+            
         }
         .showTimePreview{
+            flex-grow: 1;
             .info-preview{
                 color: $gray;
                 font-weight: 500;
@@ -61,5 +70,10 @@
 
             }
         }
+    }
+}
+@media (max-width: 1550px){
+    .info-box{
+        flex-direction: column;
     }
 }

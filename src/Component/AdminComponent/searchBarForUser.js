@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 
 export default class SearchBarForUser extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            danhSachUser:[]
-        }
-    }
     
     render() {
         const style={

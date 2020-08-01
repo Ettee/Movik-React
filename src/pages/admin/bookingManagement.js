@@ -8,6 +8,9 @@ import MomentLocaleUtils, {
     parseDate
 } from "react-day-picker/moment";
 import "moment/locale/it";
+import { TimePicker } from 'antd';
+import 'antd/dist/antd.css';
+import moment from 'moment';
 import swal from 'sweetalert';
 class bookingManagement extends Component {
     constructor(props) {
@@ -21,7 +24,8 @@ class bookingManagement extends Component {
             tenRap:"",
             maRap:0,
             danhSachRap:[],
-            giaVe:0
+            giaVe:0,
+            gioChieu:''
         }
     }
     //test
@@ -126,11 +130,12 @@ class bookingManagement extends Component {
     handleOnClickAddShowTime=()=>{
         let obj={
             maPhim:this.state.maPhim,
-            ngayChieuGioChieu:this.state.ngayKhoiChieu,
+            ngayChieuGioChieu:this.state.ngayKhoiChieu+' '+this.state.gioChieu,
             maRap:this.state.maRap,
             giaVe:this.state.giaVe
         }
         let userAD=JSON.parse(localStorage.getItem('userAdmin'))
+        console.log(obj)
         if(this.state.maPhim===0 || this.state.ngayKhoiChieu==="" ||this.state.maRap === 0 || this.state.giaVe===0){
             swal({
                 text:"Hoàn thành form trước khi thêm lịch chiếu",
@@ -138,7 +143,6 @@ class bookingManagement extends Component {
     
             })
         }else{
-            console.log(this.state.maPhim,this.state.ngayKhoiChieu,this.state.maRap,this.state.giaVe)
             swal({
                 title:`Xác nhận tạo lịch chiếu cho phim ${this.state.tenPhim}`,
                 icon:"warning",
@@ -146,6 +150,7 @@ class bookingManagement extends Component {
             }).then(ok=>{
                 if(ok){
                     this.props.themLichChieu(obj,userAD.accessToken)
+                    
                 }
             })
         }
@@ -153,7 +158,7 @@ class bookingManagement extends Component {
     renderShowTimeInfo=()=>{
         if(this.state.hinhAnh===""){
             return (
-                <div className="col-md-6 not-available">
+                <div className="not-available">
                     Chưa có phim nào được chọn
                 </div>
             )
@@ -162,7 +167,7 @@ class bookingManagement extends Component {
                 width: "150px"
             }
             return (
-                <div className="showTimePreview col-md-6 ">
+                <div className="showTimePreview">
                     <div className="row">
                         <div className="film-poster-preview col-md-5 d-flex justify-content-center " >
                             <img src={this.state.hinhAnh} alt={this.state.biDanh} style={style} />
@@ -182,6 +187,11 @@ class bookingManagement extends Component {
             )
         }
     }
+    handleTimeOnChange=(time, timeString)=>{
+        this.setState({
+            gioChieu:timeString
+        })
+    }
     render() {
         
         //options cho React-Select
@@ -193,12 +203,13 @@ class bookingManagement extends Component {
             { value: 75000, label: '75.000đ' },
             { value: 90000, label: '90.000đ' }
         ]
+        
         return (
             <div className="bookingManagement">
                 <div className="taoLichChieuBox"> 
                     <div className="title my-2">Thêm lịch chiếu</div>    
-                        <div className="row" >
-                            <div className="infoShowTime col-md-6">
+                        <div className="d-flex info-box" >
+                            <div className="infoShowTime mr-4">
                                 <div className="chonMaPhim my-2">
                                     <Select
                                         placeholder="Chọn phim"
@@ -208,19 +219,24 @@ class bookingManagement extends Component {
                                         onChange={this.handleTenPhimOnChange}
                                     />
                                 </div>
-                                <div className="chonNgayGioChieu my-2">
-                                    <DayPickerInput
-                                        placeholder="Chọn ngày khởi chiếu"
-                                        format="DD/MM/YYYY"
-                                        formatDate={formatDate}
-                                        parseDate={parseDate}
-                                        dayPickerProps={{
-                                            locale: "en",
-                                            localeUtils: MomentLocaleUtils
-                                        }}
-                                        disabled={false}
-                                        onDayChange={this.handleOnDateChange}
-                                    />
+                                <div className="d-flex">
+                                    <div className="chonNgayGioChieu my-2">
+                                        <DayPickerInput
+                                            placeholder="Chọn ngày chiếu"
+                                            format="DD/MM/YYYY"
+                                            formatDate={formatDate}
+                                            parseDate={parseDate}
+                                            dayPickerProps={{
+                                                locale: "en",
+                                                localeUtils: MomentLocaleUtils
+                                            }}
+                                            disabled={false}
+                                            onDayChange={this.handleOnDateChange}
+                                        />
+                                    </div>
+                                    <div className="chonGioChieu m-2">
+                                        <TimePicker onChange={this.handleTimeOnChange} defaultValue={moment('00:00:00', 'HH:mm:ss')} />
+                                    </div>
                                 </div>
                                 <div className="chonHeThongRap my-2">
                                     <Select

@@ -60,7 +60,7 @@ class UserManagement extends Component {
             hoTen: this.state.hoTen
         }
         let userAD=JSON.parse(localStorage.getItem("userAdmin"))
-        console.log(obj)
+        
         swal({
             text:"Bạn có chắc chắn muốn cập nhật thông tin người dùng",
             icon:"warning",
@@ -68,11 +68,14 @@ class UserManagement extends Component {
             buttons:["Quay lại","Ok"]
         }).then(ok=>{
             if(ok){
+                console.log(obj)
                 this.props.updateUser(obj,userAD.accessToken)
                 setTimeout(()=>{
                     this.props.layDanhSachUser(this.state.soTrang);
+                    this.props.layDanhSachTatCaUser()
                     this.setState({
-                        indexToExecuteAction:100
+                        indexToExecuteAction:100,
+                        keyword:''
                     })
                 },1600)
 
@@ -90,7 +93,7 @@ class UserManagement extends Component {
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                    console.log(taiKhoan)
+                    
                     this.props.xoaNguoiDung(taiKhoan,userAD.accessToken)
                     setTimeout(()=>{
                         this.props.layDanhSachUser(this.state.soTrang);
@@ -107,7 +110,6 @@ class UserManagement extends Component {
         
     }
     renderUser=()=>{   
-        console.log()
         if(Object.keys(this.props.danhSachUser).length !== 0){ 
             if(this.state.keyword===""){
                 //trường hợp ko search nên ko có keyword
@@ -188,6 +190,7 @@ class UserManagement extends Component {
                 danhSachUser = danhSachUser.filter(item => {
                     return item.taiKhoan.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
                 });
+                
                 return danhSachUser.map((item,index)=>{
                     if(index===this.state.indexToExecuteAction){
                         return (
@@ -245,7 +248,7 @@ class UserManagement extends Component {
                                 </td>
                                 <td className="d-flex justify-content-around">
                                     <span className=" w-75 mx-1 py-2 action-user">
-                                        <i className="fas fa-user-edit action-user-edit" data-toggle="tooltip" title="Edit user" onClick={() => { this.handleEdit(index) }}></i>
+                                        <i className="fas fa-user-edit action-user-edit" data-toggle="tooltip" title="Edit user" onClick={() => { this.handleEdit(index,item.taiKhoan,item.hoTen,item.matKhau,item.email,item.soDt,item.maLoaiNguoiDung)}}></i>
                                     </span>
                                     <span className=" w-75 mx-1 py-2 action-user">
                                         <i className="fas fa-user-slash action-user-delete" data-toggle="tooltip" title="Delete user" onClick={()=>{this.handleDeleteUser(item.taiKhoan)}}></i>
