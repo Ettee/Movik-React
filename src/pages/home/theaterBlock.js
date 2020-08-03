@@ -32,6 +32,7 @@ class TheaterBlock extends Component {
     renderTheaterLogo = () => {
         let {chiTietXuatChieuTheoPhim}=this.props;
         if(!this.state.phim){
+            //nếu ở trang chủ
             return this.props.listOfTheaterSystem.map((item, index) => {
                 return (
                     <TheaterLogo 
@@ -45,6 +46,7 @@ class TheaterBlock extends Component {
             })
         }
         else{
+            //nếu ở detail movie
             //check if obj is empty
             if(Object.entries(chiTietXuatChieuTheoPhim).length > 0){
                 return chiTietXuatChieuTheoPhim.heThongRapChieu.map((item, index) => {
@@ -65,6 +67,7 @@ class TheaterBlock extends Component {
     renderTheaterBlock=()=>{
         let {chiTietXuatChieuTheoPhim}=this.props;
         if(Object.entries(chiTietXuatChieuTheoPhim).length > 0 && window.location.pathname.indexOf("/detail-movie") !==-1){
+            //nếu ở detail movie 
             if(chiTietXuatChieuTheoPhim.heThongRapChieu.length !== 0  ){
                 return (
                     <Fragment>
@@ -105,6 +108,7 @@ class TheaterBlock extends Component {
                     )
             }
         }else{
+            //nếu ở trang chủ
             return (
                 <Fragment>
                     <div className="row">
@@ -140,7 +144,9 @@ class TheaterBlock extends Component {
     }
     renderTheaterInfo = () => {
         let {chiTietXuatChieuTheoPhim}=this.props;
+        // console.log(chiTietXuatChieuTheoPhim)
         if(!this.state.phim){
+            //nếu ở trang chủ
             return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
                 return item.lstCumRap.map(item => {
                      return (
@@ -151,13 +157,13 @@ class TheaterBlock extends Component {
                             danhSachPhim={item}  
                             getDanhSachPhimTheoRapDaChon={this.DanhSachPhimTheoRapDaChon}  
                         />
-                     )
+                    )
                      
                 })
              })
         }else{
+            //nếu ở detail movie
             return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
-
                 return item.lstCumRap.map(itemlstCumRap => {
                     return itemlstCumRap.danhSachPhim.map((item)=>{
                         if(item.maPhim===this.props.chiTietXuatChieuTheoPhim.maPhim){
@@ -180,6 +186,7 @@ class TheaterBlock extends Component {
     }
     
     DanhSachPhimTheoRapDaChon=(arr)=>{
+        // console.log(arr)
         let danhSachPhimTheoRap=[];
         let objDanhSachPhim={
             maPhim:"",
@@ -205,9 +212,10 @@ class TheaterBlock extends Component {
     renderPhimTheoRapDaChon=()=>{
         let danhSachPhim=this.state.danhSachPhimTheoRap
         if(danhSachPhim.length >0){
-            return danhSachPhim.map(item=>{
+            return danhSachPhim.map((item,index)=>{
                  return (
                      <MovieInTheaterBlock
+                        key={index}
                         maPhim={item.maPhim}
                         hinhAnh={item.hinhAnh}
                         tenPhim={item.tenPhim}
@@ -219,7 +227,6 @@ class TheaterBlock extends Component {
     }
 
     render() {
-        
         return (
             <section className="theater-section" id="theater-block-home">
                 <div className="container">

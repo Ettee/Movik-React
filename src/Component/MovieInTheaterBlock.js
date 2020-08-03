@@ -13,10 +13,10 @@ export default class MovieInTheaterBlock extends Component {
             arrDate=[...uniqueDate]//convert Set back to Array by spread operator
         })
         
-        return arrDate.map(item=>{
+        return arrDate.map((item,index)=>{
            
             return(
-                <div className="showTimeDate mx-2">
+                <div className="showTimeDate mx-2" key={index}>
                     <p>{item}</p>
                     <div className="btn-xuatChieu">
                         <ButtonXuatChieu

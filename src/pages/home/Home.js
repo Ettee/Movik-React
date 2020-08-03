@@ -6,11 +6,10 @@ import TheaterBlock from "./theaterBlock";
 import News from "./news";
 import Subcribes from "./subcribes";
 // import AdSense from 'react-adsense';
-
 export default class Home extends Component {
     constructor(props){
-        super(props)
-        document.title="Movik"
+      super(props)
+      document.title="Movik"
        
     }
     render() {

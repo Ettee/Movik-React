@@ -6,7 +6,7 @@ import Seat from "../../Component/Seat";
 import SelectionDetail from '../../Component/SelectionDetail'
 import swal from 'sweetalert';
 import {withRouter} from "react-router-dom"
-class Theater extends Component {
+class Theater extends Component{
     constructor(props){
         super(props)
         let maLichChieu=this.props.match.params.maLichChieu;

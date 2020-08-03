@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as action from "../../redux/action";
 import { withRouter } from "react-router";
+import { NavLink } from 'react-router-dom';
 class LoginAdmin extends Component {
   constructor(props){
     super(props)
     this.state={
       taiKhoan:'',
       matKhau:''
-
     }
   }
   handleOnChange=(e)=>{
@@ -84,6 +84,11 @@ class LoginAdmin extends Component {
               <div className="btn-box form-group">
                 <button type="submit" className="btn-login">
                   Đăng nhập
+                </button>
+                <button  className="btn-backToHome">
+                  <NavLink to="/">
+                    Về Movik
+                  </NavLink> 
                 </button>
               </div>
             </form>

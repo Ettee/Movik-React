@@ -8,7 +8,7 @@ import AdminTemplate from "./template/AdminTemplate";
 import {routesHome,routesAdmin} from "./routes";
 import LoginAdmin from './pages/admin/loginAdmin'
 import { Route } from "react-router-dom";
-
+import PageNotFound from './pages/404/pageNotFound';
 function App() {
   const showMenuHome = routes => {
     if (routes && routes.length > 0) {
@@ -45,7 +45,7 @@ function App() {
           {showMenuHome(routesHome)}
           {showMenuAdmin(routesAdmin)}
           <Route path='/login-admin' exact component={LoginAdmin}/>
-          
+          <Route path="" component={PageNotFound} />
         </Switch>
       </div>
     </BrowserRouter>

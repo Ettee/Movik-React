@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Lottie from "react-lottie";
 import loadingData from "./loading.json";
+
 export default class Loading extends Component {
   constructor(props){
     super(props)
@@ -9,6 +10,7 @@ export default class Loading extends Component {
     }
   }
   renderLoading=()=>{
+    let {isHomePageReady}=this.props
     const defaultOptions = {
       loop: true,
       autoplay: true,
@@ -23,7 +25,7 @@ export default class Loading extends Component {
       })
     },3000)
 
-    if(!this.state.is3Seconds){
+    if(!this.state.is3Seconds ){
       return(
         <div className="loading-page">
           <Lottie options={defaultOptions}  width={'35vw'} />

@@ -6,37 +6,38 @@ export default class TheaterInfo extends Component {
         this.danhSachPhim=[]
     }
     taoDanhSachPhim=(danhSachPhim)=>{
-        let {maCumRap}=this.props;
-        if(danhSachPhim.maCumRap===maCumRap){
-            if(this.props.movieID){
-                danhSachPhim.danhSachPhim.map(item=>{
-                    if(item.maPhim===this.props.movieID){
-                        this.danhSachPhim.push(item)
-                    }
-                })
-            }else{
-                danhSachPhim.danhSachPhim.map(item=>{
+        if(this.props.movieID){
+            //ở movie detail
+            danhSachPhim.danhSachPhim.map(item=>{
+                if(item.maPhim===this.props.movieID){
                     this.danhSachPhim.push(item)
-                })
+                }
+            })
+        }else{
+            //ở trang chủ
+            if(this.danhSachPhim.length >0){
+                this.danhSachPhim=[]  
             }
-            
+            danhSachPhim.danhSachPhim.map(item=>{
+                
+                this.danhSachPhim.push(item)
+                
+            })
+
         }
     }
-    componentDidMount(){
-        let {danhSachPhim}=this.props
-        this.taoDanhSachPhim(danhSachPhim)
-    }
-    danhSachPhimTheoRapDaChon=()=>{
-        //console.log(this.danhSachPhim)
+    
+    danhSachPhimTheoRapDaChon=(maCumRap)=>{
+        this.taoDanhSachPhim(this.props.danhSachPhim)
         this.props.getDanhSachPhimTheoRapDaChon(this.danhSachPhim)
         
     }
     render() {
-        let{tenCumRap,diaChi}=this.props;
+        let{tenCumRap,diaChi,maCumRap}=this.props;
        
         return (
             <li className="nav-item">
-                <a className="nav-link " data-toggle="pill" href="#cgv-1" onClick={this.danhSachPhimTheoRapDaChon} >
+                <a className="nav-link " data-toggle="pill" href="#cgv-1" onClick={()=>{this.danhSachPhimTheoRapDaChon(maCumRap)}} >
                     <div>
                         <img
                             src="../img/cgv-aeon-binh-tan-15380175062534.jpg"

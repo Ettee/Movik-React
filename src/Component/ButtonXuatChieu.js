@@ -40,9 +40,9 @@ class ButtonXuatChieu extends Component {
             }
         })
         if(localStorage.getItem("userKhachHang")){
-            return listTime.map(item=>{
+            return listTime.map((item,index)=>{
                 return (
-                    <NavLink to={`/pick-seat/${item.maLichChieu}`}>
+                    <NavLink to={`/pick-seat/${item.maLichChieu}`} key={index}>
                         <button className="btn-shadow m-1">
                             <div className="btn-showTime" style={style}>{item.time}</div>
                         </button>
@@ -51,9 +51,9 @@ class ButtonXuatChieu extends Component {
             })
         }else{
 
-            return listTime.map(item=>{
+            return listTime.map((item,index)=>{
                 return (
-                    <button className="btn-shadow m-1" onClick={this.handleWhenNotLogin}>
+                    <button className="btn-shadow m-1" onClick={this.handleWhenNotLogin} key={index}>
                         <div className="btn-showTime" style={style}>{item.time}</div>
                     </button>  
                 )

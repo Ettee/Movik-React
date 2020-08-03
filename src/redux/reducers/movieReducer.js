@@ -1,4 +1,5 @@
 import * as ActionType from "./../constants/ActionType";
+import { actDangNhap } from "../action";
 //state của movieReducer
 let initialState ={
     listMovie:[],
@@ -10,6 +11,7 @@ let initialState ={
     datVe:'',
     danhSachPhimPhanTrang:{},
     thongTinCumRapTheoHeThongRap:[]
+    
 };
 const movieReducer =(state = initialState,action) =>{
     switch(action.type){
