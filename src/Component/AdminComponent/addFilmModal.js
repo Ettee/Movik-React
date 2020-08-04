@@ -66,7 +66,7 @@ class AddFilmModal extends Component {
                 formdata.append(key, newFilm[key]);
             }
             let userAD=JSON.parse(localStorage.getItem("userAdmin"))
-            console.log(this.state)
+            
             swal({
                 text:"Hãy kiểm tra kĩ thông tin trước khi thêm phim",
                 icon:"warning",
@@ -75,8 +75,15 @@ class AddFilmModal extends Component {
             })
             .then(ok=>{
                 if(ok){
-                    console.log(formdata)
                     this.props.addMovie(formdata,userAD.accessToken)
+                    this.setState({
+                        tenPhim: "",
+                        biDanh: "",
+                        trailer: "",
+                        moTa: "",
+                        imgUrl:"",
+                        danhGia: 0,
+                    })
                     setTimeout(()=>{
                         this.props.reLoad(true)
                         
@@ -116,11 +123,11 @@ class AddFilmModal extends Component {
                             <div className="upload-film-info">
                                 <div className="row">
                                     <label className="col-md-3 ">Tên phim:</label>
-                                    <input className="col-md-8" type="text" onChange={this.handleInfoOnChange} name="tenPhim" placeholder="Tên phim..."/>
+                                    <input className="col-md-8" type="text" onChange={this.handleInfoOnChange} value={this.state.tenPhim} name="tenPhim" placeholder="Tên phim..."/>
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Mô tả</label>
-                                    <textarea rows="5" className="col-md-8" onChange={this.handleInfoOnChange}  name="moTa" placeholder="Mô tả..." />
+                                    <textarea rows="5" className="col-md-8" onChange={this.handleInfoOnChange} value={this.state.moTa} name="moTa" placeholder="Mô tả..." />
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Ngày khởi chiếu:</label>
@@ -139,11 +146,11 @@ class AddFilmModal extends Component {
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Đánh giá: </label>
-                                    <input className="col-md-8" type="number" onChange={this.handleInfoOnChange} max="10" name="danhGia" placeholder="Đánh giá..." />
+                                    <input className="col-md-8" type="number" onChange={this.handleInfoOnChange} value={this.state.danhGia} min="1" max="10" name="danhGia" placeholder="Đánh giá..." />
                                 </div>
                                 <div className="row">
                                     <label className="col-md-3 ">Trailer: </label>
-                                    <input className="col-md-8" type="text" onChange={this.handleInfoOnChange}  name="trailer"placeholder="https://xyz..." />
+                                    <input className="col-md-8" type="text" onChange={this.handleInfoOnChange}  value={this.state.trailer} name="trailer"placeholder="https://xyz..." />
                                 </div>
                             </div>
 

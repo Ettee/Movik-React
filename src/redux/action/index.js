@@ -454,7 +454,7 @@ export const actUpdateMovieKhongHinh=(obj,token)=>{
     }
 }
 export const actDeleteMovie=(maPhim,token)=>{
-    console.log(maPhim)
+    
     return dispatch=>{
         Axios({
             method:"DELETE",
@@ -478,7 +478,6 @@ export const actDeleteMovie=(maPhim,token)=>{
             swal({
                 title:"Đã có lỗi khi xóa phim"   ,
                 icon:"error",
-                
                 text:err.response.data,
                 timer:1500,
                 closeOnEsc:false,
