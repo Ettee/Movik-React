@@ -7,6 +7,8 @@
         border: $darkLite;
         background-color: $darkContent;
         border-radius: 20px;
+        padding-top: 15px ;
+        padding-bottom: 15px ;
         .noShowTime{
             height: 550px;
             color: $darkThemeText;
@@ -46,7 +48,7 @@
         }
         .theater-column{
             overflow-y:auto;
-            height: $theaterBlockHeight;
+            height: 615px;
             .theater-info{
                 .theater-name{
                     color: $yellow;
@@ -246,53 +248,43 @@
         }
         
     }
-}
-// RESPONSIVE THEATER BLOCK
-@include tablet {
-    .logo-column{
-        .pick-logo-theater{
-            .nav-link{
-                img{
-                    width: 40px !important;
-                }
-            }
-        }
-    }
-    .theater-column{
-        .theater-info{
-            margin: 0 10px !important;
 
-            .theater-name{
-                color: $yellow;
-                font-size: 14px !important;
-            }
-        }
-    }
-    .movie-of-picked-theater{
-        .nameFilm{
-            font-size: 20px !important;
-        }
-        .showing-time-list{
-            .btn-shadow{
-                width: 53px !important;
-                height: 33px;
-                padding: 0 !important;
-                
-            }
-        }
-    }
 }
-@include mobile{
-    .logo-column{
-        border-bottom: 1px solid $darkLite;
-        .pick-logo-theater{
-            .nav{
-                justify-content: space-between ;
-                .nav-item{
-                    margin: 0 !important;
+ // RESPONSIVE THEATER BLOCK
+ @media (max-width:900px){
+    .theater-section{
+        display: block !important;
+        .container{
+            .row{
+                flex-direction: column;
+            }
+        }
+        .logo-column{
+            width: 100%;
+            max-width: none;
+            /* flex-direction: row; */
+            justify-content: center;
+            display: flex;
+            .pick-logo-theater{
+                width: 100%; 
+                ul{
+                    justify-content: space-between;
+                }
+                .nav-link{
+                    img{
+                        width: 70px;
+                    }
                 }
             }
         }
+        > .container .theater-column{
+            max-width: none;
+            height: unset;
+        }
+        > .container .show-column{
+            flex: none;
+            max-width: none;height: 266px;
+        }
     }
-    
 }
+

@@ -71,7 +71,7 @@ class TheaterBlock extends Component {
             if(chiTietXuatChieuTheoPhim.heThongRapChieu.length !== 0  ){
                 return (
                     <Fragment>
-                        <div className="row">
+                        <div className="row reponsive-block">
                             <div className="col-md-1 logo-column">
                                 <div className="pick-logo-theater">
                                     <ul className="nav nav-pills">

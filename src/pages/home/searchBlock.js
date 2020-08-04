@@ -157,21 +157,37 @@ class SearchBlock extends Component {
                     </NavLink>
                 )
             } else {
-                swal({
-                    title: "Bạn cần phải đăng nhập trước khi đặt vé",
-                    icon: "info"
-                }).then((ok) => {
-                    if (ok) {
-                        window.location.reload()
-
-                    }
-
-                })
-                return (
-                    <button className="btn btn-buynow text-uppercase active " >
-                        Mua vé ngay
-                    </button>
-                )
+                if (localStorage.getItem("userAdmin")) {
+                    swal({
+                        title: "Tài khoản admin không thể đặt vé",
+                        icon: "info"    
+                    }).then((ok) => {
+                        if (ok) {
+                            window.location.reload()
+                        }
+                    })
+                    return (
+                        <button className="btn btn-buynow text-uppercase active " >
+                            Mua vé ngay
+                        </button>
+                    )
+                }
+                else{
+                    swal({
+                        title: "Bạn cần đăng nhập trước khi đặt vé",
+                        icon: "info"    
+                    }).then((ok) => {
+                        if (ok) {
+                            window.location.reload()
+                        }
+                    })
+                    return (
+                        <button className="btn btn-buynow text-uppercase active " >
+                            Mua vé ngay
+                        </button>
+                    )
+                }
+                
             }
 
         } else {

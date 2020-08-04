@@ -5,6 +5,12 @@ import {withRouter} from "react-router-dom"
 class ButtonXuatChieu extends Component {
     
     handleWhenNotLogin=()=>{
+        if(localStorage.getItem("userAdmin")){
+            swal({
+                title:"Tài khoản admin không thể đặt vé",
+                icon:"info"
+            })
+        }
         swal({
             title:"Bạn cần phải đăng nhập trước khi đặt vé",
             icon:"warning",
@@ -14,7 +20,6 @@ class ButtonXuatChieu extends Component {
                 this.props.history.push("/sign-up")
             }
         })
-       
     }
     renderButton=()=>{
 

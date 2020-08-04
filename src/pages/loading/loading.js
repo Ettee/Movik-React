@@ -28,14 +28,18 @@ export default class Loading extends Component {
     if(!this.state.is3Seconds ){
       return(
         <div className="loading-page">
-          <Lottie options={defaultOptions}  width={'35vw'} />
+          <div>
+            <Lottie options={defaultOptions}   />
+          </div>  
         </div>
       )
     }
     else{
        return(
         <div className="loading-page fade-out">
-          <Lottie options={defaultOptions} height={'50vh'} width={'50vw'} />
+          <div>
+            <Lottie options={defaultOptions}  />
+          </div>  
         </div>
       )
     }

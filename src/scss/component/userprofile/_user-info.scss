@@ -7,10 +7,9 @@
     border-bottom: 1px solid transparent;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px 0px rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 6px 0px rgba(255, 255, 255, 0.75);
     .user-info-avatar{
         height: 30%;
-        
         .avarta{
             height: 100%;
             display: flex;
@@ -38,9 +37,9 @@
         .info-item{
             display: flex;
             margin: 20px 0;
-            border: 1px solid transparent;
+            border-bottom: 2px solid $gray;
             border-radius:10px ;
-            box-shadow: inset 0px -7px 15px -5px rgba(255, 255, 255, 0.75);
+            
             padding: 5px 10px;
             .info-key{
                 color: #fff;
