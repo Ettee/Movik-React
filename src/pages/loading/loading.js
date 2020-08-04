@@ -10,7 +10,7 @@ export default class Loading extends Component {
     }
   }
   renderLoading=()=>{
-    let {isHomePageReady}=this.props
+    
     const defaultOptions = {
       loop: true,
       autoplay: true,
@@ -29,7 +29,7 @@ export default class Loading extends Component {
       return(
         <div className="loading-page">
           <div>
-            <Lottie options={defaultOptions}   />
+            <Lottie options={defaultOptions}  speed={2}  />
           </div>  
         </div>
       )
