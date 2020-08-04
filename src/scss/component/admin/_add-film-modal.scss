@@ -5,7 +5,9 @@
         background-color: $darkLite;
     }
     .modal-header{
-        color:white;
+        .modal-title{
+            color: $gray;
+        }
         button{
             color: white;
         }

@@ -10,16 +10,18 @@ class ButtonXuatChieu extends Component {
                 title:"Tài khoản admin không thể đặt vé",
                 icon:"info"
             })
+        }else{
+            swal({
+                title:"Bạn cần phải đăng nhập trước khi đặt vé",
+                icon:"warning",
+                buttons:"Chuyển đến trang đăng kí"
+            }).then((ok)=>{
+                if(ok){
+                    this.props.history.push("/sign-up")
+                }
+            })
         }
-        swal({
-            title:"Bạn cần phải đăng nhập trước khi đặt vé",
-            icon:"warning",
-            buttons:"Chuyển đến trang đăng kí"
-        }).then((ok)=>{
-            if(ok){
-                this.props.history.push("/sign-up")
-            }
-        })
+        
     }
     renderButton=()=>{
 
