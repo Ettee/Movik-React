@@ -10,14 +10,8 @@
             font-size: 10px;
         }
     }
-    @include mobile{
-        display: none;
-    }
-    @include desktopLarge{
-        .search-movie-box{
-            width: 80% !important;
-        }
-    }
+   
+    
     
     .search-movie-box{
         width: 65%;
@@ -49,6 +43,30 @@
             }
         }
     }
+}
+@media (max-width:1500px){
+    .search-item-for-movie-ticket{
+        button{
+            padding: 5px ;
+        }
+    }
+}
+@media (max-width:1000px){
+    .search-movie-box{
+        .row{
+            >div:nth-last-child(1){
+                .search-item-for-movie-ticket{
+                    height: 100%;
+                    display: flex;
+                    
+                    button{
+                        padding: 5px ;
+                    }
+                }
+            }
+        }
+    }
+    
 }
 @keyframes shadow {
     0% {

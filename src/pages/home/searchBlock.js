@@ -235,7 +235,7 @@ class SearchBlock extends Component {
                 <div className="search-movie-box">
 
                     <div className="row">
-                        <div className="col-sm-4">
+                        <div className="col-md-4 ">
                             <div className="search-item-for-movie-ticket form-group ">
                                 <Select
                                     onChange={this.getMovieSelectedIDForInfoShow}
@@ -248,7 +248,7 @@ class SearchBlock extends Component {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-2">
+                        <div className="col-md-2">
                             <div className="search-item-for-movie-ticket form-group">
                                 <Select
                                     placeholder="Rạp"
@@ -260,7 +260,7 @@ class SearchBlock extends Component {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-2">
+                        <div className="col-md-2">
                             <div className="search-item-for-movie-ticket form-group">
                                 <Select
                                     placeholder="Ngày chiếu"
@@ -272,7 +272,7 @@ class SearchBlock extends Component {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-2">
+                        <div className="col-md-2">
                             <div className="search-item-for-movie-ticket form-group">
                                 <Select
                                     placeholder="Xuất chiếu"
@@ -284,7 +284,7 @@ class SearchBlock extends Component {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-2">
+                        <div className="col-md-2">
                             <div className="search-item-for-movie-ticket">
                                 {this.renderButton()}
                             </div>
