@@ -18,7 +18,6 @@ const HomeLayout = props => {
 };
 
 export default function HomeTemplate({ Component, ...props }) {
-  
   return (
     <Route
       {...props}

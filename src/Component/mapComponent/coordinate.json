@@ -1,0 +1,336 @@
+{
+  "BHDStar":[
+    {
+      "theaterName": "BHD Star Cineplex - 3/2",
+      "theaterImg":"https://rapchieuphim.com/photos/3/rap-bhd-star-3-2.jpg",
+      "address": "L5-Vincom 3/2, 3C Đường 3/2, Q.10",
+      "lat": "10.775998",
+      "long": "106.680871"
+    },
+    {
+      "theaterName": "BHD Star Cineplex - Bitexco",
+      "theaterImg":"https://s3img.vcdn.vn/123phim/2018/09/bhd-star-bitexco-15379520583308.jpg",
+      "address": "L3-Bitexco Icon 68, 2 Hải Triều, Q.1",
+      "lat": "10.771597",
+      "long": "106.704539"
+    },
+    {
+      "theaterName": "BHD Star Cineplex - Phạm Hùng",
+      "theaterImg":"https://s3img.vcdn.vn/123phim/2018/09/bhd-star-pham-hung-15379535235909.jpg",
+      "address": "L4-Satra Phạm Hùng, C6/27 Phạm Hùng, Bình Chánh",
+      "lat": "10.733640",
+      "long": "106.674010"
+    },
+    {
+      "theaterName": "BHD Star Cineplex - Vincom Lê Văn Việt",
+      "theaterImg":"https://i.doanhnhansaigon.vn/2016/03/22/bhd-le-van-viet-1508428812_750x0.jpg",
+      "address": "L4-Vincom Plaza, 50 Lê Văn Việt, Q.9",
+      "lat": "10.845164",
+      "long": "106.778701"
+    },
+    {
+      "theaterName": "BHD Star Cineplex - Vincom Quang Trung",
+      "theaterImg":"https://s3img.vcdn.vn/123phim/2018/09/bhd-star-vincom-quang-trung-15379540311667.jpg",
+      "address": "B1-Vincom QT, 190 Quang Trung, Gò Vấp",
+      "lat": "10.829267",
+      "long": "106.672577"
+    },
+    {
+      "theaterName": "BHD Star Cineplex - Vincom Thảo Điền",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/07/rap-chieu-phim-bhd-bitexco-tphcm.jpg",
+      "address": "L5-Megamall, 159 XL Hà Nội, Q.2",
+      "lat": "10.802310",
+      "long": "106.740952"
+    }
+  ],
+  "Galaxy":[
+    {
+      "theaterName": "GLX - Huỳnh Tấn Phát",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/08/rap-chieu-phim-galaxy-huynh-tan-phat-tphcm.jpg",
+      "address": "1362 Huỳnh Tấn Phát, KP1, Phú Mỹ, Q. 7",
+      "lat": "10.711734",
+      "long": "106.737654"
+    },
+    {
+      "theaterName": "GLX - Kinh Dương Vương",
+      "theaterImg":"https://www.megavina.com/vi/upload/galaxy-cinema-1.jpg_megavina_s46jB9ST.jpg",
+      "address": "718bis Kinh Dương Vương, Q.6",
+      "lat": "10.750067",
+      "long": "106.628340"
+    },
+    {
+      "theaterName": "GLX - Nguyễn Du",
+      "theaterImg":"https://galaxycine.vn/media/2019/5/6/rapgiave-hinhrap-nguyen-du-2_1557134452480.jpg",
+      "address": "116 Nguyễn Du, Q.1",
+      "lat": "10.773252",
+      "long": "106.692920"
+    },
+    {
+      "theaterName": "GLX - Nguyễn Văn Quá",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/08/rap-chieu-phim-galaxy-nguyen-van-qua-tphcm.jpg",
+      "address": "119B Nguyễn Văn Quá, Đông Hưng Thuận, Q.12, TPHCM",
+      "lat": "10.846920",
+      "long": "106.634260"
+    },
+    {
+      "theaterName": "GLX - Phạm Văn Chí",
+      "theaterImg":"https://galaxycine.vn/media/2019/5/6/rapgiave-hinhrap-pvc-02_1557133353602.jpg",
+      "address": "Lầu 5, TTTM Platinum Plaza, 634 Phạm Văn Chí, Q.6",
+      "lat": "10.740810",
+      "long": "106.638071"
+    },
+    {
+      "theaterName": "GLX - Quang Trung",
+      "theaterImg":"https://galaxycine.vn/media/2019/5/6/rapgiave-hinhrap-quang-trung-1_1557133544324.jpg",
+      "address": "L3-Co.opmart Foodcosa, 304A Quang Trung, Gò Vấp",
+      "lat": "10.834749",
+      "long": "106.662224"
+    },
+    {
+      "theaterName": "GLX - Tân Bình",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/08/rap-chieu-phim-galaxy-tan-binh-tphcm.png",
+      "address": "246 Nguyễn Hồng Đào, Tân Bình",
+      "lat": "10.790789",
+      "long": "106.640666"
+    },
+    {
+      "theaterName": "GLX - Trung Chánh",
+      "theaterImg":"https://galaxycine.vn/media/2019/5/6/rapgiave-hinhrap-tc-01_1557133665388.jpg",
+      "address": "TTVH Q12 – 09, Q L 22, Trung Mỹ Tây , Q.12",
+      "lat": "10.855370",
+      "long": "106.608155"
+    }
+  ],
+  "LotteCinima":[
+    {
+      "theaterName": "Lotte - Cantavil",
+      "theaterImg":"https://khenphim.com/wp-content/uploads/2017/05/Lotte-Cantavil2.jpg",
+      "address": "L7-Cantavil Premier, Xa Lộ Hà Nội, Q.2",
+      "lat": "10.801437",
+      "long": "106.746898"
+    },
+    {
+      "theaterName": "Lotte - Cộng Hòa",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/08/rap-chieu-phim-lotte-cong-hoa-tphcm.jpg",
+      "address": "L4-Pico Plaza, 20 Cộng Hòa, Tân Bình",
+      "lat": "10.800836",
+      "long": "106.653056"
+    },
+    {
+      "theaterName": "Lotte - Diamond",
+      "theaterImg":"https://thantuong.tv/custom/domain_1/articles/fullsize/article21398/lotte-cinema-diamond-khai-truong-phong-chieu-1481278806-hXpvhZ.jpg",
+      "address": "L13-Diamond Plaza, 34 Lê Duẩn, Q.1",
+      "lat": "10.781024",
+      "long": "106.698464"
+    },
+    {
+      "theaterName": "Lotte - Gò Vấp",
+      "theaterImg":"https://2.pik.vn/2016d5a4e10f-d3ee-4a6e-97ec-4d4322ba86a7.jpg",
+      "address": "L3-Lotte Mart, 242 Nguyễn Văn Lượng, Gò Vấp",
+      "lat": "10.838278",
+      "long": "106.671566"
+    },
+    {
+      "theaterName": "Lotte - Nam Sài Gòn",
+      "theaterImg":"https://reviewphimaz.com/wp-content/uploads/2018/08/rap-chieu-phim-lotte-nam-sai-gon.jpg",
+      "address": "L3-Lotte Mart NSG, 469 Nguyễn Hữu Thọ, Q.7",
+      "lat": "10.741076",
+      "long": "106.702064"
+    },
+    {
+      "theaterName": "Lotte - Nowzone",
+      "theaterImg":"https://images.foody.vn/res/g24/231838/s/foody-lotte-cinema-nowzone-231838-265-635974766946615285.jpg",
+      "address": "L5-Nowzone, 235 Nguyễn Văn Cừ, Q.1",
+      "lat": "10.764317",
+      "long": "106.682437"
+    },
+    {
+      "theaterName": "Lotte - Phú Thọ",
+      "theaterImg":"https://rapchieuphim.com/photos/3/rap-lotte-cinema-phu-tho.jpg",
+      "address": "L4-Lotte Mart Phú Thọ, Q.11",
+      "lat": "10.762986",
+      "long": "106.657121"
+    },
+    {
+      "theaterName": "Lotte - Thủ Đức",
+      "theaterImg":"https://rapchieuphim.com/photos/3/rap-lotte-cinema-phu-tho.jpg",
+      "address": "L2-Joy Citipoint, KCX Linh Trung, Thủ Đức",
+      "lat": "10.870933",
+      "long": "106.769190"
+    }
+  ],
+  "CineStar":[
+    {
+      "theaterName": "CNS - Hai Bà Trưng",
+      "theaterImg":"https://images.foody.vn/res/g68/671328/s/foody-cinestar-hai-ba-trung-q1-481-636352747855621972.jpg",
+      "address": "135 Hai Bà Trưng, Bến Nghé, Q.1",
+      "lat": "10.782459",
+      "long": "106.698174"
+    },
+    {
+      "theaterName": "CNS - Quốc Thanh",
+      "theaterImg":"https://s3img.vcdn.vn/123phim/2018/09/cinestar-quoc-thanh-15379637003771.jpg",
+      "address": "271 Nguyễn Trãi, Q.1",
+      "lat": "10.763744",
+      "long": "106.687433"
+    }
+  ],
+  "MegaGS":[
+    {
+      "theaterName": "MegaGS - Cao Thắng",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "19 Cao Thắng, Q.3",
+      "lat": "10.768882",
+      "long": "106.682907"
+    }
+  ],
+  "cgv":[
+    {
+      "theaterName": "CGV - Aeon Bình Tân",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 3, TTTM Aeon Mall Bình Tân, Số 1 đường số 17A, khu phố 11, Bình Trị Đông B, Bình Tân",
+      "lat": "10.742761",
+      "long": "106.611931"
+    },
+    {
+      "theaterName": "CGV - Aeon Tân Phú",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "30 Bờ Bao Tân Thắng, Sơn Kỳ, Tân Phú",
+      "lat": "10.801720",
+      "long": "106.617534"
+    },
+    {
+      "theaterName": "CGV - CGV Saigonres Nguyễn Xí",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 4-5, Saigonres Plaza, 79/81 Nguyễn Xí, P. 26, Bình Thạnh",
+      "lat": "10.816436",
+      "long": "106.707228"
+    },
+    {
+      "theaterName": "CGV - Crescent Mall",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Lầu 5, Crescent Mall, Đại lộ Nguyễn Văn Linh, Phú Mỹ Hưng, Q. 7",
+      "lat": "10.729157",
+      "long": "106.718895"
+    },
+    {
+      "theaterName": "CGV - CT Plaza",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "60A Trường Sơn,P. 2, Tân Bình",
+      "lat": "10.813183",
+      "long": "106.665611"
+    },
+    {
+      "theaterName": "CGV - Golden Plaza",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 4, Trung tâm thương mại Golden Plaza, 922 Nguyễn Trãi, P. 14, Q. 5",
+      "lat": "10.753612",
+      "long": "106.654764"
+    },
+    {
+      "theaterName": "CGV - Hoàng Văn Thụ",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 1 và 2 Gala Center, 415 Hoàng Văn Thụ, P. 2, Tân Bình",
+      "lat": "10.798698",
+      "long": "106.660148"
+    },
+    {
+      "theaterName": "CGV - Hùng Vương Plaza",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Lầu 7, 126 Hùng Vương, Q. 5",
+      "lat": "10.756414",
+      "long": "106.662429"
+    },
+    {
+      "theaterName": "CGV - IMC Trần Quang Khải",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "T2&3, TTVH Đa Năng, 62 Trần Quang Khải, P.Tân Định, Q.1",
+      "lat": "10.792482",
+      "long": "106.693915"
+    },
+    {
+      "theaterName": "CGV - Liberty Citypoint",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng M - 1, khách sạn Liberty Center Saigon Citypoint, 59 - 61 Pateur, Q. 1",
+      "lat": "10.774676",
+      "long": "106.700660"
+    },
+    {
+      "theaterName": "CGV - Pandora City",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Lầu 3, Pandora City, 1/1 Trường Chinh, Tân Phú",
+      "lat": "10.806613",
+      "long": "106.634272"
+    },
+    {
+      "theaterName": "CGV - Paragon",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 5, toà nhà Parkson Paragon, 03 Nguyễn Lương Bằng, Q. 7",
+      "lat": "10.729622",
+      "long": "106.721675"
+    },
+    {
+      "theaterName": "CGV - Parkson Đồng Khởi",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 5 Parkson Đồng Khởi, 35bis-45 Lê Thánh Tôn, Bến Nghé, Q.1",
+      "lat": "10.777835",
+      "long": "106.702458"
+    },
+    {
+      "theaterName": "CGV - Pearl Plaza",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Lầu 5, Pearl Plaza, 561 Điện Biên Phủ, Bình Thạnh",
+      "lat": "10.800087",
+      "long": "106.718600"
+    },
+    {
+      "theaterName": "CGV - Satra Củ Chi",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "T3, TTTM Satra Củ Chi, Số 1239, Tỉnh Lộ 8, Ấp Thạnh An, Trung An, Củ Chi, TP.HCM",
+      "lat": "10.983987",
+      "long": "106.579345"
+    },
+    {
+      "theaterName": "CGV - Sư Vạn Hạnh",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "T6 Vạn Hạnh Mall, 11 Sư Vạn Hạnh, Quận 10",
+      "lat": "10.770521",
+      "long": "106.669825"
+    },
+    {
+      "theaterName": "CGV - Vincom Đồng Khởi",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 3, TTTM Vincom Center B, 72 Lê Thánh Tôn, Bến Nghé, Q. 1",
+      "lat": "10.777924",
+      "long": "106.701953"
+    },
+    {
+      "theaterName": "CGV - Vincom Gò Vấp",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 5 TTTM Vincom Plaza Gò Vấp, 12 Phan Văn Trị, P. 7, Gò Vấp",
+      "lat": "10.827103",
+      "long": "106.689262"
+    },
+    {
+      "theaterName": "CGV - Vincom Landmark 81",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "T B1 , TTTM Vincom Center Landmark 81, 772 Điện Biên Phủ, P.22, Q. Bình Thạnh, HCM",
+      "lat": "10.794793",
+      "long": "106.722241"
+    },
+    {
+      "theaterName": "CGV - Vincom Thủ Đức",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Tầng 5 Vincom Thủ Đức, 216 Võ Văn Ngân, Bình Thọ, Thủ Đức",
+      "lat": "10.850009",
+      "long": "106.765227"
+    },
+    {
+      "theaterName": "CGV - VivoCity",
+      "theaterImg":"https://cms.megagscinemas.vn//media/75318/con-l7.jpg?width=802&height=333",
+      "address": "Lầu 5, Trung tâm thương mại SC VivoCity - 1058 Nguyễn Văn Linh, Q. 7",
+      "lat": "10.730188",
+      "long": "106.703840"
+    }
+  ]
+}

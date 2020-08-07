@@ -29,7 +29,7 @@ export default class Loading extends Component {
       return(
         <div className="loading-page">
           <div>
-            <Lottie options={defaultOptions}  speed={2}  />
+            <Lottie options={defaultOptions}  speed={3}  />
           </div>  
         </div>
       )
