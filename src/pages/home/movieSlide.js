@@ -14,7 +14,6 @@ class MovieSlide extends Component {
                         isTicketNotAvailable={isTicketNotAvailable}
                     />
                 </div>
-                
             )
         })
     }

@@ -1,5 +1,6 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss"; 
+
 .user-booking-info{
     .booking-detail{
         .title{
@@ -39,10 +40,6 @@
     
 }
 .booking-detail-modal{
-    // background-image:url(../../../img/Slanted-Gradient.svg);
-    // background-position: center;
-    // background-size: cover;
-    // background-repeat: no-repeat;
     background-color: $darkBackground;
 }
 .detail-more-modal{

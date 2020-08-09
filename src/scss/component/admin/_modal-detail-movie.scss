@@ -35,6 +35,8 @@
             background-color: $darkLite;
             color: $gray;
             border: 1px solid $gray;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         input{
             width: 100%;

@@ -1,0 +1,51 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.recommend-section{
+    background-color: $darkBackground;
+    padding: 50px 0;
+    h2{
+      @include GradientTextWith_2_Colors(#9f00fb,#ff0000,30%,70%);
+      i{
+        font-size: 14px;
+      }
+    }
+    >div{
+        background-color: $darkContent;
+        padding: 10px 0;
+        border-radius: 10px;
+    }
+    .slick-track{
+        .slick-slide{
+            .card{
+                border: none;
+                border-radius: unset;
+                
+                background-color: #242526;
+                &:hover{
+                    .card-overlay{
+                      cursor: pointer;
+                      background: linear-gradient(0deg, rgba(131,58,180,0.5466561624649859) 19%, rgba(253,29,29,0.55) 72%);              
+                      .btn-buyticket{
+                        opacity: 1;
+                        @include GradientBackgroundTheme();
+                        transform: translateY(0);
+                      }
+                      .watchTrailer{
+                        i{
+                          opacity: 1;
+                          
+                        }
+                      }
+                    }
+                  }
+            }
+            .film-content{
+                width: 215px !important;
+                margin: auto;
+                .lengthFilm{
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}

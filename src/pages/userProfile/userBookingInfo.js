@@ -29,7 +29,6 @@ class UserBookingInfo extends Component {
                      )
                 })
             }else{
-                console.log("1")
                 return (
                     <div className="no-booking-data">Bạn chưa đặt vé trên Movik</div>
                 )

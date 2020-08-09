@@ -2,6 +2,7 @@ import React, { Component, Fragment} from 'react'
 import MainSlide from "./mainSlide";
 import SearchBlock from "./searchBlock";
 import MovieSlide from "./movieSlide";
+import Recommend from "../../Component/RecommendComponent/Recommend";
 import TheaterBlock from "./theaterBlock";
 import News from "./news";
 import Subcribes from "./subcribes";
@@ -21,6 +22,7 @@ export default class Home extends Component {
             <SearchBlock />
             <MovieSlide />
             <TheaterBlock />
+            <Recommend/>
             <Map/>
             <News />
             <Subcribes />

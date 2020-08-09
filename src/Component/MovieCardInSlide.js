@@ -108,7 +108,9 @@ export default class MovieCardInSlide extends Component {
                     </div>
                     <div className="film-content">
                         <div className="nameFilm">{movie?.tenPhim}</div>
-                        <div className="lengthFilm">118 mins</div>
+                        {this.props.recommend?
+                            <div className="lengthFilm">Ngày chiếu: {new Date(movie.ngayKhoiChieu).toLocaleDateString()}</div>:<div className="lengthFilm">118 phút</div> }
+                    
                     </div>
                 </div>
             </Fragment>

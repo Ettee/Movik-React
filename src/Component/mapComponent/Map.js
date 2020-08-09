@@ -253,7 +253,6 @@ class Map extends Component {
     this.props.LayThongTinCumRapTheoHeThongRap("BHDStar")
   }
   render() {
-    console.log(this.props.thongTinCumRapTheoHeThongRap)
     return (
       <section className="map-container">
         <div className="row" >
@@ -276,7 +275,7 @@ class Map extends Component {
           <div className="col-lg-5" style={{height:"100%"}}>
             <div className="theater-nearby" style={{height:"100%"}}>
               <div className="heThongRap" style={{height:"100%"}}>
-                <div className="theater-nearby-title">Rạp phim gần bạn</div>
+                <div className="theater-nearby-title">Rạp phim trong khu vực TP.HCM</div>
                 <div className="d-flex flex-column" style={{height:"100%"}}>
                   <div>
                     {this.renderButton()}

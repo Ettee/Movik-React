@@ -551,32 +551,3 @@ export const actTaoLichChieu=(obj,token)=>{
         })
     }
 }
-//api geocode from positionstack.com
-export const actConvertAddressToGeocode=(address)=>{
-
-    return dispatch=>{
-        Axios({
-            method:"GET",
-            url:`http://open.mapquestapi.com/geocoding/v1/address?key=A9VqniQTriBKwOMjmRUJ5jNOBdMJ8AOM&location=${address}`
-        })
-        .then((rs)=>{
-            dispatch({
-                type:ActionType.GEOCODE,
-                data:rs.data.results
-            })
-            console.log(address)
-            console.log(rs.data.results)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }
-}
-export const actResetGeocodeData=()=>{
-    return dispatch=>{
-        dispatch({
-            type:ActionType.RESET_GEOCODE,
-            data:[]
-        })
-    }
-}
