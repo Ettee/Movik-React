@@ -1,9 +1,9 @@
 import * as ActionType from "./../constants/ActionType";
 let initialState ={
-   thongTinDatVe:[],
-   danhSachNguoiDungPhanTrang:{},
-   danhSachTatCaNguoiDung:[],
-   isAdmin:false
+    thongTinDatVe:[],
+    danhSachNguoiDungPhanTrang:{},
+    danhSachTatCaNguoiDung:[],
+    isAdmin:false
 };
 const userReducer=(state=initialState,action)=>{
     switch(action.type){

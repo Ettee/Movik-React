@@ -37,7 +37,7 @@ export default class Seat extends Component {
         return danhSachPhim.slice(0, 70).map((item,index)=>{
             if(item.daDat){
                 return(
-                    <div className="col-lg-1 col-md-2 col-sm-4 col-6">
+                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
                         <div className="seat-item text-center inactive">{item.tenGhe}</div>
                     </div>
                 )
@@ -46,7 +46,7 @@ export default class Seat extends Component {
                         //khi ghế đc chọn
                         if(item.loaiGhe==="Vip"){
                             return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6">
+                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
                                     <div 
                                         className="seat-item text-center active vip"
                                         onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
@@ -55,7 +55,7 @@ export default class Seat extends Component {
                             )
                         }else{
                             return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6">
+                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
                                     <div 
                                         className="seat-item text-center active"
                                         onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
@@ -68,7 +68,7 @@ export default class Seat extends Component {
                         //khi ghế chưa đc chọn
                         if(item.loaiGhe==="Vip"){
                             return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6">
+                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
                                     <div 
                                         className="seat-item text-center vip"
                                         onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
@@ -77,7 +77,7 @@ export default class Seat extends Component {
                             )
                         }else{
                             return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6">
+                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
                                     <div 
                                         className="seat-item text-center"
                                         onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}

@@ -1,0 +1,48 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss"; 
+.viewed-movie-section{
+    background-color: $darkBackground;
+    padding: 50px 20px;
+    .viewed-movie{
+        @include GradientTextWith_2_Colors(#9f00fb,#ff0000,30%,70%);
+    }
+    >div{
+        background-color: $darkContent;
+        padding: 10px ;
+        border-radius: 10px;
+    }
+    .slick-track{
+        
+        .slick-slide{
+            .card{
+                border: none;
+                border-radius: unset;  
+                background-color: #242526;
+                &:hover{
+                    .card-overlay{
+                      cursor: pointer;
+                      background: linear-gradient(0deg, rgba(131,58,180,0.5466561624649859) 19%, rgba(253,29,29,0.55) 72%);              
+                      .btn-buyticket{
+                        opacity: 1;
+                        @include GradientBackgroundTheme();
+                        transform: translateY(0);
+                      }
+                      .watchTrailer{
+                        i{
+                          opacity: 1;
+                          
+                        }
+                      }
+                    }
+                }
+            }
+            .film-content{
+                width: 215px !important;
+                margin: auto;
+                .lengthFilm{
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}

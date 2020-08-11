@@ -5,9 +5,10 @@ import DetailMovie from "./pages/detailmovie/DetailMovie";
 import Theater from "./pages/theater/theater";
 import UserProfile from "./pages/userProfile/userProfile";
 import UserManagement from "./pages/admin/userManagement";
-import movieManagement from "./pages/admin/movieManagement"
-import bookingManagement from "./pages/admin/bookingManagement"
-import theaterManagement from "./pages/admin/theaterManagement"
+import movieManagement from "./pages/admin/movieManagement";
+import bookingManagement from "./pages/admin/bookingManagement";
+import theaterManagement from "./pages/admin/theaterManagement";
+import TicketInfoAfterBooked from "./pages/TicketInfoAfterBooked/TicketInfoAfterBooked";
 const routesHome=[
     {
         path:"/",
@@ -31,13 +32,18 @@ const routesHome=[
     },
     {
         path:"/pick-seat/:maLichChieu",
-        exact:false,
+        exact:true,
         component:Theater
     },
     {
         path:"/profile/:taiKhoan",
         exact:false,
         component:UserProfile
+    },
+    {
+        path:"/ticket-info",
+        exact:false,
+        component:TicketInfoAfterBooked
     }
 ];
 const routesAdmin=[

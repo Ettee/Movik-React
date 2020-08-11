@@ -14,9 +14,9 @@ class SelectionDetail extends Component {
     
     renderGheDaChon=()=>{
         let {danhSachGhe}=this.props;
-        return danhSachGhe.map(item=>{
+        return danhSachGhe.map((item,index)=>{
             return (
-                <div>{item.tenGhe}</div>
+                <div key={index}>{item.tenGhe}</div>
             
             )
         })
@@ -47,129 +47,19 @@ class SelectionDetail extends Component {
     handleDatVe=()=>{
         let{maLichChieu,danhSachGhe,thongTinPhim}=this.props;
         if(danhSachGhe.length>0){
+            let obj={
+                maLichChieu:maLichChieu,
+                danhSachGhe:danhSachGhe,
+                thongTinPhim:thongTinPhim
+            }
+            this.props.LuuThongTinDatVe(obj)
             swal({
                 title:"Xác nhận đặt vé",
+                icon:"info",
                 buttons:["Quay lại","Xác nhận"],
                 closeOnEsc: false,
                 closeOnClickOutside: false,
-                dangerMode: true,
-                content:(
-                    <div className="confirm-booking">
-                    <div className="booking-detail">
-                        <div className="ticket-info-confirm">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Phim:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {thongTinPhim.tenPhim}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Rạp:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {thongTinPhim.tenCumRap}, {thongTinPhim.tenRap} 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Xuất chiếu:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {thongTinPhim.gioChieu} 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Ghế
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm seat">
-                                            {this.renderGheDaChon()}
-                                        </div>
-                                    </div>
-                                </div>   
-                        </div>
-                        <div className="user-info-confirm">
-                            <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="title-info-confirm">
-                                                Tài khoản:
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="info-confirm">
-                                                {this.state.infoKhachHang.taiKhoan}
-                                            </div>
-                                        </div>
-                            </div>
-                            
-                            <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Tên khách hàng:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {this.state.infoKhachHang.hoTen}
-                                        </div>
-                                    </div>
-                            </div>
-                            <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Email:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {this.state.infoKhachHang.email}
-                                        </div>
-                                    </div>
-                            </div>
-                            <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="title-info-confirm">
-                                            Số điện thoại:
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="info-confirm">
-                                            {this.state.infoKhachHang.soDT}
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="ticket-price-confirm">
-                        <div className="row">
-                            <div className="col-md-6 title-tongTien">
-                                Tổng tiền
-                            </div>
-                            <div className="col-md-6 tongTien">
-                                {this.tinhTongGiaVe()}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )
+                dangerMode: true
             }).then(ok=>{
                 if(ok){
                     let lstGhe=[]
@@ -186,11 +76,14 @@ class SelectionDetail extends Component {
                         taiKhoanNguoiDung:this.state.infoKhachHang.taiKhoan
                     }
                     this.props.DatVe(obj,this.state.infoKhachHang.accessToken)
-                    setTimeout(()=>{this.props.history.push("/")},3000)
-                    
                 }
             })
-
+            
+            setTimeout(()=>{
+                if(this.props.datVeStatus){
+                    this.props.history.push("/ticket-info")
+                }
+            },3000)
         }else{
             swal({
                 title:"Bạn chưa chọn ghế.",
@@ -254,19 +147,27 @@ class SelectionDetail extends Component {
                         </div>
                     </div>
                     
-                    <button className="checkout text-uppercase text-center" onClick={this.handleDatVe}>
-                        Đặt vé
+                    <button className="checkout text-uppercase text-center" onClick={this.handleDatVe}>   
+                        Đặt vé       
                     </button>
                 </div>
             </Fragment>
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return{
+        datVeStatus:state.movieReducer.datVeStatus
+    }
+}
 const mapDispatchToProps=dispatch=>{
     return {
+        LuuThongTinDatVe:(obj)=>{
+            dispatch(action.actLuuThongTinDatVe(obj));
+        },
         DatVe:(obj,token)=>{
             dispatch(action.actDatVe(obj,token));
         }
     }
 }
-export default withRouter(connect(null,mapDispatchToProps)(SelectionDetail))
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(SelectionDetail))

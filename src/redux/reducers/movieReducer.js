@@ -1,5 +1,5 @@
 import * as ActionType from "./../constants/ActionType";
-import { actDangNhap } from "../action";
+
 //state của movieReducer
 let initialState ={
     listMovie:[],
@@ -10,7 +10,10 @@ let initialState ={
     chiTietPhongChieu:{},
     datVe:'',
     danhSachPhimPhanTrang:{},
-    thongTinCumRapTheoHeThongRap:[]
+    thongTinCumRapTheoHeThongRap:[],
+    thongTinDatVe:{},
+    datVeStatus:false,
+    viewedMovie:{}
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -41,6 +44,15 @@ const movieReducer =(state = initialState,action) =>{
             return { ...state }
         case ActionType.LAY_THONG_TIN_CUM_RAP_THEO_HE_THONG_RAP:
             state.thongTinCumRapTheoHeThongRap = action.data
+            return { ...state }
+        case ActionType.LUU_THONG_TIN_DAT_VE:
+            state.thongTinDatVe = action.data
+            return { ...state }   
+        case ActionType.DAT_VE_STATUS:
+            state.datVeStatus = action.data
+            return { ...state }
+        case ActionType.VIEWED_MOVIE:
+            state.viewedMovie=action.data
             return { ...state }
         default: 
             return {...state};

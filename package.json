@@ -16,6 +16,7 @@
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
+    "qrcode.react": "^1.0.0",
     "react": "^16.13.1",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",

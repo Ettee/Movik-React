@@ -1,7 +1,6 @@
 import * as ActionType from "./../constants/ActionType";
 import Axios from 'axios';
 import swal from 'sweetalert';
-import { data } from "jquery";
 
 export const actGetListMovieAPI =()=>{
     return dispatch=>{
@@ -18,7 +17,7 @@ export const actGetListMovieAPI =()=>{
         })
     }
 }
-export const actGetDetailMovieAPI =movieID =>{
+export const actGetDetailMovieAPI=movieID =>{
     return dispatch=> {
         Axios({
             method:"GET",
@@ -28,6 +27,24 @@ export const actGetDetailMovieAPI =movieID =>{
             // nếu gọi api và đc trả về data thì dispatch dữ liệu vào trong state của movieReducer
             dispatch({
                 type:ActionType.GET_DETAIL_MOVIE_BY_ID,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+export const actGetViewedMovie=movieID =>{
+    return dispatch=> {
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movieID}`
+        })
+        .then(rs=>{
+            // nếu gọi api và đc trả về data thì dispatch dữ liệu vào trong state của movieReducer
+            dispatch({
+                type:ActionType.VIEWED_MOVIE,
                 data:rs.data
             })
         })
@@ -236,9 +253,13 @@ export const actDatVe=(obj,token)=>{
                 Authorization:`Bearer ${token}`
             }
         }).then(rs=>{
+            dispatch({
+                type:ActionType.DAT_VE_STATUS,
+                data:true
+            })
             swal({
                 title:"Đặt vé thành công",
-                text:"Bạn sẽ được đưa về trang chủ",
+                text:"Bạn sẽ đang được chuyển đến xem thông tin vé",
                 icon:"success",
                 timer:3000,
                 buttons:false,
@@ -548,6 +569,14 @@ export const actTaoLichChieu=(obj,token)=>{
                 closeOnEsc:false,
                 buttons:false
             })
+        })
+    }
+}
+export const actLuuThongTinDatVe=(obj)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.LUU_THONG_TIN_DAT_VE,
+            data:obj
         })
     }
 }

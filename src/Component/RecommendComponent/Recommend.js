@@ -21,7 +21,7 @@ class Recommend extends Component {
             let lstRecommendByDate = lstRecommendByScore.sort((a,b)=>{
                 let keyA= new Date(a.ngayKhoiChieu)    
                 let keyB= new Date(b.ngayKhoiChieu)
-                //sắp xếp giảm dần
+                //sắp xếp giảm dần 
                 if(keyA<keyB){
                     return 1
                 }
@@ -30,16 +30,16 @@ class Recommend extends Component {
                 }
                 return 0
             })
+            //lấy ra 5 phim đầu danh sách những phim có lịch chiếu gần current date
             lstRecommendByDate.splice(5)
             return lstRecommendByDate
         }else{
-            //nếu ko có data từ api thì trả về hàm rỗng
+            //nếu ko có data từ api thì trả về mảng rỗng
             return lstRecommendByScore
         }
     }
     renderItemInSlider=()=>{
         let lstOfRecommendFilm = this.taoDanhSachPhimRecommend()
-        console.log(lstOfRecommendFilm)
         return lstOfRecommendFilm.map((item,index)=>{
             return (
                 <div key={index}>

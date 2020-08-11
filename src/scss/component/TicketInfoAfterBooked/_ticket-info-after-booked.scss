@@ -1,0 +1,89 @@
+@import "../../helper/variable.scss";
+@import "../../helper/mixin.scss";
+.TicketInfoAfterBooked{
+    height: 100vh;
+    background-color: $darkBackground;
+    display: flex;
+    align-items: center;
+    .container{
+        border-radius:10px ;
+        background-color:$darkContent ;
+        padding: 10px;
+        .qr-code-block{
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            canvas{
+                border-radius: 10px;
+            }
+            .qr-note{
+                color: #65676B;
+                font-size: 12px;
+                margin: 5px 0;
+            }
+        }
+        .ticket-info-block{
+            background-color: $darkLite;
+            border-radius: 10px;
+            padding: 10px;
+            
+            .row{
+                height: 100%;
+            }
+            .ticket-info{
+                color: $yellow;
+                margin: 10px 0;
+                span{
+                    color: $colorForSmallIcon;
+                }
+                .ticket-info-seat{
+                    display: flex;
+                    color: $colorForSmallIcon;
+                    div{
+                        color: $yellow;
+                        margin: 0 2px;
+                        &:after{
+                            content: ',';
+                        }
+                    }
+                    div:nth-last-child(1){
+                        color: $yellow;
+                        &:after{
+                            content: '';
+                        }
+                    }
+                }
+            }
+            .btn-backToHome{
+                @include buttonMaker(100%,50px,5px,white);
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+            .poster{
+                height: 300px;
+                display: flex;
+                justify-content: flex-end;
+                img{
+                    border-radius:10px ;
+                    height:100%;
+                }
+            }
+        }
+    }
+}
+@media (max-width:1000px){
+    .TicketInfoAfterBooked{
+        height: unset;
+        padding: 20px;
+        .container{
+            flex-direction: column;
+            .ticket-info-block{
+                .poster{
+                    justify-content:center ;
+                }
+            }
+            
+        }
+    }
+}

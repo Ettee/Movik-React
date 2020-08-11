@@ -256,7 +256,7 @@ class Map extends Component {
     return (
       <section className="map-container">
         <div className="row" >
-          <div className="col-lg-7" style={{ height: "100%" }}>
+          <div className="col-lg-6" style={{ height: "100%" }}>
             <div className="map">
               <LeafletMap
                 center={this.state.centerLocation}
@@ -272,7 +272,7 @@ class Map extends Component {
               </LeafletMap>
             </div>
           </div>
-          <div className="col-lg-5" style={{height:"100%"}}>
+          <div className="col-lg-6" style={{height:"100%"}}>
             <div className="theater-nearby" style={{height:"100%"}}>
               <div className="heThongRap" style={{height:"100%"}}>
                 <div className="theater-nearby-title">Rạp phim trong khu vực TP.HCM</div>

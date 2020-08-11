@@ -148,9 +148,10 @@ class TheaterBlock extends Component {
         if(!this.state.phim){
             //nếu ở trang chủ
             return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
-                return item.lstCumRap.map(item => {
+                return item.lstCumRap.map((item,index) => {
                      return (
                         <TheaterInfo 
+                            key={index}
                             tenCumRap={item.tenCumRap} 
                             maCumRap={item.maCumRap}
                             diaChi={item.diaChi} 
@@ -165,10 +166,11 @@ class TheaterBlock extends Component {
             //nếu ở detail movie
             return this.props.danhSachLichChieuTheoMaHeThongRap.map((item) => {
                 return item.lstCumRap.map(itemlstCumRap => {
-                    return itemlstCumRap.danhSachPhim.map((item)=>{
+                    return itemlstCumRap.danhSachPhim.map((item,index)=>{
                         if(item.maPhim===this.props.chiTietXuatChieuTheoPhim.maPhim){
                             return (
                                 <TheaterInfo 
+                                    key={index}
                                    tenCumRap={itemlstCumRap.tenCumRap} 
                                    maCumRap={itemlstCumRap.maCumRap}
                                    diaChi={itemlstCumRap.diaChi} 
