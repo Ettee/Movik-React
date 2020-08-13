@@ -2,14 +2,17 @@ import React, { Component, Fragment } from 'react'
 import * as action from "../../redux/action";
 import {connect} from "react-redux";
 import Slider from "react-slick";
-import MovieCardInSlide from "../MovieCardInSlide"
+import MovieCardInSlide from "../MovieCardInSlide";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 class ViewedMovie extends Component {
     constructor(props){
         super(props)
-        this.lstMovie=[]
+        this.lstMovie=[];
+        this.uniqLstMovie=[]
     }
     renderItemInSlider=(lstMovie)=>{
-        console.log(lstMovie)
+        //console.log(lstMovie)
             return lstMovie.map((item,index)=>{
                 return (
                     <div key={index}>
@@ -22,16 +25,28 @@ class ViewedMovie extends Component {
                 )
             })
     }
+    //vấn đề ở lstViewedMovie được truyền vào đôi khi bị TRÙNG LẶP phim
     renderViewedMovie=(lstViewedMovie)=>{
         if(localStorage.getItem("lstViewedMovie") && Object.keys(lstViewedMovie).length >0){
             this.lstMovie.push(lstViewedMovie)
-            const settings = {
+
+            //remove duplicate item in array of object
+            this.uniqLstMovie=Array.from(new Set(this.lstMovie.map(item=>item.maPhim)))
+            .map(itemMaPhim=>{
+                return this.lstMovie.find(a=>a.maPhim===itemMaPhim)
+            })
+            console.log(this.uniqLstMovie)
+            let slidesToShow=this.uniqLstMovie.length
+            if(slidesToShow>3){
+                slidesToShow=3
+            }
+            const settings = {    
+                // autoplay: true,
+                // autoplaySpeed: 2000,
                 infinite: true,
-                slidesToShow: 3,
                 speed: 500,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                centerPadding: "50px",
+                slidesToShow: slidesToShow,
+                slidesToScroll: 1,
                 responsive: [
                     {
                       breakpoint: 1000,
@@ -50,11 +65,12 @@ class ViewedMovie extends Component {
                   ]
                 
             };
+            
             return (
               <section className="viewed-movie-section">
                 <h2 className="viewed-movie text-center my-4">Phim bạn đã xem</h2>
                 <div className="container">
-                  <Slider {...settings}>{this.renderItemInSlider(this.lstMovie)}</Slider>
+                  <Slider {...settings}>{this.renderItemInSlider(this.uniqLstMovie)}</Slider>
                 </div>
               </section>
             );
@@ -77,6 +93,7 @@ class ViewedMovie extends Component {
     }
 
     render() {
+        console.log(this.props.viewedMovie)
         return (
             <Fragment>
                 {this.renderViewedMovie(this.props.viewedMovie)}
