@@ -10,6 +10,7 @@
     "antd": "^4.5.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "firebase-tools": "^8.7.0",
     "history": "^5.0.0",
     "jquery": "^3.5.1",
     "leaflet": "^1.6.0",
