@@ -83,7 +83,7 @@ class Recommend extends Component {
             
         };
         return (
-          <section className="recommend-section d-flex flex-column justify-content-center" >
+          <section className="recommend-section d-flex flex-column justify-content-center" id="recommend-block" >
             <h2 className="text-center my-4">Phim dành cho bạn <i className="fas fa-info-circle" style={{cursor:"pointer"}} data-toggle="tooltip" title="Những bộ phim được gợi ý dựa trên số điểm cao nhất và ngày chiếu gần nhất"></i></h2>
             
             <div className="container">

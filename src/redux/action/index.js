@@ -226,23 +226,6 @@ export const actDangNhap =(user)=>{
         });
     }
 }
-export const actGetNews=()=>{
-    return dispatch=>{
-        Axios({
-            method:"GET",
-            url:"http://newsapi.org/v2/everything?domains=wsj.com&apiKey=af33fca3a18f40008777568dfab33544"
-    
-        }).then((rs)=>{
-            dispatch({
-                type:ActionType.GET_NEWS,
-                data:rs.data
-            })
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
-}
 export const actDatVe=(obj,token)=>{
     return dispatch=>{
         Axios({
@@ -270,6 +253,10 @@ export const actDatVe=(obj,token)=>{
         .catch(err=>{
             console.log(err)
         })
+        // dispatch({
+        //     type:ActionType.DAT_VE_STATUS,
+        //     data:true
+        // })
     }
 }
 export const actGetUserProfile=(taiKhoan)=>{
@@ -490,17 +477,14 @@ export const actDeleteMovie=(maPhim,token)=>{
                 icon:"success",
                 text:"Xóa phim phim thành công",
                 timer:1500,
-                
                 closeOnEsc:false,
                 buttons:false
             })
         })
         .catch((err)=>{
-            console.log(err.response.data)
             swal({
                 title:"Đã có lỗi khi xóa phim"   ,
                 icon:"error",
-                text:err.response.data,
                 timer:1500,
                 closeOnEsc:false,
                 buttons:false

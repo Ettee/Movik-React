@@ -163,19 +163,19 @@ class Header extends Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  href="#news-block"
+                  href="#recommend-block"
                   onClick={this.handleOnClickLinks}
                 >
-                  Tin tức
+                  Phim hay
                 </a>
               </li>
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  href="#subs-block"
+                  href="#theater-nearby-block"
                   onClick={this.handleOnClickLinks}
                 >
-                  Đăng kí
+                  Rạp phim
                 </a>
               </li>
             </ul>

@@ -44,7 +44,6 @@ class TicketInfoAfterBooked extends Component {
         }
     }
     renderDanhSachGhe=(danhSachGhe)=>{
-      console.log(danhSachGhe)
       return danhSachGhe.map((item,index)=>{
         return (
           <div key={index}>{item.tenGhe}</div>
@@ -53,8 +52,13 @@ class TicketInfoAfterBooked extends Component {
     }
     renderThongTinPhim=(ticketData)=>{
         let{thongTinDatVe}=this.props
-        
-        if(Object.keys(thongTinDatVe).length >0 && Object.keys(ticketData).length >0 ){
+        if (typeof thongTinDatVe !== "undefined" &&typeof ticketData !== "undefined" ) {
+          // console.log("thongTinDatVe: ",thongTinDatVe)
+          // console.log("ticketData: ",ticketData)
+          if (
+            Object.keys(thongTinDatVe).length > 0 &&
+            Object.keys(ticketData).length > 0
+          ) {
             return (
               <Fragment>
                 <div className="col-md-6">
@@ -91,8 +95,11 @@ class TicketInfoAfterBooked extends Component {
                       Ghế: {this.renderDanhSachGhe(ticketData.danhSachGhe)}
                     </div>
                   </div>
-                  <button className="btn-backToHome" onClick={this.handleToHome}>
-                      Quay về Movik
+                  <button
+                    className="btn-backToHome"
+                    onClick={this.handleToHome}
+                  >
+                    Quay về Movik
                   </button>
                 </div>
                 <div className="col-md-6">
@@ -102,17 +109,16 @@ class TicketInfoAfterBooked extends Component {
                 </div>
               </Fragment>
             );
-        }else{
-            return(
-                <div></div>
-            )
+          } else {
+            return <div></div>;
+          }
         }
     }
     handleToHome=()=>{
         this.props.history.push("/")
     }
     renderQRCode=(ticketData)=>{
-      console.log(ticketData)
+     
         let string=''
         if(typeof ticketData !=="undefined" ){
             string='maVe: '+ticketData.maVe+' ,tenPhim:'+ticketData.tenPhim

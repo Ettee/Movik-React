@@ -254,7 +254,7 @@ class Map extends Component {
   }
   render() {
     return (
-      <section className="map-container">
+      <section className="map-container" id="theater-nearby-block">
         <div className="row" >
           <div className="col-lg-6" style={{ height: "100%" }}>
             <div className="map">

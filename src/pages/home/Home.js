@@ -4,13 +4,10 @@ import SearchBlock from "./searchBlock";
 import MovieSlide from "./movieSlide";
 import Recommend from "../../Component/RecommendComponent/Recommend";
 import TheaterBlock from "./theaterBlock";
-//import News from "./news";
 import ViewedMovie from "../../Component/ViewedMovie/ViewedMovie";
-//import Subcribes from "./subcribes";
 import Map from '../../Component/mapComponent/Map';
 import "leaflet/dist/leaflet.css";
 //import Chat from "../../Component/ChatBot/chat";
-// import AdSense from 'react-adsense';
 export default class Home extends Component {
     constructor(props){
       super(props)
@@ -27,8 +24,6 @@ export default class Home extends Component {
             <Recommend/>
             <Map/>
             <ViewedMovie/>
-            {/* <News />
-            <Subcribes /> */}
             {/* <Chat/> */}
           </Fragment>
         );

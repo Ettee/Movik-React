@@ -171,12 +171,12 @@ class TheaterBlock extends Component {
                             return (
                                 <TheaterInfo 
                                     key={index}
-                                   tenCumRap={itemlstCumRap.tenCumRap} 
-                                   maCumRap={itemlstCumRap.maCumRap}
-                                   diaChi={itemlstCumRap.diaChi} 
-                                   danhSachPhim={itemlstCumRap}
-                                   movieID={chiTietXuatChieuTheoPhim.maPhim}
-                                   getDanhSachPhimTheoRapDaChon={this.DanhSachPhimTheoRapDaChon}  
+                                    tenCumRap={itemlstCumRap.tenCumRap} 
+                                    maCumRap={itemlstCumRap.maCumRap}
+                                    diaChi={itemlstCumRap.diaChi} 
+                                    danhSachPhim={itemlstCumRap}
+                                    movieID={chiTietXuatChieuTheoPhim.maPhim}
+                                    getDanhSachPhimTheoRapDaChon={this.DanhSachPhimTheoRapDaChon}  
                                 />
                             )
                         }
@@ -215,15 +215,15 @@ class TheaterBlock extends Component {
         let danhSachPhim=this.state.danhSachPhimTheoRap
         if(danhSachPhim.length >0){
             return danhSachPhim.map((item,index)=>{
-                 return (
-                     <MovieInTheaterBlock
+                return (
+                    <MovieInTheaterBlock
                         key={index}
                         maPhim={item.maPhim}
                         hinhAnh={item.hinhAnh}
                         tenPhim={item.tenPhim}
                         lstXuatChieu={item.xuatChieu}
                     />
-                 )
+                )
             })
         }
     }

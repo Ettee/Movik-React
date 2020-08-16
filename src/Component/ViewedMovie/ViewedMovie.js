@@ -35,14 +35,13 @@ class ViewedMovie extends Component {
             .map(itemMaPhim=>{
                 return this.lstMovie.find(a=>a.maPhim===itemMaPhim)
             })
-            console.log(this.uniqLstMovie)
             let slidesToShow=this.uniqLstMovie.length
             if(slidesToShow>3){
                 slidesToShow=3
             }
             const settings = {    
-                // autoplay: true,
-                // autoplaySpeed: 2000,
+                autoplay: true,
+                autoplaySpeed: 2000,
                 infinite: true,
                 speed: 500,
                 slidesToShow: slidesToShow,
@@ -93,7 +92,6 @@ class ViewedMovie extends Component {
     }
 
     render() {
-        console.log(this.props.viewedMovie)
         return (
             <Fragment>
                 {this.renderViewedMovie(this.props.viewedMovie)}

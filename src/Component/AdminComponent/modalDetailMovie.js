@@ -125,6 +125,7 @@ class ModalDetailMovie extends Component {
     }
     imgUpLoadHandler=(e)=>{
         let file= e.target.files[0];
+        file.responseType = "blob";
         let reader = new FileReader();
         let imgUrl=reader.readAsDataURL(file);
         
@@ -135,7 +136,7 @@ class ModalDetailMovie extends Component {
                 biDanh:file.name,
                 isEditImg:true
             });
-          }
+        }
         
     }
     renderModalContent = () => {

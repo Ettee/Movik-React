@@ -55,7 +55,8 @@ class SelectionDetail extends Component {
             this.props.LuuThongTinDatVe(obj)
             swal({
                 title:"Xác nhận đặt vé",
-                icon:"info",
+                text:"Hãy kiểm tra lại thông tin vé trước khi đặt",
+                icon:"warning",
                 buttons:["Quay lại","Xác nhận"],
                 closeOnEsc: false,
                 closeOnClickOutside: false,

@@ -10,6 +10,9 @@ export default class TheaterInfo extends Component {
             //ở movie detail
             danhSachPhim.danhSachPhim.map(item=>{
                 if(item.maPhim===this.props.movieID){
+                    if(this.danhSachPhim.length >0){
+                        this.danhSachPhim=[]  
+                    }
                     this.danhSachPhim.push(item)
                 }
             })
