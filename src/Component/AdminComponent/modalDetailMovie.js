@@ -68,10 +68,6 @@ class ModalDetailMovie extends Component {
             dangerMode:true
         }).then((ok)=>{
             if(ok){
-                //console.log(formdata.values)
-                // for (var pair of formdata.entries()) {
-                //     console.log(pair[0]+ ', ' + pair[1]); 
-                // }
                 if(this.state.isEditImg){
                     this.props.updatePhimCoHinh(formdata,userAD.accessToken)
                 }else{
@@ -80,7 +76,8 @@ class ModalDetailMovie extends Component {
                 setTimeout(()=>{
                     this.props.reLoad(true)
                     this.setState({
-                        isEditImg:false
+                        isEditImg:false,
+                        isEdit:false
                     })
                 },1600)
             }
@@ -208,7 +205,7 @@ class ModalDetailMovie extends Component {
             return (
                 <div className="modal-content">
                     <div className="modal-header">
-                        <button type="button" className="close text-white" data-dismiss="modal">×</button>
+                        <button type="button" className="close text-white" data-dismiss="modal" onClick={this.cancelEdit}>×</button>
                     </div>
                     <div className="modal-body">
                         <div className="movie-poster d-flex align-items-center flex-column">

@@ -21,52 +21,42 @@ class MovieSlide extends Component {
         this.props.getListMovie();
     }
     render() {
-        const settings = {
-            className: "center",
-            centerMode: true,
-            infinite: true,
-            slidesToShow: 2,
-            speed: 500,
-            rows: 2,
-            slidesPerRow:2,
-            centerPadding: "0px",
+        const settings = {    
             autoplay: true,
             autoplaySpeed: 2000,
-            arrows: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            rows:2,
             responsive: [
                 {
-                  breakpoint: 1024,
+                  breakpoint: 1000,
                   settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 2,
-                    centerPadding: "0px",
-                    infinite: true,
-                    rows:1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                   }
                 },
                 {
-                  breakpoint: 600,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    // centerPadding: "0px",
-                    rows:1,
-                    arrows: false,
-                    centerMode:true
+                    breakpoint: 800,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 1,
+                      rows:1
+                    }
+                  },
+                  {
+                    breakpoint: 670,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      rows:1
+                    }
                   }
-                },
-                {
-                  breakpoint: 480,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    
-                    rows:1,
-                    arrows: false
-                  }
-                }
               ]
+            
         };
+
         return (
             <section className="showing-coming-movie-section" id="showing-coming-movie">
                 {

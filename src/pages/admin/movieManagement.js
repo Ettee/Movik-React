@@ -95,6 +95,7 @@ class movieManagement extends Component {
                        {this.renderPhim()}
                     </tbody>
                 </table>
+                {/* pagination */}
                 <nav className="pagination-right">
                         <ul className="pagination justify-content-center">
                             <li className="page-item" onClick={this.previousPage}>
