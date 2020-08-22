@@ -124,21 +124,21 @@ class Header extends Component {
     this.LoginStatus();
     return (
       <header>
-        <nav className="navbar navbar-expand-sm bg-darktheme navbar-light">
+        <nav className="navbar navbar-expand-sm bg-darktheme navbar-light desktop-header">
           {/* Brand */}
           <div className="header-brand">
             <NavLink className="navbar-brand" exact to="/">
               <img src={logo} alt="logo" />
             </NavLink>
           </div>
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#collapsibleNavbar"
           >
             <span className="navbar-toggler-icon" />
-          </button>
+          </button> */}
           {/* Links */}
           <div className="header-links ">
             <ul className="navbar-nav">
@@ -181,10 +181,7 @@ class Header extends Component {
             </ul>
           </div>
           {/* Header Users Section */}
-          <div
-            className="header-user collapse navbar-collapse"
-            id="collapsibleNavbar"
-          >
+          <div className="header-user " id="collapsibleNavbar">
             <ul className="navbar-nav">
               {/* User Login */}
               <li className="user-login nav-item">
@@ -203,6 +200,62 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
+        <div className="mobile-navbar">
+          <div className="mobile-navbar-content">
+            <div className="mobile-navbar-brand">
+              <NavLink exact to="/">
+                <img className="mobile-brand-logo" src={logo} alt="logo" />
+              </NavLink>
+            </div>
+            <div className="menu-bar">
+              <input type="checkbox" id="check"/>
+              <label for="check" className="bar-icon" >
+                <i className="fas fa-bars "></i>
+              </label>
+              <div className="menu-content" id="menu-content">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      href="#showing-coming-movie"
+                      onClick={this.handleOnClickLinks}
+                    >
+                      Lịch chiếu
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      href="#theater-block-home"
+                      onClick={this.handleOnClickLinks}
+                    >
+                      Cụm rạp
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      href="#recommend-block"
+                      onClick={this.handleOnClickLinks}
+                    >
+                      Phim hay
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      href="#theater-nearby-block"
+                      onClick={this.handleOnClickLinks}
+                    >
+                      Rạp phim
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
       </header>
     );
   }

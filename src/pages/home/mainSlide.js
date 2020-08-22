@@ -15,19 +15,16 @@ export default class MainSlide extends Component {
                         loop
                          >
                         <div className="item">
-                            <img  src={'./img/slide/huong-giang-be-de-15822194729053.jpg'} />
+                            <img  src={'./img/slide/dinh-thu-oan-khuat-15967340117741.png'} />
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/joker-15822194058572.jpg'} />
+                            <img  src={'./img/slide/ca-sau-15972253022491.png'} />
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/little-15816462985668.jpg'} />
+                            <img  src={'./img/slide/bi-mat-thien-duong-15972163589211.jpg'} />
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/tix-15819082429740.jpg'} />
-                        </div>
-                        <div className="item">
-                            <img  src={'./img/slide/wild-15822193320074.jpg'} />
+                            <img  src={'./img/slide/du-lich-chet-choc-15961360123636.jpg'} />
                         </div>
                     </OwlCarousel>
                 </div>

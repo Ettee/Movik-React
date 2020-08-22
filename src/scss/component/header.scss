@@ -59,6 +59,11 @@ header{
         //dropdown user-login
         .header-user{
             background-color: $darkThemeText !important;
+            flex-grow: unset;
+            z-index: 999;
+            background: rgba(255,255,255,1);
+            padding: 10px;
+            border-radius: 5px;
             .navbar-nav{
                 @include tablet{
                     display: block;
@@ -105,13 +110,13 @@ header{
                 
             }
         }
-        .navbar-collapse{
-            flex-grow: unset;
-            z-index: 999;
-            background: rgba(255,255,255,1);
-            padding: 10px;
-            border-radius: 5px;
-        }
+        // .navbar-collapse{
+        //     flex-grow: unset;
+        //     z-index: 999;
+        //     background: rgba(255,255,255,1);
+        //     padding: 10px;
+        //     border-radius: 5px;
+        // }
     }
     .checkout{
         display: none !important;
@@ -166,17 +171,78 @@ header{
             color: $colorForSmallIcon;
         }
     }
+    .mobile-navbar{
+        display: none;
+        position: relative;
+        background-color: $darkContent;
+        .mobile-navbar-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            .menu-bar{
+                #check{
+                    display: none;
+                }
+                i{
+                    color:$gray;
+                    font-size: 25px;
+                }
+                #check:checked {
+                    ~ .menu-content{
+                        height: 200px;
+                        li{
+                            opacity: 1;
+                        }
+                    }
+                }
+                .menu-content{
+                    height: 0px;
+                    width: 100vw;
+                    background:$darkContent;
+                    left: 0;
+                    top:70px;
+                    position: absolute;
+                    z-index: 999;
+                    transition: all 0.5s ease-out;
+                    li{
+                        text-align: center;
+                        opacity: 0;
+                        transition: all .7s;
+                        a{
+                            color: $darkThemeText;
+                        }
+                    }
+                    
+                }
+                
+            }
+            .mobile-navbar-brand{
+                .mobile-brand-logo{
+                    width: 75px;
+                }
+            }
+        
+        }    
+    }
 }
 
 @include tablet{
     .user-login{
         margin: 0 !important;
     }
-    .header-user{
-        padding: 0 !important;
-    }
+    
 }
 @include mobile{
+    header{
+        .navbar.desktop-header{
+            display: none;
+        }
+        .mobile-navbar{
+            display: block !important;
+        }
+    }
+    
     .header-user{
         .navbar-nav{
             display:unset;
