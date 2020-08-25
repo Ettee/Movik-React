@@ -181,6 +181,11 @@ header{
             align-items: center;
             padding: 0 10px;
             .menu-bar{
+                .bar-icon{
+                    i{
+                        cursor: pointer;
+                    }
+                }
                 #check{
                     display: none;
                 }
@@ -190,9 +195,10 @@ header{
                 }
                 #check:checked {
                     ~ .menu-content{
-                        height: 200px;
+                        height: 250px;
                         li{
                             opacity: 1;
+                            pointer-events: unset;
                         }
                     }
                 }
@@ -204,16 +210,72 @@ header{
                     top:70px;
                     position: absolute;
                     z-index: 999;
-                    transition: all 0.5s ease-out;
+                    transition: all 0.2s ease-out;
                     li{
                         text-align: center;
                         opacity: 0;
-                        transition: all .7s;
+                        pointer-events: none;
+                        transition: all .2s;
                         a{
                             color: $darkThemeText;
                         }
                     }
-                    
+                    .mobile-header-user{
+                        >ul{
+                            flex-direction: row;
+                            justify-content: center;
+                            li{
+                                margin: 0 5px;
+                            }
+                            .user-signup {
+                                display: flex;
+                                align-items: baseline;
+                                i{
+                                    margin: 0 5px;
+                                }
+                            }
+                        }
+                        .user-login{
+                            display: flex;
+                            justify-content: center;
+                            .user-login-logo{
+                                margin: 0 5px;
+                                
+                            }
+                            .user-login-link{
+                                .dropDownArrow{
+                                    font-size: 16px;
+                                    color: $darkThemeText;
+                                    margin: 0 5px;
+                                    transform: rotateZ(-90deg);
+                                    transition: all .3s;
+                                }
+                                input{
+                                    display: none;
+                                }
+                                #dropdown-user-option:checked{
+                                    ~.dropDownArrow{
+                                        transform: rotateZ(-0deg);
+                                    }
+                                    ~.user-option-mobile{
+                                        display: block;
+                                    }
+                                }
+                                
+                                .user-option-mobile{
+                                    display: none;
+                                    button{
+                                        border: none;
+                                        background-color: transparent;
+                                        color: $darkThemeText;
+                                        margin: 0 10px;
+                                    }
+                                }
+                            }
+                            
+                            
+                        }
+                    }
                 }
                 
             }

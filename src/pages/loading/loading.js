@@ -23,7 +23,7 @@ export default class Loading extends Component {
       this.setState({
         is3Seconds:true
       })
-    },300)
+    },3000)
 
     if(!this.state.is3Seconds ){
       return(

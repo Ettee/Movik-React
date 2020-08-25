@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../img/movikLogo.png";
-import swal from "sweetalert";
+import swal from '@sweetalert/with-react'
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import * as action from "../redux/action";
@@ -38,7 +38,7 @@ class Header extends Component {
       } else {
         return (
           <a data-toggle="modal" data-target="#LoginModal">
-            Đăng Nhập
+            Đăng nhập
           </a>
         );
       }
@@ -48,7 +48,7 @@ class Header extends Component {
     if (localStorage.getItem("userKhachHang")) {
       let taiKhoan = JSON.parse(localStorage.getItem("userKhachHang"));
       return (
-        <div className="menu-login  menu-hover-user">
+        <div className="menu-login menu-hover-user">
           <button className="user-profile">
             <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
               <i className="fas fa-address-card"></i> Profile
@@ -119,11 +119,54 @@ class Header extends Component {
       this.props.history.push("/");
     }
   };
+  //tạo popup khi ấn vào phần user ở mobile
+  popUpUserOptionMobile=()=>{
+    if (localStorage.getItem("userKhachHang")) {
+      let taiKhoan = JSON.parse(localStorage.getItem("userKhachHang"));
+      return(
+        <div className="user-option-mobile">
+          <button className="user-profile">
+            <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
+              <i className="fas fa-address-card"></i> Profile
+            </NavLink>
+          </button>
+          <button onClick={this.logout}>
+            <i className="fas fa-sign-out-alt"></i> Đăng xuất
+          </button>
+        </div>
+      )
+    } else {
+      if (localStorage.getItem("userAdmin")) {
+        let taiKhoan = JSON.parse(localStorage.getItem("userAdmin"));
+        return(
+          <div className="user-option-mobile">
+            <button className="user-profile">
+              <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
+                <i className="fas fa-address-card"></i> Profile
+              </NavLink>
+            </button>
+            <button className="user-admin">
+              <NavLink to={"/admin"}>
+                <i className="fas fa-cogs"></i> Movik Manager
+              </NavLink>
+            </button>
+            <button onClick={this.logout}>
+              <i className="fas fa-sign-out-alt"></i> Đăng xuất
+            </button>
+          </div>
+          
+        )
+      } else {
+        return <Fragment></Fragment>;
+      }
+    }
+  }
   render() {
     this.checkLogin();
     this.LoginStatus();
     return (
       <header>
+        {/* desktop nav */}
         <nav className="navbar navbar-expand-sm bg-darktheme navbar-light desktop-header">
           {/* Brand */}
           <div className="header-brand">
@@ -131,14 +174,6 @@ class Header extends Component {
               <img src={logo} alt="logo" />
             </NavLink>
           </div>
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapsibleNavbar"
-          >
-            <span className="navbar-toggler-icon" />
-          </button> */}
           {/* Links */}
           <div className="header-links ">
             <ul className="navbar-nav">
@@ -200,6 +235,7 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
+        {/* mobile-nav */}
         <div className="mobile-navbar">
           <div className="mobile-navbar-content">
             <div className="mobile-navbar-brand">
@@ -208,8 +244,8 @@ class Header extends Component {
               </NavLink>
             </div>
             <div className="menu-bar">
-              <input type="checkbox" id="check"/>
-              <label for="check" className="bar-icon" >
+              <input type="checkbox" id="check" />
+              <label for="check" className="bar-icon">
                 <i className="fas fa-bars "></i>
               </label>
               <div className="menu-content" id="menu-content">
@@ -251,10 +287,31 @@ class Header extends Component {
                     </a>
                   </li>
                 </ul>
+                <div className="mobile-header-user ">
+                  <ul className="navbar-nav">
+                    {/* User Login */}
+                    <li className="user-login nav-item">
+                      <div className="user-login-link">
+                        <input type="checkbox" id="dropdown-user-option"/>
+                        <label for="dropdown-user-option">
+                        <i
+                          className="fas fa-user-circle"
+                        /> {this.LoginStatus()}  
+                        </label>
+                        <i className="fas fa-angle-down dropDownArrow"></i>
+                        {this.popUpUserOptionMobile()}             
+                      </div>
+                      
+                    </li>
+                    {/* User Sign up */}
+                    <li className="user-signup nav-item">
+                      {this.checkLogin()}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-          
         </div>
       </header>
     );
