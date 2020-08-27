@@ -253,10 +253,6 @@ export const actDatVe=(obj,token)=>{
         .catch(err=>{
             console.log(err)
         })
-        // dispatch({
-        //     type:ActionType.DAT_VE_STATUS,
-        //     data:true
-        // })
     }
 }
 export const actGetUserProfile=(taiKhoan)=>{
