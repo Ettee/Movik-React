@@ -54,6 +54,13 @@ class Header extends Component {
               <i className="fas fa-address-card"></i> Profile
             </NavLink>
           </button>
+          <button className="darkMode-switch" >
+            <div className="switch">
+              <input type="checkbox" id="switch" />
+              <label for="switch">Toggle</label>
+            </div>
+            <label for="switch">Dark mode</label>
+          </button>
           <button onClick={this.logout}>
             <i className="fas fa-sign-out-alt"></i> Đăng xuất
           </button>
@@ -73,6 +80,13 @@ class Header extends Component {
               <NavLink to={"/admin"}>
                 <i className="fas fa-cogs"></i> Movik Manager
               </NavLink>
+            </button>
+            <button className="darkMode-switch" >
+              <div className="switch">
+                <input type="checkbox" id="switch" />
+                <label for="switch">Toggle</label>
+              </div>
+              <label for="switch">Dark mode</label>
             </button>
             <button onClick={this.logout}>
               <i className="fas fa-sign-out-alt"></i> Đăng xuất
@@ -130,6 +144,9 @@ class Header extends Component {
               <i className="fas fa-address-card"></i> Profile
             </NavLink>
           </button>
+          <button >
+            Dark mode
+          </button>
           <button onClick={this.logout}>
             <i className="fas fa-sign-out-alt"></i> Đăng xuất
           </button>
@@ -149,6 +166,9 @@ class Header extends Component {
               <NavLink to={"/admin"}>
                 <i className="fas fa-cogs"></i> Movik Manager
               </NavLink>
+            </button>
+            <button >
+              Dark mode
             </button>
             <button onClick={this.logout}>
               <i className="fas fa-sign-out-alt"></i> Đăng xuất
