@@ -1,11 +1,88 @@
 @import "../helper/variable.scss";
 @import "../helper//mixin.scss";
+.footer-dark{
+    background-color: $darkBackground;
+    .about-movik{
+        color: #fff;
+    }
+    .partners{
+        >div:nth-child(1){
+            color: #fff;
+        }
+    }
+    .contact-footer{
+        >div:nth-child(1){
+            color: #fff;
+        }
+        .contact-icon{
+            a{
+                i{
+                    color: $gray;
+                    
+                }
+            }              
+         }
+    }
+    .about-me{
+        .creator{
+            color: #fff;
+            font-size: 14px;
+        }
+        div:nth-child(2){
+            color: #fff;
+            font-size: 14px;
+            span{
+                a{
+                    color: $colorForSmallIcon;
+                }
+            }
+        }
+    }
+}
+.footer-light{
+    background-color: white;
+    box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.36);
+    .about-movik{
+        color: #000;
+        font-weight: 500;
+    }
+    .partners{
+        >div:nth-child(1){
+            color: #000;
+            font-weight: 500;
+        }
+    }
+    .contact-footer{
+        >div:nth-child(1){
+            color: #000;
+            font-weight: 500;
+        }
+        .contact-icon{
+            a{
+                i{
+                    color: #000;
+                    font-weight: 500;
+                    
+                }
+            }              
+         }
+    }
+    .about-me{
+        div:nth-child(2){
+            span{
+                a{
+                    color: $colorForSmallIcon;
+                }
+            }
+        }
+    }
+}
+
 .footer{
-    background-color: #222;
     padding: 50px ;
     .container{
         .about-movik{
-            color: #fff;
+            
             width: 70%;
             div:nth-child(1){
                 font-size: 14px; 
@@ -29,7 +106,7 @@
             width: 70%;
             margin: auto;
             >div:nth-child(1){
-                color: #fff;
+                
                 font-size: 14px;
                 margin-bottom: 10px;
                 margin-left: 10px;
@@ -46,8 +123,7 @@
             
         }
         .contact-footer{
-           >div:nth-child(1){
-               color: #fff;
+           >div:nth-child(1){    
                font-size: 14px;
                margin-left: 10px;
            }
@@ -57,7 +133,6 @@
                     margin: 0 10px;
                     text-decoration: none;
                     i{
-                        color: $gray;
                         font-size: 25px;
                     }
                 }              
@@ -68,17 +143,11 @@
         }
         .about-me{
             .creator{
-                color: #fff;
                 font-size: 14px;
             }
             div:nth-child(2){
-                color: #fff;
                 font-size: 14px;
-                span{
-                    a{
-                        color: #fff;
-                    }
-                }
+                
             }
         }
     } 

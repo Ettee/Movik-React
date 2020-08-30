@@ -1,13 +1,41 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss"; 
-.viewed-movie-section{
+.viewed-movie-section-dark{
     background-color: $darkBackground;
+    >div{
+        background-color: $darkContent;
+    }
+    .slick-track{
+        .slick-slide{
+          .card{
+            background-color: #242526;
+          }
+        }
+    }
+}
+.viewed-movie-section-light{
+    background-color: $lightBackground;
+    >div{
+        background-color: white;
+        box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.36);
+    }
+    .slick-track{
+        .slick-slide{
+          .card{
+            background-color: white;
+          }
+        }
+    }
+}
+
+.viewed-movie-section{
+    transition: all .7s;
     padding: 50px 20px;
     .viewed-movie{
         @include GradientTextWith_2_Colors(#9f00fb,#ff0000,30%,70%);
     }
     >div{
-        background-color: $darkContent;
+        transition: all .7s;
         padding: 10px ;
         border-radius: 10px;
     }
@@ -17,7 +45,7 @@
             .card{
                 border: none;
                 border-radius: unset;  
-                background-color: #242526;
+                
                 &:hover{
                     .card-overlay{
                       cursor: pointer;

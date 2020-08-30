@@ -7,6 +7,9 @@
 @mixin GradientBackgroundTheme(){
   background: linear-gradient(45deg,#9f00fb,#ff0000);
 }
+@mixin GradientBackgroundThemeLight(){
+  background: linear-gradient(-60deg,#f6767f,#f7a009);
+}
 @mixin buttonMaker($width,$height,$borderRadius,$color){
   width: $width;
   height: $height;

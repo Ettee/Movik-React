@@ -1,14 +1,27 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
+.map-container-light{
+    background-color:$lightBackground ;
+    box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.36); 
+}
+.map-container-dark{
+    background-color:$darkBackground ;
+}
 .map-container{
-    background-color:$darkBackground ; 
+     transition: all .7s;
     padding: 1rem;
     .row{
         height: 490px;
     }
+    .map-dark{
+        background-color:$darkContent ;
+    }
+    .map-light{
+        background-color:white ;
+    }
     .map{
         height: 500px;
-        background-color:$darkContent ;
+        transition: all .7s;
         padding: 10px;
         border-radius: 10px;
         box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
@@ -46,7 +59,7 @@
                 background:$colorForSmallIcon !important ;
                 box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.815);
             }
-            .detail-table{
+            .detail-table-dark{
                 th,td{
                     color: $gray;
                     font-size: 15px;
@@ -63,6 +76,23 @@
                     }
                 }
                 
+            }
+            .detail-table-light{
+                th,td{
+                    color: $colorForSmallIcon;
+                    font-size: 15px;
+                }
+                tbody{
+                    cursor: pointer;
+                }    
+            }
+            .detail-table{
+                th,td{
+                    font-size: 15px;
+                }
+                tbody{
+                    cursor: pointer;    
+                }    
             }
         }
     }

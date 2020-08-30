@@ -3,8 +3,17 @@
 header{
     box-shadow:  -1px 14px 31px 3px rgba(0,0,0,0.36);
     z-index: 999;
+    position: fixed;
+    width: 100%;
+    
+    .desktop-header{
+        transition: all .7s;
+    }
     .bg-darktheme{
         background-color: $darkContent;
+    }
+    .bg-lighttheme{
+        background-color: white;
     }
     nav.navbar{
         height: 75px;
@@ -57,16 +66,29 @@ header{
             }
         }
         //dropdown user-login
+        .header-user.header-user-dark{
+            background-color: $darkThemeText;
+        }
+        .header-user.header-user-light{
+            background-color: white;
+        }
         .header-user{
-            background-color: $darkThemeText !important;
+           transition: all .7s;
             flex-grow: unset;
             z-index: 999;
-            background: rgba(255,255,255,1);
             padding: 10px;
             border-radius: 5px;
             .navbar-nav{
                 @include tablet{
                     display: block;
+                }
+                li.user-signup{
+                    i{
+                        color: $darkThemeText;
+                    }
+                    a{
+                        color: $darkThemeText;
+                    }
                 }
                 li.user-login,.user-signup{
                     display: flex;
@@ -79,7 +101,6 @@ header{
                         i{
                             font-size: 25px;
                             padding-top: 4px;
-                            color: $yellow;
                             transition: transform .5s ease-in-out;
                             cursor: pointer;
                             @include tablet{
@@ -87,11 +108,32 @@ header{
                             }
                         }
                     }
+
                     .user-login-link,.user-signup-link{
                         a{
                             margin-bottom: 0 !important;
                             text-decoration: none;
+                            transition: all .7s;
+                        }
+                    }
+                    .user-login-logo-dark,.user-signup-logo-dark{
+                        i{
                             color: $yellow;
+                        }
+                    }
+                    .user-login-link-dark,user-signup-link-dark{
+                        a{
+                            color: $yellow;
+                        }
+                    }
+                    .user-login-logo-light,.user-signup-logo-light{
+                        i{
+                            color: $darkThemeText;
+                        }
+                    }
+                    .user-login-link-light,user-signup-link-light{
+                        a{
+                            color: $darkThemeText;
                         }
                     }
                     &:hover{
@@ -110,13 +152,6 @@ header{
                 
             }
         }
-        // .navbar-collapse{
-        //     flex-grow: unset;
-        //     z-index: 999;
-        //     background: rgba(255,255,255,1);
-        //     padding: 10px;
-        //     border-radius: 5px;
-        // }
     }
     .checkout{
         display: none !important;
@@ -131,64 +166,6 @@ header{
                     margin: 0 5px;
                 }
             }
-            .darkMode-switch{
-                display: flex;
-                >label{
-                    margin: auto;
-                    margin-top: 0;
-                    margin-left: 5px;
-                    cursor: pointer;
-                }
-                .switch{
-                    display: flex;
-                    padding-top: 3px;
-                    input[type=checkbox]{
-                        height: 0;
-                        width: 0;
-                        visibility: hidden;
-                        
-                    }
-                    
-                    label {
-                        cursor: pointer;
-                        text-indent: -9999px;
-                        width: 30px;
-                        height: 15px;
-                        background: white;
-                        border:1px solid $colorForSmallIcon;
-                        display: block;
-                        border-radius: 100px;
-                        position: relative;
-                        transition: all .5s;
-                        margin: 0;
-                    }
-                    
-                    label:after {
-                        content: '';
-                        position: absolute;
-                        top: 2px;
-                        left: 2px;
-                        width: 8px;
-                        height: 8px;
-                        @include GradientBackgroundTheme();
-                        border-radius: 50%;
-                        transition: 0.3s;
-                    }
-                    
-                    input:checked + label {
-                        background: #242526;
-                    }
-                    
-                    input:checked + label:after {
-                        left: calc(100% - 5px);
-                        transform: translateX(-100%);
-                    }
-                    
-                    label:active:after {
-                        width: 25px;
-                    }
-                }
-            }
         }
         &:hover{
             .menu-login{
@@ -196,7 +173,6 @@ header{
                 opacity: 1;
                 transform: translateY(0);
             }
-            
         }
     }
     .menu-login{
@@ -316,7 +292,7 @@ header{
                                         transform: rotateZ(-0deg);
                                     }
                                     ~.user-option-mobile{
-                                        display: block;
+                                        display: flex;
                                     }
                                 }
                                 
@@ -344,6 +320,64 @@ header{
             }
         
         }    
+    }
+    .darkMode-switch{
+        display: flex !important;
+        >label{
+            margin: auto;
+            margin-top: 0;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .switch{
+            display: flex;
+            padding-top: 3px;
+            input[type=checkbox]{
+                height: 0;
+                width: 0;
+                visibility: hidden;
+                
+            }
+            
+            label {
+                cursor: pointer;
+                text-indent: -9999px;
+                width: 30px;
+                height: 14px;
+                background: white;
+                border:1px solid $colorForSmallIcon;
+                display: block;
+                border-radius: 100px;
+                position: relative;
+                transition: all .7s;
+                margin: 0;
+            }
+            
+            label:after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 8px;
+                height: 8px;
+                @include GradientBackgroundTheme();
+                border-radius: 50%;
+                transition: all .5s;
+            }
+            
+            input:checked + label {
+                background: #242526;
+            }
+            
+            input:checked + label:after {
+                left: calc(100% - 2px);
+                transform: translateX(-100%);
+            }
+            
+            label:active:after {
+                width: 13px;
+            }
+        }
     }
 }
 

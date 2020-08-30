@@ -560,3 +560,11 @@ export const actLuuThongTinDatVe=(obj)=>{
         })
     }
 }
+export const actChangeTheme=(val)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.CHANGE_THEME,
+            data:val
+        })
+    }
+}

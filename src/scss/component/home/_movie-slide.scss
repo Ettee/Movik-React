@@ -1,9 +1,15 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
-
+.showing-coming-movie-section-dark {
+  background-color: $darkBackground;
+}
+.showing-coming-movie-section-light {
+  background-color: $lightBackground;
+  
+}
 .showing-coming-movie-section{
   padding:50px 0;
-  background-color: $darkBackground;
+  transition: all .7s;
   .nav{
     justify-content: center;
     .nav-item{
@@ -13,8 +19,13 @@
         font-size: 25px !important;
         font-weight: 500;
       }
-      .nav-link{
+      .nav-link-dark{
         color:$yellow;
+      }
+      .nav-link-light{
+        color:#000;
+      }
+      .nav-link{
         transition: all .3s;
         font-size: 21px;
         &:hover{
@@ -25,26 +36,49 @@
   }
   .tab-content{
     .tab-pane{
-      .container{
+      .container-dark{
         background-color: $darkContent;
+      }
+      .container-light{
+        background-color: white;
+        box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.36);
+      }
+      .container{
+        transition: all .7s;
         border-radius: 20px;
-
       }
       .row {
         width: 90%;
         margin: 20px auto;
+        .card-dark{
+          background-color: $darkContent;
+        }
+        .card-light{
+          background-color: white;
+        }
         .card{
+          transition: all .7s;
           border: none;
           border-radius: unset;
           margin: 20px 0;
-          background-color: $darkContent;
+          
           &:hover{
+            .card-overlay-dark{
+              background: linear-gradient(-66deg, rgba(131,58,180,0.55) 19%, rgba(253,29,29,0.55) 72%);
+              .btn-buyticket{
+                @include GradientBackgroundTheme();
+              }
+            }
+            .card-overlay-light{
+              background: linear-gradient(-60deg,rgba(246, 118, 127,0.55),rgba(247, 160, 9,0.55));
+              .btn-buyticket{
+                @include GradientBackgroundThemeLight();
+              }
+            }
             .card-overlay{
-              cursor: pointer;
-              background: linear-gradient(0deg, rgba(131,58,180,0.5466561624649859) 19%, rgba(253,29,29,0.55) 72%);              
+              cursor: pointer;              
               .btn-buyticket{
                 opacity: 1;
-                @include GradientBackgroundTheme();
                 transform: translateY(0);
               }
               .watchTrailer{
@@ -59,9 +93,15 @@
             width: 215px;
             margin: auto;
             padding-top: 15px ;
-            .lengthFilm{
-              font-size: 14px;
+            .lengthFilm-dark{
               color: $yellow;
+            }
+            .lengthFilm-light{
+              color: #000;
+            }
+            .lengthFilm{
+              transition: all .7s;
+              font-size: 14px;
               // margin-bottom: 15px;
             }
           }
@@ -100,21 +140,7 @@
   .slick-prev{
     left: -60px;
   }
-  
-  // .slick-prev{
-  //   background-image: url(../../../img/icon/back-session.png) !important;
-  //   left: -65px;
-  //   &::before{
-  //     content: none;
-  //   }
-  // } 
-  // .slick-next{
-  //   background-image: url(../../../img/icon/next-session.png) !important;
-  //   right: -60px;
-  //   &::before{
-  //     content: none;
-  //   }
-  // }
+
 }
 //Class dùng chung
 .nameFilm{
@@ -185,13 +211,17 @@
       .btn-buyticket{
         opacity: 0;
         background-color: transparent;
-        transform: translateY(30px);
+        transform: translateY(10px);
         position: absolute;
         bottom: 13px;
         left: 67px;
         transition: all 0.3s;
-        @include buttonMaker(85px,37px,5px,white);
-      
+        width: 85px;
+        height: 37px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        color: white;
       }
       .btn-buyticket.disable{
         display: none;

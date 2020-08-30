@@ -1,7 +1,12 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
-.search-movie-section{
+.search-movie-section-dark{
     background-color:$darkBackground ;
+}
+.search-movie-section-light{
+    background-color:$lightBackground ;
+}
+.search-movie-section{
     @include tablet{
         .search-movie-box{
             width: 80% !important;   
@@ -12,12 +17,18 @@
     }
    
     
-    
+    .search-movie-box-dark{
+        background: $darkContent ;
+    }
+    .search-movie-box-light{
+        background: white ;
+        box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.75);
+    }
     .search-movie-box{
         width: 65%;
         margin: auto;
         justify-content: space-between;
-        background: $darkContent ;
+        
         border-radius: 9px;
         padding: 15px 10px;
         position: relative;

@@ -3,7 +3,8 @@ let initialState ={
     thongTinDatVe:[],
     danhSachNguoiDungPhanTrang:{},
     danhSachTatCaNguoiDung:[],
-    isAdmin:false
+    isAdmin:false,
+    isDarkModeOn:false
 };
 const userReducer=(state=initialState,action)=>{
     switch(action.type){
@@ -22,6 +23,9 @@ const userReducer=(state=initialState,action)=>{
         case ActionType.DANG_XUAT_ADMIN:
             state.isAdmin=action.data;
             return {...state} 
+        case ActionType.CHANGE_THEME:
+            state.isDarkModeOn=action.data;
+            return {...state}
         default:
             return{...state}
     }

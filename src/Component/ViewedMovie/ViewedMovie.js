@@ -66,7 +66,7 @@ class ViewedMovie extends Component {
             };
             
             return (
-              <section className="viewed-movie-section">
+              <section className={this.props.themeMode?"viewed-movie-section viewed-movie-section-dark":"viewed-movie-section viewed-movie-section-light"}>
                 <h2 className="viewed-movie text-center my-4">Phim bạn đã xem</h2>
                 <div className="container">
                   <Slider {...settings}>{this.renderItemInSlider(this.uniqLstMovie)}</Slider>
@@ -101,7 +101,8 @@ class ViewedMovie extends Component {
 }
 const mapStateToProps=(state)=>{
     return {
-        viewedMovie:state.movieReducer.viewedMovie
+        viewedMovie:state.movieReducer.viewedMovie,
+        themeMode:state.userReducer.isDarkModeOn
     }
 }
 const mapDispatchToProps=(dispatch)=>{

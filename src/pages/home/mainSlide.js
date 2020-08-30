@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-export default class MainSlide extends Component {
+import {connect} from "react-redux"
+class MainSlide extends Component {
     render() {
         return (
-            <div className="main-slide-section">
+            <div className={this.props.themeMode?"main-slide-section main-slide-section-dark ":"main-slide-section main-slide-section-light "}>
                 <div>
                     <OwlCarousel items={1}
                         className="owl-theme"
@@ -33,3 +34,10 @@ export default class MainSlide extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        themeMode:state.userReducer.isDarkModeOn
+    };
+}
+
+export default connect(mapStateToProps, null)(MainSlide);

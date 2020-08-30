@@ -170,6 +170,7 @@ class TheaterBlock extends Component {
                         if(item.maPhim===this.props.chiTietXuatChieuTheoPhim.maPhim){
                             return (
                                 <TheaterInfo 
+                                    themeMode={this.props.themeMode}
                                     key={index}
                                     tenCumRap={itemlstCumRap.tenCumRap} 
                                     maCumRap={itemlstCumRap.maCumRap}
@@ -217,6 +218,7 @@ class TheaterBlock extends Component {
             return danhSachPhim.map((item,index)=>{
                 return (
                     <MovieInTheaterBlock
+                        themeMode={this.props.themeMode}
                         key={index}
                         maPhim={item.maPhim}
                         hinhAnh={item.hinhAnh}
@@ -230,8 +232,8 @@ class TheaterBlock extends Component {
 
     render() {
         return (
-            <section className="theater-section" id="theater-block-home">
-                <div className="container">
+            <section className={this.props.themeMode?"theater-section theater-section-dark ":"theater-section theater-section-light "} id="theater-block-home">
+                <div className={this.props.themeMode?"container container-dark":"container container-light"}>
                     {this.renderTheaterBlock()}
                 </div>
             </section>
@@ -244,7 +246,8 @@ const mapStateToProps = (state) => {
         listOfTheaterSystem: state.movieReducer.listOfTheaterSystem,
         danhSachLichChieuTheoMaHeThongRap: state.movieReducer.danhSachLichChieuTheoMaHeThongRap,
         danhSachPhimTheoMaLichChieu:state.movieReducer.chiTietPhongChieu,
-        chiTietXuatChieuTheoPhim:state.movieReducer.infoShow
+        chiTietXuatChieuTheoPhim:state.movieReducer.infoShow,
+        themeMode:state.userReducer.isDarkModeOn
 
     }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-
-export default class Footer extends Component {
+import {connect} from "react-redux";
+class Footer extends Component {
     render() {
         return (
-            <section className="footer">
+            <section className={this.props.themeMode?"footer footer-dark ":"footer footer-light "}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
@@ -99,3 +99,9 @@ export default class Footer extends Component {
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return {
+        themeMode:state.userReducer.isDarkModeOn
+    }
+}
+export default connect(mapStateToProps,null)(Footer)

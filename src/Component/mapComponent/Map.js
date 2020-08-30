@@ -254,10 +254,10 @@ class Map extends Component {
   }
   render() {
     return (
-      <section className="map-container" id="theater-nearby-block">
+      <section className={this.props.themeMode?"map-container map-container-dark ":"map-container map-container-light "} id="theater-nearby-block">
         <div className="row" >
           <div className="col-lg-6" style={{ height: "100%" }}>
-            <div className="map">
+            <div className={this.props.themeMode?"map map-dark":"map map-light"}>
               <LeafletMap
                 center={this.state.centerLocation}
                 zoom={this.state.zoom}
@@ -281,7 +281,7 @@ class Map extends Component {
                     {this.renderButton()}
                   </div>
                   <div style={{overflowY:"scroll",height:"100%"}}>
-                    <table className="table detail-table table-borderless">
+                    <table className={this.props.themeMode?"table detail-table detail-table-dark table-borderless":"table detail-table detail-table-light table-borderless"}>
                       <thead>
                         <tr>
                           <th>#</th>
@@ -306,7 +306,8 @@ class Map extends Component {
 const mapStateToProps = (state) => {
   return {
     thongTinCumRapTheoHeThongRap:state.movieReducer.thongTinCumRapTheoHeThongRap,
-    heThongRap:state.movieReducer.listOfTheaterSystem
+    heThongRap:state.movieReducer.listOfTheaterSystem,
+    themeMode:state.userReducer.isDarkModeOn
   };
 };
 const mapDispatchToProps = (dispatch) => {

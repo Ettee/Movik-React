@@ -16,7 +16,7 @@ export default class MovieInTheaterBlock extends Component {
         return arrDate.map((item,index)=>{
            
             return(
-                <div className="showTimeDate mx-2" key={index}>
+                <div className={this.props.themeMode?"showTimeDate showTimeDate-dark mx-2":"showTimeDate showTimeDate-light mx-2"} key={index}>
                     <p>{item}</p>
                     <div className="btn-xuatChieu">
                         <ButtonXuatChieu
@@ -32,7 +32,7 @@ export default class MovieInTheaterBlock extends Component {
     render() {
         let {maPhim,tenPhim,hinhAnh}=this.props
         return (
-            <div className="movie-of-picked-theater">
+            <div className={this.props.themeMode?"movie-of-picked-theater movie-of-picked-theater-dark":"movie-of-picked-theater movie-of-picked-theater-light"}>
                 <div className="film-desc">
                     <div className="filmImg mx-2">
                         <img src={hinhAnh} alt="film-img" />
@@ -40,7 +40,7 @@ export default class MovieInTheaterBlock extends Component {
                     <div className="nameFilm">{tenPhim}</div>
                 </div>
                 <ul className="showing-time-list">
-                    <li className="item-showing-time" key={maPhim}>
+                    <li className={this.props.themeMode?"item-showing-time item-showing-time-dark":"item-showing-time item-showing-time-light"} key={maPhim}>
                        {this.renderNgayChieu()}
                     </li>
                 </ul>

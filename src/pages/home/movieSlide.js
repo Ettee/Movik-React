@@ -58,18 +58,18 @@ class MovieSlide extends Component {
         };
 
         return (
-            <section className="showing-coming-movie-section" id="showing-coming-movie">
+            <section className={this.props.themeMode?"showing-coming-movie-section showing-coming-movie-section-dark":"showing-coming-movie-section showing-coming-movie-section-light"} id="showing-coming-movie">
                 {
                     /* Nav pills */
                 }
                 <ul className="nav nav-pills">
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="pill" href="#showing">
+                        <a className={this.props.themeMode?"nav-link nav-link-dark active":"nav-link nav-link-light active"} data-toggle="pill" href="#showing">
                             Đang chiếu
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" data-toggle="pill" href="#coming">
+                        <a className={this.props.themeMode?"nav-link nav-link-dark ":"nav-link nav-link-light "} data-toggle="pill" href="#coming">
                             Sắp chiếu
                         </a>
                     </li>
@@ -77,7 +77,7 @@ class MovieSlide extends Component {
                 <div className="tab-content">
                     {/* SHOWING MOVIE */}
                     <div className="tab-pane container active" id="showing">
-                        <div className="container">
+                        <div className={this.props.themeMode?"container container-dark ":"container container-light "}>
                             <Slider {...settings} className="row slick-carousel">
                                 {this.renderMovieCardInSlide(false)}
                             </Slider>
@@ -85,7 +85,7 @@ class MovieSlide extends Component {
                     </div>
                     {/* COMING MOVIE */}
                     <div className="tab-pane container fade" id="coming">
-                        <div className="container">
+                        <div className={this.props.themeMode?"container container-dark ":"container container-light "}>
                             <Slider {...settings} className="row slick-carousel">
                             {this.renderMovieCardInSlide(true)}
                             </Slider>
@@ -98,7 +98,8 @@ class MovieSlide extends Component {
 }
 const mapStateToProps =state =>{
     return{
-        listMovie:state.movieReducer.listMovie
+        listMovie:state.movieReducer.listMovie,
+        themeMode:state.userReducer.isDarkModeOn
     };
 }
 const mapDispatchToProps =dispatch =>{

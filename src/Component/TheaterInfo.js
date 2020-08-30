@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class TheaterInfo extends Component {
+class TheaterInfo extends Component {
     constructor(props){
         super(props)
         this.danhSachPhim=[]
@@ -37,9 +38,8 @@ export default class TheaterInfo extends Component {
     }
     render() {
         let{tenCumRap,diaChi,maCumRap}=this.props;
-       
         return (
-            <li className="nav-item">
+            <li className={this.props.themeMode?"nav-item nav-item-dark":"nav-item nav-item-light"}>
                 <a className="nav-link " data-toggle="pill" href="#cgv-1" onClick={()=>{this.danhSachPhimTheoRapDaChon(maCumRap)}} >
                     <div>
                         <img
@@ -48,7 +48,7 @@ export default class TheaterInfo extends Component {
                         />
                     </div>
                     <div className="theater-info">
-                        <h3 className="theater-name">
+                        <h3 className={this.props.themeMode?"theater-name theater-name-dark ":"theater-name theater-name-light "}>
                             {tenCumRap}
                         </h3>
                         <p className="theater-location">
@@ -60,3 +60,9 @@ export default class TheaterInfo extends Component {
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return {
+        themeMode:state.userReducer.isDarkModeOn
+    }
+}
+export default  connect(mapStateToProps,null)(TheaterInfo)

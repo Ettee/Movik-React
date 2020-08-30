@@ -1,7 +1,14 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
-.main-slide-section{
+.main-slide-section-dark{
     background-color: $darkBackground;
+}
+.main-slide-section-light{
+    background-color: $lightBackground;
+}
+.main-slide-section{
+    transition: all .5s;
+    padding-top: 75px;
     .owl-carousel{
         .owl-dots{
             position: relative;

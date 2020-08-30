@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { NavLink } from "react-router-dom";
-export default class MovieCardInSlide extends Component {
+import {connect} from "react-redux";
+class MovieCardInSlide extends Component {
 
     renderRatingStar = (diem) => {
         if (diem >= 9) {
@@ -76,7 +77,7 @@ export default class MovieCardInSlide extends Component {
         let phimImgUrl = "url(" + movie?.hinhAnh + ")";
         return (
             <Fragment >
-                <div className="card" >
+                <div className={this.props.themeMode?"card-dark card":"card-light card"} >
                     <div
                         className="card-content"
                         style={{
@@ -84,7 +85,7 @@ export default class MovieCardInSlide extends Component {
                         }}
                     >
                         {/* OVERLAY */}
-                        <div className="card-overlay">
+                        <div className={this.props.themeMode?"card-overlay card-overlay-dark":"card-overlay card-overlay-light"}>
                             <div>
                                 <a className="watchTrailer" href={movie?.trailer} data-lity>
                                     <i className="far fa-play-circle" />
@@ -109,7 +110,7 @@ export default class MovieCardInSlide extends Component {
                     <div className="film-content">
                         <div className="nameFilm">{movie?.tenPhim}</div>
                         {this.props.recommend?
-                        <div className="lengthFilm">Ngày chiếu: {new Date(movie.ngayKhoiChieu).toLocaleDateString()}</div>:<div className="lengthFilm">118 phút</div> }
+                        <div className={this.props.themeMode?"lengthFilm lengthFilm-dark":"lengthFilm lengthFilm-light"}>Ngày chiếu: {new Date(movie.ngayKhoiChieu).toLocaleDateString()}</div>:<div className={this.props.themeMode?"lengthFilm lengthFilm-dark":"lengthFilm lengthFilm-light"}>118 phút</div> }
                     
                     </div>
                 </div>
@@ -117,3 +118,9 @@ export default class MovieCardInSlide extends Component {
         )
     }
 }
+const mapStateToProps =state =>{
+    return{
+        themeMode:state.userReducer.isDarkModeOn
+    };
+}
+export default connect(mapStateToProps,null)(MovieCardInSlide)

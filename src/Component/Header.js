@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import * as action from "../redux/action";
 class Header extends Component {
+  
   checkLogin = () => {
     if (
       localStorage.getItem("userKhachHang") ||
@@ -18,7 +19,7 @@ class Header extends Component {
           <div className="user-signup-logo">
             <i className="fas fa-user-plus"></i>
           </div>
-          <div className="user-signup-link">
+          <div className={this.props.themeMode?"user-signup-link user-signup-link-dark":"user-signup-link user-signup-link-light"}>
             <NavLink to="/sign-up">Đăng kí</NavLink>
           </div>
         </Fragment>
@@ -56,8 +57,8 @@ class Header extends Component {
           </button>
           <button className="darkMode-switch" >
             <div className="switch">
-              <input type="checkbox" id="switch" />
-              <label for="switch">Toggle</label>
+              <input type="checkbox" id="switch"onClick={this.changeTheme} />
+              <label for="switch" >Toggle</label>
             </div>
             <label for="switch">Dark mode</label>
           </button>
@@ -83,8 +84,8 @@ class Header extends Component {
             </button>
             <button className="darkMode-switch" >
               <div className="switch">
-                <input type="checkbox" id="switch" />
-                <label for="switch">Toggle</label>
+                <input type="checkbox" id="switch"onClick={this.changeTheme} />
+                <label for="switch" >Toggle</label>
               </div>
               <label for="switch">Dark mode</label>
             </button>
@@ -147,7 +148,7 @@ class Header extends Component {
           <button className="darkMode-switch" >
             <div className="switch">
               <input type="checkbox" id="switch" />
-              <label for="switch">Toggle</label>
+              <label for="switch" onClick={this.changeTheme}>Toggle</label>
             </div>
             <label for="switch">Dark mode</label>
           </button>
@@ -174,7 +175,7 @@ class Header extends Component {
             <button className="darkMode-switch" >
               <div className="switch">
                 <input type="checkbox" id="switch" />
-                <label for="switch">Toggle</label>
+                <label for="switch" onClick={this.changeTheme}>Toggle</label>
               </div>
             <label for="switch">Dark mode</label>
           </button>
@@ -189,13 +190,24 @@ class Header extends Component {
       }
     }
   }
+  changeTheme=()=>{
+    let {themeMode,changeMode}=this.props
+    
+    if(themeMode){
+      changeMode(false)
+      
+    }else{
+      changeMode(true) 
+      
+    }
+  }
   render() {
     this.checkLogin();
     this.LoginStatus();
     return (
       <header>
         {/* desktop nav */}
-        <nav className="navbar navbar-expand-sm bg-darktheme navbar-light desktop-header">
+        <nav className={this.props.themeMode?"navbar navbar-expand-sm bg-darktheme navbar-light desktop-header":"navbar navbar-expand-sm  bg-lighttheme navbar-light desktop-header"}>
           {/* Brand */}
           <div className="header-brand">
             <NavLink className="navbar-brand" exact to="/">
@@ -244,18 +256,18 @@ class Header extends Component {
             </ul>
           </div>
           {/* Header Users Section */}
-          <div className="header-user " id="collapsibleNavbar">
+          <div className={this.props.themeMode?"header-user  header-user-dark ":"header-user  header-user-light "} id="collapsibleNavbar">
             <ul className="navbar-nav">
               {/* User Login */}
               <li className="user-login nav-item">
-                <div className="user-login-logo">
+                <div className={this.props.themeMode?"user-login-logo user-login-logo-dark":"user-login-logo user-login-logo-light"}>
                   <i
                     className="fas fa-user-circle"
                     data-toggle="modal"
                     data-target="#LoginModal"
                   />
                 </div>
-                <div className="user-login-link">{this.LoginStatus()}</div>
+                <div className={this.props.themeMode?"user-login-link user-login-link-dark":"user-login-link user-login-link-light"}>{this.LoginStatus()}</div>
                 {this.showAccMenuOnHover()}
               </li>
               {/* User Sign up */}
@@ -350,6 +362,14 @@ const mapDispatchToProps = (dispatch) => {
     dangXuat: () => {
       dispatch(action.actDangXuatAdmin());
     },
+    changeMode:(val)=>{
+      dispatch(action.actChangeTheme(val));
+    }
   };
 };
-export default withRouter(connect(null, mapDispatchToProps)(Header));
+const mapStateToProps=(state)=>{
+  return {
+    themeMode:state.userReducer.isDarkModeOn
+  }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

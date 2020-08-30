@@ -231,8 +231,8 @@ class SearchBlock extends Component {
             value: item
         }))
         return (
-            <section className="search-movie-section">
-                <div className="search-movie-box">
+            <section className={this.props.themeMode?"search-movie-section search-movie-section-dark ":"search-movie-section search-movie-section-light "}>
+                <div className={this.props.themeMode ?"search-movie-box search-movie-box-dark":"search-movie-box search-movie-box-light"}>
 
                     <div className="row">
                         <div className="col-md-4 ">
@@ -299,7 +299,8 @@ class SearchBlock extends Component {
 const mapStateToProps = state => {
     return {
         listMovie: state.movieReducer.listMovie,
-        infoShow: state.movieReducer.infoShow
+        infoShow: state.movieReducer.infoShow,
+        themeMode:state.userReducer.isDarkModeOn
     };
 }
 const mapDispatchToProps = dispatch => {
