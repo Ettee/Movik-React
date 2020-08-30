@@ -60,7 +60,7 @@ class Header extends Component {
               <input type="checkbox" id="switch"onClick={this.changeTheme} />
               <label for="switch" >Toggle</label>
             </div>
-            <label for="switch">Dark mode</label>
+            <label for="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
           </button>
           <button onClick={this.logout}>
             <i className="fas fa-sign-out-alt"></i> Đăng xuất
@@ -142,7 +142,7 @@ class Header extends Component {
         <div className="user-option-mobile">
           <button className="user-profile">
             <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
-              <i className="fas fa-address-card"></i> Profile
+              <i className={this.props.themeMode?"fas fa-address-card icon-dark":"fas fa-address-card icon-light"}></i> Profile
             </NavLink>
           </button>
           <button className="darkMode-switch" >
@@ -150,10 +150,10 @@ class Header extends Component {
               <input type="checkbox" id="switch" />
               <label for="switch" onClick={this.changeTheme}>Toggle</label>
             </div>
-            <label for="switch">Dark mode</label>
+            <label for="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
           </button>
           <button onClick={this.logout}>
-            <i className="fas fa-sign-out-alt"></i> Đăng xuất
+            <i className={this.props.themeMode?"fas fa-sign-out-alt icon-dark":"fas fa-sign-out-alt icon-light"}></i> Đăng xuất
           </button>
         </div>
       )
@@ -164,12 +164,12 @@ class Header extends Component {
           <div className="user-option-mobile">
             <button className="user-profile">
               <NavLink to={`/profile/${taiKhoan.taiKhoan}`}>
-                <i className="fas fa-address-card"></i> Profile
+                <i className={this.props.themeMode?"fas fa-address-card icon-dark":"fas fa-address-card icon-light"}></i> Profile
               </NavLink>
             </button>
             <button className="user-admin">
               <NavLink to={"/admin"}>
-                <i className="fas fa-cogs"></i> Movik Manager
+                <i className={this.props.themeMode?"fas fa-cogs icon-dark":"fas fa-cogs icon-light"}></i> Movik Manager
               </NavLink>
             </button>
             <button className="darkMode-switch" >
@@ -180,7 +180,7 @@ class Header extends Component {
             <label for="switch">Dark mode</label>
           </button>
             <button onClick={this.logout}>
-              <i className="fas fa-sign-out-alt"></i> Đăng xuất
+              <i className={this.props.themeMode?"fas fa-sign-out-alt icon-dark":"fas fa-sign-out-alt icon-light"}></i> Đăng xuất
             </button>
           </div>
           
@@ -276,7 +276,7 @@ class Header extends Component {
           </div>
         </nav>
         {/* mobile-nav */}
-        <div className="mobile-navbar">
+        <div className={this.props.themeMode?"mobile-navbar  mobile-navbar-dark ":"mobile-navbar  mobile-navbar-light "}>
           <div className="mobile-navbar-content">
             <div className="mobile-navbar-brand">
               <NavLink exact to="/">
@@ -286,9 +286,9 @@ class Header extends Component {
             <div className="menu-bar">
               <input type="checkbox" id="check" />
               <label for="check" className="bar-icon">
-                <i className="fas fa-bars "></i>
+                <i className={this.props.themeMode?"fas fa-bars bar-dark":"fas fa-bars bar-light"}></i>
               </label>
-              <div className="menu-content" id="menu-content">
+              <div className={this.props.themeMode?"menu-content menu-content-dark ":"menu-content menu-content-light "} id="menu-content">
                 <ul className="navbar-nav">
                   <li className="nav-item">
                     <a
@@ -335,10 +335,10 @@ class Header extends Component {
                         <input type="checkbox" id="dropdown-user-option"/>
                         <label for="dropdown-user-option">
                         <i
-                          className="fas fa-user-circle"
+                          className={this.props.themeMode?"fas fa-user-circle icon-dark":"fas fa-user-circle icon-light"}
                         /> {this.LoginStatus()}  
                         </label>
-                        <i className="fas fa-angle-down dropDownArrow"></i>
+                        <i className={this.props.themeMode?"fas fa-angle-down dropDownArrow icon-dark":"fas fa-angle-down dropDownArrow icon-light"}></i>
                         {this.popUpUserOptionMobile()}             
                       </div>
                       
