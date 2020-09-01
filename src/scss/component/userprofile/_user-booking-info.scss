@@ -5,8 +5,18 @@
     .booking-detail{
         .title{
             th{
-                color: #fff;
+                transition: all .7s;
                 letter-spacing: 1px;
+            }
+        }
+        .title-dark{
+            th{
+                color: #fff;
+            }
+        }
+        .title-light{
+            th{
+                color: $colorForSmallIcon;
             }
         }
         .no-booking-data{
@@ -15,21 +25,45 @@
             font-weight: 600;
             color: $yellow;
         }
-        .value{
+        .value-light{
+            td{
+                color:#000 ;
+            }
+            .detail-more{
+                &:hover{
+                    i{
+                        color:$colorForSmallIcon ;
+                    }
+                }
+                i{
+                    color:#000 ;
+                }
+            }
+        }
+        .value-dark{
             td{
                 color: $yellow;
+            }
+            .detail-more{
+                &:hover{
+                    i{
+                        color:$colorForSmallIcon ;
+                    }
+                }
+                i{
+                    color:#fff ;
+                }
+            }
+        }
+        .value{
+            td{
                 letter-spacing: 1px;
                 font-size: 18px;
+                transition: all .7s;
                 .detail-more{
                     margin: 0 10px;
                     cursor: pointer;
-                    &:hover{
-                        i{
-                            color:$colorForSmallIcon ;
-                        }
-                    }
-                    i{
-                        color:#fff ;
+                    i{   
                         font-size: 25px;
                     }
                 }
@@ -40,10 +74,16 @@
     
 }
 .booking-detail-modal{
+    transition: all .7s;
+}
+.booking-detail-modal-dark{
     background-color: $darkBackground;
 }
+.booking-detail-modal-light{
+    background-color: $lightBackground;
+}
 .detail-more-modal{
-    
+    background-color: white;
     .detail-row{
         margin: 10px 0;
     }
@@ -54,9 +94,14 @@
     }
     .detail-value{
         text-align: left;
-        color: $gray;
         flex-wrap: wrap;
         display: flex;
+    }
+    .detail-value-light{
+        color: #000;
+    }
+    .detail-value-dark{
+        color:$darkThemeText;
     }
     .tenGheModal{
         margin: 0 3px;

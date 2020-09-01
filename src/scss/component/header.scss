@@ -1,11 +1,9 @@
 @import "../helper/variable.scss";
 @import "../helper/mixin.scss";
 header{
-    box-shadow:  -1px 14px 31px 3px rgba(0,0,0,0.36);
     z-index: 999;
     position: fixed;
     width: 100%;
-    
     .desktop-header{
         transition: all .7s;
     }
@@ -82,14 +80,23 @@ header{
                 @include tablet{
                     display: block;
                 }
+                // li.user-signup{
+                //     i{
+                //         color: $darkThemeText;
+                //     }
+                //     a{
+                //         color: $darkThemeText;
+                //     }
+                // }
                 li.user-signup{
-                    i{
-                        color: $darkThemeText;
+                    .user-signup-link-dark{
+                        color: $yellow;
                     }
-                    a{
+                    .user-signup-link-light{
                         color: $darkThemeText;
                     }
                 }
+                
                 li.user-login,.user-signup{
                     display: flex;
                     align-items: center;
@@ -108,6 +115,10 @@ header{
                             }
                         }
                     }
+                    
+                    .user-signup-logo{
+                        transition: all .7s;
+                    }
 
                     .user-login-link,.user-signup-link{
                         a{
@@ -121,9 +132,24 @@ header{
                             color: $yellow;
                         }
                     }
-                    .user-login-link-dark,user-signup-link-dark{
+                    .user-login-link-dark{
                         a{
                             color: $yellow;
+                        }   
+                    }
+                    .user-signup-link-dark{
+                        a{
+                            color: $yellow;
+                        }
+                    }
+                    .user-login-link-light{
+                        a{
+                            color: $darkThemeText;
+                        }
+                    }
+                    .user-signup-link-light{
+                        a{
+                            color: $darkThemeText;
                         }
                     }
                     .user-login-logo-light,.user-signup-logo-light{
@@ -131,12 +157,8 @@ header{
                             color: $darkThemeText;
                         }
                     }
-                    .user-login-link-light,user-signup-link-light{
-                        a{
-                            color: $darkThemeText;
-                        }
-                    }
-                    &:hover{
+                    
+                    &:active{
                         .user-login-logo,.user-signup-logo{
                             i{
                                 @include GradientTextWith_2_Colors(#9f00fb,#ff0000,24%,66%);
@@ -153,6 +175,7 @@ header{
             }
         }
     }
+    
     .checkout{
         display: none !important;
     }
@@ -346,6 +369,7 @@ header{
         }    
     }
 }
+
 .darkMode-switch{
     display: flex !important;
     >label{

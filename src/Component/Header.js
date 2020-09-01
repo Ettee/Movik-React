@@ -16,7 +16,7 @@ class Header extends Component {
     } else {
       return (
         <Fragment>
-          <div className="user-signup-logo">
+          <div className={this.props.themeMode?"user-signup-logo user-signup-logo-dark":"user-signup-logo user-signup-logo-light"}>
             <i className="fas fa-user-plus"></i>
           </div>
           <div className={this.props.themeMode?"user-signup-link user-signup-link-dark":"user-signup-link user-signup-link-light"}>

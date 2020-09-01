@@ -50,65 +50,48 @@ class UserBookingInfo extends Component {
             tenHeThongRap=item.tenHeThongRap;
         })
         swal({
-            title:"Thông tin vé",
-            className: "booking-detail-modal",
-            content:(
-                <div className="detail-more-modal">
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Tên Phim:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {thongTinDatVe.tenPhim}
-                        </div>
-                    </div>
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Thời lượng:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {thongTinDatVe.thoiLuongPhim} phút
-                        </div>
-                    </div>
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Tên rạp:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {tenHeThongRap}
-                        </div>
-                    </div>
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Rạp:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {tenRap}
-                        </div>
-                    </div>
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Ghế:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {tenGhe.map(item=>{
-                                return(
-                                    <span className="tenGheModal">{item}</span>
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <div className="row detail-row">
-                        <div className="col-md-3 detail-title">
-                            Giá vé:
-                        </div>
-                        <div className="col-md-9 detail-value">
-                            {thongTinDatVe.giaVe}
-                        </div>
-                    </div>
+          title: "Thông tin vé",
+          content: (
+            <div className={this.props.themeMode?"booking-detail-modal booking-detail-modal-dark ":"booking-detail-modal booking-detail-modal-light "}>
+              <div className="detail-more-modal">
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Tên Phim:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
+                    {thongTinDatVe.tenPhim}
+                  </div>
                 </div>
-            )
-        })
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Thời lượng:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
+                    {thongTinDatVe.thoiLuongPhim} phút
+                  </div>
+                </div>
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Tên rạp:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>{tenHeThongRap}</div>
+                </div>
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Rạp:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>{tenRap}</div>
+                </div>
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Ghế:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
+                    {tenGhe.map((item) => {
+                      return <span className="tenGheModal">{item}</span>;
+                    })}
+                  </div>
+                </div>
+                <div className="row detail-row">
+                  <div className="col-md-3 detail-title">Giá vé:</div>
+                  <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
+                    {thongTinDatVe.giaVe}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ),
+        });
         
     }
 
@@ -116,7 +99,7 @@ class UserBookingInfo extends Component {
         return (
             <div className="user-booking-info">
                 <table className="table booking-detail table-hover">
-                    <thead className="title">
+                    <thead className={this.props.themeMode?"title title-dark":"title title-light"}>
                         <tr>
                             <th>Mã vé</th>
                             <th className="text-center">Tên phim</th>
@@ -125,7 +108,7 @@ class UserBookingInfo extends Component {
                             <th className="text-center">Giờ đặt</th>
                         </tr>
                     </thead>
-                    <tbody className="value">
+                    <tbody className={this.props.themeMode?"value value-dark ":"value value-light "}>
                        {this.renderBookingRow()}
                     </tbody>
 

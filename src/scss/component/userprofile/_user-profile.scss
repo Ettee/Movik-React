@@ -1,11 +1,18 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss"; 
+.user-info-page-dark{
+    background-color: $darkBackground !important;
+}
+.user-info-page-dark{
+    background-color: $lightBackground;
+}
 .user-info-page{
     padding: 10px 0;
-    background-color: $darkBackground;
+    transition: all .7s;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    padding-top:78px ;
     .container-fluid{
         padding-left: 0;
         .profile-content{
@@ -13,6 +20,18 @@
             .user-booking-info-section{
                 height: 80vh;
                 overflow-y: auto;
+            }
+            
+            .user-info-bar{
+                transition: all .7s;
+                border-radius: 10px;
+            }
+            .user-info-bar-dark{
+                background-color: $darkBackground;
+            }
+            .user-info-bar-light{
+                background-color: $lightBackground;                
+                box-shadow:  -1px 14px 31px 3px rgba(0,0,0,0.36);
             }
         }
     } 

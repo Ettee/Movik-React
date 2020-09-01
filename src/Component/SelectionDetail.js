@@ -3,6 +3,7 @@ import swal from '@sweetalert/with-react';
 import {connect} from 'react-redux';
 import * as action from '../redux/action';
 import {withRouter} from "react-router-dom";
+import numeral  from "numeral";
 class SelectionDetail extends Component {
     constructor(props){
         super(props)
@@ -28,13 +29,13 @@ class SelectionDetail extends Component {
             tongTien+=item.giaVe
         })
         if(tongTien===0){
-
             return(
-                <span className="tongTienVe invisible">{tongTien}đ</span>
+                <span className="tongTienVe ">0đ</span>
             )
         }else{
+            let tongTienVeFormatted =numeral(tongTien).format('0,0')
             return(
-                <span className="tongTienVe">{tongTien}đ</span>
+                <span className="tongTienVe">{tongTienVeFormatted}đ</span>
             )
         }
     }

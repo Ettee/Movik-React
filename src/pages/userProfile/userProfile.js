@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import UserInfo from './userInfo';
 import UserBookingInfo from './userBookingInfo'
-export default class UserProfile extends Component {
+import {connect} from "react-redux"
+class UserProfile extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -25,17 +26,17 @@ export default class UserProfile extends Component {
     }
     render() {
         return (
-            <div className="user-info-page">
+            <div className={this.props.themeMode?"user-info-page user-info-page-dark ":"user-info-page user-info-page-light "}>
                 <div className="container-fluid">
                     <div className=" row profile-content"> 
                         <div className=" user-info-section col-xl-2">
                             
-                            <div className="user-info-bar">
-                                <UserInfo user={this.state.user}/> 
+                            <div className={this.props.themeMode?"user-info-bar user-info-bar-dark":"user-info-bar user-info-bar-light"}>
+                                <UserInfo user={this.state.user} themeMode={this.props.themeMode}/> 
                             </div>  
                         </div>
-                        <div className=" col-xl-10 user-booking-info-section">
-                            <UserBookingInfo taiKhoan={this.props.match.params.taiKhoan}/>
+                        <div className=" col-xl-10 user-booking-info-section ">
+                            <UserBookingInfo taiKhoan={this.props.match.params.taiKhoan} themeMode={this.props.themeMode}/>
                         </div>
                     </div>
                 </div>
@@ -43,3 +44,9 @@ export default class UserProfile extends Component {
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return {
+        themeMode:state.userReducer.isDarkModeOn
+    }
+}
+export default connect(mapStateToProps,null)(UserProfile)

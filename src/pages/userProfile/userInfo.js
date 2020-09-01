@@ -14,31 +14,31 @@ export default class UserInfo extends Component {
                 </div>
 
                 <div className="user-info-detail">
-                    <div className="account-name">
+                    <div className={this.props.themeMode?"account-name":"account-name account-name-light"}>
                        {user.taiKhoan}
                     </div>
                     <div className="info-item">
-                        <div className=" info-key">
-                            <i className="fas fa-signature"></i>
+                        <div className={this.props.themeMode?" info-key info-key-dark":" info-key info-key-light"}>
+                            <i className="fas fa-signature icon-dark"></i>:
                         </div>
-                        <div className=" info-value">
-                            : {user.hoTen}
-                        </div>
-                    </div>
-                    <div className="info-item">
-                        <div className=" info-key">
-                            <i className="far fa-envelope"></i> 
-                        </div>
-                        <div className=" info-value">
-                            : {user.email}
+                        <div className={this.props.themeMode?" info-value info-value-dark":" info-value info-value-light"}>
+                            {user.hoTen}
                         </div>
                     </div>
                     <div className="info-item">
-                        <div className=" info-key">
-                            <i className="fas fa-phone"></i> 
+                        <div className={this.props.themeMode?" info-key info-key-dark":" info-key info-key-light"}>
+                            <i className="far fa-envelope"></i>:
                         </div>
-                        <div className=" info-value">
-                            : {user.soDT}
+                        <div className={this.props.themeMode?" info-value info-value-dark":" info-value info-value-light"}>
+                            {user.email}
+                        </div>
+                    </div>
+                    <div className="info-item">
+                        <div className={this.props.themeMode?" info-key info-key-dark":" info-key info-key-light"}>
+                            <i className="fas fa-phone"></i>:
+                        </div>
+                        <div className={this.props.themeMode?" info-value info-value-dark":" info-value info-value-light"}>
+                            {user.soDT}
                         </div>
                     </div>
                 </div>
