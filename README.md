@@ -1,6 +1,14 @@
 # MOVIK-ReactJS 🎬
 This project was created with React [Reactjs](https://github.com/facebook/react/).<br/>
-This project was created with ❤️ by Tran Thanh Son 👨🏻‍💻 [Facebook](https://www.facebook.com/ette9773).
+This project was created with ❤️ by Tran Thanh Son 👨🏻‍💻 [Facebook](https://www.facebook.com/ette9773).<br />
+Deployed by Firebase Hosting [Movik](https://movik-2d40a.web.app/?fbclid=IwAR1v8O07fgtM52HmZ1nrBsggUOZgI56HYvkeOa0b6Akna1LblI6z1e6QG5c)<br />
+## 🚨Enable Mixed Content is needed due to http api.
+## How to enable mixed content ❓ 🤔 <br />
+ 1.Go to website settings.<br />
+ 2.Find the Insucure Content row.<br />
+ 3.Allow that and reload Movik website<br />
+ Pls dont worry,my project is safe. Im not trying to steal anything from you.<br />
+ 
 🔥🔥🔥
 ## Available Scripts
 
