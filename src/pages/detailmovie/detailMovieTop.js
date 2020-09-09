@@ -37,7 +37,7 @@ export default class DetailMovieTop extends Component {
                 <div className="film-content">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-7">
                                 <div className="film-posterTop">
                                     <div
                                         className="film-imgTop card-content"
@@ -77,7 +77,7 @@ export default class DetailMovieTop extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-5">
                                 <div className="circle-wrap">
                                     <div className={RatingCircleClassName}>
                                     <span>{movie?.danhGia}.0</span>
