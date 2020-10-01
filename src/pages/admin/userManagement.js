@@ -8,9 +8,7 @@ import SignUpModal from "../../Component/AdminComponent/signUpModal";
 class UserManagement extends Component {
     constructor(props){
         super(props)
-        if(!localStorage.getItem('userAdmin')){
-            this.props.history.push('/login-admin')
-        }
+       
         this.state={
             soTrang:1,
             indexToExecuteAction:100,

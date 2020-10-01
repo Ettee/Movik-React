@@ -5,6 +5,10 @@ import swal from 'sweetalert';
 class Navbar extends Component {
     constructor(props){
         super(props)
+        //chuyển người dùng về trang login admin nếu người dùng không phải quản trị viên
+        if(!localStorage.getItem('userAdmin')){
+            this.props.history.push('/login-admin')
+        }
         this.state={
             admin:{}
            
@@ -13,7 +17,7 @@ class Navbar extends Component {
     componentDidMount(){
         // if(localStorage.getItem("QuanTri")){
         //     //chuyển tới trang đăng nhập cho admin bằng history.push() 
-        //     //import withHistory
+        //     //import withRouter
         // }
         document.title="Movik Manager"
         let admin=JSON.parse(localStorage.getItem("userAdmin"))

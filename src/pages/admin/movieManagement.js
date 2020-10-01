@@ -7,9 +7,9 @@ import { withRouter } from "react-router";
 class movieManagement extends Component {
     constructor(props){
         super(props)
-        if(!localStorage.getItem('userAdmin')){
-            this.props.history.push('/login-admin')
-        }
+        // if(!localStorage.getItem('userAdmin')){
+        //     this.props.history.push('/login-admin')
+        // }
         this.state={
             soTrang:1,
             detailMovie:{}

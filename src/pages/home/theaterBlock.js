@@ -210,7 +210,6 @@ class TheaterBlock extends Component {
         this.setState({
             danhSachPhimTheoRap
         })
-        
     }
     renderPhimTheoRapDaChon=()=>{
         let danhSachPhim=this.state.danhSachPhimTheoRap
@@ -237,7 +236,6 @@ class TheaterBlock extends Component {
                     {this.renderTheaterBlock()}
                 </div>
             </section>
-
         )
     }
 }
@@ -248,7 +246,6 @@ const mapStateToProps = (state) => {
         danhSachPhimTheoMaLichChieu:state.movieReducer.chiTietPhongChieu,
         chiTietXuatChieuTheoPhim:state.movieReducer.infoShow,
         themeMode:state.userReducer.isDarkModeOn
-
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -262,8 +259,6 @@ const mapDispatchToProps = dispatch => {
         LayThongTinLichChieuTheoPhim:(movieID)=>{
             dispatch(action.actGetInfoShowByMovieID(movieID))
         }
-       
-
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TheaterBlock);
