@@ -9,8 +9,8 @@ import {withRouter} from "react-router-dom"
 class Theater extends Component{
     constructor(props){
         super(props)
-        let maLichChieu=this.props.match.params.maLichChieu;
-        this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu);
+        
+        
         this.state={
             lstGheDaChon:[],
             time:0,
@@ -122,10 +122,12 @@ class Theater extends Component{
         this.startTimer()
         let timeLeftVar = this.secondsToTime(this.state.seconds);
         this.setState({ time: timeLeftVar });
+        let maLichChieu=this.props.match.params.maLichChieu;
+        this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu);
     }
     render() {
         let thongTinPhim=this.layChiTietPhongChieu()
-        let danhSachPhim=this.layDanhSachGhe()
+        let danhSachGhe=this.layDanhSachGhe()
         return (
             <Fragment>
                     <section className="movie-picked">
@@ -162,7 +164,7 @@ class Theater extends Component{
                                     </div>
                                     <div className="seat-block">
                                         <div className="container">
-                                           <Seat danhSachPhim={danhSachPhim} layDanhSachGheDaChon={this.layDanhSachGheDaChon} />
+                                           <Seat danhSachPhim={danhSachGhe} layDanhSachGheDaChon={this.layDanhSachGheDaChon} />
                                         </div>
                                     </div>
                                 </div>

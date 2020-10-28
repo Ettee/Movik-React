@@ -13,7 +13,8 @@ let initialState ={
     thongTinCumRapTheoHeThongRap:[],
     thongTinDatVe:{},
     datVeStatus:false,
-    viewedMovie:{}
+    viewedMovie:{},
+    danhSachGheTrongRap:{}
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -54,6 +55,9 @@ const movieReducer =(state = initialState,action) =>{
         case ActionType.VIEWED_MOVIE:
             state.viewedMovie=action.data
             return { ...state }
+        case ActionType.LAY_DANH_SACH_GHE:
+            state.danhSachGheTrongRap=action.data
+             return { ...state }
         default: 
             return {...state};
     }

@@ -16,9 +16,6 @@ import { withRouter } from "react-router";
 class bookingManagement extends Component {
     constructor(props) {
         super(props)
-        // if(!localStorage.getItem('userAdmin')){
-        //     this.props.history.push('/login-admin')
-        // }
         this.state = {
             maPhim: 0,
             tenPhim: "",

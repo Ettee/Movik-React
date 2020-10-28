@@ -140,6 +140,24 @@ export const actLayChiTietPhongVeBangMaLichChieu=(maLichChieu)=>{
         })
     }
 }
+export const actLayDanhSachGheTheoMaLichChieu=(maLichChieu)=>{
+    return dispatch=>{
+        Axios({
+            method:"GET",
+            url:`https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+            
+        })
+        .then(rs=>{
+            dispatch({
+                type:ActionType.LAY_DANH_SACH_GHE,
+                data:rs.data
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
 export const actDangKi=user =>{
     return dispatch=>{
         Axios({

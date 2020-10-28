@@ -58,9 +58,9 @@ class Header extends Component {
           <button className="darkMode-switch" >
             <div className="switch">
               <input type="checkbox" id="switch"onClick={this.changeTheme} />
-              <label for="switch" >Toggle</label>
+              <label htmlFor="switch" >Toggle</label>
             </div>
-            <label for="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
+            <label htmlFor="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
           </button>
           <button onClick={this.logout}>
             <i className="fas fa-sign-out-alt"></i> Đăng xuất
@@ -85,9 +85,9 @@ class Header extends Component {
             <button className="darkMode-switch" >
               <div className="switch">
                 <input type="checkbox" id="switch"onClick={this.changeTheme} />
-                <label for="switch" >Toggle</label>
+                <label htmlFor="switch" >Toggle</label>
               </div>
-              <label for="switch">Dark mode</label>
+              <label htmlFor="switch">Dark mode</label>
             </button>
             <button onClick={this.logout}>
               <i className="fas fa-sign-out-alt"></i> Đăng xuất
@@ -148,9 +148,9 @@ class Header extends Component {
           <button className="darkMode-switch" >
             <div className="switch">
               <input type="checkbox" id="switch" />
-              <label for="switch" onClick={this.changeTheme}>Toggle</label>
+              <label htmlFor="switch" onClick={this.changeTheme}>Toggle</label>
             </div>
-            <label for="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
+            <label htmlFor="switch">{this.props.themeMode?"Dark Mode":"Light Mode"}</label>
           </button>
           <button onClick={this.logout}>
             <i className={this.props.themeMode?"fas fa-sign-out-alt icon-dark":"fas fa-sign-out-alt icon-light"}></i> Đăng xuất
@@ -175,9 +175,9 @@ class Header extends Component {
             <button className="darkMode-switch" >
               <div className="switch">
                 <input type="checkbox" id="switch" />
-                <label for="switch" onClick={this.changeTheme}>Toggle</label>
+                <label htmlFor="switch" onClick={this.changeTheme}>Toggle</label>
               </div>
-            <label for="switch">Dark mode</label>
+            <label htmlFor="switch">Dark mode</label>
           </button>
             <button onClick={this.logout}>
               <i className={this.props.themeMode?"fas fa-sign-out-alt icon-dark":"fas fa-sign-out-alt icon-light"}></i> Đăng xuất
@@ -285,7 +285,7 @@ class Header extends Component {
             </div>
             <div className="menu-bar">
               <input type="checkbox" id="check" />
-              <label for="check" className="bar-icon">
+              <label htmlFor="check" className="bar-icon">
                 <i className={this.props.themeMode?"fas fa-bars bar-dark":"fas fa-bars bar-light"}></i>
               </label>
               <div className={this.props.themeMode?"menu-content menu-content-dark ":"menu-content menu-content-light "} id="menu-content">
@@ -333,7 +333,7 @@ class Header extends Component {
                     <li className="user-login nav-item">
                       <div className="user-login-link">
                         <input type="checkbox" id="dropdown-user-option"/>
-                        <label for="dropdown-user-option">
+                        <label htmlFor="dropdown-user-option">
                         <i
                           className={this.props.themeMode?"fas fa-user-circle icon-dark":"fas fa-user-circle icon-light"}
                         /> {this.LoginStatus()}  

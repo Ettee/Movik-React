@@ -45,6 +45,58 @@ class SelectionDetail extends Component {
             infoKhachHang:info
         })
     }
+    checkForAvailableSeat=(maLichChieu,danhSachGhe)=>{
+        this.props.layDanhSachGhe(maLichChieu);
+        let gheDaChon=[];
+        let gheLayVe=[];
+        danhSachGhe.map((item)=>{
+            gheDaChon.push(item.maGhe)
+        })
+
+        let intervalID=setInterval(()=>{
+            if(Object.keys(this.props.danhSachGheTrongRap).length>0){ 
+                clearInterval(intervalID)
+                gheLayVe=this.props.danhSachGheTrongRap.danhSachGhe.filter((item)=>{
+                    return item.daDat===true
+                })
+                console.log(gheLayVe)
+                if(gheDaChon.some((val) =>gheLayVe.indexOf(val) !== -1)){  
+                    console.log("thất bại")
+                    swal({
+                        title:"Đặt ghế thất bại",
+                        text:"Ghế đã có người đặt",
+                        icon:"error",
+                        buttons:["OK"]
+                    }).then((ok)=>{
+                        if(ok){
+                            swal.close();
+                            this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu)
+                        }
+                    })
+                }else{
+                    console.log("thành công")
+                    this.datVe(danhSachGhe,maLichChieu)
+                } 
+            }
+        },200)
+
+    }
+    datVe=(danhSachGhe,maLichChieu)=>{
+        let lstGhe=[]
+        danhSachGhe.map(item=>{
+        let ghe={
+            maGhe:item.maGhe,
+            giaVe:item.giaVe
+        }
+        lstGhe.push(ghe)
+        })
+        let obj={
+            maLichChieu,
+            danhSachVe:lstGhe,
+            taiKhoanNguoiDung:this.state.infoKhachHang.taiKhoan
+        }
+        this.props.DatVe(obj,this.state.infoKhachHang.accessToken)
+    }
     handleDatVe=()=>{
         let{maLichChieu,danhSachGhe,thongTinPhim}=this.props;
         if(danhSachGhe.length>0){
@@ -52,7 +104,7 @@ class SelectionDetail extends Component {
                 maLichChieu:maLichChieu,
                 danhSachGhe:danhSachGhe,
                 thongTinPhim:thongTinPhim
-            }
+            }      
             this.props.LuuThongTinDatVe(obj)
             swal({
                 title:"Xác nhận đặt vé",
@@ -64,23 +116,9 @@ class SelectionDetail extends Component {
                 dangerMode: true
             }).then(ok=>{
                 if(ok){
-                    let lstGhe=[]
-                    danhSachGhe.map(item=>{
-                    let ghe={
-                        maGhe:item.maGhe,
-                        giaVe:item.giaVe
-                    }
-                    lstGhe.push(ghe)
-                    })
-                    let obj={
-                        maLichChieu,
-                        danhSachVe:lstGhe,
-                        taiKhoanNguoiDung:this.state.infoKhachHang.taiKhoan
-                    }
-                    this.props.DatVe(obj,this.state.infoKhachHang.accessToken)
+                    this.checkForAvailableSeat(maLichChieu,danhSachGhe)
                 }
             })
-            
             setTimeout(()=>{
                 if(this.props.datVeStatus){
                     this.props.history.push("/ticket-info")
@@ -159,7 +197,9 @@ class SelectionDetail extends Component {
 }
 const mapStateToProps=(state)=>{
     return{
-        datVeStatus:state.movieReducer.datVeStatus
+        datVeStatus:state.movieReducer.datVeStatus,
+        danhSachGheTrongRap:state.movieReducer.danhSachGheTrongRap
+
     }
 }
 const mapDispatchToProps=dispatch=>{
@@ -169,6 +209,9 @@ const mapDispatchToProps=dispatch=>{
         },
         DatVe:(obj,token)=>{
             dispatch(action.actDatVe(obj,token));
+        },
+        layDanhSachGhe:(maLichChieu)=>{
+            dispatch(action.actLayDanhSachGheTheoMaLichChieu(maLichChieu));
         }
     }
 }
