@@ -14,7 +14,8 @@ let initialState ={
     thongTinDatVe:{},
     datVeStatus:false,
     viewedMovie:{},
-    danhSachGheTrongRap:{}
+    danhSachGheTrongRap:{},
+    isHomeReady:false
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -58,6 +59,9 @@ const movieReducer =(state = initialState,action) =>{
         case ActionType.LAY_DANH_SACH_GHE:
             state.danhSachGheTrongRap=action.data
              return { ...state }
+        case ActionType.IS_PAGE_READY:
+            state.isHomeReady=action.data
+            return {...state}
         default: 
             return {...state};
     }

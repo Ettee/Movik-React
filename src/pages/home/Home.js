@@ -7,18 +7,24 @@ import TheaterBlock from "./theaterBlock";
 import ViewedMovie from "../../Component/ViewedMovie/ViewedMovie";
 import Map from '../../Component/mapComponent/Map';
 import "leaflet/dist/leaflet.css";
-//import Chat from "../../Component/ChatBot/chat";
-export default class Home extends Component {
+import * as action from "../../redux/action";
+import { connect } from "react-redux";
+class Home extends Component {
     constructor(props){
       super(props)
       document.title="Movik"
        
     }
+    checkIfPageIsReady=(val)=>{
+      if(val){
+        this.props.sendReadySignal(val)
+      }
+    }
     render() {
         return (
           <Fragment>
             <MainSlide />
-            <SearchBlock />
+            <SearchBlock isPageReady={this.checkIfPageIsReady} />
             <MovieSlide />
             <TheaterBlock />
             <Recommend/>
@@ -29,3 +35,12 @@ export default class Home extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    sendReadySignal:(val)=>{
+      dispatch(action.actCheckPageIsReady(val))
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(Home);

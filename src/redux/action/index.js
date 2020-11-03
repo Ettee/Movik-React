@@ -586,3 +586,11 @@ export const actChangeTheme=(val)=>{
         })
     }
 }
+export const actCheckPageIsReady=(val)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.IS_PAGE_READY,
+            data:val
+        })
+    }
+}

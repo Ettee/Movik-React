@@ -143,8 +143,7 @@ class TicketInfoAfterBooked extends Component {
                   <div className="qr-code-block">
                     {this.renderQRCode(ticketData)}
                     <div className="qr-note">
-                      * Mã QR này có giá trị như 1 tấm vé.Đưa mã cho nhân viên tại
-                      rạp để được đổi lấy vé phim.
+                      * Mã QR này có giá trị như 1 tấm vé.
                     </div>
                   </div>
                 </div>
