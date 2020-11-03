@@ -23,7 +23,7 @@ export default class DetailMovieTop extends Component {
     }
     render() {
         const {movie}=this.props;
-        let RatingCircleClassName =this.renderRatingCircle(movie.danhGia);
+        let RatingCircleClassName =this.renderRatingCircle(movie?.danhGia);
         return (
             <section className="bg-cover-section">
                 <div

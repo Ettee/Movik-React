@@ -3,7 +3,7 @@ import * as ActionType from "./../constants/ActionType";
 //state của movieReducer
 let initialState ={
     listMovie:[],
-    detailMovie:{},//obj chứa data mà api trả về
+    detailMovie:null,//obj chứa data mà api trả về
     infoShow:{},
     danhSachLichChieuTheoMaHeThongRap:[],
     listOfTheaterSystem:[],
@@ -15,7 +15,8 @@ let initialState ={
     datVeStatus:false,
     viewedMovie:{},
     danhSachGheTrongRap:{},
-    isHomeReady:false
+    isHomeReady:false,
+    movieName:''
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -62,6 +63,13 @@ const movieReducer =(state = initialState,action) =>{
         case ActionType.IS_PAGE_READY:
             state.isHomeReady=action.data
             return {...state}
+        case ActionType.CLEAR_DETAIL_MOVIE:
+            state.detailMovie=action.data
+            return {...state}
+        case ActionType.TRANSFER_MOVIE_NAME:
+            state.movieName=action.data
+            return {...state}
+
         default: 
             return {...state};
     }

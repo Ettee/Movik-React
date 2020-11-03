@@ -37,6 +37,7 @@ class SearchBlock extends Component {
     }
     componentWillUnmount(){
         this.props.isPageReady(false)
+        
     }
     //render ra option phim
     renderListMovie=()=>{
@@ -51,11 +52,7 @@ class SearchBlock extends Component {
             danhSachPhim.push(objOption)
         })
         if(danhSachPhim.length!==0){
-            console.log("ye")
-            setTimeout(()=>{
-                this.props.isPageReady(true)
-            },1500)
-            
+            this.props.isPageReady(true)
         }
         return danhSachPhim
     }

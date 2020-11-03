@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { NavLink } from "react-router-dom";
 import {connect} from "react-redux";
+import * as action from "../redux/action";
 class MovieCardInSlide extends Component {
 
     renderRatingStar = (diem) => {
@@ -66,6 +67,9 @@ class MovieCardInSlide extends Component {
             }
         }
     }
+    transferMovieName=(name)=>{
+        this.props.transferMovieName(name)
+    }
     render() {
         let classNameButton = "btn-buyticket";
         let classNameRating = "rating-tag";
@@ -92,7 +96,7 @@ class MovieCardInSlide extends Component {
                                 </a>
                             </div>
                             <NavLink to={`/detail-movie/${movie.maPhim}`}>
-                                <button className={classNameButton} >Mua vé</button>
+                                <button className={classNameButton} onClick={()=>{this.transferMovieName(movie.tenPhim)}}>Mua vé</button>
                             </NavLink>
 
                         </div>
@@ -123,4 +127,11 @@ const mapStateToProps =state =>{
         themeMode:state.userReducer.isDarkModeOn
     };
 }
-export default connect(mapStateToProps,null)(MovieCardInSlide)
+const mapDispatchToProps = dispatch => {
+    return {
+        transferMovieName: (name) => {
+            dispatch(action.actTransferMovieName(name));
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MovieCardInSlide)

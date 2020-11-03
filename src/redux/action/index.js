@@ -594,3 +594,19 @@ export const actCheckPageIsReady=(val)=>{
         })
     }
 }
+export const actClearDetailMovie=()=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.CLEAR_DETAIL_MOVIE,
+            data:null
+        })
+    }
+}
+export const actTransferMovieName=(name)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.TRANSFER_MOVIE_NAME,
+            data:name
+        })
+    }
+}

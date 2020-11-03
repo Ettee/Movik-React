@@ -95,6 +95,7 @@ class SelectionDetail extends Component {
         }
         
     }
+    
     render() {
         let{thongTinPhim}=this.props;
         return (
@@ -151,7 +152,7 @@ class SelectionDetail extends Component {
                     </div>
                     
                     <button className="checkout text-uppercase text-center" onClick={this.handleDatVe}>   
-                        Đặt vé       
+                        Đặt vé
                     </button>
                 </div>
             </Fragment>
@@ -161,7 +162,8 @@ class SelectionDetail extends Component {
 const mapStateToProps=(state)=>{
     return{
         datVeStatus:state.movieReducer.datVeStatus,
-        danhSachGheTrongRap:state.movieReducer.danhSachGheTrongRap
+        danhSachGheTrongRap:state.movieReducer.danhSachGheTrongRap,
+
 
     }
 }

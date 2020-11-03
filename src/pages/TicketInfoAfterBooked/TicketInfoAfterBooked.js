@@ -12,13 +12,16 @@ class TicketInfoAfterBooked extends Component {
             maVe:0
         }
     }
+    
     componentDidMount(){
         let taiKhoan=JSON.parse(localStorage.getItem("userKhachHang"))
         let obj={
             taiKhoan:taiKhoan.taiKhoan
         }
         this.props.getBookingDetail(obj)
-
+        setTimeout(()=>{
+          this.props.sendReadySignal(true)
+        },3000)
         //handle khi thông tin đặt vé không đc truyền qua 
         if(Object.keys(this.props.thongTinDatVe)===0){
             console.log(Object.keys(this.props.thongTinDatVe))
@@ -115,6 +118,7 @@ class TicketInfoAfterBooked extends Component {
         }
     }
     handleToHome=()=>{
+      this.props.sendReadySignal(false)
         this.props.history.push("/")
     }
     renderQRCode=(ticketData)=>{
@@ -161,7 +165,8 @@ class TicketInfoAfterBooked extends Component {
 const mapStateToProps=(state)=>{
     return{
         bookingDetailFromAccount:state.userReducer.thongTinDatVe,
-        thongTinDatVe:state.movieReducer.thongTinDatVe
+        thongTinDatVe:state.movieReducer.thongTinDatVe,
+        datVeStatus:state.movieReducer.datVeStatus
     }
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -171,6 +176,9 @@ const mapDispatchToProps=(dispatch)=>{
         },
         DatVe:(obj,token)=>{
             dispatch(action.actDatVe(obj,token));
+        },
+        sendReadySignal:(val)=>{
+            dispatch(action.actCheckPageIsReady(val))
         }
     }
 }

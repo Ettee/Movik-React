@@ -17,7 +17,9 @@ class Loading extends Component {
       })
     },2000)
   }
+  
   renderLoading=()=>{
+    
     const defaultOptions = {
       loop: true,
       autoplay: true,
@@ -31,7 +33,7 @@ class Loading extends Component {
       return(
         <div className="loading-page">
           <div className="loading-page-screen">
-            <Lottie options={defaultOptions}  speed={3}  />
+            <Lottie options={defaultOptions}  speed={1}  />
           </div>  
         </div>
       )
@@ -45,15 +47,16 @@ class Loading extends Component {
             </div>  
           </div>
         )
-       }else{
-        return(
-          <div className="loading-page fade-out">
-            <div className="loading-page-screen">
-              <Lottie options={defaultOptions}  />
-            </div>  
-          </div>
-        )
-       }
+        }else{
+
+            return(
+              <div className="loading-page fade-out">
+                <div className="loading-page-screen">
+                  <Lottie options={defaultOptions}  />
+                </div>  
+              </div>
+            ) 
+        }
     }
   }
   render() {

@@ -9,8 +9,6 @@ import {withRouter} from "react-router-dom"
 class Theater extends Component{
     constructor(props){
         super(props)
-        
-        
         this.state={
             lstGheDaChon:[],
             time:0,
@@ -95,11 +93,9 @@ class Theater extends Component{
             //push maGhe mới
             arr.push(objBooking)
         }
-        
         this.setState({
             lstGheDaChon:arr
         })
-        
     }
     layChiTietPhongChieu=()=>{
         let thongTinPhim={}
@@ -114,8 +110,12 @@ class Theater extends Component{
         let {chiTietPhongChieu}=this.props
         if(!isEmptyObject(chiTietPhongChieu)){
             danhSachGhe=chiTietPhongChieu.danhSachGhe
+            this.props.sendReadySignal(true)
         }
         return danhSachGhe
+    }
+    componentWillUnmount(){
+        this.props.sendReadySignal(false)
     }
     componentDidMount(){
         window.scrollTo(0, 0)
@@ -221,6 +221,9 @@ const mapDispatchToProps=dispatch=>{
     return {
         layChiTietPhongChieuBangMaLichChieu:(maLichChieu)=>{
             dispatch(action.actLayChiTietPhongVeBangMaLichChieu(maLichChieu));
+        },
+        sendReadySignal:(val)=>{
+            dispatch(action.actCheckPageIsReady(val))
         }
     }
 }
