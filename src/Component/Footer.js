@@ -46,18 +46,6 @@ class Footer extends Component {
                                     <img src="../img/partners_logo/bt.jpg" alt="true"  />
                                     <img src="../img/partners_logo/cgv.png" alt="true"  />
                                     <img src="../img/partners_logo/cinestar.png" alt="true"  />
-                                    <img src="../img/partners_logo/cnx.jpg" alt="true"  />
-                                    <img src="../img/partners_logo/dcine.png" alt="true"  />
-                                    <img src="../img/partners_logo/dongdacinema.png" alt="true"  />
-                                    <img src="../img/partners_logo/galaxycine.png" alt="true"  />
-                                    <img src="../img/partners_logo/IVB.png" alt="true"  />
-                                    <img src="../img/partners_logo/laban.png" alt="true"  />
-                                    <img src="../img/partners_logo/megags.png" alt="true"  />
-                                    <img src="../img/partners_logo/payoo.jpg" alt="true"  />
-                                    <img src="../img/partners_logo/STARLIGHT.png" alt="true"  />
-                                    <img src="../img/partners_logo/TOUCH.png" alt="true"  />
-                                    <img src="../img/partners_logo/VCB.png" alt="true"  />
-                                    <img src="../img/partners_logo/VIETTINBANK.png" alt="true"  />
                                 </div>
                             </div>
                         </div>
@@ -82,7 +70,6 @@ class Footer extends Component {
                     <div className="about-me">
                         <div className="creator">
                             Made with ❤️ by Tran Thanh Son <br />
-                            Cybersoft FE35
                         </div>
                         <div>
                             Email:{" "}

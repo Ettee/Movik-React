@@ -60,7 +60,7 @@ class Loading extends Component {
     }
   }
   render() {
-    console.log(this.props.isHomeReady)
+    // console.log(this.props.isHomeReady)
     return (
      <Fragment>
        {this.renderLoading()}

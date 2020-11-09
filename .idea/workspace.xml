@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f30ad5ad-f2ac-4eeb-897b-b274e459acce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Component/SelectionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/SelectionDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/AdminComponent/modalDetailMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/AdminComponent/modalDetailMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/TicketInfoAfterBooked/TicketInfoAfterBooked.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TicketInfoAfterBooked/TicketInfoAfterBooked.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/loading/loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loading/loading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/signup/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/userProfile/userBookingInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/userProfile/userBookingInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/action/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants/ActionType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants/ActionType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/component/TicketInfoAfterBooked/_ticket-info-after-booked.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/component/TicketInfoAfterBooked/_ticket-info-after-booked.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/component/detailmovie/_detail-movie-top.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/component/detailmovie/_detail-movie-top.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/helper/mixin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/helper/mixin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/template/HomeTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/template/HomeTemplate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

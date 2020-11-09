@@ -284,8 +284,16 @@ export const actGetUserProfile=(taiKhoan)=>{
                 type:ActionType.USER_PROFILE,
                 data:rs.data
             })
+            dispatch({
+                type:ActionType.IS_USER_BOOKED_READY,
+                data:true
+            })
         })
         .catch(err=>{
+            dispatch({
+                type:ActionType.IS_USER_BOOKED_READY,
+                data:true
+            })
             console.log(err)
         })
     }
@@ -607,6 +615,14 @@ export const actTransferMovieName=(name)=>{
         dispatch({
             type:ActionType.TRANSFER_MOVIE_NAME,
             data:name
+        })
+    }
+}
+export const actChangeIsUserBookedReady=(val)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.CHANGE_IS_USER_BOOKED_READY,
+            data:val
         })
     }
 }

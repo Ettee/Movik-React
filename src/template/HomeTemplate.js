@@ -9,10 +9,12 @@ const HomeLayout = props => {
   return (
     <Fragment>
       <Loading/>
-      <Header />
-      {props.children}
-      <LoginModal />
-      <Footer />
+      <div className="d-flex flex-column ">
+        <Header />
+        {props.children}
+        <LoginModal />
+        <Footer />
+      </div>
     </Fragment>
   );
 };

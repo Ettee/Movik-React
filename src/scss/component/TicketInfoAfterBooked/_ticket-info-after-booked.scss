@@ -5,6 +5,7 @@
     background-color: $darkBackground;
     display: flex;
     align-items: center;
+    transform: translateY(6%);
     .container{
         border-radius:10px ;
         background-color:$darkContent ;
@@ -16,6 +17,12 @@
             align-items: center;
             canvas{
                 border-radius: 10px;
+            }
+            .qr-download{
+                margin: 5px 0 ;
+                @include buttonMaker(130px, 40px,5px,white);
+                cursor: pointer;
+                
             }
             .qr-note{
                 color: #65676B;

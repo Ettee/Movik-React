@@ -11,7 +11,15 @@ class UserBookingInfo extends Component {
         }
         this.props.getBookingDetail(obj)
     }
-
+    componentWillReceiveProps(nextProps){
+      if(nextProps.isUserBookedReady===true){
+        this.props.checkPageReady(true)
+      }
+    }
+    componentWillUnmount(){
+      this.props.checkPageReady(false)
+      this.props.changeIsUserBookedReady(false)
+    }
     renderBookingRow=()=>{
         let soLuongGhe=0
         if(Object.keys(this.props.bookingDetail).length !== 0){
@@ -119,13 +127,20 @@ class UserBookingInfo extends Component {
 }
 const mapStateToProps=(state)=>{
     return{
-        bookingDetail:state.userReducer.thongTinDatVe
+      bookingDetail:state.userReducer.thongTinDatVe,
+      isUserBookedReady:state.userReducer.isUserBooked
     }
 }
 const mapDispatchToProps=(dispatch)=>{
     return {
         getBookingDetail:(taiKhoan)=>{
-            dispatch(action.actGetUserProfile(taiKhoan))
+          dispatch(action.actGetUserProfile(taiKhoan))
+        },
+        changeIsUserBookedReady:(val)=>{
+          dispatch(action.actChangeIsUserBookedReady(val))
+        },
+        checkPageReady:(val)=>{
+          dispatch(action.actCheckPageIsReady(val))
         }
     }
 }

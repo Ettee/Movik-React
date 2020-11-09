@@ -30,7 +30,6 @@ class ModalDetailMovie extends Component {
     }
 
     handleOnClickEdit = (biDanh, danhGia, hinhAnh, maPhim, moTa, ngayKhoiChieu, tenPhim, trailer) => {
-        
         this.setState({
             biDanh: biDanh,
             danhGia: danhGia,
@@ -158,14 +157,14 @@ class ModalDetailMovie extends Component {
                             </div>
                             <div className="col-md-6 ">
                                 <label className="mx-1">Tên phim:</label>
-                                <input type="text " name="tenPhim" onChange={this.handleOnChange} value={this.state.tenPhim === "" ? dataMovie.tenPhim : this.state.tenPhim} />
+                                <input type="text " name="tenPhim" onChange={this.handleOnChange} value={this.state.tenPhim} />
                             </div>
                         </div>
                         <div className="row movie-info-admin">
                             <div className="col-md-6">
                                 <label className="mx-1">Ngày khởi chiếu:</label>
                                 <DayPickerInput
-                                    value={this.state.ngayKhoiChieu === "" ? dataMovie.ngayKhoiChieu: this.state.ngayKhoiChieu}
+                                    value={this.state.ngayKhoiChieu}
                                     format="DD/MM/YYYY"
                                     formatDate={formatDate}
                                     parseDate={parseDate}
@@ -179,16 +178,16 @@ class ModalDetailMovie extends Component {
                             </div>
                             <div className="col-md-6 ">
                                 <label className="mx-1">Đánh giá:</label>
-                                <input type="number" name="danhGia" max="10" onChange={this.handleOnChange} value={this.state.danhGia === 11 ? dataMovie.danhGia : this.state.danhGia} />
+                                <input type="number" name="danhGia" max="10" onChange={this.handleOnChange} value={this.state.danhGia} />
                             </div>
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Mô tả:</label>
-                            <textarea className="moTa" name="moTa" onChange={this.handleOnChange} value={this.state.moTa === "" ? dataMovie.moTa : this.state.moTa} rows="3"></textarea>
+                            <textarea className="moTa" name="moTa" onChange={this.handleOnChange} value={this.state.moTa} rows="3"></textarea>
                         </div>
                         <div className="movie-info-admin">
                             <label className="mx-1">Trailer:</label>
-                            <input type="text" name="trailer" onChange={this.handleOnChange} value={this.state.trailer === "" ? dataMovie.trailer : this.state.trailer} />
+                            <input type="text" name="trailer" onChange={this.handleOnChange} value={this.state.trailer} />
                         </div>
                     </div>
                     <div className="modal-footer">

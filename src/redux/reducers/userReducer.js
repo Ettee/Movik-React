@@ -4,7 +4,8 @@ let initialState ={
     danhSachNguoiDungPhanTrang:{},
     danhSachTatCaNguoiDung:[],
     isAdmin:false,
-    isDarkModeOn:false
+    isDarkModeOn:false,
+    isUserBooked:false
 };
 const userReducer=(state=initialState,action)=>{
     switch(action.type){
@@ -25,6 +26,11 @@ const userReducer=(state=initialState,action)=>{
             return {...state} 
         case ActionType.CHANGE_THEME:
             state.isDarkModeOn=action.data;
+            return {...state}
+        case ActionType.IS_USER_BOOKED_READY:
+            state.isUserBooked=action.data;
+        case ActionType.CHANGE_IS_USER_BOOKED_READY:
+            state.isUserBooked=action.data;
             return {...state}
         default:
             return{...state}

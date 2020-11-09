@@ -121,11 +121,27 @@ class TicketInfoAfterBooked extends Component {
       this.props.sendReadySignal(false)
         this.props.history.push("/")
     }
+    downloadQR = (tenPhim) => {
+      const canvas = document.getElementById('qrcode');
+      const pngUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+      // console.log('pngUrl', pngUrl);
+      let downloadLink = document.createElement('a');
+      downloadLink.href = pngUrl;
+      downloadLink.download = `${tenPhim}-QRCode.png`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
     renderQRCode=(ticketData)=>{
-     
         let string=''
         if(typeof ticketData !=="undefined" ){
-            string='maVe: '+ticketData.maVe+' ,tenPhim:'+ticketData.tenPhim
+          let seat=[];
+          let theater=ticketData.danhSachGhe[0].tenRap;
+          ticketData.danhSachGhe.forEach((item)=>{
+            seat.push(item.tenGhe)
+            
+          })
+            string='ticketID: '+ticketData.maVe+',seat:'+seat+',theater:'+theater+",movie:"+ticketData.tenPhim
             return(
                 <QRCode
                     id="qrcode"
@@ -149,6 +165,7 @@ class TicketInfoAfterBooked extends Component {
                     <div className="qr-note">
                       * Mã QR này có giá trị như 1 tấm vé.
                     </div>
+                    <div className="qr-download" onClick={()=>{this.downloadQR(ticketData.tenPhim)}}>Tải về</div>
                   </div>
                 </div>
                 <div className="col-md-8">

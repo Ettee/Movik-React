@@ -17,6 +17,9 @@
   color: $color;
   border: none;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to right,#9f00fb,#ff0000);
 }
 @mixin buttonMakerWithCustomBg($width,$height,$borderRadius,$color,$colorBg){

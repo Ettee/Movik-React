@@ -35,12 +35,15 @@
 @import "./component/map/map";
 @import "./component//TicketInfoAfterBooked/ticket-info-after-booked";
 @import "./component/viewedMovie/viewed-movie";
+
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     font-family: 'Roboto';
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    // overflow: hidden;
    
     a{
         text-decoration: none;

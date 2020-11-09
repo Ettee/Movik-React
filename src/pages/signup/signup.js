@@ -33,7 +33,30 @@ class Signup extends Component {
     }
     handleErrors=(e)=>{
         let{name,value}=e.target;
-        let message=value===""?name+" không được rỗng":"";
+        let message;
+        if(value ===""){
+            switch (name) {
+              case "hoTen":
+                message = "Họ tên không được rỗng";
+                break;
+              case "matKhau":
+                message = "Mật khẩu không được rỗng";
+                break;
+              case "taiKhoan":
+                message = "Tài khoản không được rỗng";
+                break;
+              case "email":
+                message = "Email không được rỗng";
+                break;
+              case "soDT":
+                message = "Số điện thoại không được rỗng";
+                break;
+              default:
+                break;
+            }
+        }else{
+            message=""
+        }
         let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid}=this.state;
         switch(name){
             case "hoTen":
@@ -78,7 +101,7 @@ class Signup extends Component {
                 emailValid,
                 soDTValid
             },
-            ()=>{
+            ()=>{ 
                 this.validationForm()
             }
             
@@ -106,15 +129,21 @@ class Signup extends Component {
         }else{
             event.preventDefault();
             swal({
-                title:"Xin hãy hoàn thành form đăng kí",
+                title:"Bạn chưa hoàn thành form đăng kí",
                 icon:"info"
             })
         }
         
         
     }
+    componentWillUnmount(){
+        this.props.checkPageReady(false);
+    }
     componentDidMount() {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+        setTimeout(()=>{
+            this.props.checkPageReady(true);
+        },2000)
     }
     render() {
         return (
@@ -226,11 +255,19 @@ class Signup extends Component {
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return{
+      isUserBookedReady:state.userReducer.isUserBooked
+    }
+}
 const mapDispatchToProps =dispatch=>{
     return {
         SignUpUser: user=>{
             dispatch(action.actDangKi(user));
-        }
+        },
+        checkPageReady:(val)=>{
+            dispatch(action.actCheckPageIsReady(val))
+          }
     }
 }
-export default connect(null,mapDispatchToProps) (Signup);
+export default connect(mapStateToProps,mapDispatchToProps) (Signup);
