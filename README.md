@@ -8,7 +8,7 @@ Deployed by Firebase Hosting [Movik](https://movik-2d40a.web.app/?fbclid=IwAR1v8
  2.Find the Insucure Content row.<br />
  3.Allow that and reload Movik website<br />
  Pls dont worry,my project is safe. Im not trying to steal anything from you.<br />
- 
+## API : [API](https://movie0706.cybersoft.edu.vn/swagger/index.html?fbclid=IwAR03rKFLE8BNOZ3eOga_aPqolofD8pNI33__tfh2nDK0vxKWwvvOnyC8wEs)
 🔥🔥🔥
 ## Available Scripts
 
