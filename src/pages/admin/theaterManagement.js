@@ -49,7 +49,7 @@ class theaterManagement extends Component {
                         <div className="heThongRap-item  col-md-3 rounded-lg m-2 py-1 heThongRap-selected  " key={index} onClick={()=>{this.handleOnClickHeThongRap(item.maHeThongRap)}}>
                             
                                 <div className="logo-heThongRap d-flex justify-content-center">
-                                    <img src={item.logo} style={styleForLogo} />
+                                    <img src={item.logo} style={styleForLogo} alt="img_logo" />
                                 </div>
                                 <div className="heThongRapInfo d-flex align-items-center flex-column">
                                     <div className="maHeThongRap">
@@ -67,7 +67,7 @@ class theaterManagement extends Component {
                         <div className="heThongRap-item heThongRap-item-hover  col-md-3 rounded-lg m-2  " key={index} 
                             onClick={() => { this.handleOnClickHeThongRap(item.maHeThongRap) }}> 
                                 <div className="logo-heThongRap d-flex justify-content-center">
-                                    <img src={item.logo} style={styleForLogo} />
+                                    <img src={item.logo} style={styleForLogo} alt="img_logo" />
                                 </div>
                                 <div className="heThongRapInfo d-flex align-items-center flex-column">
                                     <div className="maHeThongRap">

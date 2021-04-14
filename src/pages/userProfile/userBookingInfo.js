@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import * as action from "../../redux/action";
 import swal from '@sweetalert/with-react'
@@ -52,7 +52,7 @@ class UserBookingInfo extends Component {
     
     handleDetailMore=(thongTinDatVe)=>{
         let tenRap='',tenHeThongRap='',tenGhe=[]
-        thongTinDatVe.danhSachGhe.map(item=>{
+        thongTinDatVe.danhSachGhe.forEach(item=>{
             tenGhe.push(item.tenGhe)
             tenRap=item.tenRap;
             tenHeThongRap=item.tenHeThongRap;

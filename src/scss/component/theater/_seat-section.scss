@@ -28,16 +28,10 @@
         color: #fff !important;
         cursor: default !important; 
         pointer-events: none;
-        &:after{
-            background-color: red;
-        }
     } 
     .seat-item.active{
         @include GradientBackgroundTheme();
         color: #fff;
-        &:after{
-            @include GradientBackgroundTheme();                           
-        }
     }
     .seat-item.vip{
         border: 2px $yellow solid;
@@ -50,48 +44,42 @@
         cursor: pointer;
         color: $gray;
         transition: all .3s;
-        &:after{
-            content: '';
-            height: 5px;
-            width: 45%;
-            border: 1px solid rgba(255, 255, 255, 0.38);
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            position: absolute;
-            bottom: -8px;
-            left: 26px;
-        }
         &:hover{
             @include GradientBackgroundTheme();
             color: #fff;
-            &:after{
-                @include GradientBackgroundTheme();                           
-            }
         }
         
     }
-    .seat-note{
-        position: relative;
-        top: 22px;
-        left: -17px;
-        color: $gray;
-    }
+    
     .seat-picker-note{
         margin-top:120px;
-        .row{
-            justify-content: center;
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
         }
-        .seat-item{
-            height: 25px;
+        .seat-desc{
+            display: flex;
+            padding: 10px 0;
+            .seat-item{
+                height: 25px;
+                width: 45px;
+                margin: 0;
+            }
+            .seat-note{
+                margin-left: 5px;
+                color: $gray;
+            }
         }
-
     }
+
 }
-//responsive
-@include mobile{
-    .seat-item{
-        &:after{
-            display: none;
+@media screen and (max-width: 710px) {
+    .seat-section{
+        .seat-picker-note{
+            .container{
+                justify-content: baseline !important;
+            }
         }
     }
 }

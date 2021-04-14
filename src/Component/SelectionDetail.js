@@ -25,7 +25,7 @@ class SelectionDetail extends Component {
     tinhTongGiaVe=()=>{
         let tongTien= 0;
         let {danhSachGhe}=this.props;
-        danhSachGhe.map(item=>{
+        danhSachGhe.forEach(item=>{
             tongTien+=item.giaVe
         })
         if(tongTien===0){
@@ -67,7 +67,7 @@ class SelectionDetail extends Component {
             }).then(ok=>{
                 if(ok){
                     let lstGhe=[]
-                    danhSachGhe.map(item=>{
+                    danhSachGhe.forEach(item=>{
                     let ghe={
                         maGhe:item.maGhe,
                         giaVe:item.giaVe

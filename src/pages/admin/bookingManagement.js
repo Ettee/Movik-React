@@ -45,7 +45,7 @@ class bookingManagement extends Component {
         let { danhSachPhim } = this.props
         let objOption = {}
         if (danhSachPhim.length > 0) {
-            danhSachPhim.map(item => {
+            danhSachPhim.forEach(item => {
                 objOption = {
                     value: item,
                     label: item.tenPhim
@@ -60,7 +60,7 @@ class bookingManagement extends Component {
         let optionsDanhSachHeThongRap = []
         let objOption = {}
         if (danhSachHeThongRap.length > 0) {
-            danhSachHeThongRap.map(item => {
+            danhSachHeThongRap.forEach(item => {
                 objOption = {
                     value: item.maHeThongRap,
                     label: item.tenHeThongRap
@@ -75,7 +75,7 @@ class bookingManagement extends Component {
         let optionsDanhSachCumRap = []
         let objOption = {}
         if(danhSachRapTheoHeThongRap.length >0){
-            danhSachRapTheoHeThongRap.map(item=>{
+            danhSachRapTheoHeThongRap.forEach(item=>{
                 objOption={
                     value:item,
                     label:item.tenCumRap
@@ -90,7 +90,7 @@ class bookingManagement extends Component {
         let optionsdanhSachRapTheoCumRap = []
         let objOption = {}
         if(danhSachRap.length >0){
-            danhSachRap.map(item=>{
+            danhSachRap.forEach(item=>{
                 objOption={
                     value:item.maRap,
                     label:item.tenRap

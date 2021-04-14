@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Lottie from "react-lottie";
 import loadingData from "./loading.json";
-import * as action from "../../redux/action";
 import { connect } from "react-redux";
 class Loading extends Component {
   constructor(props){
@@ -19,7 +18,6 @@ class Loading extends Component {
   }
   
   renderLoading=()=>{
-    
     const defaultOptions = {
       loop: true,
       autoplay: true,
@@ -48,7 +46,6 @@ class Loading extends Component {
           </div>
         )
         }else{
-
             return(
               <div className="loading-page fade-out">
                 <div className="loading-page-screen">

@@ -83,7 +83,7 @@ class ViewedMovie extends Component {
         let lstViewedMovie=[]
         if(localStorage.getItem("lstViewedMovie")){
             lstViewedMovie=JSON.parse(localStorage.getItem("lstViewedMovie"))
-            lstViewedMovie.map(item=>{
+            lstViewedMovie.forEach(item=>{
                 this.props.getViewedMovie(item)
             })
             

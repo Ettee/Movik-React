@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
-import { withRouter,NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 
 import swal from '@sweetalert/with-react';

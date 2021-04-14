@@ -37,7 +37,7 @@ class ButtonXuatChieu extends Component {
             fontSize:"15px"
         }
         //console.log(xuatChieu)
-        xuatChieu.map(item=>{
+        xuatChieu.forEach(item=>{
             obj={...obj}
             dateProps=new Date(item.ngayChieuGioChieu).toLocaleDateString() 
             if(dateProps===date){

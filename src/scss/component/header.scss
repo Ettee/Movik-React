@@ -1,9 +1,12 @@
 @import "../helper/variable.scss";
 @import "../helper/mixin.scss";
 header{
-    z-index: 999;
+    z-index: 1001;
     position: fixed;
     width: 100vw;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.75);
     .desktop-header{
         transition: all .7s;
     }
@@ -265,7 +268,7 @@ header{
                 }
                 #check:checked {
                     ~ .menu-content{
-                        height: 250px;
+                        display: block;
                         li{
                             opacity: 1;
                             pointer-events: unset;
@@ -279,7 +282,7 @@ header{
                     background:white;
                 }
                 .menu-content{
-                    height: 0px;
+                    display: none;
                     width: 100vw;
                     left: 0;
                     top:70px;

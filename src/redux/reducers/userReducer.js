@@ -29,6 +29,7 @@ const userReducer=(state=initialState,action)=>{
             return {...state}
         case ActionType.IS_USER_BOOKED_READY:
             state.isUserBooked=action.data;
+            return {...state}
         case ActionType.CHANGE_IS_USER_BOOKED_READY:
             state.isUserBooked=action.data;
             return {...state}

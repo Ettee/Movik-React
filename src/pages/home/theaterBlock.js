@@ -180,6 +180,8 @@ class TheaterBlock extends Component {
                                     getDanhSachPhimTheoRapDaChon={this.DanhSachPhimTheoRapDaChon}  
                                 />
                             )
+                        }else{
+                            return 
                         }
                     })  
                 })
@@ -198,7 +200,7 @@ class TheaterBlock extends Component {
             xuatChieu:[]
         }
         if(typeof arr !== "undefined"){
-            arr.map(item=>{
+            arr.forEach(item=>{
                 objDanhSachPhim={...objDanhSachPhim}
                 objDanhSachPhim.tenPhim=item.tenPhim
                 objDanhSachPhim.maPhim=item.maPhim

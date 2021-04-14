@@ -82,7 +82,7 @@ class Theater extends Component{
                 arr.push(objBooking)
             }else{
                 let i =0
-                arr.map((item,index)=>{
+                arr.forEach((item,index)=>{
                     if(item.maGhe===objBooking.maGhe){
                         i=index
                     }
@@ -170,29 +170,23 @@ class Theater extends Component{
                                 </div>
                                 <div className="seat-picker-note">
                                     <div className="container">
-                                        <div className="row">
-
-                                            <div className="col-sm-1">
-                                                <div className="seat-item vip" />
-                                            </div>
+                                        <div className="seat-desc">
+                                            <div className="seat-item vip" ></div>
                                             <div className="seat-note">:Ghế vip</div>
-
-                                            <div className="col-sm-1">
-                                                <div className="seat-item "/>
-                                            </div>
-                                            <div className="seat-note">:Ghế thường</div>
-
-                                            <div className="col-sm-1">
-                                                <div className="seat-item inactive" />
-                                            </div>
-                                            <div className="seat-note">:Ghế đã đặt</div>
-
-                                            <div className="col-sm-1">
-                                                <div className="seat-item active" />
-                                            </div>
-                                            <div className="seat-note">:Ghế đang chọn</div>
-
                                         </div>
+                                        <div className="seat-desc">
+                                            <div className="seat-item " ></div>
+                                            <div className="seat-note">:Ghế thường</div>
+                                        </div>
+                                        <div className="seat-desc">
+                                            <div className="seat-item inactive" ></div>
+                                            <div className="seat-note">:Ghế đã đặt</div>
+                                        </div>
+                                        <div className="seat-desc">
+                                            <div className="seat-item active" ></div>
+                                            <div className="seat-note">:Ghế đang chọn</div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

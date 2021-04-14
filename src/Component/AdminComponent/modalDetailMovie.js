@@ -233,8 +233,8 @@ class ModalDetailMovie extends Component {
                                     formatDate={formatDate}
                                     parseDate={parseDate}
                                     dayPickerProps={{
-                                    locale: "it",
-                                    localeUtils: MomentLocaleUtils
+                                        locale: "it",
+                                        localeUtils: MomentLocaleUtils
                                     }}
                                     inputProps={{ disabled: true },{className:"disabled"}}
                                     

@@ -12,7 +12,7 @@ class Recommend extends Component {
         let lstRecommendByScore=[]
         if(danhSachPhim.length >0 ){
             //nếu có data từ api
-            danhSachPhim.map(phim=>{
+            danhSachPhim.forEach(phim=>{
                 if(phim.danhGia >=8){
                     lstRecommendByScore.push(phim)
                 }

@@ -53,13 +53,13 @@ class Footer extends Component {
                             <div className="contact-footer">
                                 <div>Liên hệ</div>
                                 <div className="contact-icon">
-                                    <a href="https://www.facebook.com/ette9773" target="_blank">
+                                    <a href="https://www.facebook.com/ette9773" target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-facebook"></i>
                                     </a>
-                                    <a href="https://www.instagram.com/ettee_st/" target="_blank">
+                                    <a href="https://www.instagram.com/ettee_st/" target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-instagram"></i>
                                     </a>
-                                    <a href="https://github.com/Ettee" target="_blank">
+                                    <a href="https://github.com/Ettee" target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-github"></i>
                                     </a>
                                 </div>
@@ -69,7 +69,7 @@ class Footer extends Component {
                     <hr className="footer-line" />
                     <div className="about-me">
                         <div className="creator">
-                            Made with ❤️ by Tran Thanh Son <br />
+                            Made with <span role="img" aria-label="Red Heart">❤️</span> by Tran Thanh Son <br />
                         </div>
                         <div>
                             Email:{" "}

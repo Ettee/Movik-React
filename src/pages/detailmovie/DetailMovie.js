@@ -1,14 +1,10 @@
-import React, { Component,lazy,Suspense } from 'react';
+import React, { Component } from 'react';
 import DetailMovieTop from './detailMovieTop';
 import DetailBlock from './detailBlock';
 import TheaterBlock from '../home/theaterBlock';
-
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 class DetailMovie extends Component {
-    constructor(props){
-        super(props)
-    }
     checkIfPageIsReady=()=>{
         if(this.props.movie){
             if(this.props.movie.hinhAnh){

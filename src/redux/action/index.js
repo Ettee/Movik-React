@@ -345,8 +345,7 @@ export const actDeleteUser=(taiKhoan,token)=>{
                 icon:"success",text:"Good job",
                 buttons:false,
                 timer:1500,
-                closeOnEsc:false,
-                buttons:false
+                closeOnEsc:false   
             })
         })
         .catch(err=>{

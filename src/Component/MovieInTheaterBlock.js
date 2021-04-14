@@ -6,7 +6,7 @@ export default class MovieInTheaterBlock extends Component {
         let uniqueDate;
         let arrDate=[];
         let xuatChieu=[];
-        this.props.lstXuatChieu.map(item=>{
+        this.props.lstXuatChieu.forEach(item=>{
             xuatChieu.push(item)
             date.push(new Date(item.ngayChieuGioChieu).toLocaleDateString());
             uniqueDate=new Set(date)//remove duplicate element using Set

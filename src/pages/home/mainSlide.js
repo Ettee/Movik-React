@@ -12,20 +12,18 @@ class MainSlide extends Component {
                         className="owl-theme"
                         autoplay
                         loop
-                        dots
-                        loop
-                         >
+                        dots>
                         <div className="item">
-                            <img  src={'./img/slide/dinh-thu-oan-khuat-15967340117741.png'} />
+                            <img  src={'./img/slide/dinh-thu-oan-khuat-15967340117741.png'} alt="img_slide" />
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/ca-sau-15972253022491.png'} />
+                            <img  src={'./img/slide/ca-sau-15972253022491.png'} alt="img_slide"/>
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/bi-mat-thien-duong-15972163589211.jpg'} />
+                            <img  src={'./img/slide/bi-mat-thien-duong-15972163589211.jpg'} alt="img_slide"/>
                         </div>
                         <div className="item">
-                            <img  src={'./img/slide/du-lich-chet-choc-15961360123636.jpg'} />
+                            <img  src={'./img/slide/du-lich-chet-choc-15961360123636.jpg'} alt="img_slide"/>
                         </div>
                     </OwlCarousel>
                 </div>

@@ -9,7 +9,7 @@ class TheaterInfo extends Component {
     taoDanhSachPhim=(danhSachPhim)=>{
         if(this.props.movieID){
             //ở movie detail
-            danhSachPhim.danhSachPhim.map(item=>{
+            danhSachPhim.danhSachPhim.forEach(item=>{
                 if(item.maPhim===this.props.movieID){
                     if(this.danhSachPhim.length >0){
                         this.danhSachPhim=[]  
@@ -22,7 +22,7 @@ class TheaterInfo extends Component {
             if(this.danhSachPhim.length >0){
                 this.danhSachPhim=[]  
             }
-            danhSachPhim.danhSachPhim.map(item=>{
+            danhSachPhim.danhSachPhim.forEach(item=>{
                 
                 this.danhSachPhim.push(item)
                 
