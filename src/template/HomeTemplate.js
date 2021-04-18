@@ -8,7 +8,7 @@ import Loading from "../pages/loading/loading";
 const HomeLayout = props => {
   return (
     <Fragment>
-      {/* <Loading/> */}
+      <Loading/>
       <div className="d-flex flex-column ">
         <Header />
         {props.children}

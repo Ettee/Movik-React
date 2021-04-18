@@ -41,9 +41,9 @@ class TicketInfoAfterBooked extends Component {
     }
     getBookingDataFromAccount=()=>{
         if(Object.keys(this.props.bookingDetailFromAccount).length>0){
-            let lstThongTinDatVe=this.props.bookingDetailFromAccount.thongTinDatVe;
-            return lstThongTinDatVe.pop()
-            
+          console.log(this.props.bookingDetailFromAccount)
+          let lstThongTinDatVe=this.props.bookingDetailFromAccount.thongTinDatVe;
+          return lstThongTinDatVe.pop() 
         }
     }
     renderDanhSachGhe=(danhSachGhe)=>{

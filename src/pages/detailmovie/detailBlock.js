@@ -14,8 +14,13 @@ export default class DetailBlock extends Component {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" data-toggle="pill" href="#movieReviewUser">
+                            <a className="nav-link" data-toggle="pill" href="#movieTrailer">
                                 Trailer
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="pill" href="#movieReviewUser">
+                                Reviews
                             </a>
                         </li>
                     </ul>
@@ -69,8 +74,11 @@ export default class DetailBlock extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="tab-pane container fade" id="movieReviewUser">
+                        <div className="tab-pane container fade" id="movieTrailer">
                             <TrailerBlock movie={movie}/>
+                        </div>
+                        <div className="tab-pane container fade" id="movieReviewUser">
+                            
                         </div>
                     </div>
                 </div>
