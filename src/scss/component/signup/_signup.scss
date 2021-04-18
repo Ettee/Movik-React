@@ -1,45 +1,80 @@
 @import "../../helper/variable.scss";
 @import "../../helper/mixin.scss";
 .sign-up-section{
-    .container{
-        height: 100%;
+    .cover-bg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .vertical-box{
-        width: 100%;
+    .sign-up-container{
+        width: 35%;
         height: 100%;
+        min-width: 400px;
+        max-width: 650px;
         display: flex;
         align-items: center;
-        .sign-up-form{
-            width: 50%;
-            margin: auto;
-            background-color: rgba($color: $backgroundColorMovieDetail, $alpha: .9);
-            border-radius: 7px;
-            padding: 20px;
-            label{
-                color: #fff;
+        .form-container{
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px 0;
+            .form-header,.form-body{
+                padding: 20px 20px 0 20px;
             }
-            input{
-                letter-spacing: .5px;
+            .form-title{
+                @include GradientTextWith_2_Colors(#9f00fb,#ff0000,15%,78%);
+                font-size: 32px;
+                line-height: 38px;
+                margin-bottom: 0;
+                font-weight: 500;
+            }
+            .form-desc{
+                color: #606770;
+                font-size: 15px;
+                line-height: 24px;
+            }
+            .form-body{
+                .favorite-movie-type{
+                    margin-top: 35px;
+                    .favorite-movie-type-title{
+                        color: #606770;
+                        font-size: 15px;
+                        line-height: 24px;
+                    }
+                    .movie-types{
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                }
+                .sign-up-desc{
+                    font-size: 13px;
+                    color: #606770;
+                    margin: 20px;
+                }
+            }
+            .form-footer{
+                display: flex;
+                justify-content: center;
+                .btn-sign-up{
+                    transition: all 0.3s;
+                    width: 50%;
+                    height: 60px;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    color: white;
+                }
+                .btn-sign-up.light-btn{
+                    background: linear-gradient(-60deg, #f6767f, #f7a009);
+                }
+                .btn-sign-up.dark-btn{
+                    background: linear-gradient(45deg, #9f00fb, #ff0000);
+                }
+
             }
         }
     }
-    @include tablet{
-        .sign-up-form{
-            width: 80% !important;
-        }
-    }
-    @include mobile{
-        .sign-up-form{
-            width: 80% !important;
-        }
-    }
+
     
 }
-.form-err{
-    color: $yellow;
-    border: 1px solid red;
-    padding: 7px;
-    border-radius: 8px;
-    background: rgba(192,192,192,.2);
-}
+
 

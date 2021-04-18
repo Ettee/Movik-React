@@ -1,273 +1,426 @@
 import React, { Component, Fragment } from 'react'
 import {connect} from "react-redux";
 import * as action from "../../redux/action";
-import swal from 'sweetalert';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import DoneIcon from '@material-ui/icons/Done';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
 class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            values: {
-                hoTen: "",
-                taiKhoan: "",
-                matKhau: "",
-                email: "",
-                soDT: "",
-                maNhom: "GP09",
-                maLoaiNguoiDung: "KhachHang",
-            },
-            errors: {
-                hoTen: "",
-                taiKhoan: "",
-                matKhau: "",
-                email: "",
-                soDT: ""
-            },
-            formValid: false,
-            hoTenValid: false,
-            taiKhoanValid: false,
-            matKhauValid: false,
-            emailValid: false,
-            soDTValid: false
+            listOfFavoriteMovieType:[],
+            validationName:false,
+            validationAccount:false,
+            validationEmail:"",
+            validationPhone:false,
+            validationPass:"",
+            valuesName:"",
+            valuesAccount:"",
+            valuesEmail:"",
+            valuesPhone:"",
+            valuesPass:"",
+            showPassword: false,
+            remindToChooseMovieType:false
         }
         document.title="Movik | Đăng kí "
     }
-    handleErrors=(e)=>{
-        let{name,value}=e.target;
-        let message;
-        if(value ===""){
-            switch (name) {
-              case "hoTen":
-                message = "Họ tên không được rỗng";
-                break;
-              case "matKhau":
-                message = "Mật khẩu không được rỗng";
-                break;
-              case "taiKhoan":
-                message = "Tài khoản không được rỗng";
-                break;
-              case "email":
-                message = "Email không được rỗng";
-                break;
-              case "soDT":
-                message = "Số điện thoại không được rỗng";
-                break;
-              default:
-                break;
-            }
-        }else{
-            message=""
-        }
-        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid}=this.state;
-        switch(name){
-            case "hoTen":
-                hoTenValid = message !==""? false:true;
-                break;
-            case "taiKhoan":
-                taiKhoanValid =message !==""?false:true;
-                if(value!== "" && value.length> 10){
-                    taiKhoanValid=false;
-                    message="Tên tài khoản không thể dài quá 10 kí tự"
-                }
-                break;
-            case "matKhau":
-                matKhauValid =message !== ""?false:true;
-                if( value !== "" && value.length < 5){
-                    matKhauValid =false;
-                    message ="Mật khẩu quá ngắn "
-                }
-                break;
-            case "email":
-                emailValid = message !== "" ? false : true;
-                if (
-                    value !== "" &&
-                    !value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-                ) {
-                    emailValid = false;
-                    message = "Email không đúng định dạng";
-                }
-                break;
-            case "soDT":
-                soDTValid =message !== ""?false:true;
-                break;
-            default:
-                break;    
-        }
-        this.setState(
+    renderChips=()=>{
+        let listOfMovieType=[
             {
-                errors:{...this.state.errors,[name]:message},
-                hoTenValid,
-                taiKhoanValid,
-                matKhauValid,
-                emailValid,
-                soDTValid
+                label:"Hành động",
+                id:1
             },
-            ()=>{ 
-                this.validationForm()
-            }
-            
-        )
-    }
-    handleOnChange=(e)=>{
-        let{name,value}=e.target;
-        this.setState({
-            values:{...this.state.values,[name]:value}
-        })
-        
-    }
-    validationForm=()=>{
-        let {hoTenValid,taiKhoanValid,matKhauValid,emailValid,soDTValid}=this.state;
-        this.setState(
             {
-                formValid: hoTenValid && taiKhoanValid && matKhauValid && emailValid && soDTValid
-            }
-        );
+                label:"Drama",
+                id:2
+            },
+            {
+                label:"Tình cảm",
+                id:3
+            },
+            {
+                label:"Tài liệu 1",
+                id:4
+            },
+            {
+                label:"Tài liệu 2",
+                id:5
+            },
+            {
+                label:"Tài liệu 3",
+                id:6
+            },
+            {
+                label:"Tài liệu 4",
+                id:7
+            },
+        ]
+        return listOfMovieType.map((x,i)=>{
+            return (
+                <Chip
+                    // avatar={<Avatar>M</Avatar>}
+                    key={i}
+                    color={this.state.listOfFavoriteMovieType.includes(x.id)?"primary":"default"}
+                    icon={this.state.listOfFavoriteMovieType.includes(x.id)?<DoneIcon style={{fontSize:"small"}}  />:null}
+                    label={x.label}
+                    onClick={()=>{this.handleClickOnMovieTypeChip(x.id)}}
+                    variant="outlined"
+                    style={{margin:"5px 5px"}}
+                />
+            )
+        })
     }
-    handleSubmit=(event)=>{
-        if(this.state.formValid){
-            this.props.SignUpUser(this.state.values); 
-            event.preventDefault();
+
+    handleClickOnMovieTypeChip=(value)=>{
+        let listOfFavoriteMovieType =[... this.state.listOfFavoriteMovieType];
+        if(!listOfFavoriteMovieType.includes(value)){
+            listOfFavoriteMovieType.push(value)
         }else{
-            event.preventDefault();
-            swal({
-                title:"Bạn chưa hoàn thành form đăng kí",
-                icon:"info"
+            listOfFavoriteMovieType.splice(listOfFavoriteMovieType.indexOf(value),1);
+        }
+        this.setState({
+            listOfFavoriteMovieType
+        })
+    }
+
+    validateName=()=>{
+        if(this.state.valuesName===""){
+            this.setState({
+                validationName:true
+            })
+        }else{
+            this.setState({
+                validationName:false
             })
         }
-        
-        
     }
-    componentWillUnmount(){
-        this.props.checkPageReady(false);
+
+    validateAccount=()=>{
+        if(this.state.valuesAccount===""){
+            this.setState({
+                validationAccount:true
+            })
+        }else{
+            this.setState({
+                validationAccount:false
+            })
+        }
     }
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        setTimeout(()=>{
-            this.props.checkPageReady(true);
-        },2000)
+
+    validateEmail=()=>{
+        let regex =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(this.state.valuesEmail===""){
+            this.setState({
+                validationEmail:"empty"
+            })
+        }else{
+            if(regex.test(this.state.valuesEmail.toLowerCase())){
+                this.setState({
+                    validationEmail:"valid"
+                })
+            }else{
+                this.setState({
+                    validationEmail:"invalid"
+                })
+            }
+            
+        }
     }
+
+    validatePhone=()=>{
+        if(this.state.valuesPhone===""){
+            this.setState({
+                validationPhone:true
+            })
+        }else{
+            this.setState({
+                validationPhone:false
+            })
+        }
+    }
+    
+    validatePass=()=>{
+        if(this.state.valuesPass===""){
+            this.setState({
+                validationPass:"empty"
+            })
+        }else{
+            if(this.state.valuesPass.length>=8){
+                this.setState({
+                    validationPass:"valid"
+                })
+            }else{
+                this.setState({
+                    validationPass:"invalid"
+                })
+            }
+        }
+    }
+    onChangeField=(e)=>{
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+    handleDateChange=(data)=>{
+        this.setState({
+            selectedDateoFBirth:data
+        })
+    }
+    handleShowPassword=()=>{
+        this.setState({
+            showPassword:!this.state.showPassword
+        })
+    }
+    submit=()=>{
+        let {validationAccount,validationEmail,validationPhone,validationName,validationPass,listOfFavoriteMovieType}=this.state;
+        let {valuesAccount,valuesName,valuesEmail,valuesPhone,valuesPass} =this.state;
+        if(!validationAccount && !validationPhone && !validationName && validationPass==="valid" && validationEmail==="valid" && listOfFavoriteMovieType.length!== 0 ){
+            console.log(valuesAccount)
+            console.log(valuesName)
+            console.log(valuesEmail)
+            console.log(valuesPhone)
+            console.log(valuesPass)
+            console.log(listOfFavoriteMovieType)
+            
+        }else{
+            if(listOfFavoriteMovieType.length=== 0){
+                this.setState({
+                    remindToChooseMovieType:true
+                })
+            }
+            this.validateName();
+            this.validatePhone();
+            this.validateEmail();
+            this.validateAccount();
+            this.validatePass();
+        }
+    }
+    handleCloseSnackbarRemindChooseMovieType=(event, reason)=>{
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({
+            remindToChooseMovieType:false
+        })
+    }
+
+    
     render() {
         return (
-            <Fragment>
-                <section className="sign-up-section">
-                    <div
-                        className="cover-bg"
-                        style={{ backgroundImage: "url(../img/backapp.jpg)", height: "100vh" }}
-                    >
-                        <div className="container">
-                            <div className="vertical-box">
-                                <div className="sign-up-form">
-                                    <form onSubmit={this.handleSubmit}>
-                                        <div className="form-group">
-                                            <label htmlFor="hoTen">Họ và tên</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                placeholder="Nhập tên người dùng"
-                                                id="hoTen"
-                                                name="hoTen"
-                                                onChange={this.handleOnChange}
-                                                onBlur={this.handleErrors}
-                                                onKeyUp={this.handleErrors}
-                                            />
-                                            {this.state.errors.hoTen !== "" ? (
-                                                <div className=" form-err my-2">{this.state.errors.hoTen}</div>
-                                            ) : ("")}
-                                        </div>
-                                        <div className="form-group">
-                                                <label htmlFor="taiKhoan">Tài khoản</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Nhập tên tài khoản"
-                                                    id="taiKhoan"
-                                                    name="taiKhoan"
-                                                    onChange={this.handleOnChange}
-                                                    onBlur={this.handleErrors}
-                                                    onKeyUp={this.handleErrors}
-                                                />
-                                                {this.state.errors.taiKhoan !== "" ? (
-                                                    <div className=" form-err my-2">{this.state.errors.taiKhoan}</div>
-                                                ) : ("")}
-                                        </div>
-                                        <div className="form-group">
-                                                <label htmlFor="matKhau">Mật khẩu</label>
-                                                <input
-                                                    type="password"
-                                                    className="form-control"
-                                                    placeholder="Nhập mật khẩu"
-                                                    id="matKhau"
-                                                    name="matKhau"
-                                                    onChange={this.handleOnChange}
-                                                    onBlur={this.handleErrors}
-                                                    onKeyUp={this.handleErrors}
-                                                />
-                                                {this.state.errors.matKhau !== "" ? (
-                                                    <div className=" form-err my-2">{this.state.errors.matKhau}</div>
-                                                ) : ("")}
-                                        </div>
-                                        <div className="form-group">
-                                                <label htmlFor="email">Email</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Nhập email"
-                                                    id="email"
-                                                    name="email"
-                                                    onChange={this.handleOnChange}
-                                                    onBlur={this.handleErrors}
-                                                    onKeyUp={this.handleErrors}
-                                                />
-                                                {this.state.errors.email !== "" ? (
-                                                    <div className=" form-err my-2">{this.state.errors.email}</div>
-                                                ) : ("")}
-                                        </div>
-                                        <div className="form-group">
-                                                <label htmlFor="soDT">Điện thoại</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Nhập số điện thoại"
-                                                    id="soDT"
-                                                    name="soDT"
-                                                    onChange={this.handleOnChange}
-                                                    onBlur={this.handleErrors}
-                                                    onKeyUp={this.handleErrors}
-                                                />
-                                                {this.state.errors.soDT !== "" ? (
-                                                    <div className="form-err my-2">{this.state.errors.soDT}</div>
-                                                ) : ("")}
-                                        </div>
-                                            <div className="form-group">
-                                                <button type="submit" className="btn-login">
-                                                    Đăng kí tài khoản
-                                                </button>
-                                            </div>
-                                            
-                                    </form>
-                                    
-                                </div>
-                            </div>
-                        </div>
+          <Fragment>
+            <Snackbar open={this.state.remindToChooseMovieType} autoHideDuration={3000} onClose={this.handleCloseSnackbarRemindChooseMovieType}>
+              <MuiAlert  elevation={6} variant="filled" onClose={this.handleCloseSnackbarRemindChooseMovieType} severity="error">
+                Bạn chưa chọn thể loại phim 
+              </MuiAlert>
+            </Snackbar>
+            <section className="sign-up-section">
+              <div
+                className="cover-bg"
+                style={{
+                  backgroundImage: "url(../img/backapp.jpg)",
+                  padding:"30px 0",
+                }}
+              >
+                <div className="sign-up-container">
+                  <div className="form-container">
+                    <div className="form-header">
+                      <div className="form-title">Welcome to Movik</div>
+                      <div className="form-desc">
+                        Đăng kí để được nhiều ưu đãi, mua vé và bảo mật thông
+                        tin!
+                      </div>
                     </div>
-                </section>
-            </Fragment>
-            
-        )
+                    <hr />
+                    <div className="form-body">
+                      <div className="full-name-account-field form-field">
+                        <Grid container spacing={2}>
+                          <Grid item lg={6} xs={12}>
+                            <TextField
+                              className="textfield-input"
+                              style={{ width: "100%" }}
+                              name="valuesName"
+                              error={this.state.validationName}
+                              label="Họ và tên"
+                              helperText={
+                                this.state.validationName
+                                  ? "Họ tên không được trống."
+                                  : ""
+                              }
+                              value={this.state.valuesName}
+                              onChange={this.onChangeField}
+                              onBlur={this.validateName}
+                            />
+                          </Grid>
+                          <Grid item lg={6} xs={12}>
+                            <TextField
+                              className="textfield-input"
+                              style={{ width: "100%" }}
+                              error={this.state.validationAccount}
+                              name="valuesAccount"
+                              label="Tài khoản"
+                              helperText={
+                                this.state.validationAccount
+                                  ? "Tài khoản không đc trống."
+                                  : ""
+                              }
+                              value={this.state.valuesAccount}
+                              onChange={this.onChangeField}
+                              onBlur={this.validateAccount}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="password-birthday-field form-field">
+                        <Grid container spacing={2}>
+                          <Grid item lg={12} xs={12}>
+                            <TextField
+                              type={
+                                this.state.showPassword ? "text" : "password"
+                              }
+                              className="textfield-input"
+                              style={{ width: "100%" }}
+                              name="valuesPass"
+                              error={
+                                this.state.validationPass === "empty" ||
+                                this.state.validationPass === "invalid"
+                              }
+                              label="Mật khẩu"
+                              helperText={
+                                this.state.validationPass === "empty"
+                                  ? "Mật khẩu không được trống."
+                                  : this.state.validationPass === "invalid"
+                                  ? "Mật khẩu quá ngắn."
+                                  : ""
+                              }
+                              value={this.state.valuesPass}
+                              onChange={this.onChangeField}
+                              onBlur={this.validatePass}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <IconButton
+                                      aria-label="toggle password visibility"
+                                      onClick={this.handleShowPassword}
+                                    >
+                                      {this.state.showPassword ? (
+                                        <Visibility />
+                                      ) : (
+                                        <VisibilityOff />
+                                      )}
+                                    </IconButton>
+                                  </InputAdornment>
+                                ),
+                              }}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="email-phone-field form-field">
+                        <Grid container spacing={2}>
+                          <Grid item lg={6} xs={12}>
+                            <TextField
+                              className="textfield-input"
+                              style={{ width: "100%" }}
+                              name="valuesEmail"
+                              error={
+                                this.state.validationEmail === "empty" ||
+                                this.state.validationEmail === "invalid"
+                              }
+                              label="Email"
+                              helperText={
+                                this.state.validationEmail === "empty"
+                                  ? "Email không được trống."
+                                  : this.state.validationEmail === "invalid"
+                                  ? "Email không đúng."
+                                  : ""
+                              }
+                              value={this.state.valuesEmail}
+                              onChange={this.onChangeField}
+                              onBlur={this.validateEmail}
+                            />
+                          </Grid>
+                          <Grid item lg={6} xs={12}>
+                            <TextField
+                              className="textfield-input"
+                              style={{ width: "100%" }}
+                              name="valuesPhone"
+                              error={this.state.validationPhone}
+                              label="Số điện thoại"
+                              helperText={
+                                this.state.validationPhone
+                                  ? "Số điện thoại không đc trống."
+                                  : ""
+                              }
+                              value={this.state.valuesPhone}
+                              onChange={this.onChangeField}
+                              onBlur={this.validatePhone}
+                            />
+                          </Grid>
+                        </Grid>
+                      </div>
+
+                      <div className="favorite-movie-type">
+                        <div className="favorite-movie-type-title">
+                          <BeenhereIcon
+                            style={{
+                              fontSize: "small",
+                              marginRight: "5px",
+                              color: "#00c60d",
+                            }}
+                          />
+                          Bạn thích xem những thể loại phim nào ?
+                        </div>
+                        <div className="movie-types">{this.renderChips()}</div>
+                      </div>
+                      <div className="sign-up-desc">
+                        Bằng cách nhấp vào Đăng ký, bạn đồng ý với{" "}
+                        <span className="fake-link">Điều khoản</span> ,{" "}
+                        <span className="fake-link">Chính sách dữ liệu</span> và{" "}
+                        <span className="fake-link">Chính sách cookie</span> của
+                        chúng tôi. Bạn có thể nhận được thông báo của chúng tôi
+                        qua SMS và hủy nhận bất kỳ lúc nào.
+                      </div>
+                    </div>
+                    <div className="form-footer">
+                      <button
+                        onClick={this.submit}
+                        className={
+                          this.props.themeMode
+                            ? "btn-sign-up dark-btn"
+                            : "btn-sign-up  light-btn"
+                        }
+                      >
+                        Đăng kí
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </Fragment>
+        );
     }
 }
 const mapStateToProps=(state)=>{
     return{
-      isUserBookedReady:state.userReducer.isUserBooked
+      isUserBookedReady:state.userReducer.isUserBooked,
+      themeMode:state.userReducer.isDarkModeOn
     }
 }
 const mapDispatchToProps =dispatch=>{
     return {
         SignUpUser: user=>{
             dispatch(action.actDangKi(user));
-        },
-        checkPageReady:(val)=>{
-            dispatch(action.actCheckPageIsReady(val))
-          }
+        }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps) (Signup);

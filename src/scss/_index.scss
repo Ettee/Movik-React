@@ -85,4 +85,15 @@
     .no-paddingXLeft{
         padding-left: 0 !important;
     }
+    .fake-link{
+        color: rgb(0, 153, 255);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .textfield-input{
+        margin: 5px 0 !important;
+    }
+    button:focus {
+        outline: none !important;
+    }
 }

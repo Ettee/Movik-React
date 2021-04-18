@@ -22,7 +22,7 @@ class MovieSlide extends Component {
     }
     render() {
         const settings = {    
-            autoplay: true,
+            // autoplay: true,
             autoplaySpeed: 2000,
             infinite: true,
             speed: 500,

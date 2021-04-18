@@ -12,16 +12,18 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding-top:78px ;
-    .container-fluid{
-        padding-left: 0;
         .profile-content{
-            width: 100%;
+            display: flex;
             .user-booking-info-section{
+                width: 80vw;
                 height: 80vh;
                 overflow-y: auto;
+                padding: 0 25px;
             }
-            
+            .user-info-section{
+                width: 20vw;
+                min-width: 300px;
+            }
             .user-info-bar{
                 transition: all .7s;
                 border-radius: 10px;
@@ -34,5 +36,18 @@
                 box-shadow:  -1px 14px 31px 3px rgba(0,0,0,0.36);
             }
         }
-    } 
+    
+}
+@media  only screen and (max-width:1150px) {
+    .profile-content{
+        flex-direction: column;
+        .user-info-section{
+            width: auto !important;
+        }
+        .user-booking-info-section{
+            margin: 10px 0;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+    }
 }
