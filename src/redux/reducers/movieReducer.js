@@ -16,7 +16,6 @@ let initialState ={
     viewedMovie:{},
     danhSachGheTrongRap:{},
     isHomeReady:false,
-    movieName:''
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -65,9 +64,6 @@ const movieReducer =(state = initialState,action) =>{
             return {...state}
         case ActionType.CLEAR_DETAIL_MOVIE:
             state.detailMovie=action.data
-            return {...state}
-        case ActionType.TRANSFER_MOVIE_NAME:
-            state.movieName=action.data
             return {...state}
 
         default: 

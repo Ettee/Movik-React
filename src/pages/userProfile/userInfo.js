@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import * as service from "./userService";
 
 export default class UserInfo extends Component {
     constructor(props){
@@ -87,9 +88,11 @@ export default class UserInfo extends Component {
         let{validateName,validateEmail,validatePhone,nameValue,emailValue,phoneValue}=this.state;
         if(validateName && validateEmail==="valid" && validatePhone){
             console.log(this.state);
-            this.setState({
+            if(service.updateUserInfo({name:nameValue,email:emailValue,phone:phoneValue})){
+              this.setState({
                 snackBarStatusSuccess:true
-            })
+              })
+            }
         }else{
             this.setState({
                 snackBarStatusErr:true

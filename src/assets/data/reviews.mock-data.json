@@ -1,7 +1,32 @@
 [
     {
         "review_id":"1",
-        "review_content":" Hay que !!!"
-
+        "review_content":"After Avengers Infinity War, we waited for the Avengers Endgame. We wondered how the story would go on, how our heroes would turn back, what would be the end of Thanos. Many theories related to this have been put forward. Avengers Endgame was undoubtedly the most anticipated film of recent years. Normally, the higher the expectation, the higher the probability of disappointment. But this is not the case for Endgame. Whatever you're expecting, you find much more in the film. This means that the biggest concern about the film has disappeared.",
+        "id_user":"1",
+        "user_account":"Tran Thanh Son"
+    },
+    {
+        "review_id":"1",
+        "review_content":"Utter garbage. The Russo brothers & Kevin Fiege are quite literally the worst thing to happen to cinema.",
+        "id_user":"2",
+        "user_account":"Hoang Huy"
+    },
+    {
+        "review_id":"1",
+        "review_content":"Rating 10/10 Absolute perfection end game !! Good acting performance to all the characters. Great cgi's. Truly epic & perfect ending to a long journey of marvel movie. Go see it you wont regret it !! Perfection Marvel Endgame !!",
+        "id_user":"3",
+        "user_account":"Nguyen Thanh Tu"
+    },
+    {
+        "review_id":"1",
+        "review_content":"99% talking & a rushed battle at the end.",
+        "id_user":"1",
+        "user_account":"Tran Thanh Son"
+    },
+    {
+        "review_id":"1",
+        "review_content":"This is supposed to be the culmination but they even take the time for explaining us the holes they're making everytime that they traveling back in time, I mean common, I'm a movie fan, but that was just disappointing. ",
+        "id_user":"3",
+        "user_account":"Nguyen Thanh Tu"
     }
 ]

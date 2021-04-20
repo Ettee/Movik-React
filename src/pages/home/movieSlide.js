@@ -1,24 +1,47 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
 import MovieCardInSlide from "../../Component/MovieCardInSlide";
-import * as action from "../../redux/action";
 import {connect} from "react-redux";
+import * as service from "./homeService";
 class MovieSlide extends Component {
-    renderMovieCardInSlide =(isTicketNotAvailable)=>{
-        return this.props.listMovie.map((movie,index)=>{
+    constructor(props){
+        super(props);
+        this.state={
+            allAvailableMovie:[],
+            allInComingMovie:[]
+        }
+    }
+    renderAvailableMovieCardInSlide =()=>{
+        return this.state.allAvailableMovie.map((movie,index)=>{
             return (
                 <div key={index}>
                     <MovieCardInSlide 
-                        key={index}
                         movie={movie}
-                        isTicketNotAvailable={isTicketNotAvailable}
+                        isTicketNotAvailable={false}
                     />
                 </div>
             )
         })
     }
-    componentDidMount(){
-        this.props.getListMovie();
+    renderIncomingMovieCardInSlide =()=>{
+        return this.state.allInComingMovie.map((movie,index)=>{
+            return (
+                <div key={index}>
+                    <MovieCardInSlide 
+                        movie={movie}
+                        isTicketNotAvailable={true}
+                    />
+                </div>
+            )
+        })
+    }
+    componentWillMount(){
+        let data1 =service.getAllAvailableMovie();
+        let data2= service.getInComingMovie();
+        this.setState({
+            allAvailableMovie:data1,
+            allInComingMovie:data2
+        })
     }
     render() {
         const settings = {    
@@ -79,7 +102,7 @@ class MovieSlide extends Component {
                     <div className="tab-pane container active" id="showing">
                         <div className={this.props.themeMode?"container container-dark ":"container container-light "}>
                             <Slider {...settings} className="row slick-carousel">
-                                {this.renderMovieCardInSlide(false)}
+                                {this.renderAvailableMovieCardInSlide()}
                             </Slider>
                         </div>
                     </div>
@@ -87,7 +110,7 @@ class MovieSlide extends Component {
                     <div className="tab-pane container fade" id="coming">
                         <div className={this.props.themeMode?"container container-dark ":"container container-light "}>
                             <Slider {...settings} className="row slick-carousel">
-                            {this.renderMovieCardInSlide(true)}
+                            {this.renderIncomingMovieCardInSlide()}
                             </Slider>
                         </div>
                     </div>
@@ -98,16 +121,9 @@ class MovieSlide extends Component {
 }
 const mapStateToProps =state =>{
     return{
-        listMovie:state.movieReducer.listMovie,
         themeMode:state.userReducer.isDarkModeOn
     };
 }
-const mapDispatchToProps =dispatch =>{
-    return {
-        getListMovie:()=>{
-            dispatch(action.actGetListMovieAPI());
-        }
-    }
-}
 
-export default connect(mapStateToProps,mapDispatchToProps) (MovieSlide);
+
+export default connect(mapStateToProps,null) (MovieSlide);

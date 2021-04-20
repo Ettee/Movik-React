@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from "react-redux";
-import * as action from "../../redux/action";
+import * as service from "./homeService"
 class LoginModal extends Component {
     constructor(props){
         super(props)
@@ -16,7 +15,8 @@ class LoginModal extends Component {
         });
     }
     handleLogin=(e)=>{
-        this.props.login(this.state);
+        // this.props.login(this.state);
+        service.login({ten_dang_nhap:this.state.taiKhoan,mat_khau:this.state.matKhau})
         e.preventDefault();
     }
     render() {
@@ -69,11 +69,5 @@ class LoginModal extends Component {
         )
     }
 }
-const mapDispatchToProps=(dispatch)=>{
-    return {
-        login:(user)=>{
-            dispatch(action.actDangNhap(user));
-        }
-    }
-}
-export default connect(null,mapDispatchToProps)(LoginModal);
+
+export default LoginModal;

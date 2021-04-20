@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrailerBlock from "./trailerBlock"
+import ReviewsBlock from "./reviewsBlock";
 export default class DetailBlock extends Component {
     render() {
         let{movie}=this.props;
@@ -11,11 +12,6 @@ export default class DetailBlock extends Component {
                         <li className="nav-item">
                             <a className="nav-link active" data-toggle="pill" href="#movieInfo">
                                 Thông tin
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="pill" href="#movieTrailer">
-                                Trailer
                             </a>
                         </li>
                         <li className="nav-item">
@@ -74,13 +70,13 @@ export default class DetailBlock extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="tab-pane container fade" id="movieTrailer">
-                            <TrailerBlock movie={movie}/>
-                        </div>
-                        <div className="tab-pane container fade" id="movieReviewUser">
-                            
+                        <div className="tab-pane container fade" id="movieReviewUser"> 
+                            <ReviewsBlock movie={movie} />
                         </div>
                     </div>
+                </div>
+                <div className="container">
+                    {/* <TrailerBlock movie={movie}/> */}
                 </div>
             </section>
 

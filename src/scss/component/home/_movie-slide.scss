@@ -153,12 +153,17 @@
   
 }
 //class dùng chung
+.card-tag-left{
+  .wishlist{
+    display: flex;
+    justify-content: center;
+  }
+}
 .age-tag{
   background-color: $colorForSmallIcon;
   border-radius: 5px;
   font-size: 15px;
-  height: 22px;
-  width: 37px;
+  padding: 2px;
   margin: 5px 10px;
   text-align: center;
 }

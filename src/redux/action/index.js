@@ -609,14 +609,6 @@ export const actClearDetailMovie=()=>{
         })
     }
 }
-export const actTransferMovieName=(name)=>{
-    return dispatch=>{
-        dispatch({
-            type:ActionType.TRANSFER_MOVIE_NAME,
-            data:name
-        })
-    }
-}
 export const actChangeIsUserBookedReady=(val)=>{
     return dispatch=>{
         dispatch({

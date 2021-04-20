@@ -5,6 +5,8 @@ import Select from 'react-select';
 import { NavLink } from 'react-router-dom';
 import swal from 'sweetalert';
 import { withRouter } from 'react-router-dom';
+import * as service from ".//homeService";
+import * as moment from 'moment'
 class SearchBlock extends Component {
     constructor(props) {
         super(props)
@@ -18,12 +20,16 @@ class SearchBlock extends Component {
             isRapSelected:false,
             isNgayChieuSelected:false,
             isXuatChieuSelected:false,
-            maLichChieu:''
+            maLichChieu:'',
+            listMovie:[],
+            listTheater:[],
+            listDateShowtime:[],
+            listTimeShowTime:[]
 
         }
     }
     componentDidMount() {
-        this.props.getListMovie();
+        this.renderListMovie();
     }
     customTheme(theme) {
         return {
@@ -41,26 +47,21 @@ class SearchBlock extends Component {
     }
     //render ra option phim
     renderListMovie=()=>{
-        let objOption={};
-        let danhSachPhim=[];
-        
-        this.props.listMovie.forEach((item)=>{
-            objOption={
-                label:item.tenPhim,
-                value:item.maPhim
-            }
-            danhSachPhim.push(objOption)
+        let data = service.getAllMovieForSearchBlock().map(x=>{return {label:x.tenPhim,value:x.maPhim}});
+        this.setState({
+            listMovie:data
         })
-        if(danhSachPhim.length!==0){
+        if(data.length!==0){
             this.props.isPageReady(true)
         }
-        return danhSachPhim
     }
     handleOnMovieSelection=(val)=>{
         let {isRapSelected,isNgayChieuSelected,isXuatChieuSelected}=this.state;
+        let data = service.getTheaterByMovieID(val.value).map(x=>{return {label:x.tenRap,value:x.maRap}});
         this.setState({
-            movieSelected:val,
-            isMovieSelected:true
+            listTheater:data,
+            isMovieSelected:true,
+            movieSelected:val
         })
         // khi user đổi film => clear hết option còn lại
         if(isRapSelected || isNgayChieuSelected || isXuatChieuSelected){
@@ -70,33 +71,18 @@ class SearchBlock extends Component {
                 xuatChieuSelected:'',
             })
         }
-        this.props.getInfoShow(val.value);
     }
-    //render ra option rap
-    renderRapOptions=()=>{
-        let {infoShow}=this.props;
-        let objOption={};
-        let rapOptions=[]
-        if(Object.keys(infoShow).length>0){
-            infoShow.heThongRapChieu.forEach((item)=>{
-                item.cumRapChieu.forEach((item)=>{
-                    objOption={
-                        label:item.tenCumRap,
-                        value:item.tenCumRap
-                    }
-                    rapOptions.push(objOption)
-                })
-            })
-        }
-        return rapOptions;
-    }
+
     handleOnRapSelection=(val)=>{
         let {isNgayChieuSelected,isXuatChieuSelected}=this.state;
+        let data = service.getDateShowTimeByMovieAndTheater(this.state.movieSelected.value,val.value).map(x=>{return{label:moment(x.ngayChieu).format('L'),value:x.ngayChieu}});
+
         this.setState({
             rapSelected:val,
-            thongtinXuatChieu:this.props.infoShow,
-            isRapSelected:true
+            isRapSelected:true,
+            listDateShowtime:data
         })
+
         // khi user đổi rạp => clear hết option còn lại
         if(isNgayChieuSelected || isXuatChieuSelected){
             this.setState({
@@ -105,69 +91,20 @@ class SearchBlock extends Component {
             })
         }
     }
-    //render ra option ngay chieu
-    renderNgayChieuOptions=()=>{
-        let {rapSelected,thongtinXuatChieu}=this.state;
-        let objOption={};
-        let danhSachNgayChieu=[];
-        let set = new Set();
-        if(thongtinXuatChieu !== null){
-            thongtinXuatChieu.heThongRapChieu.forEach((item1)=>{
-                    item1.cumRapChieu.forEach((item2)=>{
-                        if(item2.tenCumRap===rapSelected.value){
-                            item2.lichChieuPhim.forEach((item3)=>{
-                                set.add(new Date(item3.ngayChieuGioChieu).toLocaleDateString());
-                            })
-                        }
-                    })
-            })
-            let arr = Array.from(set)
-            arr.forEach((item)=>{
-                objOption={
-                    label:item,
-                    value:item
-                }
-                danhSachNgayChieu.push(objOption)
-            })
-            return danhSachNgayChieu
-        }
-        
-    }
+
     handleOnNgayChieuSelection=(val)=>{
         let {isXuatChieuSelected}=this.state;
+        let data = service.getStartTimeByMovieTheaterAndDate(this.state.movieSelected.value,this.state.rapSelected.value,val.value).map(x=>{return {label:moment(x.gioChieu).format('LT'),value:x.maXuatChieu}});
         this.setState({
             ngayChieuSelected:val,
-            isNgayChieuSelected:true
+            isNgayChieuSelected:true,
+            listTimeShowTime:data
         })
         // khi user đổi ngày chiếu => clear hết option còn lại
         if(isXuatChieuSelected){
             this.setState({
                 xuatChieuSelected:'',
             })
-        }
-    }
-    //render ra option xuatchieu
-    renderXuatChieuOptions=()=>{
-        let {thongtinXuatChieu,ngayChieuSelected,rapSelected}=this.state;
-        let objOption={}
-        let danhSachXuatChieu=[]
-        if(thongtinXuatChieu !== null){
-            thongtinXuatChieu.heThongRapChieu.forEach((item1)=>{
-                item1.cumRapChieu.forEach((item2)=>{
-                    if(item2.tenCumRap===rapSelected.value){
-                        item2.lichChieuPhim.forEach((item3)=>{
-                            if(new Date(item3.ngayChieuGioChieu).toLocaleDateString()===ngayChieuSelected.value){
-                                objOption={
-                                    label:new Date(item3.ngayChieuGioChieu).toLocaleTimeString(),
-                                    value:item3.maLichChieu
-                                }
-                                danhSachXuatChieu.push(objOption)
-                            }
-                        })
-                    }
-                })
-            })
-            return danhSachXuatChieu;
         }
     }
     handleOnXuatChieuChange=(val)=>{
@@ -183,46 +120,27 @@ class SearchBlock extends Component {
         let dateInput = this.state.ngayChieuSelected;
         let timeInput = this.state.xuatChieuSelected;
         if (filmInput && theaterInput && dateInput && timeInput) {
-            if (localStorage.getItem("userKhachHang")) {
-                return (
-                    <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
-                        <button className="btn  btn-buynow text-uppercase active " >
-                            Mua vé ngay
-                        </button>
-                    </NavLink>
-                )
-            } else {
-                if (localStorage.getItem("userAdmin")) {
-                    swal({
-                        title: "Tài khoản admin không thể đặt vé",
-                        icon: "info"    
-                    }).then((ok) => {
-                        if (ok) {
-                            window.location.reload()
-                        }
-                    })
-                    return (
-                        <button className="btn btn-buynow text-uppercase active " >
-                            Mua vé ngay
-                        </button>
-                    )
-                }
-                else{
-                    swal({
-                        title: "Bạn cần đăng nhập trước khi đặt vé",
-                        icon: "info"    
-                    }).then((ok) => {
-                        if (ok) {
-                            window.location.reload()
-                        }
-                    })
-                    return (
-                        <button className="btn btn-buynow text-uppercase active " >
-                            Mua vé ngay
-                        </button>
-                    )
-                }
-            }
+            return (
+                <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
+                    <button className="btn  btn-buynow text-uppercase active " >
+                        Mua vé ngay
+                    </button>
+                </NavLink>
+            )
+            // swal({
+            //     title: "Bạn cần đăng nhập trước khi đặt vé",
+            //     icon: "info"    
+            // }).then((ok) => {
+            //     if (ok) {
+            //         window.location.reload()
+            //     }
+            // })
+            // return (
+            //     <button className="btn btn-buynow text-uppercase active " >
+            //         Mua vé ngay
+            //     </button>
+            // )
+            
 
         } else {
             return (
@@ -242,12 +160,11 @@ class SearchBlock extends Component {
                             <div className="search-item-for-movie-ticket form-group ">
                                 <Select
                                     onChange={this.handleOnMovieSelection}
-                                    options={this.renderListMovie()}
+                                    options={this.state.listMovie}
                                     value={this.state.movieSelected}
                                     theme={this.customTheme}
                                     placeholder="Phim"
                                     isSearchable
-                                    
                                     autoFocus
                                 />
                             </div>
@@ -258,7 +175,7 @@ class SearchBlock extends Component {
                                 <Select
                                     placeholder="Rạp"
                                     theme={this.customTheme}
-                                    options={this.renderRapOptions()}
+                                    options={this.state.listTheater}
                                     onChange={this.handleOnRapSelection}
                                     value={this.state.rapSelected}
                                     noOptionsMessage={() => 'Chưa chọn phim'}  
@@ -270,7 +187,7 @@ class SearchBlock extends Component {
                             <div className="search-item-for-movie-ticket form-group">                                
                                 <Select
                                     placeholder="Ngày chiếu"
-                                    options={this.renderNgayChieuOptions()}
+                                    options={this.state.listDateShowtime}
                                     onChange={this.handleOnNgayChieuSelection}
                                     value={this.state.ngayChieuSelected}
                                     theme={this.customTheme}
@@ -283,7 +200,7 @@ class SearchBlock extends Component {
                             <div className="search-item-for-movie-ticket form-group">
                                 <Select
                                     placeholder="Xuất chiếu"
-                                    options={this.renderXuatChieuOptions()}
+                                    options={this.state.listTimeShowTime}
                                     onChange={this.handleOnXuatChieuChange}
                                     value={this.state.xuatChieuSelected}
                                     theme={this.customTheme}
