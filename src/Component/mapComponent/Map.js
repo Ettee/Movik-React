@@ -64,6 +64,7 @@ class Map extends Component {
       </Marker>
     );
   };
+  
   drawTheaterLocation = () => {
     const theaterMarkerIcon = new L.Icon({
       iconUrl:

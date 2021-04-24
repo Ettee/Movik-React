@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TrailerBlock from "./trailerBlock"
 import ReviewsBlock from "./reviewsBlock";
+import * as moment from "moment";
 export default class DetailBlock extends Component {
     render() {
         let{movie}=this.props;
@@ -29,7 +30,7 @@ export default class DetailBlock extends Component {
                                         <div className="date-info info">
                                             <div className="row">
                                                 <div className="col-md-6 key-info">Ngày phát hành</div>
-                                                <div className="col-md-6 value-info">{new Date(movie?.ngayKhoiChieu).toLocaleDateString()}</div>
+                                                <div className="col-md-6 value-info">{moment(movie?.ngayKhoiChieu).format('L')}</div>
                                             </div>
                                         </div>
                                         <div className="director-info info">
@@ -49,7 +50,7 @@ export default class DetailBlock extends Component {
                                         <div className="movieType-info info">
                                             <div className="row">
                                                 <div className="col-md-6 key-info">Thể Loại</div>
-                                                <div className="col-md-6 value-info">hành động</div>
+                                                <div className="col-md-6 value-info">{movie?.theLoai}</div>
                                             </div>
                                         </div>
                                         <div className="nation-info info">

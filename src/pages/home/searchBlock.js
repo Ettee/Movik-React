@@ -120,6 +120,7 @@ class SearchBlock extends Component {
         let dateInput = this.state.ngayChieuSelected;
         let timeInput = this.state.xuatChieuSelected;
         if (filmInput && theaterInput && dateInput && timeInput) {
+            //console.log(this.state.maLichChieu)
             return (
                 <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
                     <button className="btn  btn-buynow text-uppercase active " >
@@ -127,6 +128,8 @@ class SearchBlock extends Component {
                     </button>
                 </NavLink>
             )
+
+
             // swal({
             //     title: "Bạn cần đăng nhập trước khi đặt vé",
             //     icon: "info"    

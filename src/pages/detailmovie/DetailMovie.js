@@ -4,7 +4,14 @@ import DetailBlock from './detailBlock';
 import TheaterBlock from '../home/theaterBlock';
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
+import * as service from "./service";
 class DetailMovie extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            detailMovie:{}
+        }
+    }
     checkIfPageIsReady=()=>{
         if(this.props.movie){
             if(this.props.movie.hinhAnh){
@@ -18,13 +25,16 @@ class DetailMovie extends Component {
     componentDidMount(){
         let id = this.props.match.params.id;
         //truyền tham số vào props để đưa lên api
-        this.props.getDetail(id);  
+        let data = service.getMovieDetail(id)
+        this.setState({
+            detailMovie:data
+        })
         window.scrollTo(0, 0)  
     }
     componentWillUnmount(){
         this.props.sendReadySignal(false)
-        this.props.clearDetailMovieStore()
     }
+
     storeViewedMovie=()=>{
         let id = this.props.match.params.id;
         let itemInLstViewedMovie=[]
@@ -42,17 +52,14 @@ class DetailMovie extends Component {
     }
     
     render() {
-        this.storeViewedMovie()
         this.checkIfPageIsReady()
         //lấy data từ trong props ra để hiện thị lên web
-        const {movie}=this.props; 
-        
         return (
             <div>
-                <DetailMovieTop movie={movie} />
-                <DetailBlock movie={movie}/>
+                <DetailMovieTop movie={this.state.detailMovie} />
+                <DetailBlock movie={this.state.detailMovie}/>
                 <div className="movie-detail-theater">
-                    <TheaterBlock movie={movie}/>
+                    <TheaterBlock showTimesOfMovie={1}/>
                 </div>
                 
             </div>
@@ -61,20 +68,12 @@ class DetailMovie extends Component {
 }
 const mapStateToProps=(state)=>{
     return{  
-        movie:state.movieReducer.detailMovie,
-        movieName:state.movieReducer.movieName
     }
 }
 const mapDispatchToProps =dispatch =>{
     return{ 
-        getDetail:id=>{
-            dispatch(action.actGetDetailMovieAPI(id));
-        },
         sendReadySignal:(val)=>{
             dispatch(action.actCheckPageIsReady(val))
-        },
-        clearDetailMovieStore:()=>{
-            dispatch(action.actClearDetailMovie())
         }
     }
 }

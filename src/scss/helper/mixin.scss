@@ -4,6 +4,16 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+@mixin GradientTextWith_2_Colors_Dark_Mode() {
+  background: linear-gradient(90deg,#9f00fb 17%,#ff0000 86%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@mixin GradientTextWith_2_Colors_Light_Mode() {
+  background: linear-gradient(90deg,#f6767f 17%,#f7a009 86%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 @mixin GradientBackgroundTheme(){
   background: linear-gradient(45deg,#9f00fb,#ff0000);
 }

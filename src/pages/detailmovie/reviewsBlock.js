@@ -23,7 +23,7 @@ export default class ReviewsBlock extends Component {
         })
     }
     componentWillReceiveProps(nextProps){
-        console.log(nextProps)
+        // console.log(nextProps)
     }
     renderReview=()=>{
         let {reviewData}=this.state;

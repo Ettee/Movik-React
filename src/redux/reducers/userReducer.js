@@ -4,7 +4,7 @@ let initialState ={
     danhSachNguoiDungPhanTrang:{},
     danhSachTatCaNguoiDung:[],
     isAdmin:false,
-    isDarkModeOn:false,
+    isDarkModeOn:true,
     isUserBooked:false
 };
 const userReducer=(state=initialState,action)=>{

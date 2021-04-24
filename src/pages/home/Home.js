@@ -29,7 +29,7 @@ class Home extends Component {
             <TheaterBlock />
             <Recommend/>
             <Map/>
-            <ViewedMovie/>
+            {/* <ViewedMovie/> */}
             {/* <Chat/> */}
           </Fragment>
         );

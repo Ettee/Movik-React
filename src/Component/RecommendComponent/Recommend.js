@@ -3,40 +3,14 @@ import * as action from "../../redux/action";
 import {connect} from "react-redux";
 import Slider from "react-slick";
 import MovieCardInSlide from "../MovieCardInSlide"
+import * as homeService from "../../pages/home/homeService";
 class Recommend extends Component {
     componentDidMount(){
-        this.props.layDanhSachPhim()
+        this.taoDanhSachPhimRecommend();
     }
     taoDanhSachPhimRecommend=()=>{
-        let {danhSachPhim}=this.props
-        let lstRecommendByScore=[]
-        if(danhSachPhim.length >0 ){
-            //nếu có data từ api
-            danhSachPhim.forEach(phim=>{
-                if(phim.danhGia >=8){
-                    lstRecommendByScore.push(phim)
-                }
-            })
-            
-            let lstRecommendByDate = lstRecommendByScore.sort((a,b)=>{
-                let keyA= new Date(a.ngayKhoiChieu)    
-                let keyB= new Date(b.ngayKhoiChieu)
-                //sắp xếp giảm dần 
-                if(keyA<keyB){
-                    return 1
-                }
-                if(keyA>keyB){
-                    return -1
-                }
-                return 0
-            })
-            //lấy ra 5 phim đầu danh sách những phim có lịch chiếu gần current date
-            lstRecommendByDate.splice(5)
-            return lstRecommendByDate
-        }else{
-            //nếu ko có data từ api thì trả về mảng rỗng
-            return lstRecommendByScore
-        }
+        let danhSachPhim=homeService.getRecommendMovie();
+        return danhSachPhim;
     }
     renderItemInSlider=()=>{
         let lstOfRecommendFilm = this.taoDanhSachPhimRecommend()
@@ -56,31 +30,39 @@ class Recommend extends Component {
     
     render() {
         const settings = {
-            className: "center",
-            centerMode: true,
             infinite: true,
-            slidesToShow: 3,
             speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            initialSlide: 0,
             autoplay: true,
-            autoplaySpeed: 2000,
-            centerPadding: "60px",
+            speed: 2000,
+            autoplaySpeed:2000,
             responsive: [
-                {
-                  breakpoint: 1000,
-                  settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                  }
-                },
-                {
-                    breakpoint: 800,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1
-                    }
-                  }
-              ]
-            
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  infinite: true,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  initialSlide: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
         };
         return (
           <section className={this.props.themeMode?"recommend-section recommend-section-dark d-flex flex-column justify-content-center":"recommend-section recommend-section-light d-flex flex-column justify-content-center"} id="recommend-block" >
@@ -97,17 +79,9 @@ class Recommend extends Component {
 }
 const mapStateToProps = (state) => {
     return{
-        danhSachPhim:state.movieReducer.listMovie,
-        themeMode: state.userReducer.isDarkModeOn
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return{
-        layDanhSachPhim:()=>{
-            dispatch(action.actGetListMovieAPI())
-        },
+      themeMode: state.userReducer.isDarkModeOn
     }
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Recommend)
+export default connect(mapStateToProps,null)(Recommend)

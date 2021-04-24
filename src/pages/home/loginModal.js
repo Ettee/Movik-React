@@ -16,7 +16,8 @@ class LoginModal extends Component {
     }
     handleLogin=(e)=>{
         // this.props.login(this.state);
-        service.login({ten_dang_nhap:this.state.taiKhoan,mat_khau:this.state.matKhau})
+        service.login({ten_dang_nhap:this.state.taiKhoan,mat_khau:this.state.matKhau});
+        //thành công thì lưu thông tin xuống local store
         e.preventDefault();
     }
     render() {

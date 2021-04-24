@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import * as moment from "moment";
 
 export default class DetailMovieTop extends Component {
     renderRatingCircle=(diem)=>{
@@ -30,7 +31,7 @@ export default class DetailMovieTop extends Component {
                     className="bg-cover-fade"
                     style={{
                         backgroundImage:
-                            `url(${movie?.hinhAnh})`
+                            `url(${movie?.poster})`
                     }}
                 ></div>
                 <div className="bg-overlay-fade" />
@@ -43,7 +44,7 @@ export default class DetailMovieTop extends Component {
                                         className="film-imgTop card-content"
                                         style={{
                                             backgroundImage:
-                                                "url("+movie?.hinhAnh+")"
+                                                "url("+movie?.poster+")"
                                         }}
                                     >
                                         {/* OVERLAY */}
@@ -62,10 +63,10 @@ export default class DetailMovieTop extends Component {
                                     <div className="film-title">
                                         <div>
                                             <div className="ngayKhoiChieu">
-                                                Khởi chiều:<span> {new Date(movie?.ngayKhoiChieu).toLocaleDateString()}</span>
+                                                Khởi chiều:<span> {moment(movie?.ngayKhoiChieu).format('L')}</span>
                                             </div>
                                             <div>
-                                                <span className="age-tag">C18</span>
+                                                <span className="age-tag">{movie?.doTuoi}</span>
                                                 <span className="film-title-name text-uppercase">{movie?.tenPhim}</span>
                                             </div>
                                             <div>
