@@ -617,3 +617,11 @@ export const actChangeIsUserBookedReady=(val)=>{
         })
     }
 }
+export const actSaveTicketInfo=(value)=>{
+    return dispatch=>{
+        dispatch({
+            type:ActionType.SAVE_TICKET_INFO,
+            data:value
+        })
+    }
+}

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import * as service from "./homeService"
+import React, { Component } from 'react';
+import * as service from "./homeService";
+import swal from 'sweetalert';
 class LoginModal extends Component {
     constructor(props){
         super(props)
@@ -18,6 +19,21 @@ class LoginModal extends Component {
         // this.props.login(this.state);
         service.login({ten_dang_nhap:this.state.taiKhoan,mat_khau:this.state.matKhau});
         //thành công thì lưu thông tin xuống local store
+        let data ={
+            email:"thanhson1185@gmail.com",
+            hoTen:"Trần Thanh Sơn",
+            soDT:"0123123132",
+            taiKhoan:"devfie"
+        }
+        localStorage.setItem("userKhachHang",JSON.stringify(data))
+        swal({
+            title: "Đăng nhập thành công",
+            icon: "success"    
+        }).then((ok) => {
+            if (ok) {
+                window.location.reload()
+            }
+        })
         e.preventDefault();
     }
     render() {

@@ -58,11 +58,11 @@ export function getStartTimeByMovieTheaterAndDate(maPhim,maRap,ngayChieu){
     let data=[
         {
             gioChieu:"2021-04-09T16:00:00",
-            maXuatChieu:1
+            maXuatChieu:16531
         },
         {
             gioChieu:"2021-04-09T10:00:00",
-            maXuatChieu:2
+            maXuatChieu:16522
         }
     ]
     return data

@@ -3,118 +3,79 @@ import {connect} from 'react-redux';
 import * as action from '../../redux/action';
 import { withRouter } from 'react-router-dom';
 import QRCode from 'qrcode.react';
+import * as moment from 'moment';
 
 import swal from '@sweetalert/with-react';
 class TicketInfoAfterBooked extends Component {
     constructor(props){
         super(props)
         this.state={
-            maVe:0
+            maVe:0,
+            
         }
     }
-    
     componentDidMount(){
-        let taiKhoan=JSON.parse(localStorage.getItem("userKhachHang"))
-        let obj={
-            taiKhoan:taiKhoan.taiKhoan
-        }
-        this.props.getBookingDetail(obj)
-        setTimeout(()=>{
-          this.props.sendReadySignal(true)
-        },3000)
-        //handle khi thông tin đặt vé không đc truyền qua 
-        if(Object.keys(this.props.thongTinDatVe)===0){
-            console.log(Object.keys(this.props.thongTinDatVe))
-            swal({
-                title:"Lỗi khi xác nhận vé",
-                icon:"error",
-                text:"Thông tin đặt vé không tồn tại.Bạn hãy đặt vé lại.",
-                closeOnClickOutside: false,
-                closeOnEsc: false
-            })
-            .then((ok)=>{
-                if(ok){
-                    this.props.history.push("/")
-                }
-            }) 
-        }
-    }
-    getBookingDataFromAccount=()=>{
-        if(Object.keys(this.props.bookingDetailFromAccount).length>0){
-          console.log(this.props.bookingDetailFromAccount)
-          let lstThongTinDatVe=this.props.bookingDetailFromAccount.thongTinDatVe;
-          return lstThongTinDatVe.pop() 
-        }
+      if(Object.keys(this.props.ticketInfo).length === 0 ){
+        this.props.history.push('/')
+      }
     }
     renderDanhSachGhe=(danhSachGhe)=>{
-      return danhSachGhe.map((item,index)=>{
-        return (
-          <div key={index}>{item.tenGhe}</div>
-        )
-      })
+      if(typeof danhSachGhe !== "undefined"){
+        return danhSachGhe.map((item,index)=>{
+          return (
+            <div key={index}>{item}</div>
+          )
+        })
+      }
     }
     renderThongTinPhim=(ticketData)=>{
-        let{thongTinDatVe}=this.props
-        if (typeof thongTinDatVe !== "undefined" &&typeof ticketData !== "undefined" ) {
-          // console.log("thongTinDatVe: ",thongTinDatVe)
-          // console.log("ticketData: ",ticketData)
-          if (
-            Object.keys(thongTinDatVe).length > 0 &&
-            Object.keys(ticketData).length > 0
-          ) {
-            return (
-              <Fragment>
-                <div className="col-md-6">
-                  <div className="ticket-info">
-                    <span>Mã phim: </span>
-                    {thongTinDatVe?.maLichChieu}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Tên phim: </span>
-                    {ticketData.tenPhim}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Thời lượng: </span>
-                    {ticketData.thoiLuongPhim}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Giờ chiếu: </span>
-                    {thongTinDatVe?.thongTinPhim.gioChieu}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Ngày chiếu: </span>
-                    {thongTinDatVe?.thongTinPhim.ngayChieu}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Tên cụm rạp: </span>
-                    {thongTinDatVe?.thongTinPhim.tenCumRap}
-                  </div>
-                  <div className="ticket-info">
-                    <span>Tên rạp: </span>
-                    {thongTinDatVe?.thongTinPhim.tenRap}
-                  </div>
-                  <div className="ticket-info">
-                    <div className="ticket-info-seat">
-                      Ghế: {this.renderDanhSachGhe(ticketData.danhSachGhe)}
-                    </div>
-                  </div>
-                  <button
-                    className="btn-backToHome"
-                    onClick={this.handleToHome}
-                  >
-                    Quay về Movik
-                  </button>
+        if (typeof ticketData !== "undefined" ) {
+          return (
+            <Fragment>
+              <div className="col-md-6">
+                <div className="ticket-info">
+                  <span>Tên phim: </span>
+                  {ticketData.movieName}
                 </div>
-                <div className="col-md-6">
-                  <div className="poster">
-                    <img src={thongTinDatVe?.thongTinPhim.hinhAnh} />
+                <div className="ticket-info">
+                  <span>Thời lượng: </span>
+                  {ticketData.thoiLuong}
+                </div>
+                <div className="ticket-info">
+                  <span>Giờ chiếu: </span>
+                  {moment(ticketData.startTime).format('LT')}
+                </div>
+                <div className="ticket-info">
+                  <span>Ngày chiếu: </span>
+                  {moment(ticketData.scheduleDate).format('l')}
+                </div>
+                <div className="ticket-info">
+                  <span>Tên cụm rạp: </span>
+                  {ticketData.theaterName}
+                </div>
+                <div className="ticket-info">
+                  <span>Tên rạp: </span>
+                  {ticketData.roomName}
+                </div>
+                <div className="ticket-info">
+                  <div className="ticket-info-seat">
+                    Ghế: {this.renderDanhSachGhe(ticketData.seats)}
                   </div>
                 </div>
-              </Fragment>
-            );
-          } else {
-            return <div></div>;
-          }
+                <button
+                  className="btn-backToHome"
+                  onClick={this.handleToHome}
+                >
+                  Quay về Movik
+                </button>
+              </div>
+              <div className="col-md-6">
+                <div className="poster">
+                  <img src={ticketData.poster} />
+                </div>
+              </div>
+            </Fragment>
+          );
         }
     }
     handleToHome=()=>{
@@ -133,19 +94,12 @@ class TicketInfoAfterBooked extends Component {
       document.body.removeChild(downloadLink);
     }
     renderQRCode=(ticketData)=>{
-        let string=''
-        if(typeof ticketData !=="undefined" ){
-          let seat=[];
-          let theater=ticketData.danhSachGhe[0].tenRap;
-          ticketData.danhSachGhe.forEach((item)=>{
-            seat.push(item.tenGhe)
-            
-          })
-            string='ticketID: '+ticketData.maVe+',seat:'+seat+',theater:'+theater+",movie:"+ticketData.tenPhim
+      console.log(ticketData)
+        if(Object.keys(ticketData).length !== 0 ){
             return(
                 <QRCode
                     id="qrcode"
-                    value={string}
+                    value={ticketData.ticketId}
                     size={290}
                     level={"H"}
                     includeMargin={true}
@@ -154,23 +108,23 @@ class TicketInfoAfterBooked extends Component {
         }
     }
     render() {
-        let ticketData= this.getBookingDataFromAccount()
+        let {ticketInfo} = this.props;
         return (
           <div className="TicketInfoAfterBooked">
             <div className="container">
               <div className="row">
                 <div className="col-md-4">
                   <div className="qr-code-block">
-                    {this.renderQRCode(ticketData)}
+                    {this.renderQRCode(ticketInfo)}
                     <div className="qr-note">
                       * Mã QR này có giá trị như 1 tấm vé.
                     </div>
-                    <div className="qr-download" onClick={()=>{this.downloadQR(ticketData.tenPhim)}}>Tải về</div>
+                    <div className="qr-download" onClick={()=>{this.downloadQR(ticketInfo.movieName)}}>Tải về</div>
                   </div>
                 </div>
                 <div className="col-md-8">
                   <div className="ticket-info-block">
-                    <div className="row">{this.renderThongTinPhim(ticketData)}</div>
+                    <div className="row">{this.renderThongTinPhim(ticketInfo)}</div>
                   </div>
                 </div>
               </div>
@@ -183,7 +137,8 @@ const mapStateToProps=(state)=>{
     return{
         bookingDetailFromAccount:state.userReducer.thongTinDatVe,
         thongTinDatVe:state.movieReducer.thongTinDatVe,
-        datVeStatus:state.movieReducer.datVeStatus
+        datVeStatus:state.movieReducer.datVeStatus,
+        ticketInfo:state.movieReducer.ticketInfo
     }
 }
 const mapDispatchToProps=(dispatch)=>{

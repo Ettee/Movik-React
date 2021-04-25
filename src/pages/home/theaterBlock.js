@@ -143,7 +143,7 @@ class TheaterBlock extends Component {
     renderShowtimes=(schedule)=>{
         return schedule.map((x,i)=>{
             return (
-                <NavLink className="showtime" key={i} to={`/pick-seat/${x.scheduleId}`} >
+                <NavLink className={this.props.themeMode ? "showtime light" :"showtime dark"} key={i} to={`/pick-seat/${x.scheduleId}`} >
                     <span className={this.state.themeMode ? "start-time light":"start-time dark"}>{moment(x.startTime).format('LT')}</span>
                     <span className="end-time"> ~ {moment(x.endTime).format('LT')}</span>
                 </NavLink>

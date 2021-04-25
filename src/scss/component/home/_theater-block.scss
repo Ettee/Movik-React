@@ -130,9 +130,7 @@
                         margin: 5px;
                         border-radius: 10px;
                         cursor: pointer;
-                        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 75%);
-                        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-                        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0,75%);
+                       
                         text-decoration: none;
                         .start-time{
                             font-weight: 500;
@@ -147,6 +145,16 @@
                             font-size: 13px;
                             color: gray;
                         }
+                    }
+                    .showtime.dark{
+                        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 75%);
+                        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0,75%);
+                    }
+                    .showtime.light{
+                        -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+                        -moz-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+                        box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
                     }
                 }
             }

@@ -1,11 +1,11 @@
 import React, { Component,Fragment } from 'react'
 import {connect} from 'react-redux';
 import * as action from '../../redux/action';
-import { isEmptyObject } from 'jquery';
 import Seat from "../../Component/Seat";
 import SelectionDetail from '../../Component/SelectionDetail'
-import swal from 'sweetalert';
 import {withRouter} from "react-router-dom"
+import * as service from "./theaterService";
+import * as moment from "moment";
 class Theater extends Component{
     constructor(props){
         super(props)
@@ -13,7 +13,8 @@ class Theater extends Component{
             lstGheDaChon:[],
             time:0,
             seconds:300,
-            reload:false
+            reload:false,
+            roomDetail:{}
         };
         this.timer=0;
         this.startTimer = this.startTimer.bind(this);
@@ -57,18 +58,18 @@ class Theater extends Component{
         // Check if we're at zero.
         if (seconds === 0) { 
           clearInterval(this.timer);
-          swal({
-            title:"Hết thời gian đặt vé",
-            icon:"info",
-            text:"Bạn sẽ được đưa về trang chủ để đặt lại vé",
-            closeOnEsc: false,
-            closeOnClickOutside: false,
-            timer: 3000,
-            buttons:false
-          })
-          setTimeout(()=>{
-            this.props.history.push("/")
-          },3000)
+        //   swal({
+        //     title:"Hết thời gian đặt vé",
+        //     icon:"info",
+        //     text:"Bạn sẽ được đưa về trang chủ để đặt lại vé",
+        //     closeOnEsc: false,
+        //     closeOnClickOutside: false,
+        //     timer: 3000,
+        //     buttons:false
+        //   })
+        //   setTimeout(()=>{
+        //     this.props.history.push("/")
+        //   },3000)
 
         }
     }
@@ -97,37 +98,22 @@ class Theater extends Component{
             lstGheDaChon:arr
         })
     }
-    layChiTietPhongChieu=()=>{
-        let thongTinPhim={}
-        let {chiTietPhongChieu}=this.props
-        if(!isEmptyObject(chiTietPhongChieu)){
-            thongTinPhim=chiTietPhongChieu.thongTinPhim
-        }
-        return thongTinPhim
-    }
-    layDanhSachGhe=()=>{
-        let danhSachGhe=[]
-        let {chiTietPhongChieu}=this.props
-        if(!isEmptyObject(chiTietPhongChieu)){
-            danhSachGhe=chiTietPhongChieu.danhSachGhe
-            this.props.sendReadySignal(true)
-        }
-        return danhSachGhe
-    }
+
     componentWillUnmount(){
         this.props.sendReadySignal(false)
     }
     componentDidMount(){
         window.scrollTo(0, 0)
-        this.startTimer()
-        let timeLeftVar = this.secondsToTime(this.state.seconds);
-        this.setState({ time: timeLeftVar });
+        // this.startTimer()
+        // let timeLeftVar = this.secondsToTime(this.state.seconds);
+        // this.setState({ time: timeLeftVar });
         let maLichChieu=this.props.match.params.maLichChieu;
-        this.props.layChiTietPhongChieuBangMaLichChieu(maLichChieu);
+        let data = service.getDetailRoomByShowId(maLichChieu);
+        
+        this.setState({roomDetail:data});
     }
     render() {
-        let thongTinPhim=this.layChiTietPhongChieu()
-        let danhSachGhe=this.layDanhSachGhe()
+        let {roomDetail}= this.state;
         return (
             <Fragment>
                     <section className="movie-picked">
@@ -136,9 +122,9 @@ class Theater extends Component{
                                 <div className="col-md-8 ">
                                     <div className="movie-name-title">
                                         <h1 className="text-uppercase">
-                                            {thongTinPhim.tenPhim} <span className="age-tag">(C18)</span>
+                                            {roomDetail.roomDetail?.movieName} <span className="age-tag">(C18)</span>
                                         </h1>
-                                        <p className="text-uppercase" >{thongTinPhim.ngayChieu}, {thongTinPhim.gioChieu}</p>
+                                        <p className="text-uppercase" >{moment(roomDetail.roomDetail?.scheduleDate).format('L')}, {moment(roomDetail.roomDetail?.startTime).format('LT')}</p>
                                     </div>
                                 </div>
                                 <div className="col-md-4">
@@ -157,14 +143,14 @@ class Theater extends Component{
                             <div className="col-md-9">
                                 <div className="seat-picker">
                                     <div className="theater-name-picked display-4 text-center my-5">
-                                        {thongTinPhim.tenCumRap}
+                                        {roomDetail.roomDetail?.theaterName}
                                     </div>
                                     <div className="theater-screen">
                                         <img src="../img/seatNscreen/screen.png" alt="screen" />
                                     </div>
                                     <div className="seat-block">
                                         <div className="container">
-                                           <Seat danhSachPhim={danhSachGhe} layDanhSachGheDaChon={this.layDanhSachGheDaChon} />
+                                           <Seat danhSachPhim={roomDetail.seatList} layDanhSachGheDaChon={this.layDanhSachGheDaChon} />
                                         </div>
                                     </div>
                                 </div>
@@ -192,33 +178,28 @@ class Theater extends Component{
                             </div>
                             <div className="col-md-3">
                                 <SelectionDetail 
-                                    thongTinPhim={thongTinPhim}
+                                    thongTinPhim={roomDetail?.roomDetail}
                                     danhSachGhe={this.state.lstGheDaChon}
-                                    maLichChieu={this.props.match.params.maLichChieu}
-                                    
+                                    maLichChieu={this.props.match.params.maLichChieu}   
                                 />
                             </div>
                         </div>
-                    </section>
-                   
-                    
+                    </section> 
             </Fragment>
         )
     }
 }
 const mapStateToProps =state=>{
     return{
-        chiTietPhongChieu:state.movieReducer.chiTietPhongChieu
+       
     }
 }
 const mapDispatchToProps=dispatch=>{
     return {
-        layChiTietPhongChieuBangMaLichChieu:(maLichChieu)=>{
-            dispatch(action.actLayChiTietPhongVeBangMaLichChieu(maLichChieu));
-        },
         sendReadySignal:(val)=>{
             dispatch(action.actCheckPageIsReady(val))
         }
+
     }
 }
 export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(Theater));

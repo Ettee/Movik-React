@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class Seat extends Component {
     constructor(props){
         super(props)
@@ -33,65 +32,65 @@ export default class Seat extends Component {
     }
     renderGhe=()=>{
         let {danhSachPhim}=this.props
-        
-        return danhSachPhim.slice(0, 70).map((item,index)=>{
-            if(item.daDat){
-                return(
-                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
-                        <div className="seat-item text-center inactive">{item.tenGhe}</div>
-                    </div>
-                )
-            }else{
-                    if(this.state.seatIndex.indexOf(index)!==-1 ){
-                        //khi ghế đc chọn
-                        if(item.loaiGhe==="Vip"){
-                            return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
-                                    <div 
-                                        className="seat-item text-center active vip"
-                                        onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
-                                    >{item.tenGhe}</div>
-                                </div>
-                            )
+        if(typeof danhSachPhim !== "undefined"){
+            return danhSachPhim.map((item,index)=>{
+                if(item.isBooked){
+                    return(
+                        <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
+                            <div className="seat-item text-center inactive">{item.seatName}</div>
+                        </div>
+                    )
+                }else{
+                        if(this.state.seatIndex.indexOf(index)!==-1 ){
+                            //khi ghế đc chọn
+                            if(item.loaiGhe==="vip"){
+                                return (
+                                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
+                                        <div 
+                                            className="seat-item text-center active vip"
+                                            onClick={()=>{this.handleSeatOnClick(index,item.seatId,item.seatName,50000)}}
+                                        >{item.seatName}</div>
+                                    </div>
+                                )
+                            }else{
+                                return (
+                                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
+                                        <div 
+                                            className="seat-item text-center active"
+                                            onClick={()=>{this.handleSeatOnClick(index,item.seatId,item.seatName,50000)}}
+                                        >{item.seatName}</div>
+                                    </div>
+                                )
+                            }
+                            
                         }else{
-                            return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
-                                    <div 
-                                        className="seat-item text-center active"
-                                        onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
-                                    >{item.tenGhe}</div>
-                                </div>
-                            )
+                            //khi ghế chưa đc chọn
+                            if(item.loaiGhe==="vip"){
+                                return (
+                                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
+                                        <div 
+                                            className="seat-item text-center vip"
+                                            onClick={()=>{this.handleSeatOnClick(index,item.seatId,item.seatName,50000)}}
+                                        >{item.seatName}</div>
+                                    </div>
+                                )
+                            }else{
+                                return (
+                                    <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
+                                        <div 
+                                            className="seat-item text-center"
+                                            onClick={()=>{this.handleSeatOnClick(index,item.seatId,item.seatName,50000)}}
+                                        >{item.seatName}</div>
+                                    </div>
+                                )
+                            }
                         }
-                        
-                    }else{
-                        //khi ghế chưa đc chọn
-                        if(item.loaiGhe==="Vip"){
-                            return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
-                                    <div 
-                                        className="seat-item text-center vip"
-                                        onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
-                                    >{item.tenGhe}</div>
-                                </div>
-                            )
-                        }else{
-                            return (
-                                <div className="col-lg-1 col-md-2 col-sm-4 col-6" key={index}>
-                                    <div 
-                                        className="seat-item text-center"
-                                        onClick={()=>{this.handleSeatOnClick(index,item.maGhe,item.tenGhe,item.giaVe)}}
-                                    >{item.tenGhe}</div>
-                                </div>
-                            )
-                        }
-                    }
-               
-            }
-        })
+                   
+                }
+            })
+        }   
     }
     
-        
     
     render() {
         

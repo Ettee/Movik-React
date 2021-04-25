@@ -105,6 +105,15 @@
         
         
     }
+    .payment-method{
+        padding: 40px 0;
+        border-bottom: 1px dashed #e4e6eb;
+        color: #e4e6eb;
+        p{
+            color: #fb4226;
+            font-size: 20px;
+        }
+    }
     .combo-block-detail{
         padding: 20px 0;
         color: $gray;

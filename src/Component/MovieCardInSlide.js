@@ -7,6 +7,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import * as homeService from "../pages/home/homeService"
 import { Button } from 'primereact/button';
+import * as moment from 'moment';
 class MovieCardInSlide extends Component {
 
     renderRatingStar = (diem) => {
@@ -156,7 +157,7 @@ class MovieCardInSlide extends Component {
                     }
                   >
                     Ngày chiếu:{" "}
-                    {new Date(movie.ngayKhoiChieu).toLocaleDateString()}
+                    {moment(movie.ngayKhoiChieu).format('L')}
                   </div>
                 ) : (
                   <div

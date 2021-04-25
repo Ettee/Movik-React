@@ -95,6 +95,7 @@ class SearchBlock extends Component {
     handleOnNgayChieuSelection=(val)=>{
         let {isXuatChieuSelected}=this.state;
         let data = service.getStartTimeByMovieTheaterAndDate(this.state.movieSelected.value,this.state.rapSelected.value,val.value).map(x=>{return {label:moment(x.gioChieu).format('LT'),value:x.maXuatChieu}});
+        console.log(data)
         this.setState({
             ngayChieuSelected:val,
             isNgayChieuSelected:true,
@@ -120,31 +121,30 @@ class SearchBlock extends Component {
         let dateInput = this.state.ngayChieuSelected;
         let timeInput = this.state.xuatChieuSelected;
         if (filmInput && theaterInput && dateInput && timeInput) {
-            //console.log(this.state.maLichChieu)
-            return (
-                <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
-                    <button className="btn  btn-buynow text-uppercase active " >
+            console.log(this.state.maLichChieu)
+            if(localStorage.getItem("userKhachHang")){
+                return (
+                    <NavLink to={`/pick-seat/${this.state.maLichChieu}`}>
+                        <button className="btn  btn-buynow text-uppercase active " >
+                            Mua vé ngay
+                        </button>
+                    </NavLink>
+                )
+            }else{
+                swal({
+                    title: "Bạn cần đăng nhập trước khi đặt vé",
+                    icon: "info"    
+                }).then((ok) => {
+                    if (ok) {
+                        window.location.reload()
+                    }
+                })
+                return (
+                    <button className="btn btn-buynow text-uppercase active " >
                         Mua vé ngay
                     </button>
-                </NavLink>
-            )
-
-
-            // swal({
-            //     title: "Bạn cần đăng nhập trước khi đặt vé",
-            //     icon: "info"    
-            // }).then((ok) => {
-            //     if (ok) {
-            //         window.location.reload()
-            //     }
-            // })
-            // return (
-            //     <button className="btn btn-buynow text-uppercase active " >
-            //         Mua vé ngay
-            //     </button>
-            // )
-            
-
+                )
+            }
         } else {
             return (
                 <button className="btn  btn-buynow text-uppercase" >

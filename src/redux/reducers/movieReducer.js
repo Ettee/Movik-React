@@ -16,6 +16,7 @@ let initialState ={
     viewedMovie:{},
     danhSachGheTrongRap:{},
     isHomeReady:false,
+    ticketInfo:{}
     
 };
 const movieReducer =(state = initialState,action) =>{
@@ -64,6 +65,9 @@ const movieReducer =(state = initialState,action) =>{
             return {...state}
         case ActionType.CLEAR_DETAIL_MOVIE:
             state.detailMovie=action.data
+            return {...state}
+        case ActionType.SAVE_TICKET_INFO:
+            state.ticketInfo=action.data;
             return {...state}
 
         default: 

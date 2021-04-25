@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import * as action from "../../redux/action";
-import swal from '@sweetalert/with-react'
+import swal from '@sweetalert/with-react';
+import * as service from './userService'
 class UserBookingInfo extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      userBookingHistory:[]
+    }
+  }
    
     componentDidMount(){
-        let {taiKhoan}=this.props
-        let obj={
-            taiKhoan:taiKhoan
-        }
-        this.props.getBookingDetail(obj)
+      let userInfo = localStorage.getItem("userKhachHang")
+      let data = service.getUserBookingHistory(userInfo.taiKhoan);
+      this.setState({userBookingHistory:data})
     }
     componentWillReceiveProps(nextProps){
       if(nextProps.isUserBookedReady===true){
@@ -21,42 +26,32 @@ class UserBookingInfo extends Component {
       this.props.changeIsUserBookedReady(false)
     }
     renderBookingRow=()=>{
-        let soLuongGhe=0
-        if(Object.keys(this.props.bookingDetail).length !== 0){
-            if(this.props.bookingDetail.thongTinDatVe.length!==0){
-                return this.props.bookingDetail.thongTinDatVe.map((item,index)=>{
-                    soLuongGhe=item.danhSachGhe.length
-                    return(
-                        <tr key={index}>
-                            <td>{item.maVe}</td>
-                            <td className="text-center">{item.tenPhim}</td>
-                            <td className="text-center">{soLuongGhe}</td>
-                            <td className="text-center">{new Date(item.ngayDat).toLocaleDateString()}</td>
-                            <td className="text-center">{new Date(item.ngayDat).toLocaleTimeString()}<span className="detail-more"><i className="far fa-plus-square" onClick={()=>{this.handleDetailMore(item)}}></i></span></td> 
-                        </tr>
-                     )
-                })
-            }else{
-                return (
-                    <div className="no-booking-data">Bạn chưa đặt vé trên Movik</div>
-                )
-            }
-        }else{
-            return (
-                <tr>
-                    Không có dữ liệu
-                </tr>
+      let {userBookingHistory}= this.state;
+        if(userBookingHistory.length >0){
+          return userBookingHistory.map((x,i)=>{
+            return(
+              <tr key={i}>
+                  <td>{x.ticketId}</td>
+                  <td className="text-center">{x.movieName}</td>
+                  <td className="text-center">{x.seats.length}</td>
+                  <td className="text-center">{new Date(x.saleTime).toLocaleDateString()}</td>
+                  <td className="text-center">{new Date(x.saleTime).toLocaleTimeString()}<span className="detail-more"><i className="far fa-plus-square" onClick={()=>{this.handleDetailMore(x)}}></i></span></td> 
+              </tr>
             )
+          })
+        }else{
+          return (
+            <div className="no-booking-data">Bạn chưa đặt vé trên Movik</div>
+          )
         }
     }
     
     handleDetailMore=(thongTinDatVe)=>{
-        let tenRap='',tenHeThongRap='',tenGhe=[]
-        thongTinDatVe.danhSachGhe.forEach(item=>{
-            tenGhe.push(item.tenGhe)
-            tenRap=item.tenRap;
-            tenHeThongRap=item.tenHeThongRap;
-        })
+        let tenRap=thongTinDatVe.roomName;
+        let tenHeThongRap=thongTinDatVe.theaterName;
+        let tenGhe = thongTinDatVe.seats;
+        
+        
         swal({
           title: "Thông tin vé",
           content: (
@@ -65,13 +60,13 @@ class UserBookingInfo extends Component {
                 <div className="row detail-row">
                   <div className="col-md-3 detail-title">Tên Phim:</div>
                   <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
-                    {thongTinDatVe.tenPhim}
+                    {thongTinDatVe.movieName}
                   </div>
                 </div>
                 <div className="row detail-row">
                   <div className="col-md-3 detail-title">Thời lượng:</div>
                   <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
-                    {thongTinDatVe.thoiLuongPhim} phút
+                    {thongTinDatVe.thoiLuong} phút
                   </div>
                 </div>
                 <div className="row detail-row">
@@ -93,7 +88,7 @@ class UserBookingInfo extends Component {
                 <div className="row detail-row">
                   <div className="col-md-3 detail-title">Giá vé:</div>
                   <div className={this.props.themeMode?"col-md-9 detail-value detail-value-dark":"col-md-9 detail-value detail-value-light"}>
-                    {thongTinDatVe.giaVe}
+                    {thongTinDatVe.salePrice}
                   </div>
                 </div>
               </div>
@@ -127,15 +122,11 @@ class UserBookingInfo extends Component {
 }
 const mapStateToProps=(state)=>{
     return{
-      bookingDetail:state.userReducer.thongTinDatVe,
       isUserBookedReady:state.userReducer.isUserBooked
     }
 }
 const mapDispatchToProps=(dispatch)=>{
     return {
-        getBookingDetail:(taiKhoan)=>{
-          dispatch(action.actGetUserProfile(taiKhoan))
-        },
         changeIsUserBookedReady:(val)=>{
           dispatch(action.actChangeIsUserBookedReady(val))
         },
